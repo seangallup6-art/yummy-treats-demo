@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Stockists</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-chip{cursor:pointer;transition:background-color .15s ease,color .15s ease}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 2200px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<header style="height: 84px; display: flex; align-items: center; gap: 28px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<nav aria-label="Main" style="display: flex; gap: 8px; margin-left: 12px;">
+<a href="b11-shop.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border: 3px solid #1A1A2E; border-radius: 999px; font-weight: 700; font-size: 14px; background: #FFFFFF;">Shop</a>
+<a href="b22-guide.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Guides</a>
+<a href="b21-stockists.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border: 3px solid #1A1A2E; border-radius: 999px; font-weight: 700; font-size: 14px; background: #1A1A2E; color: #FFFFFF;">Where to buy</a>
+<a href="b20-help.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Help</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 14px;">
+<a href="b23-search.dc.html" style="text-decoration: none;">Search</a><a href="#" style="text-decoration: none; color: #4A4A66;">TH</a><a href="#" style="text-decoration: none;">EN</a>
+<a href="b13-cart.dc.html" style="text-decoration: none; height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; box-shadow: 4px 4px 0 #1A1A2E;">Cart <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 13px;">0</span></a>
+</div>
+</header>
+
+<section aria-label="Stockists" style="padding: 40px 48px 0;">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 72px; line-height: 0.95; font-weight: 800; letter-spacing: -0.045em; max-width: 900px;">On a shelf near you</h1>
+<p style="margin: 16px 0 0; font-size: 17px; font-weight: 500; line-height: 1.5; max-width: 620px;">Pet shops and vet clinics that keep the range in stock. Call ahead for a specific size; stock changes weekly.</p>
+
+<div style="margin-top: 28px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 20px; padding: 18px 22px; display: grid; gap: 12px;">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><span style="width: 92px; font-size: 13px; font-weight: 700; color: #4A4A66;">Province</span>
+<sc-for list="{{provs}}" as="p" hint-placeholder-count="4"><button type="button" class="b4-chip" onClick="{{p.pick}}" aria-pressed="{{p.on}}" style="height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: {{p.bg}}; color: {{p.fg}};">{{p.label}} <span style="font-weight: 500; color: {{p.cfg}};">{{p.n}}</span></button></sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><span style="width: 92px; font-size: 13px; font-weight: 700; color: #4A4A66;">District</span>
+<sc-for list="{{dists}}" as="d" hint-placeholder-count="4"><button type="button" class="b4-chip" onClick="{{d.pick}}" aria-pressed="{{d.on}}" style="height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: {{d.bg}}; color: {{d.fg}};">{{d.label}} <span style="font-weight: 500; color: {{d.cfg}};">{{d.n}}</span></button></sc-for>
+</div>
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;"><span style="width: 92px; font-size: 13px; font-weight: 700; color: #4A4A66;">Type</span>
+<sc-for list="{{types}}" as="t" hint-placeholder-count="3"><button type="button" class="b4-chip" onClick="{{t.pick}}" aria-pressed="{{t.on}}" style="height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: {{t.bg}}; color: {{t.fg}};">{{t.label}} <span style="font-weight: 500; color: {{t.cfg}};">{{t.n}}</span></button></sc-for>
+</div>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 28px; margin-top: 28px; align-items: start;">
+<div>
+<div role="status" style="font-size: 14px; font-weight: 700; margin-bottom: 12px;">{{count}} places</div>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; gap: 12px;">
+<sc-for list="{{list}}" as="s" hint-placeholder-count="6">
+<li style="display: grid; grid-template-columns: 44px minmax(0, 1fr) auto; gap: 16px; align-items: center; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 16px; padding: 16px 20px;">
+<span style="width: 44px; height: 44px; border-radius: 50%; border: 3px solid #1A1A2E; background: {{s.bg}}; color: {{s.fg}}; display: inline-flex; align-items: center; justify-content: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800;">{{s.n}}</span>
+<span><span style="display: block; font-size: 17px; font-weight: 700;">{{s.name}}</span><span style="display: block; font-size: 13px; font-weight: 500; color: #4A4A66; margin-top: 2px;">{{s.addr}}</span></span>
+<span style="display: flex; align-items: center; gap: 10px;"><span style="font-size: 12px; font-weight: 700; padding: 5px 10px; border: 3px solid #1A1A2E; border-radius: 999px;">{{s.type}}</span><a href="#" style="font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px;">Directions</a></span>
+</li>
+</sc-for>
+</ol>
+<sc-if value="{{none}}" hint-placeholder-val="{{false}}"><div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 16px; padding: 28px; text-align: center;"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800;">No stockist there yet</strong><p style="margin: 8px 0 0; font-size: 14px; font-weight: 500; color: #4A4A66;">We deliver everywhere in Thailand in 2 to 4 days. Or ask your pet shop to stock us; the form is below.</p></div></sc-if>
+</div>
+<div style="position: sticky; top: 24px; height: 520px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; box-shadow: 8px 8px 0 #1A1A2E; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 14px; font-weight: 700; color: #4A4A66; padding: 24px; box-sizing: border-box;">[MAP: pins for the {{count}} places shown, Bangkok and vicinity. Static map image or an embedded map that loads only after a tap, so nothing third-party loads on first paint.]</div>
+</div>
+</section>
+
+<section aria-label="Also online" style="margin: 56px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 6px 6px 0 #1A1A2E;"><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Prefer a marketplace?</h2><p style="margin: 10px 0 18px; font-size: 15px; font-weight: 500; line-height: 1.5;">Our official shops, same products. Prices there may differ because of marketplace fees. Anything sold under our name elsewhere is not us.</p><div style="display: flex; gap: 10px; flex-wrap: wrap;"><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none;">Shopee</a><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none;">Lazada</a><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none;">LINE SHOPPING</a><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 14px; font-weight: 700; text-decoration: none;">TikTok Shop</a></div></div>
+<div style="background: #B8325A; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 6px 6px 0 #1A1A2E; display: flex; flex-direction: column; justify-content: space-between; gap: 16px;"><div><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Run a pet shop or clinic?</h2><p style="margin: 10px 0 0; font-size: 15px; font-weight: 500; line-height: 1.5;">Wholesale from [MIN ORDER], delivered weekly in Bangkok, shelf cards and samples included. Tell us where you are.</p></div><a href="b20-help.dc.html" class="b4-btn" style="align-self: flex-start; display: inline-flex; align-items: center; height: 48px; padding: 0 22px; background: #FFFFFF; color: #1A1A2E; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Ask about stocking us</a></div>
+</section>
+
+<footer style="margin-top: auto; padding: 36px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Payment and slips</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2200}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = [
+      { name: '[STOCKIST] Pet Shop', prov: 'Bangkok', dist: 'Watthana', type: 'Pet shop', addr: '[ADDRESS], Sukhumvit 39, Watthana' },
+      { name: '[STOCKIST] Animal Hospital', prov: 'Bangkok', dist: 'Chatuchak', type: 'Vet clinic', addr: '[ADDRESS], Phahonyothin, Chatuchak' },
+      { name: '[STOCKIST] Pets', prov: 'Bangkok', dist: 'Bang Na', type: 'Pet shop', addr: '[ADDRESS], Bang Na-Trat, Bang Na' },
+      { name: '[STOCKIST] Vet Clinic', prov: 'Bangkok', dist: 'Watthana', type: 'Vet clinic', addr: '[ADDRESS], Thong Lo, Watthana' },
+      { name: '[STOCKIST] Pet Mart', prov: 'Bangkok', dist: 'Lat Phrao', type: 'Pet shop', addr: '[ADDRESS], Lat Phrao 71' },
+      { name: '[STOCKIST] Cat Cafe and Shop', prov: 'Bangkok', dist: 'Chatuchak', type: 'Pet shop', addr: '[ADDRESS], Ratchayothin, Chatuchak' },
+      { name: '[STOCKIST] Pet Hospital', prov: 'Nonthaburi', dist: 'Pak Kret', type: 'Vet clinic', addr: '[ADDRESS], Chaeng Watthana, Pak Kret' },
+      { name: '[STOCKIST] Pet Supplies', prov: 'Nonthaburi', dist: 'Mueang', type: 'Pet shop', addr: '[ADDRESS], Rattanathibet, Mueang Nonthaburi' },
+      { name: '[STOCKIST] Pet Shop', prov: 'Pathum Thani', dist: 'Khlong Luang', type: 'Pet shop', addr: '[ADDRESS], Rangsit, Khlong Luang' },
+      { name: '[STOCKIST] Animal Clinic', prov: 'Samut Prakan', dist: 'Bang Phli', type: 'Vet clinic', addr: '[ADDRESS], Bang Na-Trat km 15, Bang Phli' }
+    ];
+    const prov = this.state.prov ?? 'Bangkok';
+    const dist = this.state.dist ?? 'All';
+    const type = this.state.type ?? 'All';
+    const chip = (label, on, n, pick) => ({ label: label, on: on, n: n, pick: pick, bg: on ? '#1A1A2E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#1A1A2E', cfg: on ? '#E9C46A' : '#4A4A66' });
+    const provNames = ['Bangkok', 'Nonthaburi', 'Pathum Thani', 'Samut Prakan'];
+    const provs = provNames.map((p) => chip(p, p === prov, S.filter((s) => s.prov === p).length, () => this.setState({ prov: p, dist: 'All' })));
+    const inProv = S.filter((s) => s.prov === prov);
+    const distNames = ['All'].concat(inProv.map((s) => s.dist).filter((d, i, a) => a.indexOf(d) === i));
+    const dists = distNames.map((d) => chip(d === 'All' ? 'All districts' : d, d === dist, d === 'All' ? inProv.length : inProv.filter((s) => s.dist === d).length, () => this.setState({ dist: d })));
+    const inDist = inProv.filter((s) => dist === 'All' || s.dist === dist);
+    const typeNames = ['All', 'Pet shop', 'Vet clinic'];
+    const types = typeNames.map((t) => chip(t === 'All' ? 'All types' : (t === 'Pet shop' ? 'Pet shops' : 'Vet clinics'), t === type, t === 'All' ? inDist.length : inDist.filter((s) => s.type === t).length, () => this.setState({ type: t })));
+    const list = inDist.filter((s) => type === 'All' || s.type === type).map((s, i) => ({
+      n: i + 1, name: s.name, addr: s.addr + ', ' + s.prov, type: s.type,
+      bg: s.type === 'Vet clinic' ? '#3A55C4' : '#B8325A', fg: '#FFFFFF'
+    }));
+    return { provs: provs, dists: dists, types: types, list: list, count: list.length, none: list.length === 0 };
+  }
+}
+</script>
+</body>
+</html>

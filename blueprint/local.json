@@ -1,0 +1,59 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": false
+  },
+  "login": true,
+  "steps": [
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": true,
+        "WP_DEBUG_LOG": true,
+        "WP_DEBUG_DISPLAY": false,
+        "SCRIPT_DEBUG": false
+      }
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "woocommerce/woocommerce.php"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "omise/omise-woocommerce.php"
+    },
+    {
+      "step": "activatePlugin",
+      "pluginPath": "translatepress-multilingual/index.php"
+    },
+    {
+      "step": "activateTheme",
+      "themeFolderName": "yummy-treats"
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "blogname": "Yummy Treats!",
+        "blogdescription": "Good food for Bangkok's dogs and cats",
+        "timezone_string": "Asia/Bangkok",
+        "woocommerce_currency": "THB",
+        "woocommerce_default_country": "TH:TH-10",
+        "woocommerce_store_city": "Bangkok",
+        "woocommerce_store_postcode": "10110",
+        "woocommerce_coming_soon": "no"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; delete_transient('_wc_activation_redirect'); update_option('woocommerce_task_list_hidden','yes'); echo 'WP ' . get_bloginfo('version') . ' | WC ' . (defined('WC_VERSION') ? WC_VERSION : 'n/a') . ' | Omise ' . (defined('OMISE_WOOCOMMERCE_PLUGIN_VERSION') ? OMISE_WOOCOMMERCE_PLUGIN_VERSION : (class_exists('Omise') ? 'loaded' : 'n/a')) . ' | PHP ' . PHP_VERSION;"
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; require WP_CONTENT_DIR . '/themes/yummy-treats/seed/seed.php'; echo implode(\"\\n\", yt_seed_all());"
+    }
+  ]
+}

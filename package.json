@@ -1,0 +1,22 @@
+{
+  "name": "yummy-treats-demo",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Yummy Treats! — a WooCommerce demo shop (block theme + Playground Blueprint) for the portfolio.",
+  "license": "MIT",
+  "scripts": {
+    "dev": "node node_modules/@wp-playground/cli/wp-playground.js server --blueprint=blueprint/local.json --mount-before-install=./site:/wordpress --mount=./theme/yummy-treats:/wordpress/wp-content/themes/yummy-treats --wordpress-install-mode=install-from-existing-files-if-needed --port=9400",
+    "dev:online": "node node_modules/@wp-playground/cli/wp-playground.js server --blueprint=blueprint/playground.json --port=9400",
+    "shot": "node tools/shot.js",
+    "smoke": "node tools/smoke.js",
+    "images": "python -I tools/make-images.py theme/yummy-treats/seed/products.json theme/yummy-treats/seed/img",
+    "fonts": "node tools/copy-fonts.js"
+  },
+  "devDependencies": {
+    "@fontsource-variable/bricolage-grotesque": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "@fontsource/prompt": "^5.3.0",
+    "@wp-playground/cli": "^3.1.61",
+    "playwright": "^1.50.0"
+  }
+}

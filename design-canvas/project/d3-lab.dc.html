@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Lab direction</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F5F7F9}
+a{color:#0E1116}a:hover{color:#1D4ED8}
+.l3-chip{cursor:pointer;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+.l3-btn{cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.l3-btn:hover{background:#1D4ED8!important;border-color:#1D4ED8!important;color:#FFFFFF!important}
+.l3-row{transition:background-color .15s ease}
+.l3-row:hover{background:#FFFFFF!important}
+a:focus-visible,button:focus-visible{outline:2px solid #1D4ED8;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3600px; background: #F5F7F9; color: #0E1116; font-family: 'IBM Plex Sans', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<header style="height: 64px; display: flex; align-items: center; gap: 40px; padding: 0 48px; border-bottom: 1px solid #D9DEE4; background: #FFFFFF;">
+<a href="#" style="font-size: 18px; font-weight: 700; letter-spacing: -0.01em; text-decoration: none;">Yummy Treats!</a>
+<nav aria-label="Main" style="display: flex; gap: 28px; font-size: 14px; font-weight: 500;">
+<a href="#" style="text-decoration: none;">Dog food</a><a href="#" style="text-decoration: none;">Cat food</a><a href="#" style="text-decoration: none;">Treats</a><a href="#" style="text-decoration: none;">Accessories</a><a href="#" style="text-decoration: none;">Feeding guide</a><a href="#" style="text-decoration: none;">Stockists</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 24px; font-size: 13px; font-family: 'IBM Plex Mono', monospace;">
+<span style="color: #4A5568;">Free delivery BKK &gt; ฿1,000</span>
+<a href="#" style="text-decoration: none; color: #4A5568;">TH</a><a href="#" style="text-decoration: none;">EN</a>
+<a href="#" style="text-decoration: none;">LINE</a>
+<a href="#" style="text-decoration: none; font-weight: 600;">Cart ({{cart}})</a>
+</div>
+</header>
+
+<section aria-label="Intro" style="display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 56px; padding: 64px 48px 0; align-items: center;">
+<div>
+<h1 style="margin: 0; font-size: 52px; line-height: 1.08; font-weight: 600; letter-spacing: -0.025em;">Good food for Bangkok's dogs and cats.</h1>
+<p style="margin: 22px 0 0; font-size: 17px; line-height: 1.65; color: #4A5568; max-width: 460px;">Made in Thailand from ingredients you can read. Shipped from our Bangkok warehouse or picked up at a pet shop near you.</p>
+<div style="display: flex; gap: 12px; margin-top: 30px;">
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 24px; background: #1D4ED8; color: #FFFFFF; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none;">Shop dogs</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 24px; border: 1.5px solid #0E1116; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none;">Shop cats</a>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #D9DEE4; border-radius: 6px; padding: 28px 32px;">
+<div style="display: flex; justify-content: space-between; align-items: baseline;"><div style="font-size: 18px; font-weight: 600;">Chicken &amp; Rice, adult dog</div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Lot [LOT NO]</div></div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568; margin-top: 4px;">Guaranteed analysis, as printed on the bag</div>
+<table style="width: 100%; border-collapse: collapse; margin-top: 18px; font-size: 15px;">
+<thead><tr style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;"><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116;">Nutrient</th><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116; text-align: right;">Min</th><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116; text-align: right;">Max</th></tr></thead>
+<tbody style="font-family: 'IBM Plex Mono', monospace;">
+<tr><td style="padding: 10px 0; font-family: 'IBM Plex Sans', sans-serif;">Crude protein</td><td style="padding: 10px 0; text-align: right;">[%]</td><td style="padding: 10px 0; text-align: right; color: #4A5568;">-</td></tr>
+<tr><td style="padding: 10px 0; font-family: 'IBM Plex Sans', sans-serif;">Crude fat</td><td style="padding: 10px 0; text-align: right;">[%]</td><td style="padding: 10px 0; text-align: right; color: #4A5568;">-</td></tr>
+<tr><td style="padding: 10px 0; font-family: 'IBM Plex Sans', sans-serif;">Crude fibre</td><td style="padding: 10px 0; text-align: right; color: #4A5568;">-</td><td style="padding: 10px 0; text-align: right;">[%]</td></tr>
+<tr><td style="padding: 10px 0; font-family: 'IBM Plex Sans', sans-serif;">Moisture</td><td style="padding: 10px 0; text-align: right; color: #4A5568;">-</td><td style="padding: 10px 0; text-align: right;">[%]</td></tr>
+<tr><td style="padding: 10px 0; font-family: 'IBM Plex Sans', sans-serif;">Calories</td><td style="padding: 10px 0; text-align: right;" colspan="2">[KCAL] kcal / 100 g</td></tr>
+</tbody>
+</table>
+<div style="margin-top: 16px; padding-top: 14px; border-top: 1px solid #D9DEE4; font-size: 14px; line-height: 1.6;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Ingredients</span><br>Chicken, rice, [INGREDIENT], [INGREDIENT], [INGREDIENT], then the rest in descending order by weight.</div>
+</div>
+</section>
+
+<section aria-label="Facts" style="margin: 56px 48px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px;">
+<div style="border-top: 2px solid #0E1116; padding-top: 14px;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Origin</div><div style="font-size: 17px; font-weight: 600; margin-top: 6px;">Made in Thailand</div><p style="margin: 6px 0 0; font-size: 14px; color: #4A5568; line-height: 1.55;">Cooked in [PROVINCE]. Thailand is the world's second largest pet food exporter.</p></div>
+<div style="border-top: 2px solid #0E1116; padding-top: 14px;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Registration</div><div style="font-size: 17px; font-weight: 600; margin-top: 6px;">Feed reg. [REG NO]</div><p style="margin: 6px 0 0; font-size: 14px; color: #4A5568; line-height: 1.55;">Registered with the Department of Livestock Development.</p></div>
+<div style="border-top: 2px solid #0E1116; padding-top: 14px;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Traceability</div><div style="font-size: 17px; font-weight: 600; margin-top: 6px;">A lot number on every bag</div><p style="margin: 6px 0 0; font-size: 14px; color: #4A5568; line-height: 1.55;">Type it in to see the batch date and test results.</p></div>
+<div style="border-top: 2px solid #0E1116; padding-top: 14px;"><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Recipes</div><div style="font-size: 17px; font-weight: 600; margin-top: 6px;">Checked by [VET NAME]</div><p style="margin: 6px 0 0; font-size: 14px; color: #4A5568; line-height: 1.55;">A Bangkok small-animal vet reviews every formula.</p></div>
+</section>
+
+<section aria-label="Feeding calculator" style="margin: 72px 48px 0; background: #FFFFFF; border: 1px solid #D9DEE4; border-radius: 6px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);">
+<div style="padding: 36px 40px; border-right: 1px solid #D9DEE4;">
+<h2 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">How much, and for how long</h2>
+<p style="margin: 10px 0 24px; font-size: 15px; color: #4A5568; line-height: 1.6;">Pick your pet and weight. We show the daily portion, how long a bag lasts and what a day costs.</p>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568; margin-bottom: 8px;">Pet</div>
+<div role="group" aria-label="Pet" style="display: flex; gap: 8px;">
+<button type="button" class="l3-chip" onClick="{{setDog}}" aria-pressed="{{isDog}}" style="height: 42px; padding: 0 18px; border: 1.5px solid {{bdDog}}; border-radius: 4px; background: {{bgDog}}; color: {{fgDog}}; font-family: inherit; font-size: 14px; font-weight: 600;">Dog</button>
+<button type="button" class="l3-chip" onClick="{{setCat}}" aria-pressed="{{isCat}}" style="height: 42px; padding: 0 18px; border: 1.5px solid {{bdCat}}; border-radius: 4px; background: {{bgCat}}; color: {{fgCat}}; font-family: inherit; font-size: 14px; font-weight: 600;">Cat</button>
+</div>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568; margin: 22px 0 8px;">Weight</div>
+<div role="group" aria-label="Weight" style="display: flex; gap: 8px; flex-wrap: wrap;">
+<sc-for list="{{weights}}" as="w" hint-placeholder-count="6">
+<button type="button" class="l3-chip" onClick="{{w.pick}}" aria-pressed="{{w.on}}" style="height: 42px; min-width: 64px; padding: 0 14px; border: 1.5px solid {{w.bd}}; border-radius: 4px; background: {{w.bg}}; color: {{w.fg}}; font-family: 'IBM Plex Mono', monospace; font-size: 14px; font-weight: 500;">{{w.label}}</button>
+</sc-for>
+</div>
+<p style="margin: 22px 0 0; font-size: 12px; color: #4A5568; font-family: 'IBM Plex Mono', monospace;">Example formula for the demo. Replace with the vet-approved feeding table before launch.</p>
+</div>
+<div style="padding: 36px 40px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px 32px; align-content: start;">
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Food</div><div style="font-size: 18px; font-weight: 600; margin-top: 4px;">{{food}}</div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Daily portion</div><div style="font-size: 40px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; font-family: 'IBM Plex Mono', monospace;">{{grams}} <span style="font-size: 16px; color: #4A5568;">g / day</span></div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">{{bagLabel}} lasts</div><div style="font-size: 40px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; font-family: 'IBM Plex Mono', monospace;">{{days}} <span style="font-size: 16px; color: #4A5568;">days</span></div></div>
+<div><div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Cost</div><div style="font-size: 40px; font-weight: 600; letter-spacing: -0.02em; margin-top: 2px; font-family: 'IBM Plex Mono', monospace;">฿{{perDay}} <span style="font-size: 16px; color: #4A5568;">/ day</span></div></div>
+<a href="#" style="grid-column: 1 / -1; display: inline-flex; align-items: center; justify-content: center; height: 48px; background: #1D4ED8; color: #FFFFFF; border-radius: 4px; font-size: 15px; font-weight: 600; text-decoration: none; margin-top: 8px;">Add {{bagLabel}} of {{food}}, {{bagPrice}}</a>
+</div>
+</section>
+
+<section aria-label="Products" style="padding: 72px 48px 0;">
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 20px;">
+<h2 style="margin: 0; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">The range</h2>
+<div style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">8 of 24 products. Price per kilogram shown for every pack size.</div>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 48px; border-top: 1px solid #0E1116;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="8">
+<div class="l3-row" style="display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 20px; align-items: center; padding: 18px 8px; border-bottom: 1px solid #D9DEE4;">
+<a href="#" aria-label="{{p.name}}" style="display: block; width: 96px; height: 96px; background: {{p.tint}}; border-radius: 4px; position: relative; opacity: {{p.op}};">
+<div style="position: absolute; inset: 8px;">
+<sc-if value="{{p.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{p.c1}}"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="{{p.c2}}"></rect><rect x="62" y="96" width="76" height="46" rx="6" fill="{{p.c2}}"></rect><rect x="70" y="106" width="44" height="6" rx="3" fill="rgba(255,255,255,0.9)"></rect></svg></sc-if>
+<sc-if value="{{p.isPouch}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="{{p.c1}}"></path><rect x="62" y="34" width="76" height="12" fill="{{p.c2}}"></rect><rect x="70" y="128" width="60" height="7" rx="3.5" fill="rgba(255,255,255,0.9)"></rect></svg></sc-if>
+<sc-if value="{{p.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="{{p.c2}}"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="rgba(255,255,255,0.9)"></rect></svg></sc-if>
+<sc-if value="{{p.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{p.c1}}"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="{{p.c2}}"></ellipse><ellipse cx="100" cy="97" rx="52" ry="9" fill="rgba(255,255,255,0.7)"></ellipse></svg></sc-if>
+<sc-if value="{{p.isToy}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M40 100 Q90 40 150 100 Q90 160 40 100 Z" fill="{{p.c1}}"></path><path d="M150 100 L186 72 L178 100 L186 128 Z" fill="{{p.c2}}"></path><circle cx="70" cy="92" r="6" fill="#0E1116"></circle></svg></sc-if>
+</div>
+</a>
+<div>
+<div style="display: flex; align-items: center; gap: 10px;"><h3 style="margin: 0; font-size: 16px; font-weight: 600;">{{p.name}}</h3><sc-if value="{{p.hasBadge}}" hint-placeholder-val="{{true}}"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 11px; font-weight: 600; padding: 3px 7px; border-radius: 3px; background: {{p.bBg}}; color: {{p.bFg}}; border: 1px solid {{p.bBd}};">{{p.badge}}</span></sc-if></div>
+<div style="font-size: 13px; color: #4A5568; margin-top: 2px;">{{p.line}}</div>
+<div style="display: flex; gap: 14px; margin-top: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; flex-wrap: wrap;">
+<sc-for list="{{p.packs}}" as="k" hint-placeholder-count="2"><span><span style="font-weight: 600;">{{k.size}}</span> <span style="color: #0E1116;">{{k.price}}</span> <span style="color: #4A5568;">{{k.unit}}</span></span></sc-for>
+</div>
+</div>
+<button type="button" class="l3-btn" onClick="{{p.add}}" style="height: 40px; padding: 0 16px; border: 1.5px solid #0E1116; border-radius: 4px; background: {{p.btnBg}}; color: {{p.btnFg}}; font-family: inherit; font-size: 13px; font-weight: 600; white-space: nowrap;">{{p.btn}}</button>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Comparison" style="margin: 72px 48px 0;">
+<h2 style="margin: 0 0 20px; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">Against a typical supermarket kibble</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; background: #FFFFFF; border: 1px solid #D9DEE4;">
+<thead><tr style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;"><th style="font-weight: 500; padding: 14px 20px; border-bottom: 1px solid #0E1116; width: 32%;"></th><th style="font-weight: 600; padding: 14px 20px; border-bottom: 1px solid #0E1116; color: #1D4ED8;">Yummy Treats! Chicken &amp; Rice</th><th style="font-weight: 500; padding: 14px 20px; border-bottom: 1px solid #0E1116;">Typical supermarket kibble</th></tr></thead>
+<tbody>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; color: #4A5568;">First ingredient</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; font-weight: 600;">Chicken</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4;">[STAT: usually a cereal]</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Meat content</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; font-weight: 600;">[STAT]%</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4;">[STAT]%</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Artificial colours</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; font-weight: 600;">None</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4;">[STAT]</td></tr>
+<tr><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Made in</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4; font-weight: 600;">Thailand, lot number on the bag</td><td style="padding: 14px 20px; border-bottom: 1px solid #D9DEE4;">Varies</td></tr>
+<tr><td style="padding: 14px 20px; color: #4A5568;">Price per kg (3 kg bag)</td><td style="padding: 14px 20px; font-weight: 600; font-family: 'IBM Plex Mono', monospace;">฿230</td><td style="padding: 14px 20px; font-family: 'IBM Plex Mono', monospace;">[STAT]</td></tr>
+</tbody>
+</table>
+<p style="margin: 10px 0 0; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">Every [STAT] needs a source before launch. No number ships without one.</p>
+</section>
+
+<section aria-label="Guides and stockists" style="margin: 72px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px;">
+<div>
+<h2 style="margin: 0 0 16px; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">Guides</h2>
+<ol style="margin: 0; padding: 0; list-style: none; border-top: 1px solid #0E1116;">
+<li><a href="#" style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid #D9DEE4; text-decoration: none;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568;">01</span><span style="font-size: 17px; font-weight: 600;">Switching your dog to a new food without an upset stomach</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">4 min</span></a></li>
+<li><a href="#" style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid #D9DEE4; text-decoration: none;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568;">02</span><span style="font-size: 17px; font-weight: 600;">Registering your pet in Bangkok: the microchip rule since January 2026</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">3 min</span></a></li>
+<li><a href="#" style="display: grid; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 16px; align-items: baseline; padding: 18px 0; border-bottom: 1px solid #D9DEE4; text-decoration: none;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5568;">03</span><span style="font-size: 17px; font-weight: 600;">How much to feed, by weight and age</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">5 min</span></a></li>
+</ol>
+</div>
+<div>
+<h2 style="margin: 0 0 16px; font-size: 28px; font-weight: 600; letter-spacing: -0.02em;">Stockists</h2>
+<table style="width: 100%; border-collapse: collapse; font-size: 15px;">
+<thead><tr style="text-align: left; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;"><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116;">Name</th><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116;">District</th><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116;">Type</th><th style="font-weight: 500; padding: 8px 0; border-bottom: 1px solid #0E1116;"></th></tr></thead>
+<tbody>
+<tr><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; font-weight: 600;">[STOCKIST] Pet Shop</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4;">Watthana</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Pet shop</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; text-align: right;"><a href="#" style="font-size: 13px; color: #1D4ED8;">Directions</a></td></tr>
+<tr><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; font-weight: 600;">[STOCKIST] Animal Hospital</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4;">Chatuchak</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Vet clinic</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; text-align: right;"><a href="#" style="font-size: 13px; color: #1D4ED8;">Directions</a></td></tr>
+<tr><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; font-weight: 600;">[STOCKIST] Pets</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4;">Bang Na</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; color: #4A5568;">Pet shop</td><td style="padding: 14px 0; border-bottom: 1px solid #D9DEE4; text-align: right;"><a href="#" style="font-size: 13px; color: #1D4ED8;">Directions</a></td></tr>
+</tbody>
+</table>
+<a href="#" style="display: inline-block; margin-top: 14px; font-size: 14px; font-weight: 600; color: #1D4ED8;">All stockists by province</a>
+</div>
+</section>
+
+<section aria-label="Contact" style="margin: 72px 48px 0; padding: 28px 32px; background: #FFFFFF; border: 1px solid #D9DEE4; border-radius: 6px; display: flex; align-items: center; justify-content: space-between; gap: 24px;">
+<div style="font-size: 16px;"><strong>Questions about a recipe, a lot number or a slip?</strong> <span style="color: #4A5568;">LINE 9:00 to 18:00, Monday to Saturday. Also on Shopee, Lazada and LINE SHOPPING; prices there may differ.</span></div>
+<div style="display: flex; gap: 10px; flex: none;"><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; background: #0E1116; color: #FFFFFF; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none;">LINE @yummytreats</a><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border: 1.5px solid #0E1116; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none;">Shopee</a><a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 16px; border: 1.5px solid #0E1116; border-radius: 4px; font-size: 14px; font-weight: 600; text-decoration: none;">Lazada</a></div>
+</section>
+
+<footer style="margin-top: auto; padding: 32px 48px; border-top: 1px solid #D9DEE4; display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #4A5568;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="#" style="color: #4A5568; text-decoration: none;">Delivery</a><a href="#" style="color: #4A5568; text-decoration: none;">Payment and slips</a><a href="#" style="color: #4A5568; text-decoration: none;">Returns</a><a href="#" style="color: #4A5568; text-decoration: none;">Privacy (PDPA)</a><a href="#" style="color: #4A5568; text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry', shape: 'bag', c1: '#D98E3C', c2: '#8A4B10', tint: '#FFFFFF', packs: [{ size: '1.5 kg', price: '฿390', unit: '฿260/kg' }, { size: '3 kg', price: '฿690', unit: '฿230/kg' }, { size: '8 kg', price: '฿1,590', unit: '฿199/kg' }], badge: '' },
+      { id: 'cattuna', name: 'Tuna & Chicken', line: 'Adult cat, dry', shape: 'bag', c1: '#3F8F9A', c2: '#1E4F57', tint: '#FFFFFF', packs: [{ size: '1.2 kg', price: '฿350', unit: '฿292/kg' }, { size: '3 kg', price: '฿790', unit: '฿263/kg' }], badge: '' },
+      { id: 'puppy', name: 'Puppy Chicken', line: 'Puppy, dry', shape: 'bag', c1: '#E9B949', c2: '#9A6B06', tint: '#FFFFFF', packs: [{ size: '1.5 kg', price: '฿420', unit: '฿280/kg' }], badge: 'New' },
+      { id: 'catpouch', name: 'Tuna in Gravy', line: 'Adult cat, wet pouch', shape: 'pouch', c1: '#5E7FB8', c2: '#2F4A7A', tint: '#FFFFFF', packs: [{ size: '85 g', price: '฿25', unit: '฿294/kg' }, { size: '12 x 85 g', price: '฿280', unit: '฿275/kg' }], badge: '' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats', shape: 'jar', c1: '#F0A24B', c2: '#A6561A', tint: '#FFFFFF', packs: [{ size: '150 g', price: '฿88', unit: 'was ฿110' }], badge: 'Sale -20%' },
+      { id: 'hearts', name: 'Freeze-dried Chicken Hearts', line: 'Dog and cat treats', shape: 'jar', c1: '#C86A5C', c2: '#7A2E24', tint: '#FFFFFF', packs: [{ size: '40 g', price: '฿160', unit: '฿4,000/kg' }], badge: 'Only 3 left' },
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Accessories', shape: 'bowl', c1: '#7C8B6E', c2: '#4C5A41', tint: '#FFFFFF', packs: [{ size: 'S', price: '฿290', unit: '' }, { size: 'M', price: '฿340', unit: '' }], badge: 'Pre-order, ships 12-19 Nov' },
+      { id: 'fish', name: 'Catnip Fish Toy', line: 'Accessories', shape: 'toy', c1: '#9B86C8', c2: '#5B4696', tint: '#FFFFFF', packs: [{ size: 'One size', price: '฿90', unit: '' }], badge: 'Sold out' }
+    ];
+    const added = this.state.added ?? {};
+    const badgeStyle = (b) => {
+      if (!b) return { bBg: 'transparent', bFg: '#0E1116', bBd: 'transparent' };
+      if (b.indexOf('Sale') === 0) return { bBg: '#B42318', bFg: '#FFFFFF', bBd: '#B42318' };
+      if (b === 'New') return { bBg: '#1D4ED8', bFg: '#FFFFFF', bBd: '#1D4ED8' };
+      if (b.indexOf('Only') === 0) return { bBg: '#FFFFFF', bFg: '#B42318', bBd: '#B42318' };
+      if (b === 'Sold out') return { bBg: '#D9DEE4', bFg: '#0E1116', bBd: '#D9DEE4' };
+      return { bBg: '#0E1116', bFg: '#FFFFFF', bBd: '#0E1116' };
+    };
+    const products = P.map((p) => {
+      const sold = p.badge === 'Sold out';
+      const pre = p.badge.indexOf('Pre-order') === 0;
+      const isAdded = !!added[p.id];
+      let btn = 'Add';
+      if (sold) btn = 'Notify me';
+      else if (pre) btn = 'Pre-order';
+      if (isAdded) btn = sold ? 'Noted' : 'Added';
+      return Object.assign({}, p, badgeStyle(p.badge), {
+        isBag: p.shape === 'bag', isPouch: p.shape === 'pouch', isJar: p.shape === 'jar', isBowl: p.shape === 'bowl', isToy: p.shape === 'toy',
+        hasBadge: !!p.badge, op: sold ? 0.45 : 1,
+        btn: btn, btnBg: isAdded ? '#0E1116' : '#FFFFFF', btnFg: isAdded ? '#FFFFFF' : '#0E1116',
+        add: () => { const n = Object.assign({}, this.state.added ?? {}); n[p.id] = true; this.setState({ added: n }); }
+      });
+    });
+    const pet = this.state.pet ?? 'dog';
+    const dogW = [2, 5, 10, 20, 30, 40];
+    const catW = [2, 3, 4, 5, 6, 8];
+    const list = pet === 'dog' ? dogW : catW;
+    const wIdx = Math.min(this.state.w ?? 2, list.length - 1);
+    const kg = list[wIdx];
+    const kcalNeed = pet === 'dog' ? 95 * Math.pow(kg, 0.75) : 60 * Math.pow(kg, 0.67) + 40;
+    const kcalPer100 = pet === 'dog' ? 360 : 380;
+    const grams = Math.round(kcalNeed / kcalPer100 * 100);
+    const bagG = 3000;
+    const bagPriceNum = pet === 'dog' ? 690 : 790;
+    const days = Math.max(1, Math.round(bagG / grams));
+    const perDay = Math.round(bagPriceNum / days);
+    const weights = list.map((w, i) => ({
+      label: w + ' kg', on: i === wIdx,
+      bg: i === wIdx ? '#0E1116' : '#FFFFFF', fg: i === wIdx ? '#FFFFFF' : '#0E1116', bd: i === wIdx ? '#0E1116' : '#D9DEE4',
+      pick: () => this.setState({ w: i })
+    }));
+    const cart = Object.keys(added).filter((k) => k !== 'fish').length;
+    return {
+      cart: cart, products: products, weights: weights,
+      isDog: pet === 'dog', isCat: pet === 'cat',
+      bgDog: pet === 'dog' ? '#0E1116' : '#FFFFFF', fgDog: pet === 'dog' ? '#FFFFFF' : '#0E1116', bdDog: pet === 'dog' ? '#0E1116' : '#D9DEE4',
+      bgCat: pet === 'cat' ? '#0E1116' : '#FFFFFF', fgCat: pet === 'cat' ? '#FFFFFF' : '#0E1116', bdCat: pet === 'cat' ? '#0E1116' : '#D9DEE4',
+      setDog: () => this.setState({ pet: 'dog', w: 2 }), setCat: () => this.setState({ pet: 'cat', w: 2 }),
+      food: pet === 'dog' ? 'Chicken & Rice' : 'Tuna & Chicken',
+      grams: grams, days: days, perDay: perDay, bagLabel: '3 kg bag', bagPrice: '฿' + bagPriceNum
+    };
+  }
+}
+</script>
+</body>
+</html>

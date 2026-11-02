@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Shelf direction</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#111111}a:hover{color:#C62839}
+.s1-card{transition:transform .25s ease,box-shadow .25s ease}
+.s1-card:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(17,17,17,0.08)}
+.s1-btn{transition:background-color .2s ease,color .2s ease,border-color .2s ease;cursor:pointer}
+.s1-btn:hover{background:#C62839!important;border-color:#C62839!important;color:#FFFFFF!important}
+.s1-tog{cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.s1-tile{transition:background-color .25s ease}
+.s1-tile:hover{background:#E9E9E9!important}
+a:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid #111111;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3700px; background: #FFFFFF; color: #111111; font-family: 'Plus Jakarta Sans', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<div style="background: #111111; color: #FFFFFF; font-size: 13px; font-weight: 500; text-align: center; height: 36px; display: flex; align-items: center; justify-content: center;">Free delivery in Bangkok over ฿1,000 and across Thailand over ฿1,500. Ships from Bangkok.</div>
+
+<header style="height: 76px; display: grid; grid-template-columns: 220px minmax(0, 1fr) 320px; align-items: center; padding: 0 48px; border-bottom: 1px solid #E6E6E6; gap: 32px;">
+<a href="#" style="font-size: 22px; font-weight: 800; letter-spacing: -0.02em; text-decoration: none;">Yummy Treats!</a>
+<form role="search" style="display: flex; align-items: center; gap: 0; max-width: 560px; width: 100%; margin: 0 auto;">
+<label for="s1-q" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Search products</label>
+<input id="s1-q" type="search" placeholder="Search food, treats, bowls" style="flex: 1 1 auto; height: 44px; border: 1px solid #CFCFCF; border-right: none; border-radius: 6px 0 0 6px; padding: 0 16px; font-family: inherit; font-size: 14px; color: #111111; background: #FFFFFF;">
+<button type="submit" style="height: 44px; padding: 0 18px; border: 1px solid #111111; background: #111111; color: #FFFFFF; border-radius: 0 6px 6px 0; font-family: inherit; font-size: 14px; font-weight: 600; cursor: pointer;">Search</button>
+</form>
+<div style="display: flex; justify-content: flex-end; align-items: center; gap: 22px; font-size: 14px; font-weight: 500;">
+<a href="#" style="text-decoration: none; color: #5C5C5C;">TH</a>
+<a href="#" style="text-decoration: none;">EN</a>
+<a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-9 8.3 9.6 9.6 0 0 1-3.6-.7L4 20l1.1-3.6A8 8 0 0 1 3 11.5C3 6.8 7 3 12 3s9 3.8 9 8.5z"></path></svg>LINE</a>
+<a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 6px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 6h15l-1.5 9h-12z"></path><path d="M6 6 5 3H2"></path><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle></svg>Cart ({{cart}})</a>
+</div>
+</header>
+
+<nav aria-label="Categories" style="height: 52px; display: flex; align-items: center; gap: 36px; padding: 0 48px; border-bottom: 1px solid #E6E6E6; font-size: 14px; font-weight: 600;">
+<a href="#" style="text-decoration: none;">Dog food</a><a href="#" style="text-decoration: none;">Cat food</a><a href="#" style="text-decoration: none;">Treats</a><a href="#" style="text-decoration: none;">Accessories</a><a href="#" style="text-decoration: none; color: #5C5C5C;">Guides</a><a href="#" style="text-decoration: none; color: #5C5C5C;">Stockists</a><a href="#" style="text-decoration: none; color: #C62839; margin-left: auto;">Sale</a>
+</nav>
+
+<section aria-label="Intro" style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; padding: 56px 48px 0; align-items: center;">
+<div style="padding-right: 40px;">
+<h1 style="margin: 0; font-size: 56px; line-height: 1.05; font-weight: 800; letter-spacing: -0.03em;">Good food for Bangkok's dogs and cats.</h1>
+<p style="margin: 24px 0 0; font-size: 18px; line-height: 1.6; color: #5C5C5C; max-width: 480px;">Made in Thailand from ingredients you can read. Shipped from our Bangkok warehouse or picked up at a pet shop near you.</p>
+<div style="display: flex; gap: 12px; margin-top: 32px;">
+<a href="#" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; background: #111111; color: #FFFFFF; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none;">Shop dogs</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 52px; padding: 0 28px; border: 1.5px solid #111111; color: #111111; border-radius: 6px; font-size: 15px; font-weight: 700; text-decoration: none;">Shop cats</a>
+</div>
+</div>
+<div style="position: relative; height: 480px; background: #F1F1F1; border-radius: 10px; overflow: hidden;">
+<div style="position: absolute; left: 6%; bottom: 8%; width: 36%; height: 72%;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="186" rx="48" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="#D98E3C"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#8A4B10"></rect><circle cx="100" cy="70" r="16" fill="rgba(255,255,255,0.5)"></circle><rect x="62" y="96" width="76" height="46" rx="6" fill="#8A4B10"></rect><rect x="70" y="106" width="44" height="6" rx="3" fill="rgba(255,255,255,0.9)"></rect><rect x="70" y="118" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.6)"></rect></svg></div>
+<div style="position: absolute; left: 34%; bottom: 8%; width: 40%; height: 82%;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="186" rx="48" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="#3F8F9A"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#1E4F57"></rect><circle cx="100" cy="70" r="16" fill="rgba(255,255,255,0.5)"></circle><rect x="62" y="96" width="76" height="46" rx="6" fill="#1E4F57"></rect><rect x="70" y="106" width="44" height="6" rx="3" fill="rgba(255,255,255,0.9)"></rect><rect x="70" y="118" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.6)"></rect></svg></div>
+<div style="position: absolute; right: 5%; bottom: 8%; width: 26%; height: 54%;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="186" rx="44" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><rect x="60" y="56" width="80" height="128" rx="14" fill="#F0A24B"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#A6561A"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="rgba(255,255,255,0.9)"></rect><rect x="76" y="112" width="36" height="6" rx="3" fill="#A6561A"></rect><rect x="76" y="124" width="48" height="5" rx="2.5" fill="rgba(0,0,0,0.25)"></rect></svg></div>
+<span style="position: absolute; left: 16px; top: 14px; font-size: 12px; color: #5C5C5C;">[HERO PHOTO: the range on a kitchen counter]</span>
+</div>
+</section>
+
+<section aria-label="Why buy from us" style="margin: 48px 48px 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1px solid #E6E6E6; border-radius: 10px; overflow: hidden;">
+<div style="display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-right: 1px solid #E6E6E6; font-size: 14px; font-weight: 600;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" aria-hidden="true"><path d="M3 12h18M12 3v18"></path><circle cx="12" cy="12" r="9"></circle></svg>Made in Thailand</div>
+<div style="display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-right: 1px solid #E6E6E6; font-size: 14px; font-weight: 600;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" aria-hidden="true"><path d="M5 4h14v16H5z"></path><path d="M9 9h6M9 13h6M9 17h3"></path></svg>Feed registration [REG NO]</div>
+<div style="display: flex; align-items: center; gap: 14px; padding: 20px 24px; border-right: 1px solid #E6E6E6; font-size: 14px; font-weight: 600;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"></path><circle cx="7" cy="18" r="1.5"></circle><circle cx="17" cy="18" r="1.5"></circle></svg>Ships from Bangkok</div>
+<div style="display: flex; align-items: center; gap: 14px; padding: 20px 24px; font-size: 14px; font-weight: 600;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#111111" stroke-width="2" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M3 10h18"></path></svg>PromptPay, transfer, card, COD</div>
+</section>
+
+<section aria-label="Shop by category" style="padding: 64px 48px 0;">
+<h2 style="margin: 0 0 24px; font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Shop by category</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 20px;">
+<a href="#" class="s1-tile" style="text-decoration: none; background: #F1F1F1; border-radius: 10px; padding: 24px; height: 200px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><div style="width: 90px; height: 90px; align-self: flex-end;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="#D98E3C"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#8A4B10"></rect><rect x="62" y="96" width="76" height="46" rx="6" fill="#8A4B10"></rect></svg></div><div><div style="font-size: 18px; font-weight: 700;">Dog food</div><div style="font-size: 13px; color: #5C5C5C; margin-top: 4px;">9 products</div></div></a>
+<a href="#" class="s1-tile" style="text-decoration: none; background: #F1F1F1; border-radius: 10px; padding: 24px; height: 200px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><div style="width: 90px; height: 90px; align-self: flex-end;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="#5E7FB8"></path><rect x="62" y="34" width="76" height="12" fill="#2F4A7A"></rect><path d="M64 46 L136 46 L142 120 L58 120 Z" fill="rgba(255,255,255,0.18)"></path></svg></div><div><div style="font-size: 18px; font-weight: 700;">Cat food</div><div style="font-size: 13px; color: #5C5C5C; margin-top: 4px;">7 products</div></div></a>
+<a href="#" class="s1-tile" style="text-decoration: none; background: #F1F1F1; border-radius: 10px; padding: 24px; height: 200px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><div style="width: 90px; height: 90px; align-self: flex-end;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="#C86A5C"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#7A2E24"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="rgba(255,255,255,0.9)"></rect></svg></div><div><div style="font-size: 18px; font-weight: 700;">Treats</div><div style="font-size: 13px; color: #5C5C5C; margin-top: 4px;">5 products</div></div></a>
+<a href="#" class="s1-tile" style="text-decoration: none; background: #F1F1F1; border-radius: 10px; padding: 24px; height: 200px; box-sizing: border-box; display: flex; flex-direction: column; justify-content: space-between;"><div style="width: 90px; height: 90px; align-self: flex-end;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="#7C8B6E"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="#4C5A41"></ellipse><ellipse cx="100" cy="97" rx="52" ry="9" fill="rgba(255,255,255,0.7)"></ellipse></svg></div><div><div style="font-size: 18px; font-weight: 700;">Accessories</div><div style="font-size: 13px; color: #5C5C5C; margin-top: 4px;">3 products</div></div></a>
+</div>
+</section>
+
+<section aria-label="Best sellers" style="padding: 72px 48px 0;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+<h2 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Best sellers</h2>
+<div role="group" aria-label="Filter by pet" style="display: flex; background: #F1F1F1; border-radius: 8px; padding: 4px; gap: 4px;">
+<button type="button" class="s1-tog" onClick="{{pickAll}}" aria-pressed="{{isAll}}" style="height: 40px; padding: 0 18px; border: none; border-radius: 6px; background: {{bgAll}}; color: {{fgAll}}; font-family: inherit; font-size: 14px; font-weight: 600;">All</button>
+<button type="button" class="s1-tog" onClick="{{pickDog}}" aria-pressed="{{isDog}}" style="height: 40px; padding: 0 18px; border: none; border-radius: 6px; background: {{bgDog}}; color: {{fgDog}}; font-family: inherit; font-size: 14px; font-weight: 600;">Dogs</button>
+<button type="button" class="s1-tog" onClick="{{pickCat}}" aria-pressed="{{isCat}}" style="height: 40px; padding: 0 18px; border: none; border-radius: 6px; background: {{bgCat}}; color: {{fgCat}}; font-family: inherit; font-size: 14px; font-weight: 600;">Cats</button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="8">
+<article class="s1-card" style="border: 1px solid #E6E6E6; border-radius: 10px; padding: 12px; display: flex; flex-direction: column; gap: 10px; background: #FFFFFF;">
+<a href="#" aria-label="{{p.name}}" style="position: relative; display: block; aspect-ratio: 1 / 1; background: {{p.tint}}; border-radius: 8px; overflow: hidden;">
+<div style="position: absolute; inset: 12%; opacity: {{p.op}};">
+<sc-if value="{{p.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="186" rx="48" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{p.c1}}"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="{{p.c2}}"></rect><circle cx="100" cy="70" r="16" fill="rgba(255,255,255,0.5)"></circle><rect x="62" y="96" width="76" height="46" rx="6" fill="{{p.c2}}"></rect><rect x="70" y="106" width="44" height="6" rx="3" fill="rgba(255,255,255,0.9)"></rect><rect x="70" y="118" width="60" height="5" rx="2.5" fill="rgba(255,255,255,0.6)"></rect></svg></sc-if>
+<sc-if value="{{p.isPouch}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="188" rx="50" ry="5" fill="rgba(0,0,0,0.08)"></ellipse><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="{{p.c1}}"></path><rect x="62" y="34" width="76" height="12" fill="{{p.c2}}"></rect><path d="M64 46 L136 46 L142 120 L58 120 Z" fill="rgba(255,255,255,0.18)"></path><rect x="70" y="128" width="60" height="7" rx="3.5" fill="rgba(255,255,255,0.9)"></rect><rect x="70" y="142" width="40" height="5" rx="2.5" fill="rgba(255,255,255,0.6)"></rect></svg></sc-if>
+<sc-if value="{{p.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="188" rx="44" ry="5" fill="rgba(0,0,0,0.08)"></ellipse><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="{{p.c2}}"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="rgba(255,255,255,0.9)"></rect><rect x="76" y="112" width="36" height="6" rx="3" fill="{{p.c2}}"></rect><rect x="76" y="124" width="48" height="5" rx="2.5" fill="rgba(0,0,0,0.25)"></rect><rect x="68" y="66" width="8" height="90" rx="4" fill="rgba(255,255,255,0.25)"></rect></svg></sc-if>
+<sc-if value="{{p.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="176" rx="60" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{p.c1}}"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="{{p.c2}}"></ellipse><ellipse cx="100" cy="97" rx="52" ry="9" fill="rgba(255,255,255,0.7)"></ellipse><circle cx="84" cy="95" r="4" fill="{{p.c1}}"></circle><circle cx="104" cy="98" r="4" fill="{{p.c1}}"></circle><circle cx="120" cy="94" r="4" fill="{{p.c1}}"></circle></svg></sc-if>
+<sc-if value="{{p.isToy}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="110" cy="160" rx="60" ry="6" fill="rgba(0,0,0,0.08)"></ellipse><path d="M40 100 Q90 40 150 100 Q90 160 40 100 Z" fill="{{p.c1}}"></path><path d="M150 100 L186 72 L178 100 L186 128 Z" fill="{{p.c2}}"></path><circle cx="70" cy="92" r="6" fill="#1A1A1A"></circle><circle cx="72" cy="90" r="2" fill="#FFFFFF"></circle><path d="M100 78 Q110 100 100 122" stroke="rgba(255,255,255,0.5)" stroke-width="4" fill="none"></path></svg></sc-if>
+</div>
+<sc-if value="{{p.hasBadge}}" hint-placeholder-val="{{true}}"><span style="position: absolute; top: 10px; left: 10px; font-size: 12px; font-weight: 700; padding: 5px 9px; border-radius: 4px; background: {{p.bBg}}; color: {{p.bFg}}; border: 1.5px solid {{p.bBd}};">{{p.badge}}</span></sc-if>
+</a>
+<div style="padding: 4px 4px 0;">
+<div style="font-size: 12px; color: #5C5C5C;">{{p.line}}</div>
+<h3 style="margin: 4px 0 0; font-size: 16px; font-weight: 700; line-height: 1.3;">{{p.name}}</h3>
+<div style="display: flex; align-items: baseline; gap: 8px; margin-top: 8px;"><span style="font-size: 17px; font-weight: 800;">{{p.price}}</span><sc-if value="{{p.hasWas}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #5C5C5C; text-decoration: line-through;">{{p.was}}</span></sc-if><sc-if value="{{p.hasPerkg}}" hint-placeholder-val="{{true}}"><span style="font-size: 12px; color: #5C5C5C; margin-left: auto;">{{p.perkg}}</span></sc-if></div>
+<div style="display: flex; gap: 6px; margin-top: 10px; min-height: 24px; flex-wrap: wrap;">
+<sc-for list="{{p.sizes}}" as="s" hint-placeholder-count="2"><span style="font-size: 12px; font-weight: 600; padding: 3px 8px; border: 1px solid #CFCFCF; border-radius: 4px;">{{s}}</span></sc-for>
+</div>
+</div>
+<button type="button" class="s1-btn" onClick="{{p.add}}" style="margin: 2px 4px 4px; height: 44px; border: 1.5px solid #111111; border-radius: 6px; background: {{p.btnBg}}; color: {{p.btnFg}}; font-family: inherit; font-size: 14px; font-weight: 700;">{{p.btn}}</button>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="What is inside" style="margin: 72px 48px 0; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 48px; align-items: start; padding: 40px; background: #F1F1F1; border-radius: 10px;">
+<div>
+<h2 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Read the bag before you buy it</h2>
+<p style="margin: 16px 0 0; font-size: 15px; line-height: 1.65; color: #5C5C5C;">Every product page shows the full ingredient list, the guaranteed analysis and a feeding guide by weight, as text you can search, not a photo of the back of the pack.</p>
+<a href="#" style="display: inline-flex; align-items: center; height: 44px; padding: 0 20px; margin-top: 20px; border: 1.5px solid #111111; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none;">See Chicken &amp; Rice</a>
+</div>
+<div style="background: #FFFFFF; border-radius: 8px; padding: 20px 24px; border: 1px solid #E6E6E6;">
+<div style="font-size: 13px; font-weight: 700; margin-bottom: 10px;">Chicken &amp; Rice, adult dog. Guaranteed analysis</div>
+<table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+<thead><tr style="text-align: left; color: #5C5C5C; font-size: 12px;"><th style="font-weight: 600; padding: 6px 0; border-bottom: 1px solid #E6E6E6;">Nutrient</th><th style="font-weight: 600; padding: 6px 0; border-bottom: 1px solid #E6E6E6;">Minimum</th><th style="font-weight: 600; padding: 6px 0; border-bottom: 1px solid #E6E6E6;">Maximum</th></tr></thead>
+<tbody>
+<tr><td style="padding: 8px 0;">Crude protein</td><td style="padding: 8px 0;">[%]</td><td style="padding: 8px 0; color: #5C5C5C;">-</td></tr>
+<tr><td style="padding: 8px 0;">Crude fat</td><td style="padding: 8px 0;">[%]</td><td style="padding: 8px 0; color: #5C5C5C;">-</td></tr>
+<tr><td style="padding: 8px 0;">Crude fibre</td><td style="padding: 8px 0; color: #5C5C5C;">-</td><td style="padding: 8px 0;">[%]</td></tr>
+<tr><td style="padding: 8px 0;">Moisture</td><td style="padding: 8px 0; color: #5C5C5C;">-</td><td style="padding: 8px 0;">[%]</td></tr>
+</tbody>
+</table>
+<div style="font-size: 12px; color: #5C5C5C; margin-top: 10px;">First five ingredients: chicken, rice, [INGREDIENT], [INGREDIENT], [INGREDIENT]</div>
+</div>
+</section>
+
+<section aria-label="Care guides" style="padding: 72px 48px 0; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 24px;">
+<a href="#" style="text-decoration: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); border: 1px solid #E6E6E6; border-radius: 10px; overflow: hidden;">
+<div style="background: #F1F1F1; min-height: 260px; display: flex; align-items: flex-end; padding: 16px; font-size: 12px; color: #5C5C5C;">[PHOTO: two bowls, old food and new food]</div>
+<div style="padding: 28px;"><div style="font-size: 12px; color: #5C5C5C; font-weight: 600;">Guide</div><h3 style="margin: 8px 0 0; font-size: 22px; font-weight: 800; line-height: 1.25;">Switching your dog to a new food without an upset stomach</h3><p style="margin: 12px 0 0; font-size: 14px; line-height: 1.6; color: #5C5C5C;">Seven days, four steps, and what to do if it goes wrong.</p></div>
+</a>
+<div style="display: grid; grid-template-rows: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+<a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid #E6E6E6; border-radius: 10px;"><div style="width: 72px; height: 72px; flex: none; background: #F1F1F1; border-radius: 8px;"></div><div><h3 style="margin: 0; font-size: 16px; font-weight: 700; line-height: 1.3;">Registering your pet in Bangkok</h3><p style="margin: 6px 0 0; font-size: 13px; color: #5C5C5C;">Microchips are required from January 2026.</p></div></a>
+<a href="#" style="text-decoration: none; display: flex; align-items: center; gap: 20px; padding: 20px 24px; border: 1px solid #E6E6E6; border-radius: 10px;"><div style="width: 72px; height: 72px; flex: none; background: #F1F1F1; border-radius: 8px;"></div><div><h3 style="margin: 0; font-size: 16px; font-weight: 700; line-height: 1.3;">How much to feed, by weight</h3><p style="margin: 6px 0 0; font-size: 13px; color: #5C5C5C;">A table for dogs and cats, puppies to seniors.</p></div></a>
+</div>
+</section>
+
+<section aria-label="Stockists" style="margin: 72px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start;">
+<div>
+<h2 style="margin: 0; font-size: 28px; font-weight: 800; letter-spacing: -0.02em;">Also on the shelf near you</h2>
+<p style="margin: 12px 0 20px; font-size: 15px; line-height: 1.6; color: #5C5C5C;">Pet shops and vet clinics that stock Yummy Treats!. Pick a province and district.</p>
+<div style="display: flex; gap: 12px;">
+<div style="flex: 1;"><label for="s1-prov" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">Province</label><select id="s1-prov" style="width: 100%; height: 44px; border: 1px solid #CFCFCF; border-radius: 6px; padding: 0 12px; font-family: inherit; font-size: 14px; background: #FFFFFF; color: #111111;"><option>Bangkok</option><option>Nonthaburi</option><option>Pathum Thani</option><option>Samut Prakan</option></select></div>
+<div style="flex: 1;"><label for="s1-dist" style="display: block; font-size: 12px; font-weight: 600; margin-bottom: 6px;">District</label><select id="s1-dist" style="width: 100%; height: 44px; border: 1px solid #CFCFCF; border-radius: 6px; padding: 0 12px; font-family: inherit; font-size: 14px; background: #FFFFFF; color: #111111;"><option>All districts</option><option>Watthana</option><option>Chatuchak</option><option>Bang Na</option></select></div>
+</div>
+<ul style="list-style: none; margin: 20px 0 0; padding: 0; display: grid; gap: 10px;">
+<li style="display: flex; justify-content: space-between; padding: 14px 16px; border: 1px solid #E6E6E6; border-radius: 8px; font-size: 14px;"><span><strong>[STOCKIST] Pet Shop</strong>, Watthana</span><span style="color: #5C5C5C;">Pet shop</span></li>
+<li style="display: flex; justify-content: space-between; padding: 14px 16px; border: 1px solid #E6E6E6; border-radius: 8px; font-size: 14px;"><span><strong>[STOCKIST] Animal Hospital</strong>, Chatuchak</span><span style="color: #5C5C5C;">Vet clinic</span></li>
+<li style="display: flex; justify-content: space-between; padding: 14px 16px; border: 1px solid #E6E6E6; border-radius: 8px; font-size: 14px;"><span><strong>[STOCKIST] Pets</strong>, Bang Na</span><span style="color: #5C5C5C;">Pet shop</span></li>
+</ul>
+</div>
+<div style="height: 360px; background: #F1F1F1; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 13px; color: #5C5C5C;">[MAP: stockists in Bangkok and vicinity]</div>
+</section>
+
+<section aria-label="Contact" style="margin: 72px 48px 0; background: #111111; color: #FFFFFF; border-radius: 10px; padding: 40px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+<div>
+<h2 style="margin: 0; font-size: 26px; font-weight: 800; letter-spacing: -0.02em;">Questions about food, delivery or a slip? Chat on LINE.</h2>
+<p style="margin: 10px 0 0; font-size: 14px; color: #CFCFCF;">We answer 9:00 to 18:00, Monday to Saturday. Also on Shopee, Lazada and LINE SHOPPING; prices there may differ.</p>
+</div>
+<div style="display: flex; gap: 12px; flex: none;">
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 22px; background: #FFFFFF; color: #111111; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none;">Add LINE @yummytreats</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 18px; border: 1.5px solid #FFFFFF; color: #FFFFFF; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none;">Shopee</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 48px; padding: 0 18px; border: 1.5px solid #FFFFFF; color: #FFFFFF; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none;">Lazada</a>
+</div>
+</section>
+
+<footer style="margin-top: auto; padding: 40px 48px 36px; border-top: 1px solid #E6E6E6; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 32px; font-size: 13px; color: #5C5C5C;">
+<div><div style="font-size: 18px; font-weight: 800; color: #111111;">Yummy Treats!</div><p style="margin: 10px 0 0; line-height: 1.6; max-width: 320px;">[COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed registration [REG NO].</p></div>
+<div style="display: grid; gap: 8px; align-content: start;"><strong style="color: #111111;">Shop</strong><a href="#" style="color: #5C5C5C; text-decoration: none;">Dog food</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Cat food</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Treats</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Accessories</a></div>
+<div style="display: grid; gap: 8px; align-content: start;"><strong style="color: #111111;">Help</strong><a href="#" style="color: #5C5C5C; text-decoration: none;">Delivery</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Payment and slips</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Returns</a><a href="#" style="color: #5C5C5C; text-decoration: none;">FAQ</a></div>
+<div style="display: grid; gap: 8px; align-content: start;"><strong style="color: #111111;">Company</strong><a href="#" style="color: #5C5C5C; text-decoration: none;">Stockists</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Guides</a><a href="#" style="color: #5C5C5C; text-decoration: none;">Privacy (PDPA)</a><a href="#" style="color: #5C5C5C; text-decoration: none;">ภาษาไทย</a></div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry', pet: 'dog', shape: 'bag', c1: '#D98E3C', c2: '#8A4B10', tint: '#FBF1E4', price: '฿390', perkg: '฿260 / kg', sizes: ['1.5 kg', '3 kg', '8 kg'], badge: '' },
+      { id: 'cattuna', name: 'Tuna & Chicken', line: 'Adult cat, dry', pet: 'cat', shape: 'bag', c1: '#3F8F9A', c2: '#1E4F57', tint: '#E6F2F3', price: '฿350', perkg: '฿292 / kg', sizes: ['1.2 kg', '3 kg'], badge: '' },
+      { id: 'puppy', name: 'Puppy Chicken', line: 'Puppy, dry', pet: 'dog', shape: 'bag', c1: '#E9B949', c2: '#9A6B06', tint: '#FBF4DF', price: '฿420', perkg: '฿280 / kg', sizes: ['1.5 kg'], badge: 'New' },
+      { id: 'catpouch', name: 'Tuna in Gravy', line: 'Adult cat, wet pouch', pet: 'cat', shape: 'pouch', c1: '#5E7FB8', c2: '#2F4A7A', tint: '#E8EDF6', price: '฿25', perkg: '฿294 / kg', sizes: ['85 g', '12 x 85 g'], badge: '' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats', pet: 'dog', shape: 'jar', c1: '#F0A24B', c2: '#A6561A', tint: '#FCEFE0', price: '฿88', was: '฿110', perkg: '฿587 / kg', sizes: ['150 g'], badge: 'Sale -20%' },
+      { id: 'hearts', name: 'Freeze-dried Chicken Hearts', line: 'Dog and cat treats', pet: 'both', shape: 'jar', c1: '#C86A5C', c2: '#7A2E24', tint: '#F8E9E6', price: '฿160', perkg: '฿4,000 / kg', sizes: ['40 g'], badge: 'Only 3 left' },
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Accessories', pet: 'dog', shape: 'bowl', c1: '#7C8B6E', c2: '#4C5A41', tint: '#EEF1EA', price: '฿290', perkg: '', sizes: ['S', 'M'], badge: 'Pre-order, ships 12-19 Nov' },
+      { id: 'fish', name: 'Catnip Fish Toy', line: 'Accessories', pet: 'cat', shape: 'toy', c1: '#9B86C8', c2: '#5B4696', tint: '#EFEBF6', price: '฿90', perkg: '', sizes: [], badge: 'Sold out' }
+    ];
+    const pet = this.state.pet ?? 'all';
+    const added = this.state.added ?? {};
+    const badgeStyle = (b) => {
+      if (!b) return { bBg: 'transparent', bFg: '#111111', bBd: 'transparent' };
+      if (b.indexOf('Sale') === 0) return { bBg: '#C62839', bFg: '#FFFFFF', bBd: '#C62839' };
+      if (b === 'New') return { bBg: '#1E7A46', bFg: '#FFFFFF', bBd: '#1E7A46' };
+      if (b.indexOf('Only') === 0) return { bBg: '#FFFFFF', bFg: '#C62839', bBd: '#C62839' };
+      if (b === 'Sold out') return { bBg: '#DADADA', bFg: '#111111', bBd: '#DADADA' };
+      return { bBg: '#111111', bFg: '#FFFFFF', bBd: '#111111' };
+    };
+    const products = P.filter((p) => pet === 'all' || p.pet === pet || p.pet === 'both').map((p) => {
+      const sold = p.badge === 'Sold out';
+      const pre = p.badge.indexOf('Pre-order') === 0;
+      const isAdded = !!added[p.id];
+      let btn = 'Add to cart';
+      if (sold) btn = 'Notify me';
+      else if (pre) btn = 'Pre-order';
+      if (isAdded) btn = sold ? 'We will tell you' : 'Added';
+      return Object.assign({}, p, badgeStyle(p.badge), {
+        isBag: p.shape === 'bag', isPouch: p.shape === 'pouch', isJar: p.shape === 'jar', isBowl: p.shape === 'bowl', isToy: p.shape === 'toy',
+        hasBadge: !!p.badge, hasWas: !!p.was, hasPerkg: !!p.perkg, op: sold ? 0.45 : 1,
+        btn: btn, btnBg: isAdded ? '#111111' : '#FFFFFF', btnFg: isAdded ? '#FFFFFF' : '#111111',
+        add: () => { const n = Object.assign({}, this.state.added ?? {}); n[p.id] = true; this.setState({ added: n }); }
+      });
+    });
+    const cart = Object.keys(added).filter((k) => k !== 'fish').length;
+    const on = (k) => pet === k;
+    return {
+      products: products, cart: cart,
+      isAll: on('all'), isDog: on('dog'), isCat: on('cat'),
+      bgAll: on('all') ? '#111111' : 'transparent', fgAll: on('all') ? '#FFFFFF' : '#111111',
+      bgDog: on('dog') ? '#111111' : 'transparent', fgDog: on('dog') ? '#FFFFFF' : '#111111',
+      bgCat: on('cat') ? '#111111' : 'transparent', fgCat: on('cat') ? '#FFFFFF' : '#111111',
+      pickAll: () => this.setState({ pet: 'all' }), pickDog: () => this.setState({ pet: 'dog' }), pickCat: () => this.setState({ pet: 'cat' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Shop, phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-chip{cursor:pointer}
+.b4-sheet{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #3A55C4;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 2400px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; position: relative;">
+
+<header style="height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 16px; border-bottom: 2px solid #1A1A2E;">
+<a href="b30-m-home.dc.html" aria-label="Back to home" style="width: 44px; height: 44px; border: 2px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px;">&larr;</a>
+<a href="b30-m-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none; margin-right: auto;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<a href="b33-m-checkout.dc.html" aria-label="Cart, {{cart}} items" style="height: 44px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border: 2px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; font-weight: 700; font-size: 13px; text-decoration: none; box-shadow: 3px 3px 0 #1A1A2E;">Cart {{cart}}</a>
+</header>
+
+<section aria-label="Shop" style="padding: 20px 20px 0;">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 44px; line-height: 0.95; font-weight: 800; letter-spacing: -0.04em;">Everything</h1>
+<div style="display: flex; gap: 8px; margin-top: 14px; align-items: center;">
+<button type="button" class="b4-btn" onClick="{{openSheet}}" aria-expanded="{{sheetOpen}}" style="height: 44px; padding: 0 16px; display: inline-flex; align-items: center; gap: 8px; border: 2px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; box-shadow: 3px 3px 0 #1A1A2E;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M4 6h16M7 12h10M10 18h4"></path></svg>Filters{{filterCount}}</button>
+<label for="m-sort" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Sort</label>
+<select id="m-sort" style="flex: 1; height: 44px; border: 2px solid #1A1A2E; border-radius: 999px; padding: 0 14px; font-family: inherit; font-size: 13px; font-weight: 700; background: #FFFFFF; color: #1A1A2E;"><option>Best selling</option><option>Newest</option><option>Price, low to high</option><option>Price, high to low</option></select>
+</div>
+<sc-if value="{{anyApplied}}" hint-placeholder-val="{{false}}"><div style="display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px;"><sc-for list="{{applied}}" as="a" hint-placeholder-count="1"><button type="button" class="b4-chip" onClick="{{a.remove}}" aria-label="{{a.aria}}" style="height: 34px; padding: 0 8px 0 12px; display: inline-flex; align-items: center; gap: 6px; border: 2px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 12px; background: #FFFFFF; color: #1A1A2E;">{{a.label}} <span aria-hidden="true" style="font-size: 15px;">×</span></button></sc-for><button type="button" class="b4-chip" onClick="{{clearAll}}" style="height: 34px; padding: 0 6px; border: none; background: transparent; font-family: inherit; font-weight: 700; font-size: 12px; text-decoration: underline; text-underline-offset: 3px;">Clear all</button></div></sc-if>
+<p role="status" style="margin: 12px 0 0; font-size: 13px; font-weight: 700;">{{count}} products</p>
+</section>
+
+<section aria-label="Products" style="padding: 12px 20px 0;">
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="8">
+<article style="background: #FFFFFF; border: 2px solid #1A1A2E; border-radius: 16px; box-shadow: 4px 4px 0 #1A1A2E; overflow: hidden; display: flex; flex-direction: column;">
+<a href="b32-m-product.dc.html" aria-label="{{p.name}}" style="position: relative; display: block; height: 130px; background: {{p.tint}}; border-bottom: 2px solid #1A1A2E;">
+<div style="position: absolute; inset: 10px; opacity: {{p.op}};">
+<sc-if value="{{p.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#1A1A2E"></rect><rect x="62" y="96" width="76" height="46" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></sc-if>
+<sc-if value="{{p.isPouch}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><rect x="62" y="34" width="76" height="12" fill="#1A1A2E"></rect><rect x="70" y="120" width="60" height="32" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></sc-if>
+<sc-if value="{{p.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#1A1A2E"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></sc-if>
+<sc-if value="{{p.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="4"></ellipse></svg></sc-if>
+<sc-if value="{{p.isToy}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M40 100 Q90 40 150 100 Q90 160 40 100 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><path d="M150 100 L186 72 L178 100 L186 128 Z" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"></path><circle cx="70" cy="92" r="7" fill="#1A1A2E"></circle></svg></sc-if>
+</div>
+<sc-if value="{{p.hasBadge}}" hint-placeholder-val="{{true}}"><span style="position: absolute; top: 6px; left: 6px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 11px; font-weight: 800; padding: 3px 8px; border-radius: 999px; border: 2px solid #1A1A2E; background: {{p.bBg}}; color: {{p.bFg}}; transform: rotate(-4deg);">{{p.badge}}</span></sc-if>
+</a>
+<div style="padding: 10px 10px 10px; display: flex; flex-direction: column; flex: 1;">
+<div style="font-size: 11px; font-weight: 700; color: #4A4A66;">{{p.line}}</div>
+<h2 style="margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;">{{p.name}}</h2>
+<div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px; gap: 6px;"><span style="font-size: 16px; font-weight: 700;">{{p.price}}</span><span style="font-size: 10px; font-weight: 700; color: #4A4A66;">{{p.perkg}}</span></div>
+<button type="button" class="b4-btn" onClick="{{p.add}}" style="margin-top: 8px; height: 44px; border: 2px solid #1A1A2E; border-radius: 999px; background: {{p.btnBg}}; color: {{p.btnFg}}; font-family: inherit; font-size: 12px; font-weight: 700; box-shadow: 3px 3px 0 #1A1A2E;">{{p.btn}}</button>
+</div>
+</article>
+</sc-for>
+</div>
+<sc-if value="{{none}}" hint-placeholder-val="{{false}}"><div style="background: #FFFFFF; border: 2px solid #1A1A2E; border-radius: 16px; padding: 24px; text-align: center;"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Nothing matches all of that</strong><p style="margin: 6px 0 12px; font-size: 13px; font-weight: 500; color: #4A4A66;">Take one filter off.</p><button type="button" class="b4-btn" onClick="{{clearAll}}" style="height: 44px; padding: 0 16px; border: 2px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 13px; font-weight: 700;">Clear all</button></div></sc-if>
+</section>
+
+<footer style="margin-top: auto; padding: 28px 20px 32px; border-top: 2px solid #1A1A2E; font-size: 12px; font-weight: 700; line-height: 1.7;">
+<div style="display: flex; gap: 14px; flex-wrap: wrap;"><a href="#" style="text-decoration: none;">Delivery</a><a href="#" style="text-decoration: none;">Payment and slips</a><a href="#" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></div>
+<div style="color: #4A4A66; margin-top: 10px;">Yummy Treats! [COMPANY NAME] Co., Ltd., Bangkok. DBD registered.</div>
+</footer>
+
+<sc-if value="{{sheetOpen}}" hint-placeholder-val="{{true}}"><button type="button" onClick="{{closeSheet}}" aria-label="Close filters" style="position: absolute; inset: 0; border: none; background: rgba(26,26,46,0.45); cursor: pointer;"></button></sc-if>
+<div class="b4-sheet" role="dialog" aria-label="Filters" aria-modal="true" style="position: absolute; left: 0; right: 0; bottom: 0; transform: translateY({{sheetY}}); background: #FFFFFF; border: 2px solid #1A1A2E; border-bottom: none; border-radius: 22px 22px 0 0; padding: 12px 20px 20px; box-shadow: 0 -6px 0 #1A1A2E;">
+<div style="width: 48px; height: 5px; background: #1A1A2E; border-radius: 999px; margin: 0 auto 12px;"></div>
+<div style="display: flex; justify-content: space-between; align-items: center;"><strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800;">Filters</strong><button type="button" class="b4-chip" onClick="{{clearAll}}" style="border: none; background: transparent; font-family: inherit; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">Clear all</button></div>
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="3">
+<div style="margin-top: 14px;"><div style="font-size: 12px; font-weight: 700; color: #4A4A66; margin-bottom: 8px;">{{g.label}}</div><div style="display: flex; gap: 8px; flex-wrap: wrap;"><sc-for list="{{g.opts}}" as="o" hint-placeholder-count="3"><button type="button" class="b4-chip" onClick="{{o.toggle}}" aria-pressed="{{o.on}}" style="height: 40px; padding: 0 12px; display: inline-flex; align-items: center; gap: 6px; border: 2px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: {{o.bg}}; color: {{o.fg}};">{{o.label}} <span style="font-weight: 500; color: {{o.cfg}};">{{o.n}}</span></button></sc-for></div></div>
+</sc-for>
+<button type="button" class="b4-btn" onClick="{{closeSheet}}" style="width: 100%; margin-top: 18px; height: 50px; border: 2px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700; box-shadow: 3px 3px 0 #1A1A2E;">Show {{count}} results</button>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry', pet: 'dog', cat: 'dry', avail: 'stock', shape: 'bag', c1: '#E2A75C', tint: '#F3E4B4', price: '฿390', perkg: '฿260/kg', badge: '' },
+      { id: 'cattuna', name: 'Tuna & Chicken', line: 'Adult cat, dry', pet: 'cat', cat: 'dry', avail: 'stock', shape: 'bag', c1: '#5FB3B3', tint: '#D9ECEC', price: '฿350', perkg: '฿292/kg', badge: '' },
+      { id: 'puppy', name: 'Puppy Chicken', line: 'Puppy, dry', pet: 'dog', cat: 'dry', avail: 'stock', shape: 'bag', c1: '#E9C46A', tint: '#F5EBC9', price: '฿420', perkg: '฿280/kg', badge: 'New' },
+      { id: 'catpouch', name: 'Tuna in Gravy', line: 'Cat, wet pouch', pet: 'cat', cat: 'wet', avail: 'stock', shape: 'pouch', c1: '#7E8BD9', tint: '#E2E5F3', price: '฿25', perkg: '฿294/kg', badge: '' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats', pet: 'dog', cat: 'treats', avail: 'stock', shape: 'jar', c1: '#E09A3E', tint: '#F2E0C8', price: '฿88', perkg: '฿587/kg', badge: 'Sale -20%' },
+      { id: 'hearts', name: 'Chicken Hearts', line: 'Dog and cat treats', pet: 'both', cat: 'treats', avail: 'stock', shape: 'jar', c1: '#DC7C92', tint: '#F1DCE1', price: '฿160', perkg: '฿4,000/kg', badge: 'Only 3 left' },
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Accessories', pet: 'dog', cat: 'acc', avail: 'pre', shape: 'bowl', c1: '#8FC594', tint: '#DFEDE0', price: '฿290', perkg: '', badge: 'Pre-order' },
+      { id: 'fish', name: 'Catnip Fish Toy', line: 'Accessories', pet: 'cat', cat: 'acc', avail: 'sold', shape: 'toy', c1: '#AE9DE0', tint: '#E6E1F0', price: '฿90', perkg: '', badge: 'Sold out' }
+    ];
+    const F = this.state.f ?? { pet: [], cat: [], avail: [] };
+    const added = this.state.added ?? {};
+    const match = (p, f) => (f.pet.length === 0 || f.pet.indexOf(p.pet) >= 0 || p.pet === 'both') && (f.cat.length === 0 || f.cat.indexOf(p.cat) >= 0) && (f.avail.length === 0 || f.avail.indexOf(p.avail) >= 0);
+    const defs = [
+      { key: 'pet', label: 'Pet', opts: [{ v: 'dog', label: 'Dogs' }, { v: 'cat', label: 'Cats' }] },
+      { key: 'cat', label: 'Category', opts: [{ v: 'dry', label: 'Dry' }, { v: 'wet', label: 'Wet' }, { v: 'treats', label: 'Treats' }, { v: 'acc', label: 'Accessories' }] },
+      { key: 'avail', label: 'Availability', opts: [{ v: 'stock', label: 'In stock' }, { v: 'pre', label: 'Pre-order' }] }
+    ];
+    const setF = (key, vals) => { const n = Object.assign({}, F); n[key] = vals; this.setState({ f: n }); };
+    const groups = defs.map((g) => ({ label: g.label, opts: g.opts.map((o) => { const on = F[g.key].indexOf(o.v) >= 0; const t = Object.assign({}, F); t[g.key] = [o.v]; return { label: o.label, n: P.filter((p) => match(p, t)).length, on: on, bg: on ? '#1A1A2E' : '#FFFFFF', fg: on ? '#FFFFFF' : '#1A1A2E', cfg: on ? '#E9C46A' : '#4A4A66', toggle: () => setF(g.key, on ? F[g.key].filter((x) => x !== o.v) : F[g.key].concat([o.v])) }; }) }));
+    const applied = [];
+    defs.forEach((g) => g.opts.forEach((o) => { if (F[g.key].indexOf(o.v) >= 0) applied.push({ label: o.label, aria: 'Remove ' + o.label, remove: () => setF(g.key, F[g.key].filter((x) => x !== o.v)) }); }));
+    const badgeStyle = (b) => { if (!b) return { bBg: 'transparent', bFg: '#1A1A2E' }; if (b.indexOf('Sale') === 0) return { bBg: '#B8325A', bFg: '#FFFFFF' }; if (b === 'New') return { bBg: '#3A55C4', bFg: '#FFFFFF' }; if (b.indexOf('Only') === 0) return { bBg: '#FFFFFF', bFg: '#B8325A' }; if (b === 'Sold out') return { bBg: '#E4E4EA', bFg: '#1A1A2E' }; return { bBg: '#1A1A2E', bFg: '#FFFFFF' }; };
+    const products = P.filter((p) => match(p, F)).map((p) => { const sold = p.avail === 'sold'; const isAdded = !!added[p.id]; return Object.assign({}, p, badgeStyle(p.badge), { isBag: p.shape === 'bag', isPouch: p.shape === 'pouch', isJar: p.shape === 'jar', isBowl: p.shape === 'bowl', isToy: p.shape === 'toy', hasBadge: !!p.badge, op: sold ? 0.45 : 1, btn: isAdded ? 'Added!' : (sold ? 'Notify me' : (p.avail === 'pre' ? 'Pre-order' : 'Add')), btnBg: isAdded ? '#1A1A2E' : '#E9C46A', btnFg: isAdded ? '#E9C46A' : '#1A1A2E', add: () => { const n = Object.assign({}, this.state.added ?? {}); n[p.id] = true; this.setState({ added: n }); } }); });
+    const open = this.state.sheet ?? true;
+    return {
+      groups: groups, applied: applied, anyApplied: applied.length > 0, products: products, count: products.length, none: products.length === 0,
+      filterCount: applied.length ? ' (' + applied.length + ')' : '',
+      cart: Object.keys(added).filter((k) => k !== 'fish').length,
+      clearAll: () => this.setState({ f: { pet: [], cat: [], avail: [] } }),
+      sheetOpen: open, sheetY: open ? '0' : '110%', openSheet: () => this.setState({ sheet: true }), closeSheet: () => this.setState({ sheet: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

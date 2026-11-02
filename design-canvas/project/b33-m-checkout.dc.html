@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Checkout, phone</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-pay{cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid #3A55C4;outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 390px; height: 2400px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; position: relative;">
+
+<header style="height: 64px; display: flex; align-items: center; gap: 10px; padding: 0 16px; border-bottom: 2px solid #1A1A2E;">
+<a href="b32-m-product.dc.html" aria-label="Back" style="width: 44px; height: 44px; border: 2px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 20px;">&larr;</a>
+<span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.03em; margin-right: auto;">Checkout</span>
+<span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700;"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Secure</span>
+</header>
+
+<button type="button" onClick="{{toggleSum}}" aria-expanded="{{sumOpen}}" style="margin: 16px 20px 0; padding: 14px 16px; border: 2px solid #1A1A2E; border-radius: 16px; background: #FFFFFF; font-family: inherit; display: flex; justify-content: space-between; align-items: center; text-align: left; cursor: pointer; color: #1A1A2E;"><span style="font-size: 14px; font-weight: 700;">3 items, total <strong style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800;">฿1,156</strong></span><span style="font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 3px;">{{sumLabel}}</span></button>
+<sc-if value="{{sumOpen}}" hint-placeholder-val="{{false}}">
+<div style="margin: 8px 20px 0; padding: 14px 16px; border: 2px solid #1A1A2E; border-radius: 16px; background: #FFFFFF; font-size: 14px; font-weight: 500; display: grid; gap: 8px;">
+<div style="display: flex; justify-content: space-between;"><span>1x Chicken &amp; Rice, 3 kg</span><strong>฿690</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>1x Slow Feeder Bowl, M <span style="display: block; font-size: 12px; color: #4A4A66;">Pre-order: ships 12 to 19 Nov</span></span><strong>฿290</strong></div>
+<div style="display: flex; justify-content: space-between;"><span>2x Mango &amp; Oat Biscuits</span><strong>฿176</strong></div>
+<div style="display: flex; justify-content: space-between; border-top: 2px solid #1A1A2E; padding-top: 8px;"><span>Delivery, Bangkok</span><strong>Free</strong></div>
+</div>
+</sc-if>
+
+<form style="padding: 20px 20px 0; display: grid; gap: 16px;">
+<fieldset style="margin: 0; padding: 16px; border: 2px solid #1A1A2E; border-radius: 16px; background: #FFFFFF; display: grid; gap: 12px;">
+<legend style="padding: 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800;">Contact</legend>
+<div><label for="m-phone" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Mobile number</label><input id="m-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="08x xxx xxxx" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="m-email" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Email <span style="color: #4A4A66;">(optional)</span></label><input id="m-email" type="email" autocomplete="email" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"></div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 16px; border: 2px solid #1A1A2E; border-radius: 16px; background: #FFFFFF; display: grid; gap: 12px;">
+<legend style="padding: 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800;">Deliver to</legend>
+<div><label for="m-name" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Name</label><input id="m-name" type="text" autocomplete="name" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="m-addr" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">House number, building, street</label><input id="m-addr" type="text" autocomplete="street-address" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+<div><label for="m-post" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Postcode</label><input id="m-post" type="text" inputmode="numeric" autocomplete="postal-code" value="10110" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 12px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="m-prov" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Province</label><select id="m-prov" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 10px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"><option>Bangkok</option></select></div>
+<div><label for="m-dist" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">District</label><select id="m-dist" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 10px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"><option>Watthana</option></select></div>
+<div><label for="m-sub" style="display: block; font-size: 12px; font-weight: 700; margin-bottom: 5px;">Subdistrict</label><select id="m-sub" style="width: 100%; height: 48px; box-sizing: border-box; border: 2px solid #1A1A2E; border-radius: 12px; padding: 0 10px; font-family: inherit; font-size: 16px; background: #FFFFFF; color: #1A1A2E;"><option>Khlong Toei Nuea</option></select></div>
+</div>
+<div style="padding: 10px 12px; background: #E9C46A; border: 2px solid #1A1A2E; border-radius: 12px; font-size: 13px; font-weight: 700; display: flex; justify-content: space-between;"><span>Arrives Mon 3 to Tue 4 Nov</span><span>Free</span></div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 16px; border: 2px solid #1A1A2E; border-radius: 16px; background: #FFFFFF;">
+<legend style="padding: 0 8px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 18px; font-weight: 800;">Pay with</legend>
+<div role="radiogroup" aria-label="Payment method" style="display: grid; gap: 8px;">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{m.on}}" class="b4-pay" onClick="{{m.pick}}" style="display: grid; grid-template-columns: 24px minmax(0, 1fr); gap: 10px; align-items: center; text-align: left; padding: 12px 14px; border: 2px solid {{m.bd}}; border-radius: 12px; background: {{m.bg}}; font-family: inherit; color: #1A1A2E;"><span aria-hidden="true" style="width: 20px; height: 20px; border-radius: 50%; border: 2px solid #1A1A2E; background: {{m.dot}}; box-shadow: inset 0 0 0 3px #FFFFFF;"></span><span><span style="display: block; font-size: 15px; font-weight: 700;">{{m.label}}</span><span style="display: block; font-size: 12px; font-weight: 500; color: #4A4A66; margin-top: 2px;">{{m.sub}}</span></span></button>
+</sc-for>
+</div>
+<label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 14px; font-size: 13px; font-weight: 500; line-height: 1.45;"><input type="checkbox" required style="width: 20px; height: 20px; flex: none; margin-top: 1px; accent-color: #1A1A2E;"><span>Use my details to deliver this order and contact me about it, as in the <a href="#">privacy notice (PDPA)</a>. No marketing.</span></label>
+</fieldset>
+<div style="height: 110px;"></div>
+</form>
+
+<div style="position: absolute; left: 0; right: 0; bottom: 0; background: #FFFFFF; border-top: 2px solid #1A1A2E; padding: 12px 16px 16px; display: grid; gap: 6px;">
+<a href="#" class="b4-btn" style="display: flex; align-items: center; justify-content: center; height: 54px; background: #B8325A; color: #FFFFFF; border: 2px solid #1A1A2E; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 3px 3px 0 #1A1A2E;">{{payLabel}}</a>
+<span style="text-align: center; font-size: 11px; font-weight: 700; color: #4A4A66;">Total ฿1,156 incl. VAT. Demo: no real payment.</span>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":2400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const M = [
+      { k: 'qr', label: 'PromptPay QR', sub: 'Scan in your bank app. Confirms in seconds.', pay: 'Continue to PromptPay' },
+      { k: 'bank', label: 'Bank transfer, then send slip', sub: 'Upload the slip on the order page or LINE.', pay: 'Place order, then transfer' },
+      { k: 'card', label: 'Card', sub: 'Visa, Mastercard, JCB via Opn.', pay: 'Pay ฿1,156 by card' },
+      { k: 'cod', label: 'Cash on delivery', sub: 'Bangkok and vicinity. Not for pre-orders.', pay: 'Place order, pay on delivery' }
+    ];
+    const cur = this.state.m ?? 'qr';
+    const open = !!this.state.sum;
+    return {
+      methods: M.map((m) => ({ label: m.label, sub: m.sub, on: m.k === cur, bd: m.k === cur ? '#1A1A2E' : '#E4E4EA', bg: m.k === cur ? '#E9C46A' : '#FFFFFF', dot: m.k === cur ? '#1A1A2E' : '#FFFFFF', pick: () => this.setState({ m: m.k }) })),
+      payLabel: M.filter((m) => m.k === cur)[0].pay,
+      sumOpen: open, sumLabel: open ? 'Hide' : 'Show items', toggleSum: () => this.setState({ sum: !open })
+    };
+  }
+}
+</script>
+</body>
+</html>

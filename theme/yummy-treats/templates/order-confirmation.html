@@ -1,0 +1,45 @@
+<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+
+<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70)">
+	<!-- wp:woocommerce/order-confirmation-status {"align":"wide"} /-->
+	<!-- wp:woocommerce/order-confirmation-summary {"align":"wide"} /-->
+
+	<!-- wp:pattern {"slug":"yummy-treats/confirmation-steps"} /-->
+
+	<!-- wp:woocommerce/order-confirmation-additional-information {"align":"wide"} /-->
+
+	<!-- wp:woocommerce/order-confirmation-totals-wrapper {"align":"wide"} -->
+	<!-- wp:pattern {"slug":"woocommerce/order-confirmation-totals-heading"} /-->
+	<!-- wp:woocommerce/order-confirmation-totals {"lock":{"remove":true}} /-->
+	<!-- /wp:woocommerce/order-confirmation-totals-wrapper -->
+
+	<!-- wp:columns {"align":"wide","className":"wc-block-order-confirmation-address-wrapper"} -->
+	<div class="wp-block-columns alignwide wc-block-order-confirmation-address-wrapper">
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:woocommerce/order-confirmation-shipping-wrapper {"align":"wide"} -->
+			<!-- wp:pattern {"slug":"woocommerce/order-confirmation-shipping-heading"} /-->
+			<!-- wp:woocommerce/order-confirmation-shipping-address {"lock":{"remove":true}} /-->
+			<!-- /wp:woocommerce/order-confirmation-shipping-wrapper -->
+		</div>
+		<!-- /wp:column -->
+		<!-- wp:column -->
+		<div class="wp-block-column">
+			<!-- wp:woocommerce/order-confirmation-billing-wrapper {"align":"wide"} -->
+			<!-- wp:pattern {"slug":"woocommerce/order-confirmation-billing-heading"} /-->
+			<!-- wp:woocommerce/order-confirmation-billing-address {"lock":{"remove":true}} /-->
+			<!-- /wp:woocommerce/order-confirmation-billing-wrapper -->
+		</div>
+		<!-- /wp:column -->
+	</div>
+	<!-- /wp:columns -->
+
+	<!-- wp:woocommerce/order-confirmation-additional-fields-wrapper {"align":"wide"} -->
+	<!-- wp:pattern {"slug":"woocommerce/order-confirmation-additional-fields-heading"} /-->
+	<!-- wp:woocommerce/order-confirmation-additional-fields /-->
+	<!-- /wp:woocommerce/order-confirmation-additional-fields-wrapper -->
+</main>
+<!-- /wp:group -->
+
+<!-- wp:template-part {"slug":"footer","tagName":"footer"} /-->

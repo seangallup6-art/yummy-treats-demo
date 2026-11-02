@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Shop</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+@keyframes b4-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.b4-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:b4-run 22s linear infinite}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-card{transition:transform .2s ease,box-shadow .2s ease}
+.b4-card:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 #1A1A2E!important}
+.b4-chip{cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.b4-chip:disabled{cursor:not-allowed}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.b4-track{animation:none}*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3000px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<div style="background: #1A1A2E; color: #E9C46A; height: 44px; display: flex; align-items: center; overflow: hidden;">
+<div style="flex: 1; overflow: hidden;"><div class="b4-track" style="animation-play-state: {{play}}; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; padding-left: 24px;"><span>Free delivery in Bangkok over ฿1,000</span><span>Ships from Bangkok</span><span>Made in Thailand</span><span>PromptPay, transfer, card or COD</span><span>LINE @yummytreats</span><span>Free delivery across Thailand over ฿1,500</span><span aria-hidden="true">Free delivery in Bangkok over ฿1,000</span><span aria-hidden="true">Ships from Bangkok</span><span aria-hidden="true">Made in Thailand</span><span aria-hidden="true">PromptPay, transfer, card or COD</span><span aria-hidden="true">LINE @yummytreats</span><span aria-hidden="true">Free delivery across Thailand over ฿1,500</span></div></div>
+<button type="button" onClick="{{togglePlay}}" aria-pressed="{{paused}}" style="flex: none; height: 44px; padding: 0 16px; border: none; border-left: 3px solid #E9C46A; background: #1A1A2E; color: #E9C46A; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">{{playLabel}}</button>
+</div>
+
+<header style="height: 84px; display: flex; align-items: center; gap: 28px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<nav aria-label="Main" style="display: flex; gap: 8px; margin-left: 12px;">
+<a href="b11-shop.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border: 3px solid #1A1A2E; border-radius: 999px; font-weight: 700; font-size: 14px; background: #1A1A2E; color: #FFFFFF;">Shop</a>
+<a href="b22-guide.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Guides</a>
+<a href="b21-stockists.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Where to buy</a>
+<a href="b20-help.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Help</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 14px;">
+<a href="b23-search.dc.html" style="text-decoration: none;">Search</a><a href="#" style="text-decoration: none; color: #4A4A66;">TH</a><a href="#" style="text-decoration: none;">EN</a>
+<a href="b13-cart.dc.html" style="text-decoration: none; height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; box-shadow: 4px 4px 0 #1A1A2E;">Cart <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 13px;">{{cart}}</span></a>
+</div>
+</header>
+
+<section aria-label="Shop" style="padding: 40px 48px 0;">
+<nav aria-label="Breadcrumb" style="font-size: 13px; font-weight: 700; color: #4A4A66;"><a href="b10-home.dc.html" style="color: #4A4A66; text-decoration: none;">Home</a> / Shop</nav>
+<div style="display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; margin-top: 10px;">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 72px; line-height: 0.95; font-weight: 800; letter-spacing: -0.045em;">Everything</h1>
+<div style="display: flex; align-items: center; gap: 14px;">
+<span role="status" style="font-size: 14px; font-weight: 700;">{{count}} products</span>
+<label for="b11-sort" style="font-size: 14px; font-weight: 700;">Sort</label>
+<select id="b11-sort" style="height: 44px; border: 3px solid #1A1A2E; border-radius: 999px; padding: 0 16px; font-family: inherit; font-size: 14px; font-weight: 700; background: #FFFFFF; color: #1A1A2E;"><option>Best selling</option><option>Newest</option><option>Price, low to high</option><option>Price, high to low</option></select>
+</div>
+</div>
+
+<div style="margin-top: 24px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 20px; padding: 18px 22px; display: grid; gap: 12px;">
+<sc-for list="{{groups}}" as="g" hint-placeholder-count="5">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap;">
+<span style="width: 92px; font-size: 13px; font-weight: 700; color: #4A4A66;">{{g.label}}</span>
+<sc-for list="{{g.opts}}" as="o" hint-placeholder-count="3">
+<button type="button" class="b4-chip" onClick="{{o.toggle}}" aria-pressed="{{o.on}}" disabled="{{o.off}}" style="height: 38px; padding: 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid {{o.bd}}; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: {{o.bg}}; color: {{o.fg}};">{{o.label}} <span style="font-weight: 500; color: {{o.cfg}};">{{o.n}}</span></button>
+</sc-for>
+</div>
+</sc-for>
+<sc-if value="{{anyApplied}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; align-items: center; gap: 10px; flex-wrap: wrap; padding-top: 12px; border-top: 3px solid #1A1A2E;">
+<span style="width: 92px; font-size: 13px; font-weight: 700; color: #4A4A66;">Applied</span>
+<sc-for list="{{applied}}" as="a" hint-placeholder-count="1"><button type="button" class="b4-chip" onClick="{{a.remove}}" aria-label="{{a.aria}}" style="height: 38px; padding: 0 10px 0 14px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-weight: 700; font-size: 13px; background: #E9C46A; color: #1A1A2E;">{{a.label}} <span aria-hidden="true" style="font-size: 16px;">×</span></button></sc-for>
+<button type="button" class="b4-chip" onClick="{{clearAll}}" style="height: 38px; padding: 0 6px; border: none; background: transparent; font-family: inherit; font-weight: 700; font-size: 13px; text-decoration: underline; text-underline-offset: 4px; color: #1A1A2E;">Clear all</button>
+</div>
+</sc-if>
+</div>
+</section>
+
+<section aria-label="Products" style="padding: 28px 48px 0;">
+<sc-if value="{{none}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 48px; text-align: center; box-shadow: 6px 6px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em;">Nothing matches all of that</h2>
+<p style="margin: 10px 0 20px; font-size: 16px; font-weight: 500; color: #4A4A66;">Take one filter off, or ask us on LINE and we will point you at the right bag.</p>
+<button type="button" class="b4-btn" onClick="{{clearAll}}" style="height: 48px; padding: 0 22px; border: 3px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">Clear all filters</button>
+</div>
+</sc-if>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="16">
+<article class="b4-card" style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 20px; box-shadow: 6px 6px 0 #1A1A2E; overflow: hidden; display: flex; flex-direction: column;">
+<a href="b12-product.dc.html" aria-label="{{p.name}}" style="position: relative; display: block; height: 210px; background: {{p.tint}}; border-bottom: 3px solid #1A1A2E;">
+<div style="position: absolute; inset: 16px; opacity: {{p.op}};">
+<sc-if value="{{p.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#1A1A2E"></rect><circle cx="100" cy="70" r="16" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></circle><rect x="62" y="96" width="76" height="46" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect><rect x="72" y="106" width="44" height="7" rx="3.5" fill="#1A1A2E"></rect><rect x="72" y="120" width="56" height="5" rx="2.5" fill="{{p.c2}}"></rect></svg></sc-if>
+<sc-if value="{{p.isPouch}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><rect x="62" y="34" width="76" height="12" fill="#1A1A2E"></rect><rect x="70" y="120" width="60" height="32" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect><rect x="78" y="130" width="40" height="6" rx="3" fill="#1A1A2E"></rect></svg></sc-if>
+<sc-if value="{{p.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#1A1A2E"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect><rect x="76" y="112" width="36" height="6" rx="3" fill="#1A1A2E"></rect><rect x="76" y="124" width="48" height="5" rx="2.5" fill="{{p.c2}}"></rect></svg></sc-if>
+<sc-if value="{{p.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="4"></ellipse><circle cx="84" cy="95" r="6" fill="#1A1A2E"></circle><circle cx="104" cy="98" r="6" fill="#1A1A2E"></circle><circle cx="122" cy="94" r="6" fill="#1A1A2E"></circle></svg></sc-if>
+<sc-if value="{{p.isToy}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M40 100 Q90 40 150 100 Q90 160 40 100 Z" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></path><path d="M150 100 L186 72 L178 100 L186 128 Z" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="4" stroke-linejoin="round"></path><circle cx="70" cy="92" r="7" fill="#1A1A2E"></circle></svg></sc-if>
+</div>
+<sc-if value="{{p.hasBadge}}" hint-placeholder-val="{{true}}"><span style="position: absolute; top: 12px; left: 12px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 14px; font-weight: 800; padding: 6px 12px; border-radius: 999px; border: 3px solid #1A1A2E; background: {{p.bBg}}; color: {{p.bFg}}; transform: rotate(-4deg); box-shadow: 3px 3px 0 #1A1A2E;">{{p.badge}}</span></sc-if>
+</a>
+<div style="padding: 14px 18px 18px; display: flex; flex-direction: column; flex: 1;">
+<div style="font-size: 13px; font-weight: 700; color: #4A4A66;">{{p.line}}</div>
+<h2 style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 21px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em;">{{p.name}}</h2>
+<div style="display: flex; align-items: baseline; gap: 8px; margin-top: 10px;"><span style="font-size: 20px; font-weight: 700;">{{p.price}}</span><sc-if value="{{p.hasWas}}" hint-placeholder-val="{{false}}"><span style="font-size: 13px; color: #4A4A66; text-decoration: line-through;">{{p.was}}</span></sc-if><sc-if value="{{p.hasPerkg}}" hint-placeholder-val="{{true}}"><span style="font-size: 12px; font-weight: 700; color: #4A4A66; margin-left: auto;">{{p.perkg}}</span></sc-if></div>
+<div style="font-size: 12px; font-weight: 700; color: #4A4A66; margin-top: 4px; min-height: 16px;">{{p.sizeText}}</div>
+<button type="button" class="b4-btn" onClick="{{p.add}}" style="margin-top: 14px; height: 46px; border: 3px solid #1A1A2E; border-radius: 999px; background: {{p.btnBg}}; color: {{p.btnFg}}; font-family: inherit; font-size: 14px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">{{p.btn}}</button>
+</div>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Contact" style="margin: 64px 48px 0; background: #1A1A2E; color: #E9C46A; border-radius: 28px; padding: 36px 48px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+<div><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 36px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Not sure which bag? Send a photo of your pet on LINE.</h2><p style="margin: 8px 0 0; font-size: 14px; font-weight: 500; color: #FFFFFF;">9:00 to 18:00, Monday to Saturday. Also on Shopee, Lazada and LINE SHOPPING; prices there may differ.</p></div>
+<a href="b20-help.dc.html" class="b4-btn" style="flex: none; display: inline-flex; align-items: center; height: 52px; padding: 0 24px; background: #E9C46A; color: #1A1A2E; border: 3px solid #E9C46A; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #B8325A;">Add LINE @yummytreats</a>
+</section>
+
+<footer style="margin-top: auto; padding: 36px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Payment and slips</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3000}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry', pet: 'dog', cat: 'dry', stage: 'adult', avail: 'stock', num: 390, shape: 'bag', c1: '#E2A75C', c2: '#B8325A', tint: '#F3E4B4', price: '฿390', perkg: '฿260 / kg', sizeText: '1.5 kg, 3 kg or 8 kg', badge: '' },
+      { id: 'salmon', name: 'Salmon & Pumpkin', line: 'Adult dog, dry', pet: 'dog', cat: 'dry', stage: 'adult', avail: 'stock', num: 450, shape: 'bag', c1: '#E68E73', c2: '#3A55C4', tint: '#F0DED5', price: '฿450', perkg: '฿300 / kg', sizeText: '1.5 kg or 3 kg', badge: '' },
+      { id: 'puppy', name: 'Puppy Chicken', line: 'Puppy, dry', pet: 'dog', cat: 'dry', stage: 'young', avail: 'stock', num: 420, shape: 'bag', c1: '#E9C46A', c2: '#B8325A', tint: '#F5EBC9', price: '฿420', perkg: '฿280 / kg', sizeText: '1.5 kg', badge: 'New' },
+      { id: 'senior', name: 'Senior Light Fish', line: 'Senior dog, dry', pet: 'dog', cat: 'dry', stage: 'senior', avail: 'stock', num: 430, shape: 'bag', c1: '#9DCBD8', c2: '#3A55C4', tint: '#DFEEF2', price: '฿430', perkg: '฿287 / kg', sizeText: '1.5 kg', badge: '' },
+      { id: 'beefpouch', name: 'Beef Stew', line: 'Adult dog, wet pouch', pet: 'dog', cat: 'wet', stage: 'adult', avail: 'stock', num: 35, shape: 'pouch', c1: '#DC7C92', c2: '#3A55C4', tint: '#F1DCE1', price: '฿35', perkg: '฿350 / kg', sizeText: '100 g or box of 12', badge: '' },
+      { id: 'cattuna', name: 'Tuna & Chicken', line: 'Adult cat, dry', pet: 'cat', cat: 'dry', stage: 'adult', avail: 'stock', num: 350, shape: 'bag', c1: '#5FB3B3', c2: '#3A55C4', tint: '#D9ECEC', price: '฿350', perkg: '฿292 / kg', sizeText: '1.2 kg or 3 kg', badge: '' },
+      { id: 'kitten', name: 'Kitten Chicken', line: 'Kitten, dry', pet: 'cat', cat: 'dry', stage: 'young', avail: 'stock', num: 380, shape: 'bag', c1: '#AE9DE0', c2: '#B8325A', tint: '#E6E1F0', price: '฿380', perkg: '฿317 / kg', sizeText: '1.2 kg', badge: '' },
+      { id: 'hairball', name: 'Indoor Hairball Salmon', line: 'Adult cat, dry', pet: 'cat', cat: 'dry', stage: 'adult', avail: 'stock', num: 390, shape: 'bag', c1: '#7E8BD9', c2: '#B8325A', tint: '#E2E5F3', price: '฿390', perkg: '฿325 / kg', sizeText: '1.2 kg or 3 kg', badge: '' },
+      { id: 'catpouch', name: 'Tuna in Gravy', line: 'Adult cat, wet pouch', pet: 'cat', cat: 'wet', stage: 'adult', avail: 'stock', num: 25, shape: 'pouch', c1: '#7E8BD9', c2: '#3A55C4', tint: '#E2E5F3', price: '฿25', perkg: '฿294 / kg', sizeText: '85 g or box of 12', badge: '' },
+      { id: 'jerky', name: 'Chicken Jerky Strips', line: 'Dog treats', pet: 'dog', cat: 'treats', stage: 'any', avail: 'stock', num: 120, shape: 'jar', c1: '#E2A75C', c2: '#3A55C4', tint: '#F3E4B4', price: '฿120', perkg: '฿1,500 / kg', sizeText: '80 g', badge: '' },
+      { id: 'salmonbites', name: 'Crunchy Salmon Bites', line: 'Cat treats', pet: 'cat', cat: 'treats', stage: 'any', avail: 'stock', num: 95, shape: 'jar', c1: '#5FB3B3', c2: '#B8325A', tint: '#D9ECEC', price: '฿95', perkg: '฿1,583 / kg', sizeText: '60 g', badge: '' },
+      { id: 'dental', name: 'Dental Chews', line: 'Dog treats', pet: 'dog', cat: 'treats', stage: 'adult', avail: 'stock', num: 150, shape: 'jar', c1: '#8FC594', c2: '#3A55C4', tint: '#DFEDE0', price: '฿150', perkg: '', sizeText: '6 chews', badge: '' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats', pet: 'dog', cat: 'treats', stage: 'any', avail: 'stock', num: 88, shape: 'jar', c1: '#E09A3E', c2: '#3A55C4', tint: '#F2E0C8', price: '฿88', was: '฿110', perkg: '฿587 / kg', sizeText: '150 g', badge: 'Sale -20%' },
+      { id: 'hearts', name: 'Freeze-dried Chicken Hearts', line: 'Dog and cat treats', pet: 'both', cat: 'treats', stage: 'any', avail: 'stock', num: 160, shape: 'jar', c1: '#DC7C92', c2: '#3A55C4', tint: '#F1DCE1', price: '฿160', perkg: '฿4,000 / kg', sizeText: '40 g', badge: 'Only 3 left' },
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Accessories', pet: 'dog', cat: 'acc', stage: 'any', avail: 'pre', num: 290, shape: 'bowl', c1: '#8FC594', c2: '#1A1A2E', tint: '#DFEDE0', price: '฿290', perkg: '', sizeText: 'S or M', badge: 'Pre-order, ships 12-19 Nov' },
+      { id: 'fish', name: 'Catnip Fish Toy', line: 'Accessories', pet: 'cat', cat: 'acc', stage: 'any', avail: 'sold', num: 90, shape: 'toy', c1: '#AE9DE0', c2: '#1A1A2E', tint: '#E6E1F0', price: '฿90', perkg: '', sizeText: '', badge: 'Sold out' }
+    ];
+    const F = this.state.f ?? { pet: [], cat: [], stage: [], avail: [], price: [] };
+    const added = this.state.added ?? {};
+    const priceBand = (n) => n < 100 ? 'lo' : (n <= 400 ? 'mid' : 'hi');
+    const match = (p, f) => (
+      (f.pet.length === 0 || f.pet.indexOf(p.pet) >= 0 || p.pet === 'both') &&
+      (f.cat.length === 0 || f.cat.indexOf(p.cat) >= 0) &&
+      (f.stage.length === 0 || f.stage.indexOf(p.stage) >= 0 || p.stage === 'any') &&
+      (f.avail.length === 0 || f.avail.indexOf(p.avail) >= 0) &&
+      (f.price.length === 0 || f.price.indexOf(priceBand(p.num)) >= 0)
+    );
+    const defs = [
+      { key: 'pet', label: 'Pet', opts: [{ v: 'dog', label: 'Dogs' }, { v: 'cat', label: 'Cats' }] },
+      { key: 'cat', label: 'Category', opts: [{ v: 'dry', label: 'Dry food' }, { v: 'wet', label: 'Wet food' }, { v: 'treats', label: 'Treats' }, { v: 'acc', label: 'Accessories' }] },
+      { key: 'stage', label: 'Life stage', opts: [{ v: 'young', label: 'Puppy and kitten' }, { v: 'adult', label: 'Adult' }, { v: 'senior', label: 'Senior' }] },
+      { key: 'avail', label: 'Availability', opts: [{ v: 'stock', label: 'In stock' }, { v: 'pre', label: 'Pre-order' }] },
+      { key: 'price', label: 'Price', opts: [{ v: 'lo', label: 'Under ฿100' }, { v: 'mid', label: '฿100 to ฿400' }, { v: 'hi', label: 'Over ฿400' }] }
+    ];
+    const setF = (key, vals) => { const n = Object.assign({}, F); n[key] = vals; this.setState({ f: n }); };
+    const groups = defs.map((g) => ({
+      label: g.label,
+      opts: g.opts.map((o) => {
+        const on = F[g.key].indexOf(o.v) >= 0;
+        const trial = Object.assign({}, F); trial[g.key] = [o.v];
+        const n = P.filter((p) => match(p, trial)).length;
+        const off = n === 0 && !on;
+        return {
+          label: o.label, n: n, on: on, off: off,
+          bg: on ? '#1A1A2E' : '#FFFFFF', fg: on ? '#FFFFFF' : (off ? '#4A4A66' : '#1A1A2E'), bd: off ? '#E4E4EA' : '#1A1A2E', cfg: on ? '#E9C46A' : '#4A4A66',
+          toggle: () => setF(g.key, on ? F[g.key].filter((x) => x !== o.v) : F[g.key].concat([o.v]))
+        };
+      })
+    }));
+    const applied = [];
+    defs.forEach((g) => g.opts.forEach((o) => { if (F[g.key].indexOf(o.v) >= 0) applied.push({ label: o.label, aria: 'Remove ' + o.label, remove: () => setF(g.key, F[g.key].filter((x) => x !== o.v)) }); }));
+    const badgeStyle = (b) => {
+      if (!b) return { bBg: 'transparent', bFg: '#1A1A2E' };
+      if (b.indexOf('Sale') === 0) return { bBg: '#B8325A', bFg: '#FFFFFF' };
+      if (b === 'New') return { bBg: '#3A55C4', bFg: '#FFFFFF' };
+      if (b.indexOf('Only') === 0) return { bBg: '#FFFFFF', bFg: '#B8325A' };
+      if (b === 'Sold out') return { bBg: '#E4E4EA', bFg: '#1A1A2E' };
+      return { bBg: '#1A1A2E', bFg: '#FFFFFF' };
+    };
+    const products = P.filter((p) => match(p, F)).map((p) => {
+      const sold = p.avail === 'sold';
+      const pre = p.avail === 'pre';
+      const isAdded = !!added[p.id];
+      let btn = 'Add to cart';
+      if (sold) btn = 'Notify me';
+      else if (pre) btn = 'Pre-order';
+      if (isAdded) btn = sold ? 'We will shout' : 'Added!';
+      return Object.assign({}, p, badgeStyle(p.badge), {
+        isBag: p.shape === 'bag', isPouch: p.shape === 'pouch', isJar: p.shape === 'jar', isBowl: p.shape === 'bowl', isToy: p.shape === 'toy',
+        hasBadge: !!p.badge, hasWas: !!p.was, hasPerkg: !!p.perkg, op: sold ? 0.45 : 1,
+        btn: btn, btnBg: isAdded ? '#1A1A2E' : '#E9C46A', btnFg: isAdded ? '#E9C46A' : '#1A1A2E',
+        add: () => { const n = Object.assign({}, this.state.added ?? {}); n[p.id] = true; this.setState({ added: n }); }
+      });
+    });
+    const paused = !!this.state.paused;
+    return {
+      groups: groups, applied: applied, anyApplied: applied.length > 0, products: products, count: products.length, none: products.length === 0,
+      cart: Object.keys(added).filter((k) => k !== 'fish').length,
+      clearAll: () => this.setState({ f: { pet: [], cat: [], stage: [], avail: [], price: [] } }),
+      paused: paused, play: paused ? 'paused' : 'running', playLabel: paused ? 'Play' : 'Pause',
+      togglePlay: () => this.setState({ paused: !paused })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Order received</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-seg{cursor:pointer}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 2300px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<header style="height: 84px; display: flex; align-items: center; gap: 24px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 10px; font-size: 12px; font-weight: 700;">
+<span style="color: #4A4A66;">Demo: switch state</span>
+<div role="group" aria-label="Order state" style="display: flex; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 999px; padding: 3px; gap: 3px;">
+<sc-for list="{{states}}" as="s" hint-placeholder-count="3"><button type="button" class="b4-seg" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="height: 34px; padding: 0 14px; border: none; border-radius: 999px; background: {{s.bg}}; color: {{s.fg}}; font-family: inherit; font-size: 12px; font-weight: 700;">{{s.label}}</button></sc-for>
+</div>
+</div>
+</header>
+
+<section aria-label="Order received" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; padding: 40px 48px 0; align-items: start;">
+<div style="display: grid; gap: 24px;">
+<div>
+<div style="display: inline-flex; align-items: center; gap: 10px; padding: 8px 14px; background: {{chipBg}}; color: {{chipFg}}; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 13px; font-weight: 700;">{{chip}}</div>
+<h1 style="margin: 14px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 64px; line-height: 0.95; font-weight: 800; letter-spacing: -0.04em;">{{headline}}</h1>
+<p style="margin: 14px 0 0; font-size: 17px; font-weight: 500; line-height: 1.5; max-width: 620px;">Order <strong>#YT-10432</strong>, placed today at 11:42. A copy went to your phone by SMS{{emailNote}}.</p>
+</div>
+
+<sc-if value="{{isQr}}" hint-placeholder-val="{{true}}">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E; display: grid; grid-template-columns: 260px minmax(0, 1fr); gap: 28px; align-items: center;">
+<div style="width: 260px; height: 260px; border: 3px solid #1A1A2E; border-radius: 16px; background: #FFFFFF; display: flex; align-items: center; justify-content: center; text-align: center; font-size: 13px; font-weight: 700; color: #4A4A66; padding: 16px; box-sizing: border-box;">[PROMPTPAY QR from Opn, test mode, for ฿1,156]</div>
+<div>
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Scan to pay ฿1,156</h2>
+<p style="margin: 10px 0 0; font-size: 15px; font-weight: 500; line-height: 1.55;">Open any Thai bank app, scan, confirm. This page updates itself when the payment lands, usually within a few seconds. Code valid for <strong>14:32</strong> more minutes.</p>
+<div style="display: flex; gap: 10px; margin-top: 18px; flex-wrap: wrap;"><button type="button" class="b4-btn" style="height: 46px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">Save QR image</button><button type="button" class="b4-btn" onClick="{{toBank}}" style="height: 46px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-family: inherit; font-size: 14px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">Pay by transfer instead</button></div>
+<p style="margin: 14px 0 0; font-size: 13px; font-weight: 700; color: #4A4A66;">Paid but nothing changed after two minutes? Send the slip on LINE @yummytreats and we mark it by hand.</p>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{isBank}}" hint-placeholder-val="{{false}}">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Transfer ฿1,156, then send the slip</h2>
+<dl style="margin: 18px 0 0; display: grid; grid-template-columns: 160px 1fr; gap: 10px 16px; font-size: 15px; font-weight: 500;">
+<dt style="color: #4A4A66;">Bank</dt><dd style="margin: 0; font-weight: 700;">[BANK]</dd>
+<dt style="color: #4A4A66;">Account name</dt><dd style="margin: 0; font-weight: 700;">[COMPANY NAME] Co., Ltd.</dd>
+<dt style="color: #4A4A66;">Account number</dt><dd style="margin: 0; font-weight: 700; display: flex; gap: 12px; align-items: center;">[ACCOUNT NO] <button type="button" style="height: 32px; padding: 0 12px; border: 3px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; font-family: inherit; font-size: 12px; font-weight: 700; cursor: pointer;">Copy</button></dd>
+<dt style="color: #4A4A66;">Amount</dt><dd style="margin: 0; font-weight: 700;">฿1,156 exactly (it helps us match the slip)</dd>
+</dl>
+<form style="margin-top: 22px; padding-top: 22px; border-top: 3px solid #1A1A2E; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: end;">
+<div><label for="o-slip" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Upload your slip (photo or screenshot)</label><input id="o-slip" type="file" accept="image/*,.pdf" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px dashed #1A1A2E; border-radius: 12px; padding: 10px 14px; font-family: inherit; font-size: 14px; background: #FFFFFF; color: #1A1A2E;"></div>
+<button type="button" class="b4-btn" onClick="{{toPaid}}" style="height: 48px; padding: 0 20px; border: 3px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; font-family: inherit; font-size: 15px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">Send slip</button>
+</form>
+<p style="margin: 12px 0 0; font-size: 13px; font-weight: 700; color: #4A4A66;">Or send it on LINE @yummytreats with your order number. We check slips within the hour on working days, 9:00 to 18:00.</p>
+</div>
+</sc-if>
+
+<sc-if value="{{isPaid}}" hint-placeholder-val="{{false}}">
+<div style="background: #3A55C4; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E; display: flex; justify-content: space-between; align-items: center; gap: 24px;">
+<div><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Payment received, ฿1,156</h2><p style="margin: 10px 0 0; font-size: 15px; font-weight: 500; line-height: 1.55;">We pack this afternoon. Tracking arrives by SMS and LINE once the courier scans it.</p></div>
+<a href="#" class="b4-btn" style="flex: none; display: inline-flex; align-items: center; height: 46px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 14px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Download receipt</a>
+</div>
+</sc-if>
+
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px;">
+<h2 style="margin: 0 0 18px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.03em;">What happens next</h2>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px;">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="4"><li style="padding: 16px; border: 3px solid #1A1A2E; border-radius: 16px; background: {{st.bg}}; color: {{st.fg}};"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 28px; font-weight: 800; line-height: 1;">{{st.n}}</div><div style="font-size: 15px; font-weight: 700; margin-top: 8px;">{{st.title}}</div><div style="font-size: 13px; font-weight: 500; margin-top: 4px; line-height: 1.45;">{{st.sub}}</div></li></sc-for>
+</ol>
+<p style="margin: 14px 0 0; font-size: 13px; font-weight: 700; color: #4A4A66;">The Slow Feeder Bowl is a pre-order and ships separately between 12 and 19 November, at no extra delivery cost. We message you when it leaves.</p>
+</div>
+
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+<a href="b22-guide.dc.html" style="text-decoration: none; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; gap: 14px;"><div style="font-size: 13px; font-weight: 700; color: #4A4A66;">For the food you just bought</div><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;">Switching to Chicken &amp; Rice? The seven-day guide.</h2><span style="font-size: 14px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px;">Read it (4 min)</span></a>
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 24px;"><div style="font-size: 13px; font-weight: 700; color: #4A4A66;">Optional</div><h2 style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05;">Save your details for next time</h2><p style="margin: 8px 0 0; font-size: 13px; font-weight: 500; line-height: 1.5; color: #4A4A66;">One password turns this order into an account: track it, reorder in two taps, keep your address.</p><div style="display: flex; gap: 8px; margin-top: 14px;"><label for="o-pass" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Password</label><input id="o-pass" type="password" placeholder="Choose a password" autocomplete="new-password" style="flex: 1; height: 46px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; background: #FFFFFF; color: #1A1A2E;"><button type="button" style="height: 46px; padding: 0 16px; border: 3px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">Save</button></div></div>
+</div>
+</div>
+
+<aside style="display: grid; gap: 20px;">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em;">Order #YT-10432</h2>
+<ul style="list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 12px; font-size: 15px; font-weight: 500;">
+<li style="display: flex; justify-content: space-between; gap: 12px;"><span>1x Chicken &amp; Rice, 3 kg</span><span style="font-weight: 700;">฿690</span></li>
+<li style="display: flex; justify-content: space-between; gap: 12px;"><span>1x Slow Feeder Bowl, M <span style="display: block; font-size: 12px; color: #4A4A66;">Pre-order: ships 12 to 19 Nov</span></span><span style="font-weight: 700;">฿290</span></li>
+<li style="display: flex; justify-content: space-between; gap: 12px;"><span>2x Mango &amp; Oat Biscuits</span><span style="font-weight: 700;">฿176</span></li>
+</ul>
+<dl style="margin: 16px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 8px 16px; font-size: 15px; border-top: 3px solid #1A1A2E; padding-top: 14px;"><dt>Delivery</dt><dd style="margin: 0; text-align: right; font-weight: 700;">Free</dd><dt style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Total</dt><dd style="margin: 0; text-align: right; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">฿1,156</dd></dl>
+<div style="margin-top: 18px; padding-top: 16px; border-top: 3px solid #1A1A2E; font-size: 14px; font-weight: 500; line-height: 1.6;"><strong>Deliver to</strong><br>Nok Srisuk, 08x xxx xxxx<br>[ADDRESS], Khlong Toei Nuea, Watthana, Bangkok 10110<br><span style="color: #4A4A66;">Arrives Mon 3 to Tue 4 Nov</span></div>
+<div style="margin-top: 14px; font-size: 14px; font-weight: 500;"><strong>Payment</strong> {{payLine}}</div>
+</div>
+<a href="b20-help.dc.html" class="b4-btn" style="display: flex; align-items: center; justify-content: center; gap: 10px; height: 56px; background: #3A55C4; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Questions? LINE @yummytreats</a>
+<a href="b11-shop.dc.html" style="text-align: center; font-size: 14px; font-weight: 700;">Back to the shop</a>
+</aside>
+</section>
+
+<footer style="margin-top: auto; padding: 32px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2300}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = [{ k: 'qr', label: 'Awaiting PromptPay' }, { k: 'bank', label: 'Awaiting transfer' }, { k: 'paid', label: 'Paid' }];
+    const cur = this.state.s ?? 'qr';
+    const paid = cur === 'paid';
+    const steps = [
+      { n: '1', title: paid ? 'Paid' : 'Pay', sub: paid ? 'Received 11:44' : (cur === 'qr' ? 'Scan the QR above' : 'Transfer and send the slip') },
+      { n: '2', title: 'We pack', sub: 'Same day if paid before 14:00' },
+      { n: '3', title: 'Courier picks up', sub: '[COURIER], tracking by SMS and LINE' },
+      { n: '4', title: 'Arrives', sub: 'Mon 3 to Tue 4 Nov, Bangkok' }
+    ].map((s, i) => ({ n: s.n, title: s.title, sub: s.sub, bg: (paid ? i <= 1 : i === 0) ? '#1A1A2E' : '#FFFFFF', fg: (paid ? i <= 1 : i === 0) ? '#FFFFFF' : '#1A1A2E' }));
+    return {
+      states: S.map((s) => ({ label: s.label, on: s.k === cur, bg: s.k === cur ? '#1A1A2E' : 'transparent', fg: s.k === cur ? '#FFFFFF' : '#1A1A2E', pick: () => this.setState({ s: s.k }) })),
+      isQr: cur === 'qr', isBank: cur === 'bank', isPaid: paid,
+      chip: paid ? 'Paid and packing' : 'Order received, waiting for payment',
+      chipBg: paid ? '#3A55C4' : '#FFFFFF', chipFg: paid ? '#FFFFFF' : '#1A1A2E',
+      headline: paid ? 'Thank you, Nok. It is on its way soon.' : 'Almost there, Nok. One more step.',
+      emailNote: '',
+      payLine: cur === 'qr' ? 'PromptPay QR, waiting' : (cur === 'bank' ? 'Bank transfer, waiting for your slip' : 'PromptPay, paid 11:44'),
+      steps: steps,
+      toBank: () => this.setState({ s: 'bank' }), toPaid: () => this.setState({ s: 'paid' })
+    };
+  }
+}
+</script>
+</body>
+</html>

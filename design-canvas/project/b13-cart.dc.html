@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Cart</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+@keyframes b4-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.b4-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:b4-run 22s linear infinite}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-bar{transition:width .5s ease}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.b4-track{animation:none}*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 1900px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<div style="background: #1A1A2E; color: #E9C46A; height: 44px; display: flex; align-items: center; overflow: hidden;">
+<div style="flex: 1; overflow: hidden;"><div class="b4-track" style="animation-play-state: {{play}}; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; padding-left: 24px;"><span>Free delivery in Bangkok over ฿1,000</span><span>Ships from Bangkok</span><span>Made in Thailand</span><span>PromptPay, transfer, card or COD</span><span>LINE @yummytreats</span><span>Free delivery across Thailand over ฿1,500</span><span aria-hidden="true">Free delivery in Bangkok over ฿1,000</span><span aria-hidden="true">Ships from Bangkok</span><span aria-hidden="true">Made in Thailand</span><span aria-hidden="true">PromptPay, transfer, card or COD</span><span aria-hidden="true">LINE @yummytreats</span><span aria-hidden="true">Free delivery across Thailand over ฿1,500</span></div></div>
+<button type="button" onClick="{{togglePlay}}" aria-pressed="{{paused}}" style="flex: none; height: 44px; padding: 0 16px; border: none; border-left: 3px solid #E9C46A; background: #1A1A2E; color: #E9C46A; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">{{playLabel}}</button>
+</div>
+
+<header style="height: 84px; display: flex; align-items: center; gap: 28px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<nav aria-label="Main" style="display: flex; gap: 8px; margin-left: 12px;">
+<a href="b11-shop.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border: 3px solid #1A1A2E; border-radius: 999px; font-weight: 700; font-size: 14px; background: #FFFFFF;">Shop</a>
+<a href="b22-guide.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Guides</a>
+<a href="b21-stockists.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Where to buy</a>
+<a href="b20-help.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Help</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 14px;">
+<a href="b23-search.dc.html" style="text-decoration: none;">Search</a><a href="#" style="text-decoration: none; color: #4A4A66;">TH</a><a href="#" style="text-decoration: none;">EN</a>
+<a href="b13-cart.dc.html" style="text-decoration: none; height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; box-shadow: 4px 4px 0 #1A1A2E;">Cart <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 13px;">{{count}}</span></a>
+</div>
+</header>
+
+<section aria-label="Cart" style="padding: 40px 48px 0;">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 72px; line-height: 0.95; font-weight: 800; letter-spacing: -0.045em;">Your cart</h1>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{false}}">
+<div style="margin-top: 28px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 56px; text-align: center; box-shadow: 8px 8px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em;">Nothing in here yet</h2>
+<p style="margin: 10px 0 24px; font-size: 16px; font-weight: 500; color: #4A4A66;">The dogs and cats are waiting. Start with the best sellers, or ask on LINE if you are not sure which bag.</p>
+<div style="display: flex; gap: 12px; justify-content: center;"><a href="b11-shop.dc.html" class="b4-btn" style="display: inline-flex; align-items: center; height: 52px; padding: 0 24px; background: #1A1A2E; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 16px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Shop everything</a><button type="button" class="b4-btn" onClick="{{restore}}" style="height: 52px; padding: 0 24px; background: #FFFFFF; color: #1A1A2E; border: 3px solid #1A1A2E; border-radius: 999px; font-family: inherit; font-size: 16px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">Put the demo items back</button></div>
+</div>
+</sc-if>
+
+<sc-if value="{{hasItems}}" hint-placeholder-val="{{true}}">
+<div style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; margin-top: 28px; align-items: start;">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; overflow: hidden; box-shadow: 8px 8px 0 #1A1A2E;">
+<sc-for list="{{items}}" as="it" hint-placeholder-count="3">
+<div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) auto auto; gap: 24px; align-items: center; padding: 22px 28px; border-bottom: 3px solid #1A1A2E;">
+<a href="b12-product.dc.html" aria-label="{{it.name}}" style="display: flex; align-items: center; justify-content: center; width: 120px; height: 120px; background: {{it.tint}}; border: 3px solid #1A1A2E; border-radius: 16px;"><span style="width: 86px; height: 86px; display: block;">
+<sc-if value="{{it.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{it.c1}}" stroke="#1A1A2E" stroke-width="4"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="#1A1A2E"></rect><rect x="62" y="96" width="76" height="46" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></sc-if>
+<sc-if value="{{it.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="{{it.c1}}" stroke="#1A1A2E" stroke-width="4"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#1A1A2E"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></sc-if>
+<sc-if value="{{it.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{it.c1}}" stroke="#1A1A2E" stroke-width="4"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="4"></ellipse></svg></sc-if>
+</span></a>
+<div>
+<div style="font-size: 13px; font-weight: 700; color: #4A4A66;">{{it.line}}</div>
+<h2 style="margin: 2px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1;">{{it.name}}</h2>
+<div style="font-size: 14px; font-weight: 500; margin-top: 6px;">{{it.unit}}</div>
+<sc-if value="{{it.hasNote}}" hint-placeholder-val="{{false}}"><div style="display: inline-flex; align-items: center; margin-top: 8px; padding: 5px 10px; background: #1A1A2E; color: #FFFFFF; border-radius: 999px; font-size: 12px; font-weight: 700;">{{it.note}}</div></sc-if>
+</div>
+<div style="display: inline-flex; border: 3px solid #1A1A2E; border-radius: 999px; overflow: hidden;"><button type="button" onClick="{{it.less}}" aria-label="Fewer" style="width: 44px; height: 46px; border: none; background: #FFFFFF; font-family: inherit; font-size: 20px; font-weight: 700; cursor: pointer;">-</button><span style="width: 44px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; border-left: 3px solid #1A1A2E; border-right: 3px solid #1A1A2E;">{{it.qty}}</span><button type="button" onClick="{{it.more}}" aria-label="More" style="width: 44px; height: 46px; border: none; background: #FFFFFF; font-family: inherit; font-size: 20px; font-weight: 700; cursor: pointer;">+</button></div>
+<div style="text-align: right; min-width: 110px;"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800;">{{it.total}}</div><button type="button" onClick="{{it.remove}}" style="margin-top: 6px; border: none; background: transparent; padding: 0; font-family: inherit; font-size: 13px; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; color: #4A4A66; cursor: pointer;">Remove</button></div>
+</div>
+</sc-for>
+<div style="padding: 18px 28px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700;"><a href="b11-shop.dc.html" style="text-decoration: underline; text-underline-offset: 4px;">Keep shopping</a><span style="color: #4A4A66;">Pre-order items ship when they arrive; everything else ships now.</span></div>
+</div>
+
+<aside style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E;">
+<div style="display: flex; justify-content: space-between; font-size: 13px; font-weight: 700; margin-bottom: 8px;"><span>{{barLabel}}</span><span style="color: #4A4A66;">{{barRight}}</span></div>
+<div style="height: 12px; background: #E4E4EA; border: 3px solid #1A1A2E; border-radius: 999px; overflow: hidden;"><div class="b4-bar" style="height: 100%; width: {{barW}}; background: #B8325A;"></div></div>
+<dl style="margin: 24px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 12px 16px; font-size: 16px; font-weight: 500;">
+<dt>Items</dt><dd style="margin: 0; text-align: right; font-weight: 700;">{{subtotal}}</dd>
+<dt>Delivery to Bangkok <span style="font-size: 12px; color: #4A4A66;">(change at checkout)</span></dt><dd style="margin: 0; text-align: right; font-weight: 700;">{{delivery}}</dd>
+<dt style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; padding-top: 12px; border-top: 3px solid #1A1A2E;">Total</dt><dd style="margin: 0; text-align: right; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; padding-top: 12px; border-top: 3px solid #1A1A2E;">{{total}}</dd>
+</dl>
+<p style="margin: 8px 0 0; font-size: 12px; font-weight: 700; color: #4A4A66;">Prices include VAT. Pay by PromptPay, bank transfer, card or cash on delivery.</p>
+<a href="b14-checkout.dc.html" class="b4-btn" style="display: flex; align-items: center; justify-content: center; margin-top: 20px; height: 56px; background: #1A1A2E; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 17px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Check out as a guest</a>
+<a href="b24-account.dc.html" style="display: block; text-align: center; margin-top: 14px; font-size: 13px; font-weight: 700;">Have an account? Log in to use your saved address</a>
+<div style="margin-top: 22px; padding: 16px; background: #E9C46A; border: 3px solid #1A1A2E; border-radius: 16px; font-size: 13px; font-weight: 700; line-height: 1.5;">Bank transfer? Pay after you order, then upload the slip on the order page or send it on LINE. No account needed.</div>
+</aside>
+</div>
+</sc-if>
+</section>
+
+<footer style="margin-top: auto; padding: 36px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Payment and slips</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":1900}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const D = [
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry, 3 kg', unit: '฿690 each, ฿230 / kg', price: 690, shape: 'bag', c1: '#E2A75C', tint: '#F3E4B4', note: '' },
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Stoneware, size M', unit: '฿290 each', price: 290, shape: 'bowl', c1: '#8FC594', tint: '#DFEDE0', note: 'Pre-order: ships 12 to 19 Nov' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats, 150 g', unit: '฿88 each (was ฿110), ฿587 / kg', price: 88, shape: 'jar', c1: '#E09A3E', tint: '#F2E0C8', note: '' }
+    ];
+    const q = this.state.q ?? { dogchicken: 1, bowl: 1, biscuits: 2 };
+    const setQ = (id, n) => { const m = Object.assign({}, q); if (n <= 0) delete m[id]; else m[id] = n; this.setState({ q: m }); };
+    const items = D.filter((d) => q[d.id]).map((d) => ({
+      name: d.name, line: d.line, unit: d.unit, tint: d.tint, c1: d.c1, qty: q[d.id],
+      isBag: d.shape === 'bag', isJar: d.shape === 'jar', isBowl: d.shape === 'bowl',
+      hasNote: !!d.note, note: d.note,
+      total: '฿' + (d.price * q[d.id]).toLocaleString('en-US'),
+      less: () => setQ(d.id, q[d.id] - 1), more: () => setQ(d.id, Math.min(9, q[d.id] + 1)), remove: () => setQ(d.id, 0)
+    }));
+    const subtotal = D.reduce((s, d) => s + (q[d.id] ? d.price * q[d.id] : 0), 0);
+    const count = D.reduce((s, d) => s + (q[d.id] || 0), 0);
+    const free = subtotal >= 1000;
+    const deliv = items.length === 0 ? 0 : (free ? 0 : 50);
+    const left = Math.max(0, 1000 - subtotal);
+    const paused = !!this.state.paused;
+    return {
+      items: items, count: count, empty: items.length === 0, hasItems: items.length > 0,
+      subtotal: '฿' + subtotal.toLocaleString('en-US'), delivery: free ? 'Free' : '฿50',
+      total: '฿' + (subtotal + deliv).toLocaleString('en-US'),
+      barLabel: free ? 'Free Bangkok delivery unlocked' : 'Add ฿' + left + ' more for free Bangkok delivery',
+      barRight: '฿' + subtotal.toLocaleString('en-US') + ' of ฿1,000', barW: Math.min(100, Math.round(subtotal / 10)) + '%',
+      restore: () => this.setState({ q: { dogchicken: 1, bowl: 1, biscuits: 2 } }),
+      paused: paused, play: paused ? 'paused' : 'running', playLabel: paused ? 'Play' : 'Pause',
+      togglePlay: () => this.setState({ paused: !paused })
+    };
+  }
+}
+</script>
+</body>
+</html>

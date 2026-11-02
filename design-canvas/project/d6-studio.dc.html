@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Studio direction</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#FFFFFF}
+a{color:#1E1E1E}a:hover{color:#6A6A6A}
+.s6-tile{transition:background-color .3s ease}
+.s6-tile:hover{background:#EAEAE7!important}
+.s6-grid{transition:gap .4s ease}
+.s6-btn{cursor:pointer;transition:background-color .2s ease,color .2s ease}
+.s6-btn:hover{background:#1E1E1E!important;color:#FFFFFF!important}
+.s6-tog{cursor:pointer}
+a:focus-visible,button:focus-visible,select:focus-visible{outline:1px solid #1E1E1E;outline-offset:4px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3700px; background: #FFFFFF; color: #1E1E1E; font-family: 'Manrope', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column; align-items: center;">
+
+<header style="width: 100%; box-sizing: border-box; height: 72px; display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: center; padding: 0 48px; font-size: 12px; letter-spacing: 0.04em;">
+<nav aria-label="Shop" style="display: flex; gap: 24px;"><a href="#" style="text-decoration: none;">Objects</a><a href="#" style="text-decoration: none;">Dogs</a><a href="#" style="text-decoration: none;">Cats</a><a href="#" style="text-decoration: none;">Treats</a></nav>
+<a href="#" style="font-size: 15px; font-weight: 500; letter-spacing: 0.02em; text-decoration: none;">Yummy Treats!</a>
+<div style="display: flex; justify-content: flex-end; gap: 24px;"><a href="#" style="text-decoration: none;">Guides</a><a href="#" style="text-decoration: none;">Stockists</a><a href="#" style="text-decoration: none; color: #6A6A6A;">TH</a><a href="#" style="text-decoration: none;">Cart ({{cart}})</a></div>
+</header>
+
+<main style="width: 960px; display: flex; flex-direction: column; align-items: stretch;">
+
+<section aria-label="Featured object" style="margin-top: 24px;">
+<div style="height: 620px; background: #F2F2F0; display: flex; align-items: center; justify-content: center; position: relative;">
+<div style="width: 380px; height: 380px;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="178" rx="64" ry="6" fill="rgba(0,0,0,0.06)"></ellipse><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="#CFCAC0"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="#B9B3A7"></ellipse><ellipse cx="100" cy="97" rx="52" ry="9" fill="#F7F6F3"></ellipse><path d="M70 92 Q100 82 130 92" stroke="#B9B3A7" stroke-width="2" fill="none"></path><circle cx="84" cy="95" r="4" fill="#CFCAC0"></circle><circle cx="104" cy="98" r="4" fill="#CFCAC0"></circle><circle cx="120" cy="94" r="4" fill="#CFCAC0"></circle></svg></div>
+<span style="position: absolute; left: 20px; bottom: 16px; font-size: 11px; color: #6A6A6A;">[PHOTO: slow feeder bowl, stoneware, daylight]</span>
+</div>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 24px; align-items: baseline; padding: 20px 0 0; font-size: 13px;">
+<div><span style="font-weight: 500;">Slow Feeder Bowl</span> <span style="color: #6A6A6A;">Stoneware, S or M. Pre-order, ships 12 to 19 November.</span></div>
+<div style="display: flex; gap: 20px; align-items: baseline;"><span>฿290</span><a href="#" style="text-decoration: underline; text-underline-offset: 4px;">Pre-order</a></div>
+</div>
+</section>
+
+<section aria-label="Intro" style="padding: 120px 0 0; text-align: center;">
+<h1 style="margin: 0 auto; max-width: 760px; font-size: 44px; line-height: 1.2; font-weight: 300; letter-spacing: -0.01em;">Good food for Bangkok's dogs and cats.</h1>
+<p style="margin: 24px auto 0; max-width: 520px; font-size: 15px; line-height: 1.75; color: #6A6A6A;">Made in Thailand from ingredients you can read. Shipped from our Bangkok warehouse or picked up at a pet shop near you.</p>
+<div style="display: flex; justify-content: center; gap: 28px; margin-top: 28px; font-size: 13px;">
+<a href="#" style="text-decoration: underline; text-underline-offset: 5px;">Shop dogs</a><a href="#" style="text-decoration: underline; text-underline-offset: 5px;">Shop cats</a><a href="#" style="text-decoration: underline; text-underline-offset: 5px;">Shop objects</a>
+</div>
+</section>
+
+<section aria-label="Everything" style="padding: 120px 0 0;">
+<div style="display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; letter-spacing: 0.04em; color: #6A6A6A; padding-bottom: 14px; border-bottom: 1px solid #E4E4E1;">
+<span>Everything, 8 of 24</span>
+<div role="group" aria-label="Image size" style="display: flex; gap: 18px;">
+<button type="button" class="s6-tog" onClick="{{bigger}}" aria-pressed="{{isBig}}" style="border: none; background: transparent; padding: 0; font-family: inherit; font-size: 12px; letter-spacing: 0.04em; color: {{cBig}}; text-decoration: {{uBig}}; text-underline-offset: 4px;">Larger</button>
+<button type="button" class="s6-tog" onClick="{{smaller}}" aria-pressed="{{isSmall}}" style="border: none; background: transparent; padding: 0; font-family: inherit; font-size: 12px; letter-spacing: 0.04em; color: {{cSmall}}; text-decoration: {{uSmall}}; text-underline-offset: 4px;">Smaller</button>
+</div>
+</div>
+<div class="s6-grid" style="display: grid; grid-template-columns: {{cols}}; gap: {{gap}}; margin-top: 32px;">
+<sc-for list="{{products}}" as="p" hint-placeholder-count="8">
+<article>
+<a href="#" aria-label="{{p.name}}" class="s6-tile" style="position: relative; display: flex; align-items: center; justify-content: center; height: {{tileH}}; background: #F2F2F0;">
+<div style="width: {{imgW}}; height: {{imgW}}; opacity: {{p.op}};">
+<sc-if value="{{p.isBag}}" hint-placeholder-val="{{true}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="186" rx="48" ry="6" fill="rgba(0,0,0,0.06)"></ellipse><path d="M58 40 Q58 28 70 28 L130 28 Q142 28 142 40 L146 170 Q146 184 132 184 L68 184 Q54 184 54 170 Z" fill="{{p.c1}}"></path><rect x="58" y="28" width="84" height="14" rx="4" fill="{{p.c2}}"></rect><rect x="62" y="96" width="76" height="46" rx="4" fill="#F7F6F3"></rect><rect x="72" y="108" width="40" height="5" rx="2.5" fill="{{p.c2}}"></rect><rect x="72" y="120" width="56" height="4" rx="2" fill="#B9B3A7"></rect></svg></sc-if>
+<sc-if value="{{p.isPouch}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="188" rx="50" ry="5" fill="rgba(0,0,0,0.06)"></ellipse><path d="M62 34 L138 34 L148 176 Q148 186 138 186 L62 186 Q52 186 52 176 Z" fill="{{p.c1}}"></path><rect x="62" y="34" width="76" height="12" fill="{{p.c2}}"></rect><rect x="70" y="124" width="60" height="30" rx="4" fill="#F7F6F3"></rect><rect x="78" y="134" width="36" height="5" rx="2.5" fill="{{p.c2}}"></rect></svg></sc-if>
+<sc-if value="{{p.isJar}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="188" rx="44" ry="5" fill="rgba(0,0,0,0.06)"></ellipse><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="{{p.c2}}"></rect><rect x="66" y="100" width="68" height="40" rx="4" fill="#F7F6F3"></rect><rect x="76" y="112" width="36" height="5" rx="2.5" fill="{{p.c2}}"></rect><rect x="68" y="66" width="8" height="90" rx="4" fill="rgba(255,255,255,0.3)"></rect></svg></sc-if>
+<sc-if value="{{p.isBowl}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="100" cy="178" rx="64" ry="6" fill="rgba(0,0,0,0.06)"></ellipse><path d="M34 96 L166 96 Q166 170 100 170 Q34 170 34 96 Z" fill="{{p.c1}}"></path><ellipse cx="100" cy="96" rx="66" ry="14" fill="{{p.c2}}"></ellipse><ellipse cx="100" cy="97" rx="52" ry="9" fill="#F7F6F3"></ellipse></svg></sc-if>
+<sc-if value="{{p.isToy}}" hint-placeholder-val="{{false}}"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><ellipse cx="110" cy="160" rx="60" ry="6" fill="rgba(0,0,0,0.06)"></ellipse><path d="M40 100 Q90 40 150 100 Q90 160 40 100 Z" fill="{{p.c1}}"></path><path d="M150 100 L186 72 L178 100 L186 128 Z" fill="{{p.c2}}"></path><circle cx="70" cy="92" r="5" fill="#1E1E1E"></circle></svg></sc-if>
+</div>
+<sc-if value="{{p.hasBadge}}" hint-placeholder-val="{{true}}"><span style="position: absolute; top: 14px; left: 14px; font-size: 11px; letter-spacing: 0.04em; padding: 4px 8px; background: {{p.bBg}}; color: {{p.bFg}}; border: 1px solid {{p.bBd}};">{{p.badge}}</span></sc-if>
+</a>
+<div style="display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 16px; padding-top: 14px; font-size: 13px; line-height: 1.5;">
+<div><div style="font-weight: 500;">{{p.name}}</div><div style="color: #6A6A6A;">{{p.line}}{{p.sizeText}}</div></div>
+<div style="text-align: right;"><div>{{p.price}}<sc-if value="{{p.hasWas}}" hint-placeholder-val="{{false}}"> <span style="color: #6A6A6A; text-decoration: line-through;">{{p.was}}</span></sc-if></div><div style="color: #6A6A6A;">{{p.perkg}}</div></div>
+</div>
+<button type="button" class="s6-btn" onClick="{{p.add}}" style="margin-top: 10px; height: 36px; padding: 0 14px; border: 1px solid #1E1E1E; border-radius: 0; background: {{p.btnBg}}; color: {{p.btnFg}}; font-family: inherit; font-size: 12px; letter-spacing: 0.04em;">{{p.btn}}</button>
+</article>
+</sc-for>
+</div>
+</section>
+
+<section aria-label="Ingredients" style="padding: 140px 0 0; text-align: center;">
+<p style="margin: 0 auto; max-width: 800px; font-size: 30px; line-height: 1.5; font-weight: 300; letter-spacing: -0.005em;">Chicken, rice, and then as little as possible. The full list, the analysis and a feeding table are printed on every product page, as text.</p>
+<dl style="margin: 48px auto 0; max-width: 760px; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; font-size: 13px; line-height: 1.6; text-align: left; border-top: 1px solid #E4E4E1; padding-top: 24px;">
+<div><dt style="color: #6A6A6A;">Made in</dt><dd style="margin: 2px 0 0;">[PROVINCE], Thailand. Feed registration [REG NO].</dd></div>
+<div><dt style="color: #6A6A6A;">Checked by</dt><dd style="margin: 2px 0 0;">[VET NAME], a small-animal vet in Bangkok.</dd></div>
+<div><dt style="color: #6A6A6A;">Delivery</dt><dd style="margin: 2px 0 0;">Free in Bangkok over ฿1,000, across Thailand over ฿1,500.</dd></div>
+</dl>
+</section>
+
+<section aria-label="Guides and stockists" style="padding: 140px 0 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px;">
+<div>
+<h2 style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #6A6A6A;">Guides</h2>
+<ul style="margin: 12px 0 0; padding: 0; list-style: none; font-size: 15px; line-height: 1.5;">
+<li style="padding: 14px 0; border-top: 1px solid #E4E4E1;"><a href="#" style="text-decoration: none;">Switching your dog to a new food without an upset stomach</a></li>
+<li style="padding: 14px 0; border-top: 1px solid #E4E4E1;"><a href="#" style="text-decoration: none;">Registering your pet in Bangkok: the microchip rule</a></li>
+<li style="padding: 14px 0; border-top: 1px solid #E4E4E1; border-bottom: 1px solid #E4E4E1;"><a href="#" style="text-decoration: none;">How much to feed, by weight and age</a></li>
+</ul>
+</div>
+<div>
+<h2 style="margin: 0; font-size: 13px; font-weight: 500; letter-spacing: 0.04em; color: #6A6A6A;">Stockists</h2>
+<p style="margin: 12px 0 0; font-size: 15px; line-height: 1.6;">Pet shops and vet clinics in Bangkok and vicinity.</p>
+<div style="display: flex; gap: 12px; margin-top: 16px;">
+<div style="flex: 1;"><label for="s6-prov" style="display: block; font-size: 11px; color: #6A6A6A; margin-bottom: 6px;">Province</label><select id="s6-prov" style="width: 100%; height: 40px; border: 1px solid #1E1E1E; border-radius: 0; padding: 0 10px; font-family: inherit; font-size: 13px; background: #FFFFFF; color: #1E1E1E;"><option>Bangkok</option><option>Nonthaburi</option><option>Pathum Thani</option><option>Samut Prakan</option></select></div>
+<div style="flex: 1;"><label for="s6-dist" style="display: block; font-size: 11px; color: #6A6A6A; margin-bottom: 6px;">District</label><select id="s6-dist" style="width: 100%; height: 40px; border: 1px solid #1E1E1E; border-radius: 0; padding: 0 10px; font-family: inherit; font-size: 13px; background: #FFFFFF; color: #1E1E1E;"><option>All</option><option>Watthana</option><option>Chatuchak</option><option>Bang Na</option></select></div>
+</div>
+<ul style="margin: 16px 0 0; padding: 0; list-style: none; font-size: 13px; line-height: 1.6; color: #6A6A6A;">
+<li>[STOCKIST] Pet Shop, Watthana</li><li>[STOCKIST] Animal Hospital, Chatuchak</li><li>[STOCKIST] Pets, Bang Na</li>
+</ul>
+</div>
+</section>
+
+<section aria-label="Contact" style="padding: 120px 0 0; text-align: center;">
+<p style="margin: 0; font-size: 15px; line-height: 1.7; color: #6A6A6A;">Questions about a recipe, delivery or a slip?<br>LINE 9:00 to 18:00, Monday to Saturday. Also on Shopee, Lazada and LINE SHOPPING; prices there may differ.</p>
+<div style="display: flex; justify-content: center; gap: 28px; margin-top: 20px; font-size: 13px;">
+<a href="#" style="text-decoration: underline; text-underline-offset: 5px;">LINE @yummytreats</a><a href="#" style="text-decoration: underline; text-underline-offset: 5px;">Shopee</a><a href="#" style="text-decoration: underline; text-underline-offset: 5px;">Lazada</a>
+</div>
+</section>
+
+</main>
+
+<footer style="margin-top: auto; width: 100%; box-sizing: border-box; padding: 36px 48px; display: flex; justify-content: space-between; font-size: 11px; letter-spacing: 0.04em; color: #6A6A6A;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="#" style="color: #6A6A6A; text-decoration: none;">Delivery</a><a href="#" style="color: #6A6A6A; text-decoration: none;">Payment and slips</a><a href="#" style="color: #6A6A6A; text-decoration: none;">Returns</a><a href="#" style="color: #6A6A6A; text-decoration: none;">Privacy (PDPA)</a><a href="#" style="color: #6A6A6A; text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3700}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const P = [
+      { id: 'bowl', name: 'Slow Feeder Bowl', line: 'Stoneware, ', shape: 'bowl', c1: '#CFCAC0', c2: '#B9B3A7', price: '฿290', perkg: '', sizeText: 'S or M', badge: 'Pre-order, ships 12-19 Nov' },
+      { id: 'fish', name: 'Catnip Fish Toy', line: 'Cotton, ', shape: 'toy', c1: '#B5B0C8', c2: '#8E88A6', price: '฿90', perkg: '', sizeText: 'one size', badge: 'Sold out' },
+      { id: 'dogchicken', name: 'Chicken & Rice', line: 'Adult dog, dry. ', shape: 'bag', c1: '#D9B48A', c2: '#A77A4A', price: '฿390', perkg: '฿260 / kg', sizeText: '1.5, 3 or 8 kg', badge: '' },
+      { id: 'cattuna', name: 'Tuna & Chicken', line: 'Adult cat, dry. ', shape: 'bag', c1: '#9FBFC2', c2: '#5F8A8E', price: '฿350', perkg: '฿292 / kg', sizeText: '1.2 or 3 kg', badge: '' },
+      { id: 'puppy', name: 'Puppy Chicken', line: 'Puppy, dry. ', shape: 'bag', c1: '#E4CE8E', c2: '#A99052', price: '฿420', perkg: '฿280 / kg', sizeText: '1.5 kg', badge: 'New' },
+      { id: 'catpouch', name: 'Tuna in Gravy', line: 'Adult cat, wet. ', shape: 'pouch', c1: '#A9B6CF', c2: '#6B7C9E', price: '฿25', perkg: '฿294 / kg', sizeText: '85 g or 12 x 85 g', badge: '' },
+      { id: 'biscuits', name: 'Mango & Oat Biscuits', line: 'Dog treats. ', shape: 'jar', c1: '#E9C39A', c2: '#B5855A', price: '฿88', was: '฿110', perkg: '฿587 / kg', sizeText: '150 g', badge: 'Sale -20%' },
+      { id: 'hearts', name: 'Freeze-dried Chicken Hearts', line: 'Dog and cat treats. ', shape: 'jar', c1: '#D4A49C', c2: '#9C675F', price: '฿160', perkg: '฿4,000 / kg', sizeText: '40 g', badge: 'Only 3 left' }
+    ];
+    const added = this.state.added ?? {};
+    const big = (this.state.size ?? 'small') === 'big';
+    const badgeStyle = (b) => {
+      if (!b) return { bBg: 'transparent', bFg: '#1E1E1E', bBd: 'transparent' };
+      if (b.indexOf('Sale') === 0) return { bBg: '#1E1E1E', bFg: '#FFFFFF', bBd: '#1E1E1E' };
+      if (b === 'New') return { bBg: '#FFFFFF', bFg: '#1E1E1E', bBd: '#1E1E1E' };
+      if (b.indexOf('Only') === 0) return { bBg: '#FFFFFF', bFg: '#1E1E1E', bBd: '#1E1E1E' };
+      if (b === 'Sold out') return { bBg: '#E4E4E1', bFg: '#6A6A6A', bBd: '#E4E4E1' };
+      return { bBg: '#FFFFFF', bFg: '#1E1E1E', bBd: '#1E1E1E' };
+    };
+    const products = P.map((p) => {
+      const sold = p.badge === 'Sold out';
+      const pre = p.badge.indexOf('Pre-order') === 0;
+      const isAdded = !!added[p.id];
+      let btn = 'Add';
+      if (sold) btn = 'Notify me';
+      else if (pre) btn = 'Pre-order';
+      if (isAdded) btn = sold ? 'Noted' : 'Added';
+      return Object.assign({}, p, badgeStyle(p.badge), {
+        isBag: p.shape === 'bag', isPouch: p.shape === 'pouch', isJar: p.shape === 'jar', isBowl: p.shape === 'bowl', isToy: p.shape === 'toy',
+        hasBadge: !!p.badge, hasWas: !!p.was, op: sold ? 0.4 : 1,
+        btn: btn, btnBg: isAdded ? '#1E1E1E' : '#FFFFFF', btnFg: isAdded ? '#FFFFFF' : '#1E1E1E',
+        add: () => { const n = Object.assign({}, this.state.added ?? {}); n[p.id] = true; this.setState({ added: n }); }
+      });
+    });
+    return {
+      products: products,
+      cart: Object.keys(added).filter((k) => k !== 'fish').length,
+      cols: big ? 'minmax(0, 1fr)' : 'repeat(2, minmax(0, 1fr))',
+      gap: big ? '96px 0' : '72px 32px',
+      tileH: big ? '720px' : '440px', imgW: big ? '420px' : '240px',
+      isBig: big, isSmall: !big,
+      cBig: big ? '#1E1E1E' : '#6A6A6A', cSmall: big ? '#6A6A6A' : '#1E1E1E',
+      uBig: big ? 'underline' : 'none', uSmall: big ? 'none' : 'underline',
+      bigger: () => this.setState({ size: 'big' }), smaller: () => this.setState({ size: 'small' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Checkout</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-pay{cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 2500px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<header style="height: 84px; display: flex; align-items: center; gap: 24px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<span style="display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; padding-left: 24px; border-left: 3px solid #1A1A2E; height: 40px;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg>Secure checkout</span>
+<div style="margin-left: auto; display: flex; gap: 20px; font-size: 14px; font-weight: 700;"><a href="b13-cart.dc.html" style="text-decoration: underline; text-underline-offset: 4px;">Back to cart</a><a href="b20-help.dc.html" style="text-decoration: none; display: inline-flex; align-items: center; height: 40px; padding: 0 14px; border: 3px solid #1A1A2E; border-radius: 999px; background: #3A55C4; color: #FFFFFF;">Help on LINE</a></div>
+</header>
+
+<section aria-label="Checkout" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 32px; padding: 40px 48px 0; align-items: start;">
+<form style="display: grid; gap: 24px;">
+<h1 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 56px; line-height: 0.95; font-weight: 800; letter-spacing: -0.04em;">Checkout</h1>
+
+<fieldset style="margin: 0; padding: 28px; border: 3px solid #1A1A2E; border-radius: 24px; background: #FFFFFF;">
+<legend style="padding: 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Contact</legend>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+<div><label for="c-phone" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Mobile number <span style="color: #4A4A66;">(for delivery updates)</span></label><input id="c-phone" type="tel" inputmode="numeric" autocomplete="tel" placeholder="08x xxx xxxx" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="c-email" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Email <span style="color: #4A4A66;">(receipt, optional)</span></label><input id="c-email" type="email" autocomplete="email" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+</div>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 28px; border: 3px solid #1A1A2E; border-radius: 24px; background: #FFFFFF;">
+<legend style="padding: 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Deliver to</legend>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+<div style="grid-column: 1 / -1;"><label for="c-name" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Name</label><input id="c-name" type="text" autocomplete="name" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div style="grid-column: 1 / -1;"><label for="c-addr" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">House number, building, street</label><input id="c-addr" type="text" autocomplete="street-address" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="c-post" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Postcode <span style="color: #4A4A66;">(fills in the rest)</span></label><input id="c-post" type="text" inputmode="numeric" autocomplete="postal-code" value="10110" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+<div><label for="c-prov" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Province</label><select id="c-prov" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"><option>Bangkok</option><option>Nonthaburi</option><option>Pathum Thani</option><option>Samut Prakan</option><option>Chiang Mai</option></select></div>
+<div><label for="c-dist" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">District (เขต)</label><select id="c-dist" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"><option>Watthana</option><option>Khlong Toei</option></select></div>
+<div><label for="c-sub" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Subdistrict (แขวง)</label><select id="c-sub" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"><option>Khlong Toei Nuea</option><option>Khlong Tan Nuea</option><option>Phra Khanong Nuea</option></select></div>
+<div style="grid-column: 1 / -1;"><label for="c-note" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Note for the courier <span style="color: #4A4A66;">(optional)</span></label><input id="c-note" type="text" placeholder="Leave with the guard, call on arrival..." style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div>
+</div>
+<div style="margin-top: 18px; padding: 14px 18px; background: #E9C46A; border: 3px solid #1A1A2E; border-radius: 16px; display: flex; justify-content: space-between; align-items: center; font-size: 14px; font-weight: 700;"><span>Standard delivery, Bangkok. Arrives Mon 3 to Tue 4 Nov.</span><span>Free (over ฿1,000)</span></div>
+<label style="display: flex; align-items: center; gap: 10px; margin-top: 14px; font-size: 14px; font-weight: 700;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: #1A1A2E;">I need a tax invoice (company name and tax ID)</label>
+</fieldset>
+
+<fieldset style="margin: 0; padding: 28px; border: 3px solid #1A1A2E; border-radius: 24px; background: #FFFFFF;">
+<legend style="padding: 0 10px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Pay with</legend>
+<div role="radiogroup" aria-label="Payment method" style="display: grid; gap: 10px;">
+<sc-for list="{{methods}}" as="m" hint-placeholder-count="4">
+<button type="button" role="radio" aria-checked="{{m.on}}" class="b4-pay" onClick="{{m.pick}}" style="display: grid; grid-template-columns: 28px minmax(0, 1fr) auto; gap: 14px; align-items: center; text-align: left; padding: 14px 18px; border: 3px solid {{m.bd}}; border-radius: 16px; background: {{m.bg}}; font-family: inherit; color: #1A1A2E;">
+<span aria-hidden="true" style="width: 22px; height: 22px; border-radius: 50%; border: 3px solid #1A1A2E; background: {{m.dot}}; box-shadow: inset 0 0 0 3px #FFFFFF;"></span>
+<span><span style="display: block; font-size: 16px; font-weight: 700;">{{m.label}}</span><span style="display: block; font-size: 13px; font-weight: 500; color: #4A4A66; margin-top: 2px;">{{m.sub}}</span></span>
+<span style="font-size: 12px; font-weight: 700; color: #4A4A66;">{{m.tag}}</span>
+</button>
+</sc-for>
+</div>
+<sc-if value="{{isCard}}" hint-placeholder-val="{{false}}"><div style="margin-top: 14px; padding: 18px; border: 3px solid #1A1A2E; border-radius: 16px; background: #F4F4F8; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 12px;"><div style="grid-column: 1 / -1; font-size: 12px; font-weight: 700; color: #4A4A66;">Card details are entered in Opn's secure form (test mode in this demo). Nothing is stored on this site.</div><div><label for="c-card" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Card number</label><input id="c-card" type="text" inputmode="numeric" autocomplete="cc-number" placeholder="4242 4242 4242 4242" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div><div><label for="c-exp" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Expiry</label><input id="c-exp" type="text" inputmode="numeric" autocomplete="cc-exp" placeholder="MM / YY" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div><div><label for="c-cvc" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">CVC</label><input id="c-cvc" type="text" inputmode="numeric" autocomplete="cc-csc" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div></div></sc-if>
+<sc-if value="{{isBank}}" hint-placeholder-val="{{false}}"><div style="margin-top: 14px; padding: 16px 18px; border: 3px solid #1A1A2E; border-radius: 16px; background: #F4F4F8; font-size: 14px; font-weight: 500; line-height: 1.55;">After you place the order we show the account ([BANK], [ACCOUNT NAME], [ACCOUNT NO]) and a PromptPay QR for the exact amount. Transfer, then upload your slip on the order page or send it on LINE. We ship once the slip checks out, usually within the hour on working days.</div></sc-if>
+<sc-if value="{{isCod}}" hint-placeholder-val="{{false}}"><div style="margin-top: 14px; padding: 16px 18px; border: 3px solid #1A1A2E; border-radius: 16px; background: #F4F4F8; font-size: 14px; font-weight: 500; line-height: 1.55;">Pay the courier in cash when the parcel arrives. Please have the exact amount ready. Not available for pre-order items; the bowl will be charged when it ships.</div></sc-if>
+<sc-if value="{{isQr}}" hint-placeholder-val="{{true}}"><div style="margin-top: 14px; padding: 16px 18px; border: 3px solid #1A1A2E; border-radius: 16px; background: #F4F4F8; font-size: 14px; font-weight: 500; line-height: 1.55;">On the next screen you get a QR code for the exact amount. Scan it in any Thai bank app. The order confirms itself within a few seconds of paying. The code is valid for 15 minutes.</div></sc-if>
+<label style="display: flex; align-items: flex-start; gap: 10px; margin-top: 20px; font-size: 14px; font-weight: 500; line-height: 1.5;"><input type="checkbox" required style="width: 20px; height: 20px; flex: none; margin-top: 2px; accent-color: #1A1A2E;"><span>I agree that Yummy Treats! uses my name, address and phone number to deliver this order and contact me about it, as described in the <a href="#">privacy notice (PDPA)</a>. Nothing else, no marketing unless I tick the box below.</span></label>
+<label style="display: flex; align-items: center; gap: 10px; margin-top: 10px; font-size: 14px; font-weight: 500;"><input type="checkbox" style="width: 20px; height: 20px; accent-color: #1A1A2E;">Tell me about new treats on LINE (optional)</label>
+<a href="b15-confirmation.dc.html" class="b4-btn" style="display: flex; align-items: center; justify-content: center; margin-top: 22px; height: 60px; background: #B8325A; color: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 18px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">{{payLabel}}</a>
+<p style="margin: 12px 0 0; font-size: 12px; font-weight: 700; color: #4A4A66; text-align: center;">Total {{total}}. By ordering you accept the <a href="#" style="color: #4A4A66;">terms</a>. Demo shop: no real payment is taken.</p>
+</fieldset>
+</form>
+
+<aside style="position: sticky; top: 24px; display: grid; gap: 20px;">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 28px; box-shadow: 8px 8px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; letter-spacing: -0.02em;">Your order</h2>
+<ul style="list-style: none; margin: 18px 0 0; padding: 0; display: grid; gap: 14px; font-size: 15px; font-weight: 500;">
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: center;"><span style="width: 56px; height: 56px; border: 3px solid #1A1A2E; border-radius: 12px; background: #F3E4B4; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">1x</span><span><strong>Chicken &amp; Rice</strong><br><span style="color: #4A4A66; font-size: 13px;">3 kg, adult dog</span></span><span style="font-weight: 700;">฿690</span></li>
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: center;"><span style="width: 56px; height: 56px; border: 3px solid #1A1A2E; border-radius: 12px; background: #DFEDE0; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">1x</span><span><strong>Slow Feeder Bowl</strong><br><span style="color: #4A4A66; font-size: 13px;">Size M. Pre-order: ships 12 to 19 Nov</span></span><span style="font-weight: 700;">฿290</span></li>
+<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 14px; align-items: center;"><span style="width: 56px; height: 56px; border: 3px solid #1A1A2E; border-radius: 12px; background: #F2E0C8; display: inline-flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700;">2x</span><span><strong>Mango &amp; Oat Biscuits</strong><br><span style="color: #4A4A66; font-size: 13px;">150 g, dog treats</span></span><span style="font-weight: 700;">฿176</span></li>
+</ul>
+<div style="display: flex; gap: 8px; margin-top: 18px;"><label for="c-coupon" style="position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0);">Coupon code</label><input id="c-coupon" type="text" placeholder="Coupon code" style="flex: 1; height: 44px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 14px; background: #FFFFFF; color: #1A1A2E;"><button type="button" style="height: 44px; padding: 0 16px; border: 3px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">Apply</button></div>
+<dl style="margin: 18px 0 0; display: grid; grid-template-columns: 1fr auto; gap: 10px 16px; font-size: 15px; font-weight: 500; border-top: 3px solid #1A1A2E; padding-top: 16px;">
+<dt>Items</dt><dd style="margin: 0; text-align: right; font-weight: 700;">฿1,156</dd>
+<dt>Delivery, Bangkok</dt><dd style="margin: 0; text-align: right; font-weight: 700;">Free</dd>
+<dt style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; padding-top: 8px;">Total</dt><dd style="margin: 0; text-align: right; font-family: 'Bricolage Grotesque', sans-serif; font-size: 24px; font-weight: 800; padding-top: 8px;">{{total}}</dd>
+</dl>
+<p style="margin: 8px 0 0; font-size: 12px; font-weight: 700; color: #4A4A66;">Includes VAT. The bowl ships separately when it arrives, at no extra delivery cost.</p>
+</div>
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 22px 28px; display: grid; gap: 10px; font-size: 14px; font-weight: 500;">
+<div style="display: flex; gap: 12px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"></rect><path d="M8 11V7a4 4 0 0 1 8 0v4"></path></svg><span>Payments run through Opn Payments, a Thai licensed gateway. We never see your card number.</span></div>
+<div style="display: flex; gap: 12px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"></path><circle cx="7" cy="18" r="1.5"></circle><circle cx="17" cy="18" r="1.5"></circle></svg><span>Ships from Bangkok with [COURIER]. Tracking by SMS and LINE.</span></div>
+<div style="display: flex; gap: 12px; align-items: center;"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"></path><path d="M18 3v4h-4M6 21v-4h4"></path></svg><span>Unopened returns within 14 days. DBD registered company.</span></div>
+</div>
+</aside>
+</section>
+
+<footer style="margin-top: auto; padding: 32px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":2500}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const M = [
+      { k: 'qr', label: 'PromptPay QR', sub: 'Scan in any Thai bank app. Confirms in seconds.', tag: 'Most popular', pay: 'Continue to PromptPay' },
+      { k: 'bank', label: 'Bank transfer, then send your slip', sub: 'Transfer to our account, upload the slip on the order page or LINE.', tag: 'No fees', pay: 'Place order, then transfer' },
+      { k: 'card', label: 'Credit or debit card', sub: 'Visa, Mastercard, JCB. Secured by Opn.', tag: '', pay: 'Pay ฿1,156 by card' },
+      { k: 'cod', label: 'Cash on delivery', sub: 'Pay the courier. Bangkok and vicinity only.', tag: '', pay: 'Place order, pay on delivery' }
+    ];
+    const cur = this.state.m ?? 'qr';
+    const methods = M.map((m) => ({
+      label: m.label, sub: m.sub, tag: m.tag, on: m.k === cur,
+      bd: m.k === cur ? '#1A1A2E' : '#E4E4EA', bg: m.k === cur ? '#E9C46A' : '#FFFFFF', dot: m.k === cur ? '#1A1A2E' : '#FFFFFF',
+      pick: () => this.setState({ m: m.k })
+    }));
+    const sel = M.filter((m) => m.k === cur)[0];
+    return {
+      methods: methods, payLabel: sel.pay, total: '฿1,156',
+      isQr: cur === 'qr', isBank: cur === 'bank', isCard: cur === 'card', isCod: cur === 'cod'
+    };
+  }
+}
+</script>
+</body>
+</html>

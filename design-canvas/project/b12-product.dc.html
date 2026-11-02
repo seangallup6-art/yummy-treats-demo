@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Yummy Treats! - Product</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&amp;family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#E9C46A}
+a{color:#1A1A2E}a:hover{color:#B8325A}
+@keyframes b4-run{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.b4-track{display:flex;gap:48px;white-space:nowrap;width:max-content;animation:b4-run 22s linear infinite}
+.b4-btn{cursor:pointer;transition:transform .12s ease,box-shadow .12s ease}
+.b4-btn:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #1A1A2E!important}
+.b4-btn:active{transform:translate(2px,2px);box-shadow:0 0 0 #1A1A2E!important}
+.b4-chip{cursor:pointer;transition:background-color .15s ease,color .15s ease}
+.b4-thumb{cursor:pointer;transition:transform .15s ease}
+.b4-thumb:hover{transform:translateY(-2px)}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid #3A55C4;outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.b4-track{animation:none}*{transition:none!important}}
+</style>
+</helmet>
+<div style="width: 1440px; height: 3600px; background: #E9C46A; color: #1A1A2E; font-family: 'Space Grotesk', sans-serif; box-sizing: border-box; overflow: hidden; display: flex; flex-direction: column;">
+
+<div style="background: #1A1A2E; color: #E9C46A; height: 44px; display: flex; align-items: center; overflow: hidden;">
+<div style="flex: 1; overflow: hidden;"><div class="b4-track" style="animation-play-state: {{play}}; font-family: 'Bricolage Grotesque', sans-serif; font-size: 16px; font-weight: 700; padding-left: 24px;"><span>Free delivery in Bangkok over ฿1,000</span><span>Ships from Bangkok</span><span>Made in Thailand</span><span>PromptPay, transfer, card or COD</span><span>LINE @yummytreats</span><span>Free delivery across Thailand over ฿1,500</span><span aria-hidden="true">Free delivery in Bangkok over ฿1,000</span><span aria-hidden="true">Ships from Bangkok</span><span aria-hidden="true">Made in Thailand</span><span aria-hidden="true">PromptPay, transfer, card or COD</span><span aria-hidden="true">LINE @yummytreats</span><span aria-hidden="true">Free delivery across Thailand over ฿1,500</span></div></div>
+<button type="button" onClick="{{togglePlay}}" aria-pressed="{{paused}}" style="flex: none; height: 44px; padding: 0 16px; border: none; border-left: 3px solid #E9C46A; background: #1A1A2E; color: #E9C46A; font-family: inherit; font-size: 13px; font-weight: 700; cursor: pointer;">{{playLabel}}</button>
+</div>
+
+<header style="height: 84px; display: flex; align-items: center; gap: 28px; padding: 0 48px; border-bottom: 3px solid #1A1A2E;">
+<a href="b10-home.dc.html" style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-decoration: none;">Yummy Treats<span style="color: #B8325A;">!</span></a>
+<nav aria-label="Main" style="display: flex; gap: 8px; margin-left: 12px;">
+<a href="b11-shop.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; border: 3px solid #1A1A2E; border-radius: 999px; font-weight: 700; font-size: 14px; background: #FFFFFF;">Shop</a>
+<a href="b22-guide.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Guides</a>
+<a href="b21-stockists.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Where to buy</a>
+<a href="b20-help.dc.html" style="text-decoration: none; height: 40px; padding: 0 16px; display: inline-flex; align-items: center; font-weight: 700; font-size: 14px;">Help</a>
+</nav>
+<div style="margin-left: auto; display: flex; align-items: center; gap: 16px; font-weight: 700; font-size: 14px;">
+<a href="b23-search.dc.html" style="text-decoration: none;">Search</a><a href="#" style="text-decoration: none; color: #4A4A66;">TH</a><a href="#" style="text-decoration: none;">EN</a>
+<a href="b13-cart.dc.html" style="text-decoration: none; height: 44px; padding: 0 18px; display: inline-flex; align-items: center; gap: 8px; border: 3px solid #1A1A2E; border-radius: 999px; background: #B8325A; color: #FFFFFF; box-shadow: 4px 4px 0 #1A1A2E;">Cart <span style="display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 13px;">{{cart}}</span></a>
+</div>
+</header>
+
+<nav aria-label="Breadcrumb" style="padding: 24px 48px 0; font-size: 13px; font-weight: 700; color: #4A4A66;"><a href="b10-home.dc.html" style="color: #4A4A66; text-decoration: none;">Home</a> / <a href="b11-shop.dc.html" style="color: #4A4A66; text-decoration: none;">Shop</a> / <a href="b11-shop.dc.html" style="color: #4A4A66; text-decoration: none;">Dog food</a> / Chicken &amp; Rice</nav>
+
+<section aria-label="Product" style="display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; padding: 20px 48px 0; align-items: start;">
+<div>
+<div style="position: relative; height: 620px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; box-shadow: 8px 8px 0 #1A1A2E; overflow: hidden; display: flex; align-items: center; justify-content: center;">
+<sc-if value="{{isFront}}" hint-placeholder-val="{{true}}"><div style="width: 440px; height: 500px;"><svg viewBox="0 0 200 230" width="100%" height="100%" aria-hidden="true"><path d="M50 40 Q50 24 66 24 L134 24 Q150 24 150 40 L156 200 Q156 216 140 216 L60 216 Q44 216 44 200 Z" fill="#E2A75C" stroke="#1A1A2E" stroke-width="4"></path><rect x="50" y="24" width="100" height="16" rx="5" fill="#1A1A2E"></rect><circle cx="100" cy="76" r="24" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></circle><rect x="60" y="112" width="80" height="62" rx="8" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect><rect x="70" y="124" width="52" height="9" rx="4.5" fill="#1A1A2E"></rect><rect x="70" y="140" width="60" height="6" rx="3" fill="#B8325A"></rect><rect x="70" y="152" width="40" height="6" rx="3" fill="#3A55C4"></rect><rect x="62" y="186" width="30" height="12" rx="6" fill="#1A1A2E"></rect></svg></div></sc-if>
+<sc-if value="{{isLabel}}" hint-placeholder-val="{{false}}"><div style="width: 520px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 16px; padding: 24px 28px;"><div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Chicken &amp; Rice, adult dog</div><div style="font-size: 12px; font-weight: 700; color: #4A4A66; margin-top: 2px;">Guaranteed analysis, as printed on the bag</div><table style="width: 100%; border-collapse: collapse; margin-top: 14px; font-size: 15px;"><tbody><tr><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA;">Crude protein</td><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">min [%]</td></tr><tr><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA;">Crude fat</td><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">min [%]</td></tr><tr><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA;">Crude fibre</td><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">max [%]</td></tr><tr><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA;">Moisture</td><td style="padding: 8px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">max [%]</td></tr><tr><td style="padding: 8px 0;">Calories</td><td style="padding: 8px 0; text-align: right; font-weight: 700;">[KCAL] kcal / 100 g</td></tr></tbody></table><p style="margin: 12px 0 0; font-size: 13px; line-height: 1.6; color: #4A4A66;">Chicken, rice, [INGREDIENT], [INGREDIENT], [INGREDIENT]. Feed reg. [REG NO]. Lot [LOT NO].</p></div></sc-if>
+<sc-if value="{{isKibble}}" hint-placeholder-val="{{false}}"><div style="text-align: center; font-size: 14px; font-weight: 700; color: #4A4A66;">[PHOTO: the kibble, close up, in a white bowl]</div></sc-if>
+<sc-if value="{{isLife}}" hint-placeholder-val="{{false}}"><div style="text-align: center; font-size: 14px; font-weight: 700; color: #4A4A66;">[PHOTO: a dog eating from the slow feeder bowl, yellow backdrop]</div></sc-if>
+<span style="position: absolute; top: 20px; right: 20px; width: 120px; height: 120px; border-radius: 50%; background: #3A55C4; color: #FFFFFF; border: 3px solid #1A1A2E; display: inline-flex; align-items: center; justify-content: center; text-align: center; font-family: 'Bricolage Grotesque', sans-serif; font-size: 15px; font-weight: 800; line-height: 1.1; padding: 12px; box-sizing: border-box; transform: rotate(10deg); box-shadow: 4px 4px 0 #1A1A2E;">Made in Thailand</span>
+</div>
+<div role="group" aria-label="Product images" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; margin-top: 18px;">
+<sc-for list="{{thumbs}}" as="t" hint-placeholder-count="4">
+<button type="button" class="b4-thumb" onClick="{{t.pick}}" aria-pressed="{{t.on}}" aria-label="{{t.label}}" style="height: 110px; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 16px; box-shadow: {{t.shadow}}; font-family: inherit; font-size: 12px; font-weight: 700; color: #1A1A2E; padding: 8px;">{{t.label}}</button>
+</sc-for>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 32px; box-shadow: 8px 8px 0 #1A1A2E;">
+<div style="font-size: 14px; font-weight: 700; color: #4A4A66;">Adult dog, dry food</div>
+<h1 style="margin: 4px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 48px; line-height: 0.98; font-weight: 800; letter-spacing: -0.04em;">Chicken &amp; Rice</h1>
+<div style="display: flex; align-items: center; gap: 10px; margin-top: 12px; font-size: 13px; font-weight: 700; color: #4A4A66;"><span aria-hidden="true" style="letter-spacing: 2px; color: #E4E4EA;">★★★★★</span><a href="#reviews" style="color: #4A4A66;">No reviews yet</a></div>
+<div style="display: flex; align-items: baseline; gap: 12px; margin-top: 18px;"><span style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em;">{{price}}</span><span style="font-size: 14px; font-weight: 700; color: #4A4A66;">{{perkg}}</span></div>
+<div style="font-size: 14px; font-weight: 700; margin-top: 22px;">Size <span style="color: #4A4A66;">{{sizeHint}}</span></div>
+<div role="group" aria-label="Size" style="display: flex; gap: 10px; margin-top: 10px; flex-wrap: wrap;">
+<sc-for list="{{sizes}}" as="s" hint-placeholder-count="3">
+<button type="button" class="b4-chip" onClick="{{s.pick}}" aria-pressed="{{s.on}}" style="height: 48px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; background: {{s.bg}}; color: {{s.fg}}; font-family: inherit; font-size: 14px; font-weight: 700; display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; line-height: 1.1;"><span>{{s.label}}</span><span style="font-size: 11px; font-weight: 700; color: {{s.subfg}};">{{s.sub}}</span></button>
+</sc-for>
+</div>
+<div style="display: flex; gap: 12px; margin-top: 22px; align-items: center;">
+<div style="display: inline-flex; border: 3px solid #1A1A2E; border-radius: 999px; overflow: hidden; flex: none;"><button type="button" onClick="{{less}}" aria-label="Fewer" style="width: 46px; height: 50px; border: none; background: #FFFFFF; font-family: inherit; font-size: 20px; font-weight: 700; cursor: pointer;">-</button><span style="width: 46px; display: inline-flex; align-items: center; justify-content: center; font-weight: 700; border-left: 3px solid #1A1A2E; border-right: 3px solid #1A1A2E;" aria-live="polite">{{qty}}</span><button type="button" onClick="{{more}}" aria-label="More" style="width: 46px; height: 50px; border: none; background: #FFFFFF; font-family: inherit; font-size: 20px; font-weight: 700; cursor: pointer;">+</button></div>
+<button type="button" class="b4-btn" onClick="{{add}}" style="flex: 1; height: 56px; border: 3px solid #1A1A2E; border-radius: 999px; background: {{addBg}}; color: {{addFg}}; font-family: inherit; font-size: 16px; font-weight: 700; box-shadow: 4px 4px 0 #1A1A2E;">{{addLabel}}</button>
+</div>
+<ul style="list-style: none; margin: 22px 0 0; padding: 18px 0 0; border-top: 3px solid #1A1A2E; display: grid; gap: 10px; font-size: 14px; font-weight: 500;">
+<li style="display: flex; gap: 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><path d="M3 7h11v10H3zM14 10h4l3 3v4h-7z"></path><circle cx="7" cy="18" r="1.5"></circle><circle cx="17" cy="18" r="1.5"></circle></svg><span><strong>Arrives Mon 3 to Tue 4 Nov</strong> in Bangkok if you order before 14:00 today. 2 to 4 days elsewhere.</span></li>
+<li style="display: flex; gap: 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><rect x="3" y="6" width="18" height="12" rx="2"></rect><path d="M3 10h18"></path></svg><span><strong>Delivery ฿50</strong> in Bangkok, free over ฿1,000. ฿80 elsewhere, free over ฿1,500.</span></li>
+<li style="display: flex; gap: 12px;"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A1A2E" stroke-width="2.5" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3"></path><path d="M18 3v4h-4M6 21v-4h4"></path></svg><span><strong>Unopened returns within 14 days.</strong> Opened bag your dog refuses? Message us, we sort it.</span></li>
+</ul>
+<div style="display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap;">
+<a href="b20-help.dc.html" style="display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 13px; font-weight: 700; text-decoration: none; background: #3A55C4; color: #FFFFFF;">Ask on LINE</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 13px; font-weight: 700; text-decoration: none;">Shopee</a>
+<a href="#" style="display: inline-flex; align-items: center; height: 42px; padding: 0 16px; border: 3px solid #1A1A2E; border-radius: 999px; font-size: 13px; font-weight: 700; text-decoration: none;">Lazada</a>
+<span style="font-size: 12px; font-weight: 700; color: #4A4A66; align-self: center;">Marketplace prices may differ.</span>
+</div>
+</div>
+</section>
+
+<section aria-label="Details" style="margin: 64px 48px 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 24px;">
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 32px; box-shadow: 6px 6px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.03em;">What is in it</h2>
+<p style="margin: 14px 0 0; font-size: 16px; line-height: 1.6; font-weight: 500;">Chicken (fresh, [%]), rice, [INGREDIENT], [INGREDIENT], [INGREDIENT], [INGREDIENT], sunflower oil, [INGREDIENT], salt, vitamins and minerals. Ingredients listed in descending order by weight, as on the bag.</p>
+<h3 style="margin: 24px 0 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 22px; font-weight: 800;">Guaranteed analysis</h3>
+<table style="width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 15px;"><thead><tr style="text-align: left; font-size: 12px; color: #4A4A66;"><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E;">Nutrient</th><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E; text-align: right;">Min</th><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E; text-align: right;">Max</th></tr></thead><tbody><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">Crude protein</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[%]</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; color: #4A4A66;">-</td></tr><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">Crude fat</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[%]</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; color: #4A4A66;">-</td></tr><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">Crude fibre</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; color: #4A4A66;">-</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[%]</td></tr><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">Moisture</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; color: #4A4A66;">-</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[%]</td></tr><tr><td style="padding: 9px 0;">Calories</td><td style="padding: 9px 0; text-align: right; font-weight: 700;" colspan="2">[KCAL] kcal / 100 g</td></tr></tbody></table>
+<div style="margin-top: 22px; display: flex; gap: 10px; align-items: flex-end;"><div style="flex: 1;"><label for="b12-lot" style="display: block; font-size: 13px; font-weight: 700; margin-bottom: 6px;">Trace your bag: lot number</label><input id="b12-lot" type="text" placeholder="e.g. 2609-14" style="width: 100%; height: 48px; box-sizing: border-box; border: 3px solid #1A1A2E; border-radius: 12px; padding: 0 14px; font-family: inherit; font-size: 15px; background: #FFFFFF; color: #1A1A2E;"></div><button type="button" style="height: 48px; padding: 0 18px; border: 3px solid #1A1A2E; border-radius: 999px; background: #1A1A2E; color: #FFFFFF; font-family: inherit; font-size: 14px; font-weight: 700; cursor: pointer;">Look up</button></div>
+</div>
+<div style="background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 32px; box-shadow: 6px 6px 0 #1A1A2E;">
+<h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.03em;">How much to feed</h2>
+<p style="margin: 14px 0 0; font-size: 15px; line-height: 1.6; font-weight: 500; color: #4A4A66;">Grams per day for an adult dog with normal activity. Split into two meals. Fresh water always. Adjust by 10% if your dog is gaining or losing.</p>
+<table style="width: 100%; border-collapse: collapse; margin-top: 16px; font-size: 15px;"><thead><tr style="text-align: left; font-size: 12px; color: #4A4A66;"><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E;">Dog weight</th><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E; text-align: right;">Per day</th><th style="font-weight: 700; padding: 8px 0; border-bottom: 3px solid #1A1A2E; text-align: right;">3 kg bag lasts</th></tr></thead><tbody><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">5 kg</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[g]</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right;">[days]</td></tr><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">10 kg</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[g]</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right;">[days]</td></tr><tr><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA;">20 kg</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right; font-weight: 700;">[g]</td><td style="padding: 9px 0; border-bottom: 1px solid #E4E4EA; text-align: right;">[days]</td></tr><tr><td style="padding: 9px 0;">30 kg</td><td style="padding: 9px 0; text-align: right; font-weight: 700;">[g]</td><td style="padding: 9px 0; text-align: right;">[days]</td></tr></tbody></table>
+<p style="margin: 14px 0 0; font-size: 13px; font-weight: 700; color: #4A4A66;">Table to be supplied by [VET NAME]. Switching from another food? <a href="b22-guide.dc.html">Read the seven-day guide</a>.</p>
+<div style="margin-top: 22px; padding: 18px 20px; background: #E9C46A; border: 3px solid #1A1A2E; border-radius: 16px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; font-size: 14px;"><div><div style="font-size: 12px; font-weight: 700; color: #4A4A66;">Made in</div><div style="font-weight: 700;">[PROVINCE], Thailand</div></div><div><div style="font-size: 12px; font-weight: 700; color: #4A4A66;">Feed registration</div><div style="font-weight: 700;">[REG NO]</div></div><div><div style="font-size: 12px; font-weight: 700; color: #4A4A66;">Recipe checked by</div><div style="font-weight: 700;">[VET NAME], Bangkok</div></div><div><div style="font-size: 12px; font-weight: 700; color: #4A4A66;">Best before</div><div style="font-weight: 700;">12 months from the date on the bag</div></div></div>
+</div>
+</section>
+
+<section id="reviews" aria-label="Reviews" style="margin: 48px 48px 0; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 24px; padding: 32px; display: flex; align-items: center; justify-content: space-between; gap: 32px;">
+<div><h2 style="margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 32px; font-weight: 800; letter-spacing: -0.03em;">Reviews</h2><p style="margin: 8px 0 0; font-size: 15px; font-weight: 500; color: #4A4A66; max-width: 640px;">No reviews yet. Once there are five, a rating breakdown appears here with a "with photos" filter. Reviews come from verified orders only; we never write our own.</p></div>
+<a href="#" class="b4-btn" style="flex: none; display: inline-flex; align-items: center; height: 48px; padding: 0 22px; border: 3px solid #1A1A2E; border-radius: 999px; background: #FFFFFF; color: #1A1A2E; font-size: 15px; font-weight: 700; text-decoration: none; box-shadow: 4px 4px 0 #1A1A2E;">Write the first review</a>
+</section>
+
+<section aria-label="Goes with" style="padding: 56px 48px 0;">
+<h2 style="margin: 0 0 20px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 40px; font-weight: 800; letter-spacing: -0.03em; line-height: 1;">Goes with</h2>
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px;">
+<sc-for list="{{related}}" as="p" hint-placeholder-count="4">
+<a href="b12-product.dc.html" style="text-decoration: none; background: #FFFFFF; border: 3px solid #1A1A2E; border-radius: 20px; box-shadow: 6px 6px 0 #1A1A2E; overflow: hidden; display: block;">
+<div style="height: 150px; background: {{p.tint}}; border-bottom: 3px solid #1A1A2E; display: flex; align-items: center; justify-content: center;"><div style="width: 110px; height: 110px;"><svg viewBox="0 0 200 200" width="100%" height="100%" aria-hidden="true"><rect x="60" y="56" width="80" height="128" rx="14" fill="{{p.c1}}" stroke="#1A1A2E" stroke-width="4"></rect><rect x="56" y="40" width="88" height="24" rx="8" fill="#1A1A2E"></rect><rect x="66" y="100" width="68" height="40" rx="6" fill="#FFFFFF" stroke="#1A1A2E" stroke-width="3"></rect></svg></div></div>
+<div style="padding: 14px 16px 16px;"><div style="font-size: 12px; font-weight: 700; color: #4A4A66;">{{p.line}}</div><div style="font-family: 'Bricolage Grotesque', sans-serif; font-size: 19px; font-weight: 800; margin-top: 2px; line-height: 1.1;">{{p.name}}</div><div style="display: flex; justify-content: space-between; margin-top: 8px; font-weight: 700;"><span>{{p.price}}</span><span style="font-size: 12px; color: #4A4A66;">{{p.perkg}}</span></div></div>
+</a>
+</sc-for>
+</div>
+</section>
+
+<footer style="margin-top: auto; padding: 36px 48px; border-top: 3px solid #1A1A2E; display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700;">
+<span>Yummy Treats! [COMPANY NAME] Co., Ltd. [YOUR ADDRESS], Bangkok. DBD registered. Feed reg. [REG NO].</span>
+<span style="display: flex; gap: 20px;"><a href="b20-help.dc.html" style="text-decoration: none;">Delivery</a><a href="b20-help.dc.html" style="text-decoration: none;">Payment and slips</a><a href="b20-help.dc.html" style="text-decoration: none;">Returns</a><a href="#" style="text-decoration: none;">Privacy (PDPA)</a><a href="#" style="text-decoration: none;">ภาษาไทย</a></span>
+</footer>
+
+<sc-if value="{{toastOn}}" hint-placeholder-val="{{false}}"><div role="status" style="position: absolute; left: 50%; bottom: 40px; transform: translateX(-50%) rotate(-2deg); background: #1A1A2E; color: #E9C46A; border: 3px solid #E9C46A; border-radius: 999px; padding: 14px 24px; font-family: 'Bricolage Grotesque', sans-serif; font-size: 20px; font-weight: 800; box-shadow: 5px 5px 0 #B8325A;">{{toast}}</div></sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1440,"height":3600}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const S = [
+      { label: '1.5 kg', price: 390, perkg: '฿260 / kg', stock: 'In stock' },
+      { label: '3 kg', price: 690, perkg: '฿230 / kg', stock: 'In stock' },
+      { label: '8 kg', price: 1590, perkg: '฿199 / kg', stock: 'Only 2 left' }
+    ];
+    const si = this.state.si ?? 1;
+    const qty = this.state.qty ?? 1;
+    const img = this.state.img ?? 0;
+    const cur = S[si];
+    const thumbsDef = ['Front of bag', 'Label: analysis', 'The kibble', 'In use'];
+    const added = this.state.addedN ?? 0;
+    const paused = !!this.state.paused;
+    return {
+      cart: added,
+      price: '฿' + (cur.price * qty).toLocaleString('en-US'),
+      perkg: cur.perkg + (qty > 1 ? ', ' + qty + ' x ฿' + cur.price.toLocaleString('en-US') : ''),
+      sizeHint: cur.label + ', ' + cur.stock.toLowerCase(),
+      sizes: S.map((s, i) => ({
+        label: s.label, sub: s.perkg + (s.stock !== 'In stock' ? ', ' + s.stock.toLowerCase() : ''), on: i === si,
+        bg: i === si ? '#1A1A2E' : '#FFFFFF', fg: i === si ? '#FFFFFF' : '#1A1A2E', subfg: i === si ? '#E9C46A' : (s.stock !== 'In stock' ? '#B8325A' : '#4A4A66'),
+        pick: () => this.setState({ si: i })
+      })),
+      qty: qty,
+      less: () => this.setState({ qty: Math.max(1, qty - 1) }),
+      more: () => this.setState({ qty: Math.min(9, qty + 1) }),
+      addLabel: this.state.justAdded ? 'Added!' : 'Add to cart',
+      addBg: this.state.justAdded ? '#1A1A2E' : '#E9C46A', addFg: this.state.justAdded ? '#E9C46A' : '#1A1A2E',
+      add: () => {
+        this.setState({ addedN: added + qty, justAdded: true, toast: qty + ' x Chicken & Rice ' + cur.label + ' in the cart' });
+        clearTimeout(this._t1); clearTimeout(this._t2);
+        this._t1 = setTimeout(() => this.setState({ justAdded: false }), 1200);
+        this._t2 = setTimeout(() => this.setState({ toast: '' }), 2200);
+      },
+      toast: this.state.toast ?? '', toastOn: !!this.state.toast,
+      isFront: img === 0, isLabel: img === 1, isKibble: img === 2, isLife: img === 3,
+      thumbs: thumbsDef.map((t, i) => ({ label: t, on: i === img, shadow: i === img ? '4px 4px 0 #B8325A' : '4px 4px 0 #1A1A2E', pick: () => this.setState({ img: i }) })),
+      related: [
+        { name: 'Chicken Jerky Strips', line: 'Dog treats, 80 g', price: '฿120', perkg: '฿1,500 / kg', c1: '#E2A75C', tint: '#F3E4B4' },
+        { name: 'Dental Chews', line: 'Dog treats, 6 chews', price: '฿150', perkg: '', c1: '#8FC594', tint: '#DFEDE0' },
+        { name: 'Mango & Oat Biscuits', line: 'Dog treats, 150 g', price: '฿88', perkg: '฿587 / kg', c1: '#E09A3E', tint: '#F2E0C8' },
+        { name: 'Beef Stew', line: 'Wet pouch, 100 g', price: '฿35', perkg: '฿350 / kg', c1: '#DC7C92', tint: '#F1DCE1' }
+      ],
+      paused: paused, play: paused ? 'paused' : 'running', playLabel: paused ? 'Play' : 'Pause',
+      togglePlay: () => this.setState({ paused: !paused })
+    };
+  }
+}
+</script>
+</body>
+</html>

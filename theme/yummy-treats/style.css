@@ -1,0 +1,49 @@
+/*
+Theme Name: Yummy Treats!
+Theme URI: https://github.com/[GITHUB USER]/yummy-treats-demo
+Author: Sean Gallup
+Author URI: https://portfolio-site.seangallup6.workers.dev
+Description: A loud, friendly WooCommerce block theme for a Thai own-brand pet food shop. Mustard, raspberry and blue, hard shadows, pill buttons. Built as a demo; Thai first, English second.
+Requires at least: 7.0
+Tested up to: 7.1
+Requires PHP: 8.1
+Version: 0.1.0
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: yummy-treats
+Tags: e-commerce, block-patterns, full-site-editing, one-column, custom-colors, custom-logo, translation-ready, accessibility-ready
+
+Fonts: Bricolage Grotesque, Space Grotesk and Prompt, SIL Open Font License 1.1, self-hosted from Fontsource subsets.
+*/
+
+/*
+ * Everything visual lives in theme.json (tokens) and assets/css/theme.css (components).
+ * This file only carries the header above and the two rules that cannot be expressed in theme.json.
+ */
+
+/* Thai: Prompt for everything, headings 20% smaller with more line height, because Thai sets taller and wider and stacks marks. */
+:lang(th) body,
+:lang(th) .has-body-font-family {
+	font-family: var(--wp--preset--font-family--thai);
+}
+:lang(th) h1, :lang(th) h2, :lang(th) h3, :lang(th) h4,
+:lang(th) .has-display-font-family {
+	font-family: var(--wp--preset--font-family--thai);
+	font-size: calc(1em * 0.8);
+	line-height: 1.2;
+	letter-spacing: 0;
+}
+:lang(th) .wp-block-post-title,
+:lang(th) .wp-block-heading {
+	line-height: 1.2;
+}
+
+/* Reduced motion: nothing moves on its own. The marquee and reveals also check this in JS. */
+@media (prefers-reduced-motion: reduce) {
+	*, *::before, *::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+		scroll-behavior: auto !important;
+	}
+}
