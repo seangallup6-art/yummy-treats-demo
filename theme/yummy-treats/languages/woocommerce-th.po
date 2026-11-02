@@ -8,59 +8,161 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: tools/make-mo.py\n"
 
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d ชิ้น"
+
+msgid "%d item selected"
+msgid_plural "%d items selected"
+msgstr[0] "เลือกแล้ว %d รายการ"
+
+msgid "%s quantity"
+msgstr "จำนวน %s"
+
+msgid "(%d item)"
+msgid_plural "(%d items)"
+msgstr[0] "(%d ชิ้น)"
+
+msgid "Account number"
+msgstr "เลขที่บัญชี"
+
+msgid "Add a note to your order"
+msgstr "เพิ่มหมายเหตุถึงร้าน"
+
 msgid "Add coupons"
 msgstr "ใส่คูปอง"
 
 msgid "Add to cart"
 msgstr "หยิบใส่ตะกร้า"
 
+msgid "Attributes"
+msgstr "คุณสมบัติ"
+
+msgid "Availability"
+msgstr "สถานะสินค้า"
+
+msgid "Bank"
+msgstr "ธนาคาร"
+
 msgid "Billing address"
 msgstr "ที่อยู่ออกใบเสร็จ"
+
+msgid "By proceeding with your purchase you agree to our %1$s and %2$s"
+msgstr "เมื่อดำเนินการสั่งซื้อ ถือว่าคุณยอมรับ%1$sและ%2$sของเรา"
 
 msgid "Cart"
 msgstr "ตะกร้า"
 
+msgid "Cart totals"
+msgstr "ยอดรวมในตะกร้า"
+
 msgid "Checkout"
 msgstr "ชำระเงิน"
+
+msgid "Clear options"
+msgstr "ล้างตัวเลือก"
+
+msgid "Close dialog"
+msgstr "ปิดหน้าต่าง"
 
 msgid "Contact information"
 msgstr "ข้อมูลติดต่อ"
 
+msgid "Country / Region"
+msgstr "ประเทศ/ภูมิภาค"
+
+msgid "Country/Region"
+msgstr "ประเทศ/ภูมิภาค"
+
 msgid "Courier delivery"
 msgstr "จัดส่งโดยขนส่ง"
+
+msgid "Date:"
+msgstr "วันที่:"
 
 msgid "Default sorting"
 msgstr "เรียงตามค่าเริ่มต้น"
 
+msgid "Details"
+msgstr "รายละเอียด"
+
+msgid "Edit"
+msgstr "แก้ไข"
+
+msgid "Edit shipping address"
+msgstr "แก้ไขที่อยู่จัดส่ง"
+
 msgid "Email address"
 msgstr "อีเมล"
+
+msgid "Email:"
+msgstr "อีเมล:"
 
 msgid "Estimated total"
 msgstr "ยอดรวมโดยประมาณ"
 
+msgid "Filter products by maximum price"
+msgstr "กรองตามราคาสูงสุด"
+
+msgid "Filter products by minimum price"
+msgstr "กรองตามราคาต่ำสุด"
+
 msgid "First name"
 msgstr "ชื่อ"
+
+msgid "Free"
+msgstr "ฟรี"
 
 msgid "Free delivery"
 msgstr "ส่งฟรี"
 
+msgid "Image thumbnails"
+msgstr "ภาพย่อ"
+
 msgid "In stock"
 msgstr "มีสินค้า"
+
+msgid "Increase quantity of %s"
+msgstr "เพิ่มจำนวน %s"
 
 msgid "Last name"
 msgstr "นามสกุล"
 
+msgid "Next image"
+msgstr "ภาพถัดไป"
+
+msgid "No results found"
+msgstr "ไม่พบผลลัพธ์"
+
+msgid "Number of items in the cart: %d"
+msgstr "จำนวนสินค้าในตะกร้า: %d"
+
 msgid "On backorder"
 msgstr "สั่งจองล่วงหน้า"
+
+msgid "Order #:"
+msgstr "หมายเลขคำสั่งซื้อ:"
+
+msgid "Order details"
+msgstr "รายละเอียดคำสั่งซื้อ"
 
 msgid "Order summary"
 msgstr "สรุปคำสั่งซื้อ"
 
+msgid "Our bank details"
+msgstr "บัญชีธนาคารของเรา"
+
 msgid "Out of stock"
 msgstr "สินค้าหมด"
 
+msgid "Payment method:"
+msgstr "วิธีชำระเงิน:"
+
 msgid "Payment options"
 msgstr "วิธีชำระเงิน"
+
+msgid "Payment:"
+msgstr "การชำระเงิน:"
 
 msgid "Phone (optional)"
 msgstr "โทรศัพท์ (ไม่บังคับ)"
@@ -68,14 +170,50 @@ msgstr "โทรศัพท์ (ไม่บังคับ)"
 msgid "Place Order"
 msgstr "ยืนยันคำสั่งซื้อ"
 
+msgid "Previous image"
+msgstr "ภาพก่อนหน้า"
+
+msgid "Privacy Policy"
+msgstr "นโยบายความเป็นส่วนตัว"
+
 msgid "Proceed to Checkout"
 msgstr "ไปชำระเงิน"
+
+msgid "Product"
+msgstr "สินค้า"
+
+msgid "Product Filters"
+msgstr "ตัวกรองสินค้า"
+
+msgid "Product Gallery"
+msgstr "แกลเลอรีสินค้า"
+
+msgid "Product gallery"
+msgstr "แกลเลอรีสินค้า"
+
+msgid "Product quantity"
+msgstr "จำนวนสินค้า"
+
+msgid "Products in cart"
+msgstr "สินค้าในตะกร้า"
 
 msgid "Quantity"
 msgstr "จำนวน"
 
+msgid "Quantity of %s in your cart."
+msgstr "จำนวน %s ในตะกร้า"
+
+msgid "Reduce quantity of %s"
+msgstr "ลดจำนวน %s"
+
+msgid "Remove %s from cart"
+msgstr "นำ %s ออกจากตะกร้า"
+
 msgid "Remove item"
 msgstr "ลบสินค้า"
+
+msgid "Sale"
+msgstr "ลดราคา"
 
 msgid "Search"
 msgstr "ค้นหา"
@@ -86,11 +224,18 @@ msgstr "ที่อยู่จัดส่ง"
 msgid "Shipping options"
 msgstr "วิธีจัดส่ง"
 
-msgid "Showing %1$d–%2$d of %3$d results"
-msgstr "แสดง %1$d–%2$d จาก %3$d รายการ"
+msgid "Shipping:"
+msgstr "ค่าจัดส่ง:"
 
-msgid "Showing all %d results"
-msgstr "แสดงทั้งหมด %d รายการ"
+msgid "Shop order"
+msgstr "เรียงสินค้า"
+
+msgid "Showing all %1$d result"
+msgid_plural "Showing all %1$d results"
+msgstr[0] "แสดงทั้งหมด %1$d รายการ"
+
+msgid "Showing the single result"
+msgstr "แสดงผลลัพธ์เดียว"
 
 msgid "Sold out"
 msgstr "หมด"
@@ -110,6 +255,33 @@ msgstr "ราคา: ต่ำไปสูง"
 msgid "Subtotal"
 msgstr "ยอดรวมสินค้า"
 
+msgid "Subtotal:"
+msgstr "ยอดรวมสินค้า:"
+
+msgid "Terms and Conditions"
+msgstr "ข้อกำหนดและเงื่อนไข"
+
 msgid "Total"
 msgstr "ยอดรวม"
+
+msgid "Total:"
+msgstr "ยอดรวม:"
+
+msgid "Use same address for billing"
+msgstr "ใช้ที่อยู่นี้ออกใบเสร็จด้วย"
+
+msgid "Value"
+msgstr "รายละเอียด"
+
+msgid "Weight"
+msgstr "น้ำหนัก"
+
+msgctxt "breadcrumb"
+msgid "Home"
+msgstr "หน้าแรก"
+
+msgctxt "with first and last result"
+msgid "Showing %1$d&ndash;%2$d of %3$d result"
+msgid_plural "Showing %1$d&ndash;%2$d of %3$d results"
+msgstr[0] "แสดง %1$d&ndash;%2$d จาก %3$d รายการ"
 

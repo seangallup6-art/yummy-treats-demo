@@ -18,7 +18,10 @@ require YT_DIR . '/inc/assets.php';
 require YT_DIR . '/inc/patterns.php';
 require YT_DIR . '/inc/stockists.php';
 require YT_DIR . '/inc/debug.php';
+require YT_DIR . '/inc/playground.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require YT_DIR . '/inc/woocommerce.php';
+	require YT_DIR . '/inc/orders.php';
+	require YT_DIR . '/inc/back-in-stock.php';
 }

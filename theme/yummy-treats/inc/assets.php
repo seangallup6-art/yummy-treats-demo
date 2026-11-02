@@ -27,6 +27,8 @@ function yt_enqueue_assets() {
 
 	wp_enqueue_script( 'yummy-treats-marquee', YT_URI . '/assets/js/marquee.js', array(), yt_asset_version( 'assets/js/marquee.js' ), array( 'strategy' => 'defer' ) );
 	wp_enqueue_script( 'yummy-treats-motion', YT_URI . '/assets/js/motion.js', array(), yt_asset_version( 'assets/js/motion.js' ), array( 'strategy' => 'defer' ) );
+	// Deferred, so it runs after every footer script: on the cart page WooCommerce's cart data store already exists.
+	// (Do not list WooCommerce block scripts as dependencies here: that pulls them into <head> before their settings.)
 	wp_enqueue_script( 'yummy-treats-shop', YT_URI . '/assets/js/shop.js', array(), yt_asset_version( 'assets/js/shop.js' ), array( 'strategy' => 'defer' ) );
 
 	wp_localize_script(

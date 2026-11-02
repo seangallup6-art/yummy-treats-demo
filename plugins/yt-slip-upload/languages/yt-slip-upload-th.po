@@ -1,0 +1,112 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Bank Slip Upload for WooCommerce\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: tools/make-mo.py\n"
+
+msgid "%s ago"
+msgstr "%s ที่แล้ว"
+
+msgid "Checked"
+msgstr "ตรวจแล้ว"
+
+msgid "Choose a photo or screenshot of your slip first."
+msgstr "เลือกรูปถ่ายหรือภาพหน้าจอสลิปก่อน"
+
+msgid "JPG, PNG or PDF, up to %s."
+msgstr "JPG, PNG หรือ PDF ขนาดไม่เกิน %s"
+
+msgid "No slip yet. The customer can send one from the order page or their account."
+msgstr "ยังไม่มีสลิป ลูกค้าส่งได้จากหน้าคำสั่งซื้อหรือหน้าบัญชีของตน"
+
+msgid "Not a bank transfer order."
+msgstr "ไม่ใช่คำสั่งซื้อแบบโอนเงิน"
+
+msgid "Open PDF slip"
+msgstr "เปิดสลิป PDF"
+
+msgid "Or send it to us with your order number, #%s."
+msgstr "หรือส่งถึงเราพร้อมเลขคำสั่งซื้อ #%s"
+
+msgid "Paid already? Send us the slip here:"
+msgstr "ชำระแล้ว? ส่งสลิปให้เราที่นี่:"
+
+msgid "Payment slip"
+msgstr "สลิปการโอน"
+
+msgid "Payment slip checked by %s."
+msgstr "ตรวจสลิปการโอนโดย %s"
+
+msgid "Payment slip received (%s). Check it against your bank statement, then mark the order as Processing."
+msgstr "ได้รับสลิปการโอนแล้ว (%s) ตรวจสอบกับรายการเดินบัญชี แล้วเปลี่ยนสถานะคำสั่งซื้อเป็นกำลังดำเนินการ"
+
+msgid "Photo or screenshot of your transfer slip"
+msgstr "รูปถ่ายหรือภาพหน้าจอสลิปการโอน"
+
+msgid "Received %2$s ago: %1$s."
+msgstr "ได้รับเมื่อ %2$s ที่แล้ว: %1$s"
+
+msgid "Replace slip"
+msgstr "เปลี่ยนสลิป"
+
+msgid "Send slip"
+msgstr "ส่งสลิป"
+
+msgid "Send the slip as a JPG, PNG or PDF."
+msgstr "ส่งสลิปเป็นไฟล์ JPG, PNG หรือ PDF"
+
+msgid "Send your payment slip"
+msgstr "ส่งสลิปการโอน"
+
+msgid "Sending…"
+msgstr "กำลังส่ง…"
+
+msgid "Sent the wrong one? Choose another photo or screenshot"
+msgstr "ส่งผิดใบ? เลือกรูปถ่ายหรือภาพหน้าจออื่น"
+
+msgid "Slip"
+msgstr "สลิป"
+
+msgid "Slip checked: mark as paid"
+msgstr "ตรวจสลิปแล้ว: ทำเครื่องหมายว่าชำระแล้ว"
+
+msgid "Slip not found."
+msgstr "ไม่พบสลิป"
+
+msgid "Slip received. Thank you!"
+msgstr "ได้รับสลิปแล้ว ขอบคุณ!"
+
+msgid "That file is larger than %s. A screenshot of the slip is enough."
+msgstr "ไฟล์ใหญ่เกิน %s ภาพหน้าจอสลิปก็เพียงพอ"
+
+msgid "The upload did not go through. Try again, or send the slip to us directly."
+msgstr "อัปโหลดไม่สำเร็จ ลองอีกครั้ง หรือส่งสลิปถึงเราโดยตรง"
+
+msgid "This order no longer accepts a slip. Contact us if you have already paid."
+msgstr "คำสั่งซื้อนี้ไม่รับสลิปแล้ว หากชำระเงินไปแล้วกรุณาติดต่อเรา"
+
+msgid "This page was open for a long time. Reload it and send the slip again."
+msgstr "หน้านี้เปิดค้างไว้นานเกินไป โหลดหน้าใหม่แล้วส่งสลิปอีกครั้ง"
+
+msgid "To check"
+msgstr "รอตรวจ"
+
+msgid "Waiting"
+msgstr "รอสลิป"
+
+msgid "We check slips within the hour on working days, 9:00 to 18:00."
+msgstr "เราตรวจสลิปภายในหนึ่งชั่วโมงในวันทำการ 9:00–18:00 น."
+
+msgid "You cannot edit orders."
+msgstr "คุณไม่มีสิทธิ์แก้ไขคำสั่งซื้อ"
+
+msgid "Your payment slip"
+msgstr "สลิปการโอนของคุณ"
+
+msgid "upload your slip"
+msgstr "อัปโหลดสลิป"
+

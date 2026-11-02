@@ -12,7 +12,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function yt_setup() {
 	load_theme_textdomain( 'yummy-treats', YT_DIR . '/languages' );
-	add_action( 'init', 'yt_load_woocommerce_overrides', 20 );
+	add_action( 'init', 'yt_load_translation_overrides', 20 );
 
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/theme.css' );
@@ -114,12 +114,35 @@ function yt_site_title_bang( $content ) {
 add_filter( 'render_block_core/site-title', 'yt_site_title_bang' );
 
 /**
- * A few WooCommerce strings in Thai (buttons, checkout headings) shipped with the theme as a small .mo.
- * Merges on top of whatever language pack is installed; built by tools/make-mo.py from seed/translations-th.php.
+ * Thai for strings the theme does not own: WooCommerce's (buttons, checkout, order confirmation) and WordPress's
+ * (pagination, skip link, search title). Shipped as small .mo files in /languages and merged with any language pack
+ * already installed; built by tools/make-mo.py from seed/translations-th.php.
  */
-function yt_load_woocommerce_overrides() {
-	$file = YT_DIR . '/languages/woocommerce-' . determine_locale() . '.mo';
-	if ( file_exists( $file ) ) {
-		load_textdomain( 'woocommerce', $file );
+function yt_load_translation_overrides() {
+	foreach ( array( 'woocommerce', 'default' ) as $domain ) {
+		$file = YT_DIR . '/languages/' . $domain . '-' . determine_locale() . '.mo';
+		if ( file_exists( $file ) ) {
+			load_textdomain( $domain, $file );
+			if ( 'default' === $domain && isset( $GLOBALS['wp_locale'] ) ) {
+				// WordPress builds its month and weekday names once, early; rebuild them so dates pick up the Thai.
+				$GLOBALS['wp_locale'] = new WP_Locale(); // phpcs:ignore WordPress.WP.GlobalVariablesOverride -- same as switch_to_locale().
+			}
+		}
 	}
 }
+
+/**
+ * The same overrides for WooCommerce's JavaScript (the block cart and checkout render their labels in the browser,
+ * where .mo files never reach). wp.i18n.setLocaleData merges, so a real language pack still wins where it has a string.
+ */
+function yt_script_translation_overrides() {
+	$file = YT_DIR . '/languages/woocommerce-' . determine_locale() . '.json';
+	if ( ! file_exists( $file ) ) {
+		return;
+	}
+	$json = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions -- local theme file.
+	if ( $json ) {
+		wp_add_inline_script( 'wp-i18n', 'wp.i18n.setLocaleData(' . $json . ',"woocommerce");', 'after' );
+	}
+}
+add_action( 'wp_enqueue_scripts', 'yt_script_translation_overrides', 20 );

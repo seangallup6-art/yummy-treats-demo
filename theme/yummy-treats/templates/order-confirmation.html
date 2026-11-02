@@ -1,13 +1,13 @@
 <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 
-<!-- wp:group {"tagName":"main","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
-<main class="wp-block-group" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70)">
+<!-- wp:group {"tagName":"main","className":"yt-confirmation","style":{"spacing":{"padding":{"top":"var:preset|spacing|50","bottom":"var:preset|spacing|70"}}},"layout":{"type":"constrained"}} -->
+<main class="wp-block-group yt-confirmation" style="padding-top:var(--wp--preset--spacing--50);padding-bottom:var(--wp--preset--spacing--70)">
 	<!-- wp:woocommerce/order-confirmation-status {"align":"wide"} /-->
 	<!-- wp:woocommerce/order-confirmation-summary {"align":"wide"} /-->
 
-	<!-- wp:pattern {"slug":"yummy-treats/confirmation-steps"} /-->
+	<!-- wp:woocommerce/order-confirmation-additional-information {"align":"wide","className":"yt-paybox"} /-->
 
-	<!-- wp:woocommerce/order-confirmation-additional-information {"align":"wide"} /-->
+	<!-- wp:pattern {"slug":"yummy-treats/confirmation-steps"} /-->
 
 	<!-- wp:woocommerce/order-confirmation-totals-wrapper {"align":"wide"} -->
 	<!-- wp:pattern {"slug":"woocommerce/order-confirmation-totals-heading"} /-->
@@ -39,6 +39,16 @@
 	<!-- wp:pattern {"slug":"woocommerce/order-confirmation-additional-fields-heading"} /-->
 	<!-- wp:woocommerce/order-confirmation-additional-fields /-->
 	<!-- /wp:woocommerce/order-confirmation-additional-fields-wrapper -->
+
+	<!-- wp:pattern {"slug":"yummy-treats/confirmation-guide"} /-->
+
+	<!-- wp:woocommerce/order-confirmation-create-account {"align":"wide","className":"yt-save-details"} -->
+	<div class="wp-block-woocommerce-order-confirmation-create-account alignwide yt-save-details">
+		<!-- wp:paragraph {"className":"yt-eyebrow"} --><p class="yt-eyebrow">Optional</p><!-- /wp:paragraph -->
+		<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">Save your details for next time</h2><!-- /wp:heading -->
+		<!-- wp:paragraph --><p>One password turns this order into an account: see its status, order again in one tap, keep your address.</p><!-- /wp:paragraph -->
+	</div>
+	<!-- /wp:woocommerce/order-confirmation-create-account -->
 </main>
 <!-- /wp:group -->
 

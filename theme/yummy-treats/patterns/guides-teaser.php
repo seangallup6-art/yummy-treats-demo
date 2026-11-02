@@ -26,7 +26,7 @@
 		<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
 			<!-- wp:post-terms {"term":"category","className":"yt-eyebrow"} /-->
 			<!-- wp:post-title {"level":3,"isLink":true} /-->
-			<!-- wp:post-excerpt {"excerptLength":22,"moreText":"Read →","style":{"typography":{"fontSize":"15px"}}} /-->
+			<!-- wp:post-excerpt {"excerptLength":40,"moreText":"Read →","style":{"typography":{"fontSize":"15px"}}} /-->
 		<!-- /wp:post-template -->
 	</div>
 	<!-- /wp:query -->

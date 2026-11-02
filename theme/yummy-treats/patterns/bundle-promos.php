@@ -32,7 +32,7 @@ if ( ! function_exists( 'is_shop' ) || ! is_shop() ) {
 			<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"left"} /-->
 		<!-- /wp:woocommerce/product-image -->
 		<!-- wp:post-title {"level":3,"isLink":true,"__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
-		<!-- wp:post-excerpt {"__woocommerceNamespace":"woocommerce/product-collection/product-summary","excerptLength":16,"showMoreOnNewLine":false,"style":{"typography":{"fontSize":"13px"}}} /-->
+		<!-- wp:post-excerpt {"__woocommerceNamespace":"woocommerce/product-collection/product-summary","excerptLength":30,"showMoreOnNewLine":false,"style":{"typography":{"fontSize":"13px"}}} /-->
 		<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
 		<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->
 		<!-- /wp:woocommerce/product-template -->

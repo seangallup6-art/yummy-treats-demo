@@ -8,11 +8,35 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: tools/make-mo.py\n"
 
+msgid "%1$s is a pre-order and travels separately (ships %2$s), at no extra delivery cost. We message you when it leaves."
+msgstr "%1$s เป็นสินค้าสั่งจองและจะส่งแยก (ส่ง %2$s) โดยไม่มีค่าส่งเพิ่ม เราจะแจ้งเมื่อสินค้าออกจากร้าน"
+
+msgid "%s / kg"
+msgstr "%s / กก."
+
+msgid "%s in cash when it arrives."
+msgstr "เงินสด %s เมื่อได้รับของ"
+
+msgid "%s is back in stock"
+msgstr "%s กลับมามีของแล้ว"
+
+msgid "100 g to 1.5 kg, so a condo kitchen never has a stale half-bag at the back of the cupboard."
+msgstr "ตั้งแต่ 100 กรัมถึง 1.5 กิโลกรัม ครัวคอนโดจะได้ไม่มีถุงค้างครึ่งถุงหลบอยู่หลังตู้"
+
+msgid "7 onwards"
+msgstr "7 เป็นต้นไป"
+
+msgid "A training session can mean ten or twenty rewards. That only fits the budget if each one is tiny. A pea-sized piece is enough: your pet gets the taste, swallows it quickly and is ready for the next try."
+msgstr "การฝึกหนึ่งรอบอาจมีรางวัลสิบถึงยี่สิบครั้ง ซึ่งจะอยู่ในงบได้ก็ต่อเมื่อแต่ละชิ้นเล็กมาก ขนาดเท่าเม็ดถั่วก็พอ น้องได้รับรสชาติ กลืนได้เร็ว และพร้อมสำหรับครั้งต่อไป"
+
 msgid "Add %s more for free Bangkok delivery"
 msgstr "สั่งเพิ่มอีก %s เพื่อส่งฟรีในกรุงเทพฯ"
 
 msgid "Add [@yummytreats] on LINE"
 msgstr "แอด [@yummytreats] ทาง LINE"
+
+msgid "Add stockist"
+msgstr "เพิ่มร้านตัวแทน"
 
 msgid "Add to cart"
 msgstr "หยิบใส่ตะกร้า"
@@ -20,8 +44,23 @@ msgstr "หยิบใส่ตะกร้า"
 msgid "Added!"
 msgstr "หยิบแล้ว!"
 
+msgid "Adult"
+msgstr "โตเต็มวัย"
+
+msgid "Age"
+msgstr "วัย"
+
+msgid "All"
+msgstr "ทั้งหมด"
+
+msgid "All ages"
+msgstr "ทุกวัย"
+
 msgid "All guides →"
 msgstr "คู่มือทั้งหมด →"
+
+msgid "Almost there: transfer to pay"
+msgstr "อีกนิดเดียว: โอนเงินเพื่อชำระ"
 
 msgid "Also on the shelf at pet shops and vet clinics:"
 msgstr "มีขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์ด้วย:"
@@ -29,17 +68,65 @@ msgstr "มีขายที่ร้านสัตว์เลี้ยงแ
 msgid "Also stocked at pet shops and vet clinics near you"
 msgstr "มีขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์ใกล้คุณ"
 
+msgid "Ask us on LINE"
+msgstr "ถามเราทาง LINE"
+
+msgid "Ask your vet for a daily calorie target based on your dog’s weight, age and how active they really are. Ask for the number in kilocalories (kcal) rather than cups or scoops, because every food packs a different amount of energy into the same scoop."
+msgstr "ขอให้สัตวแพทย์กำหนดเป้าหมายแคลอรีต่อวัน จากน้ำหนัก อายุ และระดับการเคลื่อนไหวจริงของน้องหมา ขอเป็นตัวเลขกิโลแคลอรี (kcal) แทนจำนวนถ้วยหรือช้อนตัก เพราะอาหารแต่ละชนิดให้พลังงานต่อช้อนตักไม่เท่ากัน"
+
 msgid "Availability"
 msgstr "สถานะสินค้า"
+
+msgid "Baked salmon crunchies the size of a fingernail. Good for scatter-feeding on a rainy afternoon."
+msgstr "แซลมอนอบกรอบขนาดเท่าเล็บ เหมาะกับการโปรยให้หาเล่นในบ่ายวันฝนตก"
+
+msgid "Bang Na"
+msgstr "บางนา"
+
+msgid "Bangkok"
+msgstr "กรุงเทพฯ"
 
 msgid "Bangkok favourites"
 msgstr "ขายดีในกรุงเทพฯ"
 
+msgid "Bangkok usually next day, the rest of Thailand 2 to 3 days."
+msgstr "กรุงเทพฯ มักได้รับวันถัดไป ต่างจังหวัด 2 ถึง 3 วัน"
+
+msgid "Bangkok, Nonthaburi and Samut Prakan:"
+msgstr "กรุงเทพฯ นนทบุรี และสมุทรปราการ:"
+
+msgid "Bank transfer"
+msgstr "โอนผ่านธนาคาร"
+
+msgid "Bank transfer (upload your slip)"
+msgstr "โอนผ่านธนาคาร (แนบสลิป)"
+
+msgid "Beef"
+msgstr "เนื้อวัว"
+
+msgid "Breadcrumb"
+msgstr "เส้นทางนำทาง"
+
+msgid "Break bigger treats into small pieces before you start."
+msgstr "หักขนมชิ้นใหญ่เป็นชิ้นเล็กก่อนเริ่มฝึก"
+
 msgid "Bundles"
 msgstr "เซ็ตสุดคุ้ม"
 
+msgid "Buying in a shop instead"
+msgstr "ซื้อที่ร้านแทน"
+
+msgid "Card and PromptPay payments are handled by Opn Payments (test mode on this demo)."
+msgstr "การชำระด้วยบัตรและพร้อมเพย์ดำเนินการโดย Opn Payments (เดโมนี้ใช้โหมดทดสอบ)"
+
 msgid "Cart"
 msgstr "ตะกร้า"
+
+msgid "Cash on delivery"
+msgstr "เก็บเงินปลายทาง"
+
+msgid "Cash on delivery"
+msgstr "เก็บเงินปลายทาง"
 
 msgid "Category"
 msgstr "หมวดหมู่"
@@ -47,26 +134,146 @@ msgstr "หมวดหมู่"
 msgid "Cats"
 msgstr "แมว"
 
+msgid "Cats are creatures of habit. Swap their food overnight and you may get an upset stomach, or a cat who sniffs the bowl and walks away. Going slowly avoids most of it."
+msgstr "แมวเป็นสัตว์ติดนิสัย ถ้าเปลี่ยนอาหารข้ามคืน อาจได้น้องที่ท้องไส้ปั่นป่วน หรือดมชามแล้วเดินหนี ค่อยๆ เปลี่ยนช่วยเลี่ยงปัญหาส่วนใหญ่ได้"
+
+msgid "Cats hate surprises. A 7 to 10 day plan for mixing old and new, and what to do if they will not eat it."
+msgstr "แมวไม่ชอบเซอร์ไพรส์ แผน 7 ถึง 10 วันสำหรับผสมอาหารเก่ากับใหม่ และควรทำอย่างไรถ้าน้องไม่ยอมกิน"
+
+msgid "Check the kcal per piece on the pack and count out the day’s treats in the morning."
+msgstr "ดูค่า kcal ต่อชิ้นบนซอง แล้วนับขนมของทั้งวันไว้ตั้งแต่เช้า"
+
+msgid "Check your dog’s shape every few weeks and change portions a little at a time."
+msgstr "สังเกตรูปร่างน้องหมาทุกสองสามสัปดาห์ และปรับปริมาณทีละน้อย"
+
+msgid "Chew"
+msgstr "เคี้ยวนาน"
+
+msgid "Chewy"
+msgstr "เหนียวนุ่ม"
+
+msgid "Chicken"
+msgstr "ไก่"
+
+msgid "Chicken crunchies baked with Thai-grown catnip. For the evening zoomies."
+msgstr "ไก่อบกรอบผสมแคทนิปที่ปลูกในไทย สำหรับช่วงวิ่งพล่านตอนเย็น"
+
+msgid "Chicken treats with psyllium and pumpkin to keep hairballs moving the right way."
+msgstr "ขนมไก่ผสมไซเลียมและฟักทอง ช่วยให้ก้อนขนเคลื่อนไปในทางที่ถูก"
+
+msgid "Chicken, duck"
+msgstr "ไก่, เป็ด"
+
+msgid "Chicken, duck, fish or pork is the first ingredient on every bag. No fillers, no mystery meal."
+msgstr "ไก่ เป็ด ปลา หรือหมู คือส่วนผสมแรกในทุกถุง ไม่มีสารเติมเต็ม ไม่มีเนื้อป่นปริศนา"
+
+msgid "Chicken, pork"
+msgstr "ไก่, หมู"
+
+msgid "Chicken, tuna"
+msgstr "ไก่, ทูน่า"
+
 msgid "Choose a size"
 msgstr "เลือกขนาด"
 
 msgid "City-sized bags"
 msgstr "ถุงขนาดพอดีคนเมือง"
 
+msgid "Cooked in small batches in [province] and sold fresh, not shipped halfway around the world."
+msgstr "ปรุงทีละน้อยที่[จังหวัด] และขายแบบสดใหม่ ไม่ได้ขนส่งข้ามครึ่งโลกมา"
+
+msgid "Count it as part of your cat’s daily food, not on top of it, and reduce their usual food to match. [Feeding table by body weight — supplied by the client or their vet.] Always keep fresh water nearby."
+msgstr "นับเป็นส่วนหนึ่งของอาหารประจำวันของน้องแมว ไม่ใช่ให้เพิ่มจากเดิม และลดอาหารปกติลงให้เท่ากัน [ตารางปริมาณตามน้ำหนักตัว — ลูกค้าหรือสัตวแพทย์เป็นผู้ให้ข้อมูล] มีน้ำสะอาดวางไว้ใกล้ๆ เสมอ"
+
+msgid "Count it as part of your dog’s daily food, not on top of it, and reduce their usual food to match. [Feeding table by body weight — supplied by the client or their vet.] Always keep fresh water nearby."
+msgstr "นับเป็นส่วนหนึ่งของอาหารประจำวันของน้องหมา ไม่ใช่ให้เพิ่มจากเดิม และลดอาหารปกติลงให้เท่ากัน [ตารางปริมาณตามน้ำหนักตัว — ลูกค้าหรือสัตวแพทย์เป็นผู้ให้ข้อมูล] มีน้ำสะอาดวางไว้ใกล้ๆ เสมอ"
+
+msgid "Count treats, chews and table scraps in the same budget: no more than 10% of the day’s calories, with the rest from complete meals."
+msgstr "นับขนม ของขบเคี้ยว และเศษอาหารรวมในงบเดียวกัน: ไม่เกิน 10% ของแคลอรีทั้งวัน ที่เหลือมาจากอาหารหลักที่ครบถ้วน"
+
+msgid "Courier delivery"
+msgstr "จัดส่งโดยขนส่ง"
+
+msgid "Credit / debit card"
+msgstr "บัตรเครดิต/เดบิต"
+
+msgid "Credit / debit card"
+msgstr "บัตรเครดิต/เดบิต"
+
+msgid "Crunchy"
+msgstr "กรอบ"
+
+msgid "Crunchy baked salmon skin. Naturally rich in omega-3 for coats that shine in Bangkok humidity."
+msgstr "หนังปลาแซลมอนอบกรอบ อุดมด้วยโอเมก้า-3 ตามธรรมชาติ ให้ขนเงางามแม้ในอากาศชื้นของกรุงเทพฯ"
+
+msgid "Days"
+msgstr "วันที่"
+
+msgid "Delivered"
+msgstr "ได้รับของแล้ว"
+
+msgid "Delivery"
+msgstr "การจัดส่ง"
+
 msgid "Delivery and returns"
 msgstr "การจัดส่งและการคืนสินค้า"
+
+msgid "Delivery, payment, returns and contact"
+msgstr "การจัดส่ง การชำระเงิน การคืนสินค้า และการติดต่อ"
 
 msgid "Demo shop built for a portfolio. No real orders are taken."
 msgstr "ร้านตัวอย่างสำหรับพอร์ตโฟลิโอ ไม่รับออเดอร์จริง"
 
+msgid "District"
+msgstr "เขต/อำเภอ"
+
 msgid "District (เขต/อำเภอ)"
+msgstr "เขต/อำเภอ"
+
+msgid "Districts"
 msgstr "เขต/อำเภอ"
 
 msgid "Dogs"
 msgstr "สุนัข"
 
+msgid "Done"
+msgstr "เสร็จแล้ว"
+
+msgid "Done. We will email you once when it is back, then delete your address."
+msgstr "เรียบร้อย เราจะส่งอีเมลหาคุณครั้งเดียวเมื่อมีของ แล้วลบอีเมลของคุณทิ้ง"
+
+msgid "Dried skipjack tuna flakes, the Thai cat classic. Sprinkle a pinch, watch the drama stop."
+msgstr "ปลาโอแห้งแบบแผ่น ของโปรดคลาสสิกของแมวไทย โรยนิดเดียว ดราม่าหายทันที"
+
+msgid "Duck"
+msgstr "เป็ด"
+
+msgid "Edit stockist"
+msgstr "แก้ไขร้านตัวแทน"
+
+msgid "Email"
+msgstr "อีเมล"
+
+msgid "Extra-smooth chicken mousse for kittens from eight weeks. Next batch ships soon."
+msgstr "มูสไก่เนื้อเนียนพิเศษ สำหรับลูกแมวตั้งแต่แปดสัปดาห์ ล็อตต่อไปส่งเร็วๆ นี้"
+
+msgid "Fastest on LINE, weekdays 9–18. We reply to email within one working day."
+msgstr "ทาง LINE เร็วที่สุด จันทร์–ศุกร์ 9–18 น. ตอบอีเมลภายในหนึ่งวันทำการ"
+
+msgid "Feeding charts on the bag are written for an average dog. A young dog who runs laps of the park every evening and an older dog whose big outing is the lift down to the lobby can weigh the same and still need very different amounts of food."
+msgstr "ตารางให้อาหารข้างถุงเขียนไว้สำหรับสุนัขทั่วไป น้องหมาวัยหนุ่มที่วิ่งรอบสวนทุกเย็น กับน้องหมาสูงวัยที่การออกนอกบ้านครั้งใหญ่คือการลงลิฟต์ไปล็อบบี้ อาจหนักเท่ากัน แต่ต้องการอาหารต่างกันมาก"
+
+msgid "Feeding guide"
+msgstr "วิธีให้อาหาร"
+
 msgid "Feeding guides"
 msgstr "คู่มือการให้อาหาร"
+
+msgid "Feeding, treats and care"
+msgstr "อาหาร ขนม และการดูแล"
+
+msgid "Filter by type"
+msgstr "กรองตามประเภท"
 
 msgid "Find a stockist"
 msgstr "หาร้านตัวแทน"
@@ -74,8 +281,20 @@ msgstr "หาร้านตัวแทน"
 msgid "Find a stockist near you"
 msgstr "หาร้านใกล้คุณ"
 
+msgid "Find a stockist →"
+msgstr "หาร้านตัวแทน →"
+
+msgid "Find the kcal per 100 g on the food label and work out how many grams a day that is."
+msgstr "ดูค่า kcal ต่อ 100 กรัมบนฉลากอาหาร แล้วคำนวณว่าต้องให้วันละกี่กรัม"
+
 msgid "Find us in a shop"
 msgstr "หาเราในร้านค้า"
+
+msgid "Flaky"
+msgstr "เป็นแผ่นบาง"
+
+msgid "For a sense of the range: vet nutritionists at Tufts University use the example of a fairly active 11 kg dog needing about 600 kcal a day, while a less active dog of the same weight may need closer to 400."
+msgstr "ให้เห็นภาพ: นักโภชนาการสัตวแพทย์จากมหาวิทยาลัยทัฟส์ยกตัวอย่างว่า สุนัขหนัก 11 กก. ที่ค่อนข้างแอคทีฟต้องการราว 600 kcal ต่อวัน ส่วนตัวที่ขยับน้อยกว่าในน้ำหนักเท่ากันอาจต้องการใกล้ 400"
 
 msgid "For cats"
 msgstr "สำหรับน้องแมว"
@@ -83,17 +302,62 @@ msgstr "สำหรับน้องแมว"
 msgid "For dogs"
 msgstr "สำหรับน้องหมา"
 
+msgid "For what you just bought"
+msgstr "สำหรับของที่คุณเพิ่งซื้อ"
+
 msgid "Free Bangkok delivery on orders over ฿1,000, otherwise ฿50. Elsewhere in Thailand ฿80, free over ฿1,500."
 msgstr "ส่งฟรีในกรุงเทพฯ เมื่อสั่งครบ ฿1,000 (ต่ำกว่านั้น ฿50) ต่างจังหวัด ฿80 ส่งฟรีเมื่อครบ ฿1,500"
 
 msgid "Free Bangkok delivery over ฿1,000"
 msgstr "ส่งฟรีในกรุงเทพฯ เมื่อสั่งครบ ฿1,000"
 
+msgid "Free delivery"
+msgstr "ส่งฟรี"
+
 msgid "Free delivery over ฿1,000"
 msgstr "ส่งฟรีเมื่อครบ ฿1,000"
 
+msgid "Freeze-dried beef liver, broken into crunchy pieces. The high-value reward for recall training."
+msgstr "ตับวัวฟรีซดราย หักเป็นชิ้นกรอบ รางวัลชั้นดีสำหรับฝึกเรียกกลับ"
+
 msgid "Freeze-dried bites, lickable treats and wet food for picky eaters."
 msgstr "ขนมฟรีซดราย ขนมเลีย และอาหารเปียกสำหรับแมวช่างเลือก"
+
+msgid "Freeze-dried chicken, tuna flakes, a purée pack and catnip crunch. The gift box for a cat person."
+msgstr "ไก่ฟรีซดราย ปลาโอแห้ง ไก่บดหนึ่งแพ็ก และไก่อบกรอบแคทนิป กล่องของขวัญสำหรับคนรักแมว"
+
+msgid "Fresh (frozen)"
+msgstr "สด (แช่แข็ง)"
+
+msgid "Fresh frozen meals ship in an insulated box with ice packs, to the Bangkok area only."
+msgstr "อาหารสดแช่แข็งจัดส่งในกล่องเก็บความเย็นพร้อมเจลเย็น เฉพาะกรุงเทพฯ และปริมณฑลเท่านั้น"
+
+msgid "From above, there is a visible waist behind the ribs."
+msgstr "มองจากด้านบน เห็นเอวคอดหลังซี่โครง"
+
+msgid "From our shelf"
+msgstr "จากชั้นวางของเรา"
+
+msgid "From the side, the belly tucks up behind the rib cage."
+msgstr "มองจากด้านข้าง ท้องคอดขึ้นหลังซี่โครง"
+
+msgid "Fussy and older cats often need longer, sometimes a few weeks. There is no prize for finishing on day seven: if a step is not going well, stay on it for a few more days."
+msgstr "แมวช่างเลือกและแมวสูงวัยมักต้องใช้เวลานานกว่านั้น บางครั้งหลายสัปดาห์ ไม่มีรางวัลสำหรับการเปลี่ยนเสร็จในวันที่เจ็ด ถ้าขั้นไหนยังไม่ราบรื่น ให้อยู่ที่ขั้นนั้นต่ออีกสองสามวัน"
+
+msgid "General information, not a substitute for advice from your own vet."
+msgstr "ข้อมูลทั่วไป ไม่สามารถใช้แทนคำแนะนำจากสัตวแพทย์ของคุณ"
+
+msgid "Gently cooked chicken, jasmine rice, carrot and pumpkin. Frozen in portions, thaw and serve."
+msgstr "ไก่ปรุงสุกแบบนุ่มนวล ข้าวหอมมะลิ แครอท และฟักทอง แช่แข็งแบ่งเป็นส่วน ละลายแล้วเสิร์ฟได้เลย"
+
+msgid "Get a daily calorie target from your vet."
+msgstr "ขอเป้าหมายแคลอรีต่อวันจากสัตวแพทย์"
+
+msgid "Go back to the last mix they ate happily and stay there longer."
+msgstr "กลับไปใช้สัดส่วนล่าสุดที่น้องกินได้ดี แล้วอยู่ที่ขั้นนั้นให้นานขึ้น"
+
+msgid "Go to the shop"
+msgstr "ไปที่ร้านค้า"
 
 msgid "Goes well with"
 msgstr "เข้ากันได้ดีกับ"
@@ -101,44 +365,200 @@ msgstr "เข้ากันได้ดีกับ"
 msgid "Good food for Bangkok dogs and cats."
 msgstr "อาหารดีๆ สำหรับน้องหมาน้องแมวชาวกรุงเทพฯ"
 
+msgid "Good food for Bangkok’s dogs and cats. Small-batch treats and meals, made in Thailand, sold online and in pet shops and vet clinics around the city."
+msgstr "อาหารดีๆ สำหรับน้องหมาน้องแมวในกรุงเทพฯ ขนมและอาหารทำทีละน้อย ผลิตในประเทศไทย ขายออนไลน์ และที่ร้านสัตว์เลี้ยงกับคลินิกสัตวแพทย์ทั่วเมือง"
+
+msgid "Good news: %s is back. We are not keeping your address; this is the only message you will get."
+msgstr "ข่าวดี: %s กลับมาแล้ว เราไม่ได้เก็บอีเมลของคุณไว้ นี่คือข้อความเดียวที่คุณจะได้รับ"
+
 msgid "Guides"
 msgstr "คู่มือ"
+
+msgid "Have %s ready in cash for the courier. Orders before 14:00 leave today."
+msgstr "เตรียมเงินสด %s ไว้ให้พนักงานส่ง คำสั่งซื้อก่อน 14:00 น. ส่งออกวันนี้"
 
 msgid "Help"
 msgstr "ช่วยเหลือ"
 
+msgid "Home"
+msgstr "หน้าแรก"
+
 msgid "House number, building, street"
 msgstr "บ้านเลขที่ อาคาร ถนน"
+
+msgid "How much should a Bangkok condo dog actually eat?"
+msgstr "น้องหมาคอนโดในกรุงเทพฯ ควรกินเท่าไรกันแน่?"
 
 msgid "How to pay"
 msgstr "วิธีชำระเงิน"
 
+msgid "Huai Khwang"
+msgstr "ห้วยขวาง"
+
+msgid "I agree that Yummy Treats! uses my name, address and phone number to deliver this order and contact me about it, as described in the privacy notice (PDPA). Nothing else."
+msgstr "ฉันยินยอมให้ Yummy Treats! ใช้ชื่อ ที่อยู่ และเบอร์โทรของฉัน เพื่อจัดส่งคำสั่งซื้อนี้และติดต่อเกี่ยวกับคำสั่งซื้อนี้ ตามที่ระบุในประกาศความเป็นส่วนตัว (PDPA) และไม่ใช้เพื่อการอื่น"
+
+msgid "If they will not eat it"
+msgstr "ถ้าน้องไม่ยอมกิน"
+
+msgid "If you have to press hard to find the ribs, or you can see them clearly, talk to your vet before changing anything. The same goes for puppies, older dogs and dogs with a health condition, whose needs are different."
+msgstr "ถ้าต้องกดแรงถึงจะเจอซี่โครง หรือมองเห็นซี่โครงชัดเจน ให้ปรึกษาสัตวแพทย์ก่อนเปลี่ยนอะไร เช่นเดียวกับลูกสุนัข สุนัขสูงวัย และสุนัขที่มีปัญหาสุขภาพ ซึ่งมีความต้องการต่างออกไป"
+
+msgid "If your cat stops eating, go back to the food they know and call your vet. Check with your vet before switching a cat with a health condition or one on a prescription diet."
+msgstr "ถ้าน้องแมวหยุดกิน ให้กลับไปใช้อาหารที่คุ้นเคยและโทรหาสัตวแพทย์ ปรึกษาสัตวแพทย์ก่อนเปลี่ยนอาหารให้แมวที่มีปัญหาสุขภาพหรือกินอาหารสูตรสั่งจ่ายอยู่"
+
 msgid "In stock"
 msgstr "มีสินค้า"
+
+msgid "Ingredients"
+msgstr "ส่วนผสม"
+
+msgid "Items marked Pre-order ship on the date shown on the product. If your order also has items in stock, those leave first and the pre-order follows on its own."
+msgstr "สินค้าที่มีป้ายสั่งจองล่วงหน้าจะจัดส่งตามวันที่แสดงในหน้าสินค้า ถ้าคำสั่งซื้อมีสินค้าพร้อมส่งด้วย ส่วนนั้นจะส่งก่อน แล้วสินค้าสั่งจองตามไปทีหลัง"
+
+msgid "Keep frozen. Thaw a portion in the fridge overnight and use it within [N] days of thawing. Do not refreeze."
+msgstr "เก็บในช่องแช่แข็ง ละลายทีละส่วนในตู้เย็นข้ามคืน และใช้ให้หมดภายใน [N] วันหลังละลาย ห้ามแช่แข็งซ้ำ"
+
+msgid "Kitten"
+msgstr "ลูกแมว"
+
+msgid "LINE: [@yummytreats] · Tel: [0X-XXX-XXXX] · hello@[yummytreats.example]"
+msgstr "LINE: [@yummytreats] · โทร: [0X-XXX-XXXX] · hello@[yummytreats.example]"
+
+msgid "Lamb"
+msgstr "เนื้อแกะ"
+
+msgid "Lamb, pumpkin and spinach for dogs that are bored of chicken. Our next batch is cooking now."
+msgstr "เนื้อแกะ ฟักทอง และผักโขม สำหรับน้องหมาที่เบื่อไก่ ล็อตต่อไปกำลังปรุงอยู่"
+
+msgid "Lat Phrao"
+msgstr "ลาดพร้าว"
+
+msgid "Liquid"
+msgstr "น้ำ"
 
 msgid "Made in Thailand"
 msgstr "ผลิตในประเทศไทย"
 
+msgid "Made in small batches in [province] and packed within days of cooking."
+msgstr "ทำทีละน้อยที่[จังหวัด] และบรรจุภายในไม่กี่วันหลังปรุง"
+
+msgid "Making the budget stretch"
+msgstr "ทำให้งบขนมพอใช้"
+
+msgid "Map"
+msgstr "แผนที่"
+
 msgid "Meals"
 msgstr "อาหาร"
+
+msgid "Meals are finished at the usual pace."
+msgstr "กินหมดชามในเวลาปกติ"
+
+msgid "Message us on LINE within 7 days with a photo of the pack and we will swap it for something else or refund it. Opened food cannot be resold, so we donate it to [shelter name]. Damaged or wrong items are replaced free, no questions."
+msgstr "ทัก LINE ภายใน 7 วันพร้อมรูปถ่ายซอง เราจะเปลี่ยนเป็นสินค้าอื่นหรือคืนเงินให้ อาหารที่เปิดแล้วขายต่อไม่ได้ เราจึงบริจาคให้ [ชื่อสถานพักพิงสัตว์] สินค้าเสียหายหรือส่งผิด เปลี่ยนให้ฟรี ไม่มีเงื่อนไข"
+
+msgid "Mix the new food into the old in small steps. Most vet guidance uses a schedule like this:"
+msgstr "ผสมอาหารใหม่ลงในอาหารเก่าทีละขั้น คำแนะนำจากสัตวแพทย์ส่วนใหญ่ใช้ตารางประมาณนี้:"
+
+msgid "Mixed"
+msgstr "หลายแบบ"
+
+msgid "Mousse"
+msgstr "มูส"
+
+msgid "Moving between dry and wet food is a texture change too, so allow the full ten days or more."
+msgstr "การเปลี่ยนระหว่างอาหารเม็ดกับอาหารเปียกคือการเปลี่ยนเนื้อสัมผัสด้วย จึงควรให้เวลาเต็มสิบวันหรือมากกว่า"
 
 msgid "My account"
 msgstr "บัญชีของฉัน"
 
+msgid "My account → Orders"
+msgstr "บัญชีของฉัน → คำสั่งซื้อ"
+
+msgid "Need help?"
+msgstr "ต้องการความช่วยเหลือ?"
+
+msgid "Never try to starve a cat into accepting a new food. A cat that goes a few days without eating can develop a serious liver condition called hepatic lipidosis."
+msgstr "อย่าปล่อยให้แมวหิวเพื่อบังคับให้กินอาหารใหม่ แมวที่ไม่กินอาหารติดต่อกันหลายวันอาจเกิดภาวะตับร้ายแรงที่เรียกว่าไขมันพอกตับ (hepatic lipidosis)"
+
+msgid "Never wait it out"
+msgstr "อย่ารอให้น้องยอมเอง"
+
 msgid "New"
 msgstr "ใหม่"
+
+msgid "New food"
+msgstr "อาหารใหม่"
+
+msgid "Next"
+msgstr "ถัดไป"
+
+msgid "Next guide →"
+msgstr "คู่มือถัดไป →"
+
+msgid "No guides yet."
+msgstr "ยังไม่มีคู่มือ"
+
+msgid "No treats match that."
+msgstr "ไม่พบขนมที่ตรงกัน"
 
 msgid "No treats match those filters."
 msgstr "ไม่มีขนมที่ตรงกับตัวกรองนี้"
 
+msgid "None (sweet potato)"
+msgstr "ไม่มี (มันหวาน)"
+
+msgid "Nonthaburi"
+msgstr "นนทบุรี"
+
+msgid "Not a hit with your pet?"
+msgstr "น้องไม่ถูกใจ?"
+
 msgid "Not a hit with your pet? Message us on LINE within 7 days and we will sort it out."
 msgstr "น้องไม่ถูกใจ? ทัก LINE ภายใน 7 วัน เราจัดการให้"
+
+msgid "Nothing here but crumbs."
+msgstr "ไม่มีอะไรเหลือนอกจากเศษขนม"
+
+msgid "Nothing in here yet. Pick a side, or start with a bundle."
+msgstr "ยังไม่มีอะไรในนี้ เลือกฝั่งน้องหมาหรือน้องแมว หรือเริ่มจากเซ็ตสุดคุ้มก็ได้"
+
+msgid "Nothing was charged. Try again, or pick another way to pay. Your basket is still here."
+msgstr "ยังไม่มีการตัดเงิน ลองอีกครั้งหรือเลือกวิธีชำระอื่น ตะกร้าของคุณยังอยู่"
 
 msgid "Notify me"
 msgstr "แจ้งเตือนเมื่อมีของ"
 
+msgid "Now"
+msgstr "ตอนนี้"
+
+msgid "Old food"
+msgstr "อาหารเก่า"
+
 msgid "On backorder"
 msgstr "สั่งจองล่วงหน้า"
+
+msgid "On busy training days, take a little out of their meals so the total stays the same."
+msgstr "วันที่ฝึกเยอะ ให้ลดอาหารมื้อหลักลงเล็กน้อย เพื่อให้ยอดรวมเท่าเดิม"
+
+msgid "On its way"
+msgstr "กำลังจัดส่ง"
+
+msgid "One password turns this order into an account: see its status, order again in one tap, keep your address."
+msgstr "ตั้งรหัสผ่านเดียว คำสั่งซื้อนี้ก็กลายเป็นบัญชี: ดูสถานะ สั่งซ้ำได้ในแตะเดียว และเก็บที่อยู่ไว้"
+
+msgid "Open any Thai bank app and scan the code below. This page updates itself when the payment lands."
+msgstr "เปิดแอปธนาคารไทยใดก็ได้แล้วสแกนโค้ดด้านล่าง หน้านี้จะอัปเดตเองเมื่อได้รับเงิน"
+
+msgid "Optional"
+msgstr "ไม่บังคับ"
+
+msgid "Or ask on LINE %s when the next batch is due."
+msgstr "หรือทัก LINE %s เพื่อถามว่าล็อตถัดไปจะมาเมื่อไร"
+
+msgid "Or send it on LINE %1$s with your order number, #%2$s."
+msgstr "หรือส่งทาง LINE %1$s พร้อมเลขคำสั่งซื้อ #%2$s"
 
 msgid "Order before 14:00 and we hand it to the courier the same day (Mon–Sat)."
 msgstr "สั่งก่อน 14:00 น. ส่งให้ขนส่งวันเดียวกัน (จันทร์–เสาร์)"
@@ -146,8 +566,35 @@ msgstr "สั่งก่อน 14:00 น. ส่งให้ขนส่งว
 msgid "Order help, feeding questions, or just a photo of your dog. Weekdays 9–18."
 msgstr "ถามเรื่องออเดอร์ การให้อาหาร หรือส่งรูปน้องหมามาอวดก็ได้ จันทร์–ศุกร์ 9–18 น."
 
+msgid "Order in! Pay when it arrives"
+msgstr "สั่งเรียบร้อย! ชำระเมื่อได้รับของ"
+
+msgid "Order received"
+msgstr "ได้รับคำสั่งซื้อแล้ว"
+
+msgid "Order status and slips are under"
+msgstr "ดูสถานะคำสั่งซื้อและส่งสลิปได้ที่"
+
+msgid "Orders and accounts"
+msgstr "คำสั่งซื้อและบัญชี"
+
+msgid "Other"
+msgstr "อื่นๆ"
+
 msgid "Out of stock"
 msgstr "สินค้าหมด"
+
+msgid "Packed and handed to the courier"
+msgstr "แพ็กและส่งให้ขนส่งแล้ว"
+
+msgid "Paid, we are packing"
+msgstr "ชำระแล้ว กำลังแพ็กของ"
+
+msgid "Pak Kret"
+msgstr "ปากเกร็ด"
+
+msgid "Pause"
+msgstr "หยุด"
 
 msgid "Pause"
 msgstr "หยุด"
@@ -155,11 +602,50 @@ msgstr "หยุด"
 msgid "Pay by PromptPay, card, bank transfer or cash on delivery"
 msgstr "จ่ายได้ทั้งพร้อมเพย์ บัตร โอนธนาคาร หรือเก็บเงินปลายทาง"
 
+msgid "Pay by transfer after you order. The next page shows our account, then you send us the slip."
+msgstr "สั่งซื้อก่อนแล้วค่อยโอน หน้าถัดไปจะแสดงเลขบัญชีของเรา จากนั้นส่งสลิปให้เรา"
+
 msgid "Pay how you like"
 msgstr "จ่ายแบบที่คุณสะดวก"
 
+msgid "Pay the courier"
+msgstr "ชำระเงินกับพนักงานส่ง"
+
+msgid "Pay the courier in cash when your order arrives. Bangkok, Nonthaburi and Samut Prakan only."
+msgstr "ชำระเงินสดกับพนักงานส่งเมื่อได้รับสินค้า เฉพาะกรุงเทพฯ นนทบุรี และสมุทรปราการ"
+
+msgid "Payment of %s received. Tracking comes by email once the courier scans your box."
+msgstr "ได้รับเงิน %s แล้ว เลขติดตามพัสดุจะส่งทางอีเมลเมื่อขนส่งสแกนกล่องของคุณ"
+
+msgid "Payment received"
+msgstr "ได้รับเงินแล้ว"
+
+msgid "Pea-sized, low-calorie bites for training sessions. Unsalted peanut butter, no xylitol, ever."
+msgstr "ขนมชิ้นเท่าเม็ดถั่ว แคลอรีต่ำ สำหรับการฝึก เนยถั่วไม่ใส่เกลือ ไม่มีไซลิทอลเด็ดขาด"
+
+msgid "Pet shop"
+msgstr "ร้านสัตว์เลี้ยง"
+
+msgid "Pet shops and vet clinics"
+msgstr "ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์"
+
+msgid "Phaya Thai"
+msgstr "พญาไท"
+
 msgid "Play"
 msgstr "เล่น"
+
+msgid "Play"
+msgstr "เล่น"
+
+msgid "Please have the exact amount ready for the courier."
+msgstr "กรุณาเตรียมเงินสดให้พอดีสำหรับพนักงานส่ง"
+
+msgid "Pork"
+msgstr "หมู"
+
+msgid "Pork ears, dental sticks and a 500 g chicken jerky. For the large and the relentless."
+msgstr "หูหมู แท่งขัดฟัน และไก่อบแห้ง 500 กรัม สำหรับน้องตัวใหญ่สายเคี้ยวไม่หยุด"
 
 msgid "Postcode"
 msgstr "รหัสไปรษณีย์"
@@ -167,23 +653,71 @@ msgstr "รหัสไปรษณีย์"
 msgid "Pre-order"
 msgstr "สั่งจองล่วงหน้า"
 
+msgid "Pre-order, ships %s"
+msgstr "สั่งจองล่วงหน้า ส่ง %s"
+
+msgid "Pre-orders and sold-out items"
+msgstr "สินค้าสั่งจองและสินค้าหมด"
+
 msgid "Prefer to pick it up?"
 msgstr "อยากรับเองที่ร้าน?"
 
 msgid "Price"
 msgstr "ราคา"
 
+msgid "Prices in shops are set by the shop and may differ slightly from the website. For shop purchases, returns go through the shop."
+msgstr "ราคาในร้านกำหนดโดยร้านนั้นๆ และอาจต่างจากเว็บไซต์เล็กน้อย หากซื้อจากร้าน การคืนสินค้าทำผ่านร้าน"
+
+msgid "Privacy (PDPA)"
+msgstr "ความเป็นส่วนตัว (PDPA)"
+
+msgid "PromptPay"
+msgstr "พร้อมเพย์"
+
+msgid "PromptPay"
+msgstr "พร้อมเพย์"
+
+msgid "PromptPay · Credit / debit card · Bank transfer · Cash on delivery"
+msgstr "พร้อมเพย์ · บัตรเครดิต/เดบิต · โอนผ่านธนาคาร · เก็บเงินปลายทาง"
+
 msgid "PromptPay, card, bank transfer or cash on delivery."
 msgstr "พร้อมเพย์ บัตร โอนธนาคาร หรือเก็บเงินปลายทาง"
+
+msgid "Protein"
+msgstr "โปรตีน"
 
 msgid "Province"
 msgstr "จังหวัด"
 
+msgid "Provinces"
+msgstr "จังหวัด"
+
+msgid "Puppy"
+msgstr "ลูกสุนัข"
+
+msgid "Puppy and adult"
+msgstr "ลูกสุนัขและโตเต็มวัย"
+
+msgid "Pure chicken breast, freeze-dried so it crumbles over food or works as a treat. Our best-selling cat treat."
+msgstr "อกไก่ล้วนฟรีซดราย บี้โรยบนอาหารหรือให้เป็นขนมก็ได้ ขนมแมวขายดีที่สุดของเรา"
+
+msgid "Purée"
+msgstr "บดละเอียด"
+
 msgid "Questions? We answer on LINE."
 msgstr "มีคำถาม? ทักเราทาง LINE ได้เลย"
 
+msgid "Read it (%d min)"
+msgstr "อ่านเลย (%d นาที)"
+
 msgid "Read the bag. We did."
 msgstr "อ่านฉลากกันเถอะ เราอ่านแล้ว"
+
+msgid "Read the full privacy notice →"
+msgstr "อ่านประกาศความเป็นส่วนตัวฉบับเต็ม →"
+
+msgid "Read →"
+msgstr "อ่าน →"
 
 msgid "Real meat first"
 msgstr "เนื้อแท้มาก่อน"
@@ -191,11 +725,68 @@ msgstr "เนื้อแท้มาก่อน"
 msgid "Real meat, no fillers, and sizes that make sense for a city apartment. Delivered across Bangkok, or pick it up at a pet shop near you."
 msgstr "เนื้อแท้ ไม่มีสารเติมเต็ม ขนาดพอดีสำหรับคอนโดในเมือง ส่งทั่วกรุงเทพฯ หรือรับเองที่ร้านสัตว์เลี้ยงใกล้บ้าน"
 
+msgid "Reseal after opening and keep cool and dry. In Bangkok humidity, the fridge is your friend. Use within [N] weeks of opening."
+msgstr "ปิดซองให้สนิทหลังเปิด เก็บในที่แห้งและเย็น อากาศชื้นแบบกรุงเทพฯ ตู้เย็นช่วยได้มาก ใช้ให้หมดภายใน [N] สัปดาห์หลังเปิด"
+
+msgid "Rest of Thailand:"
+msgstr "ต่างจังหวัด:"
+
+msgid "Ridged sweet-potato sticks that scrub while they chew. Grain-free and gentle."
+msgstr "แท่งมันหวานมีร่อง ช่วยขัดฟันขณะเคี้ยว ไม่มีธัญพืช อ่อนโยน"
+
 msgid "Sale"
 msgstr "ลดราคา"
 
+msgid "Sale -%d%%"
+msgstr "ลด %d%%"
+
+msgid "Salmon"
+msgstr "แซลมอน"
+
+msgid "Same day for orders before 14:00, Mon to Sat."
+msgstr "ภายในวันเดียวกันสำหรับคำสั่งซื้อก่อน 14:00 น. จันทร์ถึงเสาร์"
+
+msgid "Same treats, no delivery wait. Yummy Treats! is on the shelf at these pet shops and vet clinics. Call ahead for stock of a specific size."
+msgstr "ขนมเหมือนกัน ไม่ต้องรอส่ง Yummy Treats! มีวางขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์เหล่านี้ โทรถามก่อนหากต้องการขนาดใดเป็นพิเศษ"
+
+msgid "Sathon"
+msgstr "สาทร"
+
+msgid "Save the most exciting treats for the hardest jobs, like coming back when called."
+msgstr "เก็บขนมที่น้องชอบที่สุดไว้สำหรับงานที่ยากที่สุด เช่น การเรียกให้กลับมาหา"
+
+msgid "Save your details for next time"
+msgstr "บันทึกข้อมูลไว้ใช้ครั้งหน้า"
+
+msgid "Scan the QR code with any Thai banking app. Confirms within seconds."
+msgstr "สแกนคิวอาร์โค้ดด้วยแอปธนาคารไทยใดก็ได้ ยืนยันภายในไม่กี่วินาที"
+
+msgid "Scan to pay"
+msgstr "สแกนเพื่อชำระ"
+
+msgid "Search"
+msgstr "ค้นหา"
+
+msgid "Search results"
+msgstr "ผลการค้นหา"
+
+msgid "Search treats…"
+msgstr "ค้นหาขนม…"
+
+msgid "Sections from the Yummy Treats! designs: hero, pet split, featured products, read the bag, guides, stockists, LINE band."
+msgstr "ส่วนต่างๆ จากดีไซน์ Yummy Treats!: ส่วนหัว แยกน้องหมาน้องแมว สินค้าแนะนำ อ่านฉลาก คู่มือ ร้านตัวแทน แถบ LINE"
+
+msgid "See all 24 products"
+msgstr "ดูสินค้าทั้งหมด 24 รายการ"
+
 msgid "See all 24 products →"
 msgstr "ดูสินค้าทั้งหมด 24 รายการ →"
+
+msgid "See the bundles"
+msgstr "ดูเซ็ตสุดคุ้ม"
+
+msgid "Ships %s"
+msgstr "ส่ง %s"
 
 msgid "Shop"
 msgstr "ร้านค้า"
@@ -203,14 +794,50 @@ msgstr "ร้านค้า"
 msgid "Shop all treats"
 msgstr "ดูขนมทั้งหมด"
 
+msgid "Shop cats"
+msgstr "ช้อปของน้องแมว"
+
 msgid "Shop cats →"
 msgstr "ช้อปของน้องแมว →"
+
+msgid "Shop dogs"
+msgstr "ช้อปของน้องหมา"
 
 msgid "Shop dogs →"
 msgstr "ช้อปของน้องหมา →"
 
+msgid "Shop news"
+msgstr "ข่าวจากร้าน"
+
+msgid "Short, practical reads for Bangkok pet owners. No fluff, no scare stories."
+msgstr "บทความสั้นๆ ใช้ได้จริง สำหรับคนเลี้ยงสัตว์ในกรุงเทพฯ ไม่เวิ่นเว้อ ไม่ขู่ให้กลัว"
+
+msgid "Shredded chicken in a pumpkin broth. High moisture for cats that do not drink enough."
+msgstr "ไก่ฉีกในน้ำซุปฟักทอง ความชื้นสูง สำหรับแมวที่ดื่มน้ำน้อย"
+
+msgid "Shrimp"
+msgstr "กุ้ง"
+
+msgid "Signs it is working"
+msgstr "สัญญาณว่าได้ผล"
+
+msgid "Signs you have it right"
+msgstr "สัญญาณว่าคุณให้อาหารพอดี"
+
+msgid "Single-ingredient chicken breast, slow-dried into chewy strips. The treat every dog in the office asks for by name."
+msgstr "อกไก่ล้วนส่วนผสมเดียว อบแห้งช้าๆ เป็นเส้นเหนียวนุ่ม ขนมที่น้องหมาทุกตัวในออฟฟิศเรียกหาเป็นชื่อ"
+
+msgid "Six small packs across our cat range, so you find the one they actually like before buying big."
+msgstr "หกซองเล็กจากขนมแมวของเรา ให้คุณได้รู้ว่าน้องชอบแบบไหนก่อนซื้อถุงใหญ่"
+
 msgid "Size"
 msgstr "ขนาด"
+
+msgid "Slip received, we are checking it"
+msgstr "ได้รับสลิปแล้ว กำลังตรวจสอบ"
+
+msgid "Slow-simmered chicken bone broth to pour over kibble. Gets picky eaters to finish the bowl."
+msgstr "น้ำซุปกระดูกไก่เคี่ยวช้า ราดบนอาหารเม็ด ช่วยให้น้องที่กินยากกินหมดชาม"
 
 msgid "Small-batch treats and meals · Made in Thailand"
 msgstr "ขนมและอาหารทำทีละน้อย · ผลิตในประเทศไทย"
@@ -218,14 +845,62 @@ msgstr "ขนมและอาหารทำทีละน้อย · ผ�
 msgid "Small-batch treats, made in Thailand"
 msgstr "ขนมทำทีละน้อย ผลิตในประเทศไทย"
 
+msgid "Smooth chicken purée in squeeze sachets. Hand-feed it or use it to hide a pill."
+msgstr "ไก่บดเนียนในซองบีบ ป้อนจากมือหรือใช้ซ่อนเม็ดยาก็ได้"
+
+msgid "Soft"
+msgstr "นุ่ม"
+
+msgid "Soft duck bites wrapped around sweet potato. Gentle on sensitive stomachs, big on smell."
+msgstr "เนื้อเป็ดนุ่มพันรอบมันหวาน อ่อนโยนต่อท้องที่บอบบาง กลิ่นหอมเต็มที่"
+
 msgid "Sold out"
 msgstr "หมด"
+
+msgid "Sold out for now. Get one email when it is back."
+msgstr "หมดชั่วคราว รับอีเมลแจ้งหนึ่งฉบับเมื่อกลับมามีของ"
+
+msgid "Sold out? Leave your email on the product page and we send one message when it is back. We do not use that email for anything else."
+msgstr "สินค้าหมด? ฝากอีเมลไว้ในหน้าสินค้า เราจะส่งข้อความหนึ่งครั้งเมื่อมีของ และไม่ใช้อีเมลนั้นเพื่อการอื่น"
+
+msgid "Some cats object to mixing. Serve the new food in a separate bowl next to the old one instead."
+msgstr "แมวบางตัวไม่ชอบให้ผสมกัน ลองเสิร์ฟอาหารใหม่ในชามแยก วางข้างชามอาหารเก่าแทน"
+
+msgid "Some human foods are unsafe for dogs and cats, including chocolate, grapes and raisins, onions and garlic. If you use peanut butter, check the label for xylitol, a sweetener that is dangerous for dogs."
+msgstr "อาหารคนบางอย่างไม่ปลอดภัยสำหรับสุนัขและแมว เช่น ช็อกโกแลต องุ่นและลูกเกด หัวหอมและกระเทียม ถ้าใช้เนยถั่ว ให้ดูฉลากว่ามีไซลิทอล (xylitol) หรือไม่ เพราะสารให้ความหวานนี้อันตรายต่อสุนัข"
+
+msgid "Sources"
+msgstr "แหล่งอ้างอิง"
+
+msgid "Start with less new food, about a tenth of the bowl."
+msgstr "เริ่มด้วยอาหารใหม่น้อยลง ประมาณหนึ่งในสิบของชาม"
+
+msgid "Start with your vet, not the bag"
+msgstr "เริ่มจากสัตวแพทย์ ไม่ใช่จากข้างถุง"
+
+msgid "Stocked by [number] vet clinics across Bangkok. Ask yours, or find one on the stockists page."
+msgstr "มีขายที่คลินิกสัตวแพทย์ [จำนวน] แห่งทั่วกรุงเทพฯ ถามคลินิกประจำของคุณ หรือดูได้ที่หน้าร้านตัวแทน"
+
+msgid "Stockist"
+msgstr "ร้านตัวแทน"
 
 msgid "Stockists"
 msgstr "ร้านตัวแทน"
 
+msgid "Stools stay normal."
+msgstr "อุจจาระยังปกติ"
+
+msgid "Storage"
+msgstr "การเก็บรักษา"
+
+msgid "Store unopened packs somewhere cool and dry. Once opened, cover, keep in the fridge and use within [N] days."
+msgstr "เก็บซองที่ยังไม่เปิดในที่แห้งและเย็น เมื่อเปิดแล้วให้ปิดฝา เก็บในตู้เย็น และใช้ให้หมดภายใน [N] วัน"
+
 msgid "Subdistrict (แขวง/ตำบล)"
 msgstr "แขวง/ตำบล"
+
+msgid "Switching your cat to a new food without the drama"
+msgstr "เปลี่ยนอาหารใหม่ให้น้องแมวแบบไม่มีดราม่า"
 
 msgid "Talk to a human"
 msgstr "คุยกับคนจริงๆ"
@@ -233,29 +908,221 @@ msgstr "คุยกับคนจริงๆ"
 msgid "Tell me about new treats on LINE"
 msgstr "แจ้งขนมใหม่ทาง LINE"
 
+msgid "Terms"
+msgstr "ข้อกำหนด"
+
+msgid "Terms of sale"
+msgstr "เงื่อนไขการขาย"
+
+msgid "Texture"
+msgstr "เนื้อสัมผัส"
+
+msgid "Thanks! We check slips within the hour on working days, 9:00 to 18:00, then pack your order."
+msgstr "ขอบคุณ! เราตรวจสลิปภายในหนึ่งชั่วโมงในวันทำการ 9:00–18:00 น. แล้วจึงแพ็กคำสั่งซื้อของคุณ"
+
+msgid "That page has been eaten, moved, or never existed. Try the shop or search below."
+msgstr "หน้านี้ถูกกินไปแล้ว ย้ายที่ หรือไม่เคยมีอยู่ ลองไปที่ร้านค้าหรือค้นหาด้านล่าง"
+
+msgid "The 10% rule"
+msgstr "กฎ 10%"
+
+msgid "The 7 to 10 day plan"
+msgstr "แผน 7 ถึง 10 วัน"
+
+msgid "The number on the bag is a starting point, not a rule. How to work it out with your vet, and the signs you have it right."
+msgstr "ตัวเลขข้างถุงเป็นแค่จุดเริ่มต้น ไม่ใช่กฎตายตัว มาดูวิธีคำนวณร่วมกับสัตวแพทย์ และสัญญาณว่าคุณให้อาหารพอดีแล้ว"
+
+msgid "The simple method"
+msgstr "วิธีง่ายๆ"
+
+msgid "This page updates when it lands."
+msgstr "หน้านี้จะอัปเดตเมื่อได้รับเงิน"
+
+msgid "Training"
+msgstr "การฝึก"
+
+msgid "Training bites, soft duck bites and a small chicken jerky. Everything a new puppy needs for week one."
+msgstr "ขนมฝึก เป็ดชิ้นนุ่ม และไก่อบแห้งถุงเล็ก ครบทุกอย่างที่ลูกสุนัขต้องใช้ในสัปดาห์แรก"
+
+msgid "Training runs on rewards, and rewards add up. Twenty treats in a session can quietly become a small meal."
+msgstr "การฝึกขับเคลื่อนด้วยรางวัล และรางวัลก็สะสมได้ ขนมยี่สิบชิ้นในหนึ่งรอบฝึกอาจกลายเป็นอาหารมื้อย่อมๆ โดยไม่รู้ตัว"
+
 msgid "Training treats, chews and meal toppers, from toy breeds to big softies."
 msgstr "ขนมฝึก ขนมเคี้ยว และท็อปปิ้ง ตั้งแต่พันธุ์เล็กจนถึงตัวใหญ่ใจดี"
+
+msgid "Transfer and send the slip"
+msgstr "โอนเงินและส่งสลิป"
+
+msgid "Transfer the exact total to the account below, then send us the slip. Unpaid orders are cancelled after 24 hours."
+msgstr "โอนยอดรวมตามจำนวนที่แสดงไปยังบัญชีด้านล่าง แล้วส่งสลิปให้เรา คำสั่งซื้อที่ไม่ชำระภายใน 24 ชั่วโมงจะถูกยกเลิก"
 
 msgid "Treats"
 msgstr "ขนม"
 
+msgid "Treats and training: how many is too many?"
+msgstr "ขนมกับการฝึก: แค่ไหนถึงเรียกว่ามากไป?"
+
+msgid "Treats should stay a small part of your cat’s day; the rest comes from their main food. [Feeding table by body weight — supplied by the client or their vet.] Always keep fresh water nearby."
+msgstr "ขนมควรเป็นเพียงส่วนน้อยในแต่ละวันของน้องแมว ที่เหลือมาจากอาหารหลัก [ตารางปริมาณตามน้ำหนักตัว — ลูกค้าหรือสัตวแพทย์เป็นผู้ให้ข้อมูล] มีน้ำสะอาดวางไว้ใกล้ๆ เสมอ"
+
+msgid "Treats should stay a small part of your dog’s day; the rest comes from their main food. [Feeding table by body weight — supplied by the client or their vet.] Always keep fresh water nearby."
+msgstr "ขนมควรเป็นเพียงส่วนน้อยในแต่ละวันของน้องหมา ที่เหลือมาจากอาหารหลัก [ตารางปริมาณตามน้ำหนักตัว — ลูกค้าหรือสัตวแพทย์เป็นผู้ให้ข้อมูล] มีน้ำสะอาดวางไว้ใกล้ๆ เสมอ"
+
+msgid "Treats to skip"
+msgstr "ขนมที่ควรเลี่ยง"
+
+msgid "Try another word or fewer filters, or browse everything we make."
+msgstr "ลองใช้คำอื่นหรือลดตัวกรองลง หรือดูสินค้าทั้งหมดของเรา"
+
+msgid "Tufts University vet nutritionists put numbers on it. A fairly active 11 kg dog needs about 600 kcal a day, so up to 60 kcal from treats. A 4.5 kg cat needs just over 200 kcal a day, so about 20 kcal from treats."
+msgstr "นักโภชนาการสัตวแพทย์จากมหาวิทยาลัยทัฟส์ให้ตัวเลขไว้ สุนัขหนัก 11 กก. ที่ค่อนข้างแอคทีฟต้องการราว 600 kcal ต่อวัน จึงได้ขนมไม่เกิน 60 kcal แมวหนัก 4.5 กก. ต้องการมากกว่า 200 kcal ต่อวันเล็กน้อย จึงได้ขนมราว 20 kcal"
+
+msgid "Tuna"
+msgstr "ทูน่า"
+
+msgid "Tuna, mackerel"
+msgstr "ทูน่า, ปลาทู"
+
+msgid "Two fish, no gravy thickeners. The one for cats who only eat fish."
+msgstr "ปลาสองชนิด ไม่ใส่สารทำให้น้ำเกรวี่ข้น สำหรับแมวที่กินแต่ปลา"
+
+msgid "Type"
+msgstr "ประเภท"
+
+msgid "Types"
+msgstr "ประเภท"
+
+msgid "Upload it below or send it on LINE."
+msgstr "อัปโหลดด้านล่างหรือส่งทาง LINE"
+
+msgid "Use my email for this one message only (PDPA)."
+msgstr "ใช้อีเมลของฉันสำหรับข้อความนี้ครั้งเดียวเท่านั้น (PDPA)"
+
+msgid "Vet clinic"
+msgstr "คลินิกสัตวแพทย์"
+
 msgid "Vet-friendly"
 msgstr "สัตวแพทย์แนะนำได้"
+
+msgid "Veterinary nutrition groups, including WSAVA and the nutrition service at UC Davis, give the same ceiling: treats, chews and extras should be no more than 10% of a dog’s or cat’s daily calories. The other 90% should come from a complete and balanced food."
+msgstr "กลุ่มผู้เชี่ยวชาญด้านโภชนาการสัตว์ รวมถึง WSAVA และหน่วยโภชนาการของ UC Davis ให้เพดานเดียวกัน: ขนม ของขบเคี้ยว และของเสริม ไม่ควรเกิน 10% ของแคลอรีต่อวันของสุนัขหรือแมว อีก 90% ควรมาจากอาหารที่ครบถ้วนและสมดุล"
+
+msgid "Vets judge this with a body condition score, by looking and feeling rather than by weight alone. A rough version at home:"
+msgstr "สัตวแพทย์ประเมินด้วยคะแนนรูปร่าง (body condition score) โดยการดูและคลำ ไม่ได้ดูแค่น้ำหนัก ลองแบบคร่าวๆ ที่บ้าน:"
+
+msgid "Visa, Mastercard and JCB. Processed securely by Opn Payments."
+msgstr "Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments"
+
+msgid "Warm wet food for a few seconds so it smells stronger. Stir it and check it is not hot."
+msgstr "อุ่นอาหารเปียกสักไม่กี่วินาทีให้กลิ่นหอมขึ้น คนให้ทั่วและเช็กว่าไม่ร้อนเกินไป"
+
+msgid "Watthana"
+msgstr "วัฒนา"
+
+msgid "We check your slip"
+msgstr "เราตรวจสลิปของคุณ"
+
+msgid "We keep your name, address and phone number to deliver your order and for the tax invoice. We only message you on LINE if you tick the box at checkout."
+msgstr "เราเก็บชื่อ ที่อยู่ และเบอร์โทรของคุณเพื่อจัดส่งคำสั่งซื้อและออกใบกำกับภาษี เราจะส่งข้อความทาง LINE เฉพาะเมื่อคุณติ๊กช่องตอนชำระเงินเท่านั้น"
+
+msgid "Weigh meals on a kitchen scale for the first few weeks instead of guessing with a scoop."
+msgstr "ชั่งอาหารด้วยตาชั่งในครัวช่วงสองสามสัปดาห์แรก แทนการกะด้วยช้อนตัก"
+
+msgid "Wet"
+msgstr "อาหารเปียก"
 
 msgid "What happens next"
 msgstr "ขั้นตอนต่อไป"
 
-msgid "What's in the bag"
+msgid "What we promise"
+msgstr "สิ่งที่เราสัญญา"
+
+msgid "What’s in the bag"
 msgstr "ในถุงมีอะไรบ้าง"
+
+msgid "Whole dried pork ears for long, happy chewing sessions. Supervise, as with any chew."
+msgstr "หูหมูอบแห้งทั้งชิ้น เคี้ยวเพลินได้นาน ควรดูแลขณะน้องเคี้ยวเหมือนขนมขบเคี้ยวทุกชนิด"
+
+msgid "Whole freeze-dried shrimp. Sells out every time we make it."
+msgstr "กุ้งทั้งตัวฟรีซดราย ทำมาเมื่อไรหมดทุกครั้ง"
+
+msgid "Why small treats suit training"
+msgstr "ทำไมขนมชิ้นเล็กถึงเหมาะกับการฝึก"
+
+msgid "Why small treats suit training, how to count them against meals, and which of ours are built for it."
+msgstr "ทำไมขนมชิ้นเล็กถึงเหมาะกับการฝึก วิธีนับรวมกับมื้ออาหาร และขนมตัวไหนของเราที่ทำมาเพื่อการนี้"
+
+msgid "Within the hour on working days."
+msgstr "ภายในหนึ่งชั่วโมงในวันทำการ"
+
+msgid "You can check out as a guest. An account lets you see past orders, order again in one tap and send a slip later."
+msgstr "สั่งซื้อแบบไม่สมัครสมาชิกได้ หากมีบัญชีจะดูคำสั่งซื้อเก่า สั่งซ้ำได้ในแตะเดียว และส่งสลิปทีหลังได้"
+
+msgid "You can feel the ribs easily with light pressure, under a thin layer of padding."
+msgstr "คลำเจอซี่โครงได้ง่ายเมื่อกดเบาๆ มีชั้นไขมันบางๆ คลุมอยู่"
 
 msgid "You have free Bangkok delivery!"
 msgstr "คุณได้ส่งฟรีในกรุงเทพฯ แล้ว!"
 
+msgid "Your cart is empty"
+msgstr "ตะกร้าของคุณยังว่างอยู่"
+
+msgid "Your cat is as keen at mealtimes as before."
+msgstr "น้องยังกระตือรือร้นตอนถึงเวลาอาหารเหมือนเดิม"
+
+msgid "Your data (PDPA)"
+msgstr "ข้อมูลของคุณ (PDPA)"
+
+msgid "Your order has left us. Bangkok deliveries usually arrive the next day."
+msgstr "คำสั่งซื้อออกจากร้านแล้ว ในกรุงเทพฯ มักได้รับวันถัดไป"
+
+msgid "Your order is saved. Transfer %s to the account below, then send us the slip. We hold your order for 24 hours."
+msgstr "บันทึกคำสั่งซื้อแล้ว โอน %s ไปยังบัญชีด้านล่าง แล้วส่งสลิปให้เรา เราเก็บคำสั่งซื้อไว้ให้ 24 ชั่วโมง"
+
+msgid "Yummy Treats! is on the shelf at [number] pet shops and vet clinics in Bangkok and Nonthaburi. Same treats, no delivery wait."
+msgstr "Yummy Treats! มีวางขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์ [จำนวน] แห่งในกรุงเทพฯ และนนทบุรี ขนมเหมือนกัน ไม่ต้องรอส่ง"
+
+msgid "[Hero photo: a dog and a cat with a Yummy Treats! bag]"
+msgstr "[ภาพหลัก: สุนัขและแมวกับถุง Yummy Treats!]"
+
+msgid "[Ingredient list, in descending order by weight — supplied by the client.]"
+msgstr "[รายการส่วนผสม เรียงจากน้ำหนักมากไปน้อย — ลูกค้าเป็นผู้ให้ข้อมูล]"
+
+msgid "[No stockists added yet]"
+msgstr "[ยังไม่ได้เพิ่มร้านตัวแทน]"
+
 msgid "a little cheaper than buying the parts, and the quickest way to find a favourite"
 msgstr "ถูกกว่าซื้อแยก และเป็นวิธีที่เร็วที่สุดในการหาตัวโปรด"
 
+msgctxt "block style"
+msgid "Blue"
+msgstr "น้ำเงิน"
+
+msgctxt "block style"
+msgid "Card (white, border, hard shadow)"
+msgstr "การ์ด (ขาว มีขอบ เงาชัด)"
+
+msgctxt "block style"
+msgid "Card, no shadow"
+msgstr "การ์ด ไม่มีเงา"
+
+msgctxt "block style"
+msgid "Ink band"
+msgstr "แถบสีหมึก"
+
+msgctxt "block style"
+msgid "Mustard"
+msgstr "มัสตาร์ด"
+
+msgctxt "block style"
+msgid "Raspberry"
+msgstr "ราสเบอร์รี"
+
 msgid "city-sized bags"
 msgstr "ถุงขนาดพอดีคนเมือง"
+
+msgid "from %s / kg"
+msgstr "เริ่มต้น %s / กก."
 
 msgid "made in Thailand"
 msgstr "ผลิตในประเทศไทย"
@@ -271,4 +1138,34 @@ msgstr "เริ่มด้วยเซ็ตสุดคุ้ม"
 
 msgid "stocked by vets"
 msgstr "มีขายที่คลินิกสัตวแพทย์"
+
+msgid "© 2026 Yummy Treats! · Bangkok, Thailand ·"
+msgstr "© 2026 Yummy Treats! · กรุงเทพฯ ประเทศไทย ·"
+
+msgid "· Reviewed by [vet name], [clinic]"
+msgstr "· ตรวจทานโดย [ชื่อสัตวแพทย์], [คลินิก]"
+
+msgid "฿50, free on orders over ฿1,000. Usually next day. Order before 14:00 Mon–Sat for same-day dispatch."
+msgstr "฿50 ส่งฟรีเมื่อสั่งครบ ฿1,000 ปกติได้รับวันถัดไป สั่งก่อน 14:00 น. วันจันทร์–เสาร์ ส่งออกภายในวันเดียวกัน"
+
+msgid "฿80, free over ฿1,500. Two to three days with [courier name]."
+msgstr "฿80 ส่งฟรีเมื่อครบ ฿1,500 ใช้เวลาสองถึงสามวันกับ [ชื่อบริษัทขนส่ง]"
+
+msgid "— Bangkok, Nonthaburi and Samut Prakan only. Please have the exact amount ready."
+msgstr "— เฉพาะกรุงเทพฯ นนทบุรี และสมุทรปราการ กรุณาเตรียมเงินให้พอดี"
+
+msgid "— Visa, Mastercard and JCB, processed by Opn Payments. We never see your card number."
+msgstr "— Visa, Mastercard และ JCB ดำเนินการโดย Opn Payments เราไม่เห็นเลขบัตรของคุณ"
+
+msgid "— scan the QR at checkout with any Thai banking app. Confirms in seconds."
+msgstr "— สแกนคิวอาร์ตอนชำระเงินด้วยแอปธนาคารไทยใดก็ได้ ยืนยันภายในไม่กี่วินาที"
+
+msgid "— transfer to [Bank name] [XXX-X-XXXXX-X], then send us the slip from the confirmation page, the link in your order email, or My account. We check slips within the hour on working days, 9:00 to 18:00. Unpaid orders are cancelled after 24 hours."
+msgstr "— โอนเข้า [ชื่อธนาคาร] [XXX-X-XXXXX-X] แล้วส่งสลิปให้เราได้จากหน้ายืนยันคำสั่งซื้อ ลิงก์ในอีเมลคำสั่งซื้อ หรือหน้าบัญชีของฉัน เราตรวจสลิปภายในหนึ่งชั่วโมงในวันทำการ 9:00–18:00 น. คำสั่งซื้อที่ไม่ชำระภายใน 24 ชั่วโมงจะถูกยกเลิก"
+
+msgid "← Previous guide"
+msgstr "← คู่มือก่อนหน้า"
+
+msgid "🔒 Secure checkout ·"
+msgstr "🔒 ชำระเงินอย่างปลอดภัย ·"
 

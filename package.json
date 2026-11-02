@@ -2,16 +2,17 @@
   "name": "yummy-treats-demo",
   "version": "0.1.0",
   "private": true,
-  "description": "Yummy Treats! \u2014 a WooCommerce demo shop (block theme + Playground Blueprint) for the portfolio.",
+  "description": "Yummy Treats! — a WooCommerce demo shop (block theme + Playground Blueprint) for the portfolio.",
   "license": "MIT",
   "scripts": {
-    "dev": "node node_modules/@wp-playground/cli/wp-playground.js server --blueprint=blueprint/local.json --mount-before-install=./site:/wordpress --mount=./theme/yummy-treats:/wordpress/wp-content/themes/yummy-treats --wordpress-install-mode=install-from-existing-files-if-needed --port=9400",
+    "dev": "node node_modules/@wp-playground/cli/wp-playground.js server --blueprint=blueprint/local.json --mount-before-install=./site:/wordpress --mount=./theme/yummy-treats:/wordpress/wp-content/themes/yummy-treats --mount=./plugins/yt-slip-upload:/wordpress/wp-content/plugins/yt-slip-upload --wordpress-install-mode=install-from-existing-files-if-needed --port=9400",
     "dev:online": "node node_modules/@wp-playground/cli/wp-playground.js server --blueprint=blueprint/playground.json --port=9400",
     "shot": "node tools/shot.js",
     "smoke": "node tools/smoke.js",
     "images": "python -I tools/make-images.py theme/yummy-treats/seed/products.json theme/yummy-treats/seed/img",
     "fonts": "node tools/copy-fonts.js",
-    "mo": "php -r 'echo json_encode(include \"theme/yummy-treats/seed/translations-th.php\");' | python -I tools/make-mo.py theme/yummy-treats/languages"
+    "mo": "php -r 'echo json_encode(include \"theme/yummy-treats/seed/translations-th.php\");' | python -I tools/make-mo.py theme/yummy-treats/languages plugins/yt-slip-upload/languages",
+    "th-gaps": "node tools/th-gaps.js"
   },
   "devDependencies": {
     "@fontsource-variable/bricolage-grotesque": "^5.3.0",

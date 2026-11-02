@@ -8,6 +8,115 @@
 
 defined( 'ABSPATH' ) || exit;
 
+/**
+ * Pre-order ship date of a product (or of its parent, for a size), formatted for the page language ("12 Nov"), or ''.
+ * Stored as Y-m-d in the product meta _yt_preorder_ships.
+ *
+ * @param WC_Product|null $product Product or variation.
+ * @return string
+ */
+function yt_preorder_ships( $product ) {
+	if ( ! $product instanceof WC_Product ) {
+		return '';
+	}
+	$raw = $product->get_meta( '_yt_preorder_ships', true );
+	if ( ! $raw && $product->get_parent_id() ) {
+		$parent = wc_get_product( $product->get_parent_id() );
+		$raw    = $parent ? $parent->get_meta( '_yt_preorder_ships', true ) : '';
+	}
+	$raw = trim( preg_replace( '/^Ships\s+/i', '', (string) $raw ) );
+	if ( '' === $raw ) {
+		return '';
+	}
+	$time = strtotime( $raw );
+	return $time ? date_i18n( 'j M', $time ) : $raw;
+}
+
+/**
+ * The shop's product card grid as block markup: image, category, name, price, button.
+ * One definition so the home page, the guides and the empty cart all show the same card (styled by .yt-cards).
+ *
+ * @param array $args {
+ *     @type string $collection Product Collection type, e.g. woocommerce/product-collection/best-sellers or …/hand-picked.
+ *     @type array  $query      Overrides for the collection query (perPage, orderBy, woocommerceHandPickedProducts…).
+ *     @type int    $columns    Cards per row on wide screens.
+ *     @type int    $query_id   Unique per page when a page shows more than one grid.
+ *     @type string $class      Extra class names after yt-cards.
+ * }
+ * @return string
+ */
+function yt_product_cards( $args = array() ) {
+	$args  = wp_parse_args(
+		$args,
+		array(
+			'collection' => 'woocommerce/product-collection/best-sellers',
+			'query'      => array(),
+			'columns'    => 4,
+			'query_id'   => 1,
+			'class'      => '',
+		)
+	);
+	$query = array_merge(
+		array(
+			'perPage'                       => 8,
+			'pages'                         => 1,
+			'offset'                        => 0,
+			'postType'                      => 'product',
+			'order'                         => 'desc',
+			'orderBy'                       => 'popularity',
+			'search'                        => '',
+			'exclude'                       => array(),
+			'inherit'                       => false,
+			'taxQuery'                      => new stdClass(),
+			'isProductCollectionBlock'      => true,
+			'featured'                      => false,
+			'woocommerceOnSale'             => false,
+			'woocommerceStockStatus'        => array( 'instock', 'onbackorder', 'outofstock' ),
+			'woocommerceAttributes'         => array(),
+			'woocommerceHandPickedProducts' => array(),
+			'filterable'                    => false,
+		),
+		$args['query']
+	);
+	$class = trim( 'yt-cards ' . $args['class'] );
+	$attrs = array(
+		'align'                => 'wide',
+		'queryId'              => (int) $args['query_id'],
+		'query'                => $query,
+		'tagName'              => 'div',
+		'displayLayout'        => array( 'type' => 'flex', 'columns' => (int) $args['columns'], 'shrinkColumns' => true ),
+		'dimensions'           => array( 'widthType' => 'fill' ),
+		'collection'           => $args['collection'],
+		'hideControls'         => array( 'inherit', 'order', 'filterable' ),
+		'queryContextIncludes' => array( 'collection' ),
+		'className'            => $class,
+	);
+	return '<!-- wp:woocommerce/product-collection ' . serialize_block_attributes( $attrs ) . ' -->
+<div class="wp-block-woocommerce-product-collection alignwide ' . esc_attr( $class ) . '">
+<!-- wp:woocommerce/product-template -->
+<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} -->
+<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"left"} /-->
+<!-- /wp:woocommerce/product-image -->
+<!-- wp:post-terms {"term":"product_cat"} /-->
+<!-- wp:post-title {"level":3,"isLink":true,"__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
+<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
+<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->
+<!-- /wp:woocommerce/product-template -->
+</div>
+<!-- /wp:woocommerce/product-collection -->';
+}
+
+/**
+ * Product IDs for a list of SKUs, in the same order, skipping any that no longer exist.
+ *
+ * @param string|array $skus Comma-separated string or array.
+ * @return int[]
+ */
+function yt_product_ids_from_skus( $skus ) {
+	$skus = is_array( $skus ) ? $skus : explode( ',', (string) $skus );
+	return array_values( array_filter( array_map( 'wc_get_product_id_by_sku', array_filter( array_map( 'trim', $skus ) ) ) ) );
+}
+
 /* -------------------------------------------------------------------------
  * Badges: exactly one per product, in priority order.
  * ---------------------------------------------------------------------- */
@@ -32,7 +141,7 @@ function yt_product_badge( $product ) {
 		);
 	}
 
-	$ships = $product->get_meta( '_yt_preorder_ships', true );
+	$ships = yt_preorder_ships( $product );
 	if ( $ships ) {
 		return array(
 			/* translators: %s: a date range such as 12-19 Nov */
@@ -208,11 +317,7 @@ function yt_cart_preorder_line( $item_data, $cart_item ) {
 	if ( ! $product instanceof WC_Product ) {
 		return $item_data;
 	}
-	$ships = $product->get_meta( '_yt_preorder_ships', true );
-	if ( ! $ships && $product->get_parent_id() ) {
-		$parent = wc_get_product( $product->get_parent_id() );
-		$ships  = $parent ? $parent->get_meta( '_yt_preorder_ships', true ) : '';
-	}
+	$ships = yt_preorder_ships( $product );
 	if ( $ships ) {
 		$item_data[] = array(
 			'key'   => __( 'Pre-order', 'yummy-treats' ),
@@ -236,7 +341,7 @@ function yt_order_preorder_line( $item, $cart_item_key, $values ) {
 	if ( ! $product instanceof WC_Product ) {
 		return;
 	}
-	$ships = $product->get_meta( '_yt_preorder_ships', true );
+	$ships = yt_preorder_ships( $product );
 	if ( $ships ) {
 		/* translators: %s: a date range such as 12-19 Nov */
 		$item->add_meta_data( __( 'Pre-order', 'yummy-treats' ), sprintf( __( 'Ships %s', 'yummy-treats' ), $ships ), true );
@@ -337,7 +442,7 @@ function yt_add_to_cart_text( $text, $product ) {
 	if ( ! $product->is_in_stock() ) {
 		return __( 'Notify me', 'yummy-treats' );
 	}
-	if ( $product->get_meta( '_yt_preorder_ships', true ) ) {
+	if ( yt_preorder_ships( $product ) ) {
 		return __( 'Pre-order', 'yummy-treats' );
 	}
 	if ( $product->is_type( 'variable' ) ) {
@@ -418,3 +523,90 @@ function yt_unhook_woo_header_blocks( $hooked_block_types ) {
 	return array_values( array_diff( (array) $hooked_block_types, array( 'woocommerce/mini-cart', 'woocommerce/customer-account' ) ) );
 }
 add_filter( 'hooked_block_types', 'yt_unhook_woo_header_blocks', 20 );
+
+
+/**
+ * Screen readers announce a card button by its aria-label, which WooCommerce builds from its own wording
+ * ("Select options for …"). Our visible wording differs, so the label must start with the same words
+ * (WCAG 2.5.3 Label in Name): "Choose a size: Chicken Jerky Strips".
+ *
+ * @param string     $description WooCommerce's description.
+ * @param WC_Product $product     Product.
+ * @return string
+ */
+function yt_add_to_cart_description( $description, $product ) {
+	if ( ! $product instanceof WC_Product ) {
+		return $description;
+	}
+	/* translators: 1: button text, e.g. "Choose a size", 2: product name */
+	return sprintf( __( '%1$s: %2$s', 'yummy-treats' ), yt_add_to_cart_text( '', $product ), wp_strip_all_tags( $product->get_name() ) );
+}
+add_filter( 'woocommerce_product_add_to_cart_description', 'yt_add_to_cart_description', 10, 2 );
+
+/**
+ * When an order qualifies for free delivery, offer only the free rate (WooCommerce would otherwise list the
+ * paid courier rate next to it, and some customers pick the first line).
+ *
+ * @param array $rates Shipping rates for the package.
+ * @return array
+ */
+function yt_only_free_when_free( $rates ) {
+	$free = array_filter( $rates, static fn( $rate ) => 'free_shipping' === $rate->get_method_id() );
+	return $free ? $free : $rates;
+}
+add_filter( 'woocommerce_package_rates', 'yt_only_free_when_free', 100 );
+
+/* -------------------------------------------------------------------------
+ * Labels that live in settings (payment and delivery names, attribute names) and WooCommerce's fixed breadcrumb
+ * label, run through the theme's translations so /th/ shows them in Thai. The stored values stay in English, the
+ * site's source language; seed/translations-th.php holds the Thai.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Translate a stored label with the theme's text domain. Unknown labels come back unchanged.
+ *
+ * @param string $text Label.
+ * @return string
+ */
+function yt_translate_stored_label( $text ) {
+	// phpcs:ignore WordPress.WP.I18n.NonSingularStringLiteralText -- stored values, listed in seed/translations-th.php.
+	return is_string( $text ) && '' !== $text ? translate( $text, 'yummy-treats' ) : $text;
+}
+add_filter( 'woocommerce_shipping_rate_label', 'yt_translate_stored_label' );
+add_filter( 'woocommerce_attribute_label', 'yt_translate_stored_label' );
+
+/**
+ * WooCommerce writes aria-label="Breadcrumb" as fixed English; make it translatable.
+ *
+ * @param array $defaults Breadcrumb arguments.
+ * @return array
+ */
+function yt_breadcrumb_label( $defaults ) {
+	$defaults['wrap_before'] = '<nav class="woocommerce-breadcrumb" aria-label="' . esc_attr__( 'Breadcrumb', 'yummy-treats' ) . '">';
+	// The separator in its own element, so each crumb ("Shop", "Dogs") is a whole text piece the Thai dictionary can match.
+	$defaults['delimiter'] = '<span class="yt-crumb-sep" aria-hidden="true">&nbsp;/&nbsp;</span>';
+	return $defaults;
+}
+add_filter( 'woocommerce_breadcrumb_defaults', 'yt_breadcrumb_label' );
+
+/**
+ * Payment method names, descriptions and instructions, translated where they are read (the block checkout reads the
+ * settings directly, past the gateway title filters). Front end only, so the admin form always shows and saves English.
+ *
+ * @param mixed $settings Gateway settings.
+ * @return mixed
+ */
+function yt_translate_gateway_settings( $settings ) {
+	if ( ! is_array( $settings ) || ( is_admin() && ! wp_doing_ajax() ) ) {
+		return $settings;
+	}
+	foreach ( array( 'title', 'description', 'instructions' ) as $key ) {
+		if ( ! empty( $settings[ $key ] ) ) {
+			$settings[ $key ] = yt_translate_stored_label( $settings[ $key ] );
+		}
+	}
+	return $settings;
+}
+foreach ( array( 'bacs', 'cod', 'omise', 'omise_promptpay' ) as $yt_gateway ) {
+	add_filter( "option_woocommerce_{$yt_gateway}_settings", 'yt_translate_gateway_settings' );
+}

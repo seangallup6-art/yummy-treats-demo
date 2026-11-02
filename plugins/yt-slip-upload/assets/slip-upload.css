@@ -1,0 +1,9 @@
+/* Layout only; colours and type come from the theme. */
+.yt-slip { margin: 1.5em 0; }
+.yt-slip__form { display: grid; gap: 0.6em; justify-items: start; }
+.yt-slip__file { max-width: 100%; }
+.yt-slip__hint { margin: 0; font-size: 0.875em; }
+.yt-slip__hint.is-error, .yt-slip__notice--error { color: #b3261e; }
+.yt-slip__preview { display: flex; align-items: center; gap: 0.75em; }
+.yt-slip__preview img { width: 64px; height: 64px; object-fit: cover; border-radius: 8px; }
+.yt-slip__submit[disabled] { opacity: 0.6; cursor: progress; }

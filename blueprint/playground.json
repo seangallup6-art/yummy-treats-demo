@@ -53,6 +53,19 @@
       }
     },
     {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "git:directory",
+        "url": "https://github.com/seangallup6-art/yummy-treats-demo",
+        "ref": "HEAD",
+        "path": "plugins/yt-slip-upload"
+      },
+      "options": {
+        "activate": true,
+        "targetFolderName": "yt-slip-upload"
+      }
+    },
+    {
       "step": "installTheme",
       "themeData": {
         "resource": "git:directory",

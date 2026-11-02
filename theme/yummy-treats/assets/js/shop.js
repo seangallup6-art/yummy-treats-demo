@@ -75,6 +75,7 @@
 		if (!t) {
 			t = document.createElement('div');
 			t.className = 'yt-toast';
+			t.setAttribute('data-no-dynamic-translation', ''); // text arrives already translated (ytShop)
 			t.setAttribute('role', 'status');
 			document.body.appendChild(t);
 		}
@@ -93,32 +94,43 @@
 	document.body.addEventListener('added_to_cart', function () { toast(i18n.added || 'Added!'); });
 
 	/* 3. Free shipping bar ------------------------------------------------------ */
+	// Reads WooCommerce's own cart store (wc/store/cart), which the cart block keeps current, so the bar follows
+	// quantity changes instantly and costs no extra requests. Without the store it asks the Store API once.
 	var bar = document.querySelector('.yt-freebar');
-	if (bar && window.fetch) {
+	if (bar) {
 		var threshold = parseFloat(bar.dataset.threshold || '0');
 		var fill = bar.querySelector('.yt-freebar__fill');
 		var msg = bar.querySelector('.yt-freebar__msg');
 		var fmt = function (n) { return '฿' + Math.ceil(n).toLocaleString('en-US'); };
-		var update = function () {
+		var render = function (totals) {
+			var minor = typeof totals.currency_minor_unit === 'number' ? totals.currency_minor_unit : parseInt(totals.currency_minor_unit || '0', 10);
+			var items = parseInt(totals.total_items || '0', 10) / Math.pow(10, minor);
+			var pct = threshold > 0 ? Math.min(100, Math.round(items / threshold * 100)) : 100;
+			if (fill) { fill.style.width = pct + '%'; }
+			if (msg) {
+				msg.textContent = items >= threshold
+					? (i18n.freeReached || 'You have free delivery!')
+					: (i18n.freeLeft || 'Add %s more for free Bangkok delivery').replace('%s', fmt(threshold - items));
+			}
+			bar.hidden = false;
+		};
+		var data = window.wp && window.wp.data;
+		var cartStore = data && data.select ? data.select('wc/store/cart') : null;
+		if (cartStore && cartStore.getCartTotals) {
+			var last = '';
+			var sync = function () {
+				var totals = cartStore.getCartTotals();
+				var key = totals ? totals.total_items + '|' + totals.currency_minor_unit : '';
+				if (totals && key !== last) { last = key; render(totals); }
+			};
+			data.subscribe(sync, 'wc/store/cart');
+			sync();
+		} else if (window.fetch) {
 			fetch((window.wpApiSettings && window.wpApiSettings.root || '/wp-json/') + 'wc/store/v1/cart', { credentials: 'same-origin' })
 				.then(function (r) { return r.json(); })
-				.then(function (cart) {
-					var minor = typeof cart.totals.currency_minor_unit === 'number' ? cart.totals.currency_minor_unit : parseInt(cart.totals.currency_minor_unit || '0', 10);
-					var items = parseInt(cart.totals.total_items || '0', 10) / Math.pow(10, minor);
-					var pct = threshold > 0 ? Math.min(100, Math.round(items / threshold * 100)) : 100;
-					if (fill) { fill.style.width = pct + '%'; }
-					if (msg) {
-						msg.textContent = items >= threshold
-							? (i18n.freeReached || 'You have free delivery!')
-							: (i18n.freeLeft || 'Add %s more for free Bangkok delivery').replace('%s', fmt(threshold - items));
-					}
-					bar.hidden = false;
-				})
+				.then(function (cart) { render(cart.totals); })
 				.catch(function () { bar.hidden = true; });
-		};
-		update();
-		// The cart block re-renders after quantity changes; poll lightly while the page is visible.
-		setInterval(function () { if (!document.hidden) { update(); } }, 4000);
+		}
 	}
 })();
 
@@ -138,4 +150,82 @@
 			g.hidden = !g.querySelector('.wp-block-post:not([hidden])');
 		});
 	});
+})();
+
+/* 5. Sticky add-to-cart bar on phones (board B32) ------------------------------------------------
+ * Shows the product name, the current price and the same action as the buy button once that button
+ * has scrolled out of view. Tapping it scrolls back to the size buttons when a size is still needed,
+ * otherwise it presses the real button, so there is only one add-to-cart code path. */
+(function () {
+	var buy = document.querySelector('.yt-buybox form.cart .single_add_to_cart_button');
+	var title = document.querySelector('.yt-buybox .wp-block-post-title');
+	if (!buy || !title) { return; }
+	var priceEl = document.querySelector('.yt-buybox .wc-block-components-product-price, .yt-buybox .wp-block-woocommerce-product-price');
+	var bar = document.createElement('div');
+	bar.className = 'yt-stickybar';
+	bar.setAttribute('data-no-dynamic-translation', ''); // copies text that is already translated
+	bar.setAttribute('aria-hidden', 'true');
+	bar.innerHTML = '<div class="yt-stickybar__info"><span class="yt-stickybar__name"></span><span class="yt-stickybar__price"></span></div><button type="button" class="wp-element-button" tabindex="-1"></button>';
+	bar.querySelector('.yt-stickybar__name').textContent = title.textContent.trim();
+	var btn = bar.querySelector('button');
+	var price = bar.querySelector('.yt-stickybar__price');
+	function sync() {
+		btn.textContent = buy.textContent.trim();
+		var varPrice = document.querySelector('.yt-buybox .woocommerce-variation-price .price');
+		var src = (varPrice && varPrice.textContent.trim()) ? varPrice : priceEl;
+		var amount = src ? src.cloneNode(true) : null;
+		if (amount) { amount.querySelectorAll('.yt-perkg, .screen-reader-text').forEach(function (n) { n.remove(); }); }
+		price.textContent = amount ? amount.textContent.replace(/\s+/g, ' ').trim() : '';
+	}
+	btn.addEventListener('click', function () {
+		if (buy.classList.contains('disabled') || buy.disabled) {
+			var first = document.querySelector('.yt-variations__btn:not([disabled])') || buy;
+			first.scrollIntoView({ behavior: 'smooth', block: 'center' });
+			setTimeout(function () { first.focus({ preventScroll: true }); }, 400);
+		} else {
+			buy.click();
+		}
+	});
+	var form = buy.closest('form');
+	if (form) {
+		form.addEventListener('change', function () { setTimeout(sync, 50); });
+		if (window.jQuery) { window.jQuery(form).on('found_variation reset_data', function () { setTimeout(sync, 50); }); }
+	}
+	sync();
+	document.body.appendChild(bar);
+	// A scroll check rather than IntersectionObserver: a fast fling or an anchor jump can move the button from
+	// below the screen to above it without it ever "intersecting", and the observer would never fire.
+	var ticking = false;
+	function check() {
+		ticking = false;
+		bar.classList.toggle('is-shown', buy.getBoundingClientRect().bottom < 0);
+	}
+	window.addEventListener('scroll', function () {
+		if (!ticking) { ticking = true; window.requestAnimationFrame(check); }
+	}, { passive: true });
+	check();
+})();
+
+/* 6. Checkout keyboards: numeric keypad for postcodes (the block checkout re-renders, so keep re-applying). */
+(function () {
+	if (!document.querySelector('.wp-block-woocommerce-checkout')) { return; }
+	function apply() {
+		document.querySelectorAll('#shipping-postcode, #billing-postcode').forEach(function (el) {
+			if (el.getAttribute('inputmode') !== 'numeric') { el.setAttribute('inputmode', 'numeric'); }
+		});
+	}
+	apply();
+	new MutationObserver(apply).observe(document.body, { childList: true, subtree: true });
+})();
+
+/* 7. Mini-cart drawer: WooCommerce hides it with aria-hidden but leaves its buttons focusable. Mirror aria-hidden as
+ * `inert` so keyboard users cannot tab into the closed drawer (axe: aria-hidden-focus). */
+(function () {
+	var drawer = document.querySelector('.wc-block-mini-cart__drawer');
+	if (!drawer) { return; }
+	function sync() {
+		if (drawer.getAttribute('aria-hidden') === 'true') { drawer.setAttribute('inert', ''); } else { drawer.removeAttribute('inert'); }
+	}
+	sync();
+	new MutationObserver(sync).observe(drawer, { attributes: true, attributeFilter: ['aria-hidden'] });
 })();

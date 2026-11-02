@@ -31,6 +31,10 @@
       "pluginPath": "translatepress-multilingual/index.php"
     },
     {
+      "step": "activatePlugin",
+      "pluginPath": "yt-slip-upload/yt-slip-upload.php"
+    },
+    {
       "step": "activateTheme",
       "themeFolderName": "yummy-treats"
     },

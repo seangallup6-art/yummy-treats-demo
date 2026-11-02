@@ -27,7 +27,7 @@ if ( class_exists( 'TRP_Translate_Press' ) ) {
 <!-- wp:group {"className":"yt-lang-switch","layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"8px"}}} -->
 <div class="wp-block-group yt-lang-switch">
 	<!-- wp:paragraph {"fontSize":"small"} -->
-	<p class="has-small-font-size" data-no-translation data-no-dynamic-translation><a href="<?php echo esc_url( $yt_url_th ); ?>" lang="th" hreflang="th"<?php echo $yt_is_th ? ' class="is-current" aria-current="true"' : ''; ?>>ไทย</a> / <a href="<?php echo esc_url( $yt_url_en ); ?>" lang="en" hreflang="en"<?php echo $yt_is_th ? '' : ' class="is-current" aria-current="true"'; ?>>EN</a></p>
+	<p class="has-small-font-size" data-no-translation data-no-dynamic-translation><a href="<?php echo esc_url( $yt_url_th ); ?>" lang="th" hreflang="th"<?php echo $yt_is_th ? ' class="is-current" aria-current="true"' : ''; ?>>ไทย</a><span class="yt-lang-switch__sep" aria-hidden="true"> / </span><a href="<?php echo esc_url( $yt_url_en ); ?>" lang="en" hreflang="en"<?php echo $yt_is_th ? '' : ' class="is-current" aria-current="true"'; ?>>EN</a></p>
 	<!-- /wp:paragraph -->
 </div>
 <!-- /wp:group -->

@@ -3,7 +3,7 @@
  * Title: Featured products
  * Slug: yummy-treats/featured-products
  * Categories: yummy-treats
- * Description: Heading row with a "See all" link, then eight best sellers as Yummy Treats! cards.
+ * Description: Heading row with a "See all" link, then eight best sellers as Yummy Treats! cards (card markup: yt_product_cards() in inc/woocommerce.php).
  *
  * @package YummyTreats
  */
@@ -22,18 +22,6 @@
 	</div>
 	<!-- /wp:group -->
 
-	<!-- wp:woocommerce/product-collection {"align":"wide","queryId":1,"query":{"perPage":8,"pages":1,"offset":0,"postType":"product","order":"desc","orderBy":"popularity","search":"","exclude":[],"inherit":false,"taxQuery":{},"isProductCollectionBlock":true,"featured":false,"woocommerceOnSale":false,"woocommerceStockStatus":["instock","onbackorder","outofstock"],"woocommerceAttributes":[],"woocommerceHandPickedProducts":[],"filterable":false},"tagName":"div","displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"dimensions":{"widthType":"fill"},"collection":"woocommerce/product-collection/best-sellers","hideControls":["inherit","order","filterable"],"queryContextIncludes":["collection"],"className":"yt-cards"} -->
-	<div class="wp-block-woocommerce-product-collection alignwide yt-cards">
-		<!-- wp:woocommerce/product-template -->
-		<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} -->
-			<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"left"} /-->
-		<!-- /wp:woocommerce/product-image -->
-		<!-- wp:post-terms {"term":"product_cat"} /-->
-		<!-- wp:post-title {"level":3,"isLink":true,"__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
-		<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
-		<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->
-		<!-- /wp:woocommerce/product-template -->
-	</div>
-	<!-- /wp:woocommerce/product-collection -->
+	<?php echo function_exists( 'yt_product_cards' ) ? yt_product_cards() : ''; // phpcs:ignore WordPress.Security.EscapeOutput -- block markup. ?>
 </div>
 <!-- /wp:group -->

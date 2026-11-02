@@ -30,13 +30,15 @@ function yt_seed_all() {
 	$log[] = yt_seed_products();
 	$log[] = yt_seed_guides();
 	$log[] = yt_seed_stockists();
+	$log[] = yt_seed_orders();
 	$log[] = yt_seed_pages();
 	$log[] = yt_seed_translatepress();
-	global $wp_rewrite;
-	$wp_rewrite->init();
-	flush_rewrite_rules( false );
-	$rules = get_option( 'rewrite_rules' );
-	$log[] = 'rewrite rules: ' . ( is_array( $rules ) ? count( $rules ) : 0 ) . ( is_array( $rules ) && isset( $rules['([^/]+)(?:/([0-9]+))?/?$'] ) ? ' incl. post rule' : ' WITHOUT post rule' );
+	// Do not flush here: changing the permalink structure mid-request resets WP_Rewrite, which drops every endpoint
+	// plugins registered on init (WooCommerce's order-received and my-account endpoints, TranslatePress's rules).
+	// Deleting the stored rules makes WordPress rebuild them on the next ordinary request, with everything registered.
+	delete_option( 'rewrite_rules' );
+	delete_option( 'trp_db_errors' ); // Logged during plugin activation, before the theme's SQLite shims were loaded.
+	$log[] = 'rewrite rules: cleared, rebuilt on the next request';
 	return $log;
 }
 
@@ -89,12 +91,6 @@ function yt_seed_settings() {
 	foreach ( $options as $k => $v ) {
 		update_option( $k, $v );
 	}
-	// Tell the live rewrite object about the new permalink structure *now*. Without this, the flush at the end of the
-	// seed runs with the structure WordPress loaded at the start of the request ("plain") and writes rules without the
-	// post pattern — single posts then fall through to the front page. Only bites when the seed runs once (hosted boot).
-	global $wp_rewrite;
-	$wp_rewrite->set_permalink_structure( '/%postname%/' );
-	$wp_rewrite->init();
 	// Default product attribute "Size" so variations share one taxonomy across products.
 	if ( ! taxonomy_exists( 'pa_size' ) && function_exists( 'wc_create_attribute' ) ) {
 		wc_create_attribute(
@@ -167,8 +163,8 @@ function yt_seed_payments() {
 		array(
 			'enabled'      => 'yes',
 			'title'        => 'Bank transfer (upload your slip)',
-			'description'  => 'Transfer to the account below, then upload your payment slip on the confirmation page or from your account. We pack as soon as we see it.',
-			'instructions' => 'Transfer the total to [Bank name], account [XXX-X-XXXXX-X], name [Company name] Co., Ltd. Then upload your slip. Orders unpaid after 24 hours are cancelled automatically.',
+			'description'  => 'Pay by transfer after you order. The next page shows our account, then you send us the slip.',
+			'instructions' => 'Transfer the exact total to the account below, then send us the slip. Unpaid orders are cancelled after 24 hours.',
 		)
 	);
 	update_option(
@@ -208,13 +204,15 @@ function yt_seed_payments() {
 		)
 	);
 	update_option( 'omise', $omise );
-	update_option( 'woocommerce_omise_settings', array( 'enabled' => 'yes', 'title' => 'Credit / debit card', 'description' => 'Visa, Mastercard and JCB. Processed securely by Opn Payments.', 'payment_action' => 'auto_capture' ) );
-	update_option( 'woocommerce_omise_promptpay_settings', array( 'enabled' => 'yes', 'title' => 'PromptPay', 'description' => 'Scan the QR code with any Thai banking app. Confirms within seconds.' ) );
+	// Card and PromptPay switch on once test keys exist; until then they stay off so Opn's scripts do not run without a key.
+	$opn_on = ( ! empty( $omise['test_public_key'] ) && ! empty( $omise['test_private_key'] ) ) ? 'yes' : 'no';
+	update_option( 'woocommerce_omise_settings', array( 'enabled' => $opn_on, 'title' => 'Credit / debit card', 'description' => 'Visa, Mastercard and JCB. Processed securely by Opn Payments.', 'payment_action' => 'auto_capture' ) );
+	update_option( 'woocommerce_omise_promptpay_settings', array( 'enabled' => $opn_on, 'title' => 'PromptPay', 'description' => 'Scan the QR code with any Thai banking app. Confirms within seconds.' ) );
 	update_option(
 		'woocommerce_gateway_order',
 		array( 'omise_promptpay' => 0, 'omise' => 1, 'bacs' => 2, 'cod' => 3 )
 	);
-	return 'payments: PromptPay, card (Opn test mode, keys to be entered), bank transfer, COD';
+	return 'payments: bank transfer + slip, COD' . ( 'yes' === $opn_on ? ', PromptPay and card (Opn test mode)' : '; Opn card/PromptPay off until test keys are entered' );
 }
 
 /* ------------------------------------------------------------------------- categories */
@@ -251,7 +249,7 @@ function yt_seed_products() {
 	require_once ABSPATH . 'wp-admin/includes/media.php';
 
 	$created = 0;
-	$ships   = gmdate( 'j M', strtotime( '+10 days' ) );
+	$ships   = gmdate( 'Y-m-d', strtotime( '+10 days' ) );
 	foreach ( $data as $p ) {
 		if ( wc_get_product_id_by_sku( $p['sku'] ) ) {
 			continue;
@@ -329,7 +327,7 @@ function yt_seed_products() {
 
 		// Flags the theme reads.
 		if ( ! empty( $p['preorder'] ) ) {
-			update_post_meta( $id, '_yt_preorder_ships', 'Ships ' . $ships );
+			update_post_meta( $id, '_yt_preorder_ships', $ships );
 		}
 		if ( ! empty( $p['new'] ) ) {
 			// Published "recently" so the New badge logic (45 days) picks it up; older ones get an older date.
@@ -407,18 +405,41 @@ function yt_seed_term_ids( $names, $tax ) {
 	return $ids;
 }
 
+/**
+ * Long description for a product. The feeding and storage notes follow the product: meals count against the daily
+ * food, treats stay a small extra; frozen and wet food get fridge and freezer advice. The short description is its
+ * own paragraph so the card and the product page share one translation.
+ *
+ * @param array $p Product from products.json.
+ * @return string
+ */
 function yt_seed_product_body( $p ) {
-	$pet = 'Dogs' === $p['pet'] ? 'dog' : 'cat';
+	$pet     = 'Dogs' === $p['pet'] ? 'dog' : 'cat';
+	$texture = $p['attrs']['Texture'] ?? '';
+	$table   = '[Feeding table by body weight — supplied by the client or their vet.]';
+	if ( 'Meals' === $p['type'] ) {
+		$feeding = "Count it as part of your {$pet}’s daily food, not on top of it, and reduce their usual food to match. {$table} Always keep fresh water nearby.";
+	} else {
+		$feeding = "Treats should stay a small part of your {$pet}’s day; the rest comes from their main food. {$table} Always keep fresh water nearby.";
+	}
+	if ( 'Fresh (frozen)' === $texture ) {
+		$storage = 'Keep frozen. Thaw a portion in the fridge overnight and use it within [N] days of thawing. Do not refreeze.';
+	} elseif ( in_array( $texture, array( 'Wet', 'Mousse', 'Purée', 'Liquid' ), true ) ) {
+		$storage = 'Store unopened packs somewhere cool and dry. Once opened, cover, keep in the fridge and use within [N] days.';
+	} else {
+		$storage = 'Reseal after opening and keep cool and dry. In Bangkok humidity, the fridge is your friend. Use within [N] weeks of opening.';
+	}
 	return implode(
 		"\n\n",
 		array(
-			'<!-- wp:paragraph --><p>' . esc_html( $p['short'] ) . ' Made in small batches in [province] and packed within days of cooking.</p><!-- /wp:paragraph -->',
+			'<!-- wp:paragraph --><p>' . esc_html( $p['short'] ) . '</p><!-- /wp:paragraph -->',
+			'<!-- wp:paragraph --><p>Made in small batches in [province] and packed within days of cooking.</p><!-- /wp:paragraph -->',
 			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Ingredients</h3><!-- /wp:heading -->',
 			'<!-- wp:paragraph --><p>[Ingredient list, in descending order by weight — supplied by the client.]</p><!-- /wp:paragraph -->',
 			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Feeding guide</h3><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>Treats should stay a small part of your ' . $pet . "'s day; the rest comes from their main food. [Feeding table by body weight — supplied by the client or their vet.] Always keep fresh water nearby.</p><!-- /wp:paragraph -->",
+			'<!-- wp:paragraph --><p>' . esc_html( $feeding ) . '</p><!-- /wp:paragraph -->',
 			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Storage</h3><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>Reseal after opening and keep cool and dry. In Bangkok humidity, the fridge is your friend. Use within [N] weeks of opening.</p><!-- /wp:paragraph -->',
+			'<!-- wp:paragraph --><p>' . esc_html( $storage ) . '</p><!-- /wp:paragraph -->',
 		)
 	);
 }
@@ -436,27 +457,8 @@ function yt_seed_guides() {
 	if ( $hello ) {
 		wp_delete_post( $hello->ID, true );
 	}
-	$guides = array(
-		array(
-			'slug'    => 'how-much-should-a-condo-dog-eat',
-			'title'   => 'How much should a Bangkok condo dog actually eat?',
-			'cat'     => 'Dogs',
-			'excerpt' => 'Less than the bag says, usually. A plain-language way to work it out with your vet, and the signs you have it right.',
-		),
-		array(
-			'slug'    => 'switching-your-cat-to-a-new-food',
-			'title'   => 'Switching your cat to a new food without the drama',
-			'cat'     => 'Cats',
-			'excerpt' => 'Cats hate surprises. A seven-day plan for mixing old and new, and what to do when they stage a hunger strike.',
-		),
-		array(
-			'slug'    => 'treats-and-training-how-many-is-too-many',
-			'title'   => 'Treats and training: how many is too many?',
-			'cat'     => 'Training',
-			'excerpt' => 'Why tiny treats train better than big ones, how to count them against meals, and which of ours are built for it.',
-		),
-	);
-	$n = 0;
+	$guides = yt_seed_guide_content();
+	$n      = 0;
 	foreach ( $guides as $g ) {
 		if ( get_page_by_path( $g['slug'], OBJECT, 'post' ) ) {
 			continue;
@@ -469,9 +471,11 @@ function yt_seed_guides() {
 				'post_name'     => $g['slug'],
 				'post_title'    => $g['title'],
 				'post_excerpt'  => $g['excerpt'],
-				'post_content'  => yt_seed_guide_body( $g ),
+				'post_content'  => yt_seed_blocks( array_merge( array( array( 'lead', $g['excerpt'] ) ), $g['body'] ) ),
 				'post_category' => $term ? array( $term->term_id ) : array(),
 				'post_date'     => gmdate( 'Y-m-d H:i:s', strtotime( '-' . ( 7 + 10 * $n ) . ' days' ) ),
+				// Products shown under the guide (patterns/guide-products.php). Editable in the Custom Fields panel.
+				'meta_input'    => array( 'yt_guide_products' => implode( ', ', $g['products'] ) ),
 			)
 		);
 		++$n;
@@ -479,21 +483,209 @@ function yt_seed_guides() {
 	return "guides: {$n} created";
 }
 
-function yt_seed_guide_body( $g ) {
-	return implode(
-		"\n\n",
+/**
+ * The three guides. Facts are checked against the sources listed at the end of each one (see also
+ * docs/woo-demo-decisions.md). The vet reviewer stays a [placeholder] in the byline until the client names one.
+ * Text avoids straight quotes, apostrophes and ampersands: WordPress curls or encodes those on output, and the
+ * Thai dictionary matches the rendered text exactly.
+ *
+ * @return array[]
+ */
+function yt_seed_guide_content() {
+	$disclaimer = array( 'small', 'General information, not a substitute for advice from your own vet.' );
+	$wsava_dog  = array( 'WSAVA Global Nutrition Committee: Feeding treats to your dog (PDF)', 'https://wsava.org/wp-content/uploads/2024/06/Feeding-treats-to-your-dog-v2.pdf' );
+	$tufts      = array( 'Tufts Cummings School of Veterinary Medicine, via Newswise: treats and table food', 'https://www.newswise.com/articles/the-most-popular-holiday-foods-that-your-pet-should-avoid' );
+	return array(
 		array(
-			'<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">' . esc_html( $g['excerpt'] ) . '</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading --><h2 class="wp-block-heading">Start with your vet, not the bag</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>[Opening section — 2 to 3 short paragraphs in the brand voice. Practical, specific to Bangkok life (condos, heat, long work days), no scare stories. Reviewed by [vet name], [clinic].]</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading --><h2 class="wp-block-heading">The simple method</h2><!-- /wp:heading -->',
-			'<!-- wp:list {"ordered":true} --><ol class="wp-block-list"><!-- wp:list-item --><li>[Step one]</li><!-- /wp:list-item --><!-- wp:list-item --><li>[Step two]</li><!-- /wp:list-item --><!-- wp:list-item --><li>[Step three]</li><!-- /wp:list-item --></ol><!-- /wp:list -->',
-			'<!-- wp:quote --><blockquote class="wp-block-quote"><!-- wp:paragraph --><p>[A one-line tip from the vet reviewer, in their words.]</p><!-- /wp:paragraph --><cite>[Vet name], [clinic]</cite></blockquote><!-- /wp:quote -->',
-			'<!-- wp:heading --><h2 class="wp-block-heading">Signs you have it right</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>[Closing section with 3 to 4 observable signs, then a soft link to the relevant products.]</p><!-- /wp:paragraph -->',
-			'<!-- wp:paragraph --><p><strong>Products mentioned:</strong> <a href="/shop/">see the shop</a>.</p><!-- /wp:paragraph -->',
-		)
+			'slug'     => 'how-much-should-a-condo-dog-eat',
+			'title'    => 'How much should a Bangkok condo dog actually eat?',
+			'cat'      => 'Dogs',
+			'excerpt'  => 'The number on the bag is a starting point, not a rule. How to work it out with your vet, and the signs you have it right.',
+			'products' => array( 'YT-D-007', 'YT-D-009', 'YT-D-005' ),
+			'body'     => array(
+				array( 'p', 'Feeding charts on the bag are written for an average dog. A young dog who runs laps of the park every evening and an older dog whose big outing is the lift down to the lobby can weigh the same and still need very different amounts of food.' ),
+				array( 'h2', 'Start with your vet, not the bag' ),
+				array( 'p', 'Ask your vet for a daily calorie target based on your dog’s weight, age and how active they really are. Ask for the number in kilocalories (kcal) rather than cups or scoops, because every food packs a different amount of energy into the same scoop.' ),
+				array( 'p', 'For a sense of the range: vet nutritionists at Tufts University use the example of a fairly active 11 kg dog needing about 600 kcal a day, while a less active dog of the same weight may need closer to 400.' ),
+				array( 'h2', 'The simple method' ),
+				array(
+					'ol',
+					array(
+						'Get a daily calorie target from your vet.',
+						'Find the kcal per 100 g on the food label and work out how many grams a day that is.',
+						'Weigh meals on a kitchen scale for the first few weeks instead of guessing with a scoop.',
+						'Count treats, chews and table scraps in the same budget: no more than 10% of the day’s calories, with the rest from complete meals.',
+						'Check your dog’s shape every few weeks and change portions a little at a time.',
+					),
+				),
+				array( 'h2', 'Signs you have it right' ),
+				array( 'p', 'Vets judge this with a body condition score, by looking and feeling rather than by weight alone. A rough version at home:' ),
+				array(
+					'ul',
+					array(
+						'You can feel the ribs easily with light pressure, under a thin layer of padding.',
+						'From above, there is a visible waist behind the ribs.',
+						'From the side, the belly tucks up behind the rib cage.',
+					),
+				),
+				array( 'p', 'If you have to press hard to find the ribs, or you can see them clearly, talk to your vet before changing anything. The same goes for puppies, older dogs and dogs with a health condition, whose needs are different.' ),
+				$disclaimer,
+				array( 'h2', 'Sources' ),
+				array(
+					'links',
+					array(
+						array( 'WSAVA Global Nutrition Committee: Body Condition Score chart for dogs (PDF)', 'https://wsava.org/wp-content/uploads/2020/01/Body-Condition-Score-Dog.pdf' ),
+						$wsava_dog,
+						$tufts,
+					),
+				),
+			),
+		),
+		array(
+			'slug'     => 'switching-your-cat-to-a-new-food',
+			'title'    => 'Switching your cat to a new food without the drama',
+			'cat'      => 'Cats',
+			'excerpt'  => 'Cats hate surprises. A 7 to 10 day plan for mixing old and new, and what to do if they will not eat it.',
+			'products' => array( 'YT-C-011', 'YT-C-006', 'YT-C-003' ),
+			'body'     => array(
+				array( 'p', 'Cats are creatures of habit. Swap their food overnight and you may get an upset stomach, or a cat who sniffs the bowl and walks away. Going slowly avoids most of it.' ),
+				array( 'h2', 'The 7 to 10 day plan' ),
+				array( 'p', 'Mix the new food into the old in small steps. Most vet guidance uses a schedule like this:' ),
+				array(
+					'table',
+					array(
+						array( 'Days', 'Old food', 'New food' ),
+						array( '1–2', '75%', '25%' ),
+						array( '3–4', '50%', '50%' ),
+						array( '5–6', '25%', '75%' ),
+						array( '7 onwards', '0%', '100%' ),
+					),
+				),
+				array( 'p', 'Fussy and older cats often need longer, sometimes a few weeks. There is no prize for finishing on day seven: if a step is not going well, stay on it for a few more days.' ),
+				array( 'h2', 'If they will not eat it' ),
+				array(
+					'ul',
+					array(
+						'Go back to the last mix they ate happily and stay there longer.',
+						'Start with less new food, about a tenth of the bowl.',
+						'Some cats object to mixing. Serve the new food in a separate bowl next to the old one instead.',
+						'Warm wet food for a few seconds so it smells stronger. Stir it and check it is not hot.',
+						'Moving between dry and wet food is a texture change too, so allow the full ten days or more.',
+					),
+				),
+				array( 'h2', 'Never wait it out' ),
+				array( 'p', 'Never try to starve a cat into accepting a new food. A cat that goes a few days without eating can develop a serious liver condition called hepatic lipidosis.' ),
+				array( 'p', 'If your cat stops eating, go back to the food they know and call your vet. Check with your vet before switching a cat with a health condition or one on a prescription diet.' ),
+				array( 'h2', 'Signs it is working' ),
+				array(
+					'ul',
+					array(
+						'Meals are finished at the usual pace.',
+						'Stools stay normal.',
+						'Your cat is as keen at mealtimes as before.',
+					),
+				),
+				$disclaimer,
+				array( 'h2', 'Sources' ),
+				array(
+					'links',
+					array(
+						array( 'PetMD: How to switch cat food', 'https://www.petmd.com/cat/nutrition/how-to-switch-cat-food' ),
+						array( 'AAFP Cat Friendly Clinic: Changing your cat’s food (PDF)', 'https://catvets.com/wp-content/uploads/2025/09/CCC-Changing-Your-Cats-Food.pdf' ),
+						array( 'University of Illinois College of Veterinary Medicine: Hepatic lipidosis, when cats do not eat', 'https://vetmed.illinois.edu/pet-health-columns/hepatic-lipidosis-when-cats-dont-eat/' ),
+						array( 'Cornell Feline Health Center: Hepatic lipidosis', 'https://www.vet.cornell.edu/departments-centers-and-institutes/cornell-feline-health-center/health-information/feline-health-topics/hepatic-lipidosis' ),
+					),
+				),
+			),
+		),
+		array(
+			'slug'     => 'treats-and-training-how-many-is-too-many',
+			'title'    => 'Treats and training: how many is too many?',
+			'cat'      => 'Training',
+			'excerpt'  => 'Why small treats suit training, how to count them against meals, and which of ours are built for it.',
+			'products' => array( 'YT-D-005', 'YT-D-006', 'YT-C-001' ),
+			'body'     => array(
+				array( 'p', 'Training runs on rewards, and rewards add up. Twenty treats in a session can quietly become a small meal.' ),
+				array( 'h2', 'The 10% rule' ),
+				array( 'p', 'Veterinary nutrition groups, including WSAVA and the nutrition service at UC Davis, give the same ceiling: treats, chews and extras should be no more than 10% of a dog’s or cat’s daily calories. The other 90% should come from a complete and balanced food.' ),
+				array( 'p', 'Tufts University vet nutritionists put numbers on it. A fairly active 11 kg dog needs about 600 kcal a day, so up to 60 kcal from treats. A 4.5 kg cat needs just over 200 kcal a day, so about 20 kcal from treats.' ),
+				array( 'h2', 'Why small treats suit training' ),
+				array( 'p', 'A training session can mean ten or twenty rewards. That only fits the budget if each one is tiny. A pea-sized piece is enough: your pet gets the taste, swallows it quickly and is ready for the next try.' ),
+				array( 'h2', 'Making the budget stretch' ),
+				array(
+					'ul',
+					array(
+						'Break bigger treats into small pieces before you start.',
+						'Check the kcal per piece on the pack and count out the day’s treats in the morning.',
+						'On busy training days, take a little out of their meals so the total stays the same.',
+						'Save the most exciting treats for the hardest jobs, like coming back when called.',
+					),
+				),
+				array( 'h2', 'Treats to skip' ),
+				array( 'p', 'Some human foods are unsafe for dogs and cats, including chocolate, grapes and raisins, onions and garlic. If you use peanut butter, check the label for xylitol, a sweetener that is dangerous for dogs.' ),
+				$disclaimer,
+				array( 'h2', 'Sources' ),
+				array(
+					'links',
+					array(
+						$wsava_dog,
+						array( 'WSAVA Global Nutrition Committee: Guide to treats for cats (PDF)', 'https://wsava.org/wp-content/uploads/2025/11/WSAVA_GuidetoTreats_Cats_251107.pdf' ),
+						array( 'UC Davis Veterinary Nutrition Service: Treat guidelines for dogs (PDF)', 'https://nutrition.vetmed.ucdavis.edu/sites/g/files/dgvnsk491/files/inline-files/Treats-guidelines-for-dogs.pdf' ),
+						$tufts,
+						array( 'U.S. Food and Drug Administration: Xylitol and your dog', 'https://www.fda.gov/consumers/consumer-updates/xylitol-and-your-dog-danger-paws' ),
+					),
+				),
+			),
+		),
 	);
+}
+
+/**
+ * Turn a short list of [type, content] pairs into core block markup, so seeded copy reads like copy.
+ * Types: lead, p, small, h2, ul, ol (array of strings), table (rows; first row is the header),
+ * links (array of [label, url], opened in a new tab).
+ *
+ * @param array[] $spec Blocks in order.
+ * @return string
+ */
+function yt_seed_blocks( $spec ) {
+	$out = array();
+	foreach ( $spec as $b ) {
+		list( $type, $c ) = $b;
+		switch ( $type ) {
+			case 'lead':
+				$out[] = '<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">' . esc_html( $c ) . '</p><!-- /wp:paragraph -->';
+				break;
+			case 'small':
+				$out[] = '<!-- wp:paragraph {"fontSize":"small"} --><p class="has-small-font-size">' . esc_html( $c ) . '</p><!-- /wp:paragraph -->';
+				break;
+			case 'h2':
+				$out[] = '<!-- wp:heading --><h2 class="wp-block-heading">' . esc_html( $c ) . '</h2><!-- /wp:heading -->';
+				break;
+			case 'ul':
+			case 'ol':
+			case 'links':
+				$items = '';
+				foreach ( $c as $item ) {
+					$text   = 'links' === $type ? '<a href="' . esc_url( $item[1] ) . '" target="_blank" rel="noopener">' . esc_html( $item[0] ) . '</a>' : esc_html( $item );
+					$items .= '<!-- wp:list-item --><li>' . $text . '</li><!-- /wp:list-item -->';
+				}
+				$ordered = 'ol' === $type;
+				$out[]   = '<!-- wp:list ' . ( $ordered ? '{"ordered":true} ' : '' ) . '--><' . ( $ordered ? 'ol' : 'ul' ) . ' class="wp-block-list">' . $items . '</' . ( $ordered ? 'ol' : 'ul' ) . '><!-- /wp:list -->';
+				break;
+			case 'table':
+				$head = '<thead><tr>' . implode( '', array_map( fn( $t ) => '<th>' . esc_html( $t ) . '</th>', $c[0] ) ) . '</tr></thead>';
+				$body = '';
+				foreach ( array_slice( $c, 1 ) as $row ) {
+					$body .= '<tr>' . implode( '', array_map( fn( $t ) => '<td>' . esc_html( $t ) . '</td>', $row ) ) . '</tr>';
+				}
+				$out[] = '<!-- wp:table {"className":"yt-table"} --><figure class="wp-block-table yt-table"><table>' . $head . '<tbody>' . $body . '</tbody></table></figure><!-- /wp:table -->';
+				break;
+			default:
+				$out[] = '<!-- wp:paragraph --><p>' . esc_html( $c ) . '</p><!-- /wp:paragraph -->';
+		}
+	}
+	return implode( "\n\n", $out );
 }
 
 /* ------------------------------------------------------------------------- stockists */
@@ -579,6 +771,8 @@ function yt_seed_pages() {
 	update_option( 'show_on_front', 'page' );
 	update_option( 'page_on_front', $ids['home'] );
 	update_option( 'page_for_posts', $ids['guides'] );
+	update_option( 'woocommerce_terms_page_id', $ids['terms'] );
+	yt_seed_empty_cart( (int) wc_get_page_id( 'cart' ) );
 	return 'pages: home, guides, stockists, help, terms, privacy';
 }
 
@@ -586,25 +780,78 @@ function yt_seed_page_stockists() {
 	return '<!-- wp:paragraph {"fontSize":"large"} --><p class="has-large-font-size">Same treats, no delivery wait. Yummy Treats! is on the shelf at these pet shops and vet clinics. Call ahead for stock of a specific size.</p><!-- /wp:paragraph -->';
 }
 
+/**
+ * Help page copy. Links sit at the end of a sentence or on their own line: the Thai dictionary translates each text
+ * piece separately, so a link in mid-sentence would force English word order on the Thai.
+ *
+ * @return string
+ */
 function yt_seed_page_help() {
+	$h  = fn( $anchor, $text ) => '<!-- wp:heading {"anchor":"' . $anchor . '"} --><h2 class="wp-block-heading" id="' . $anchor . '">' . $text . '</h2><!-- /wp:heading -->';
+	$p  = fn( $html ) => '<!-- wp:paragraph --><p>' . $html . '</p><!-- /wp:paragraph -->';
+	$li = fn( $label, $text ) => '<!-- wp:list-item --><li><strong>' . $label . '</strong> — ' . $text . '</li><!-- /wp:list-item -->';
 	return implode(
 		"\n\n",
 		array(
-			'<!-- wp:heading {"anchor":"delivery"} --><h2 class="wp-block-heading" id="delivery">Delivery</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p><strong>Bangkok, Nonthaburi and Samut Prakan:</strong> ฿50, free on orders over ฿1,000. Usually next day; order before 14:00 Mon–Sat for same-day dispatch.</p><!-- /wp:paragraph -->',
-			'<!-- wp:paragraph --><p><strong>Rest of Thailand:</strong> ฿80, free over ฿1,500. Two to three days with [courier name]. Fresh frozen meals ship in an insulated box with ice packs, Bangkok area only.</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"anchor":"payment"} --><h2 class="wp-block-heading" id="payment">How to pay</h2><!-- /wp:heading -->',
-			'<!-- wp:list --><ul class="wp-block-list"><!-- wp:list-item --><li><strong>PromptPay</strong> — scan the QR at checkout with any Thai banking app. Confirms in seconds.</li><!-- /wp:list-item --><!-- wp:list-item --><li><strong>Credit / debit card</strong> — Visa, Mastercard, JCB, processed by Opn Payments. We never see your card number.</li><!-- /wp:list-item --><!-- wp:list-item --><li><strong>Bank transfer</strong> — transfer to [Bank name] [XXX-X-XXXXX-X], then upload your slip on the confirmation page. Unpaid orders cancel after 24 hours.</li><!-- /wp:list-item --><!-- wp:list-item --><li><strong>Cash on delivery</strong> — Bangkok area only. Exact change helps the courier.</li><!-- /wp:list-item --></ul><!-- /wp:list -->',
-			'<!-- wp:heading {"anchor":"returns"} --><h2 class="wp-block-heading" id="returns">Not a hit with your pet?</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>Message us on LINE within 7 days with a photo of the pack and we will swap it for something else or refund it. Opened food cannot be resold, so we donate it to [shelter name]. Damaged or wrong items are replaced free, no questions.</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"anchor":"orders"} --><h2 class="wp-block-heading" id="orders">Orders and accounts</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>You can check out as a guest. Create an account to see past orders, re-order in one tap and upload a slip later. Track your parcel from <a href="/my-account/orders/">My account → Orders</a>.</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"anchor":"stockists"} --><h2 class="wp-block-heading" id="stockists">Buying in a shop instead</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>Prices in shops are set by the shop and may differ slightly from the website. For shop purchases, returns go through the shop. <a href="/stockists/">Find a stockist →</a></p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"anchor":"pdpa"} --><h2 class="wp-block-heading" id="pdpa">Your data (PDPA)</h2><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>We keep your name, address and phone number to deliver your order and for the tax invoice. We only message you on LINE if you tick the box at checkout. Full details in our <a href="/privacy-policy/">privacy notice</a>.</p><!-- /wp:paragraph -->',
+			$h( 'delivery', 'Delivery' ),
+			$p( '<strong>Bangkok, Nonthaburi and Samut Prakan:</strong> ฿50, free on orders over ฿1,000. Usually next day. Order before 14:00 Mon–Sat for same-day dispatch.' ),
+			$p( '<strong>Rest of Thailand:</strong> ฿80, free over ฿1,500. Two to three days with [courier name].' ),
+			$p( 'Fresh frozen meals ship in an insulated box with ice packs, to the Bangkok area only.' ),
+			$h( 'payment', 'How to pay' ),
+			'<!-- wp:list --><ul class="wp-block-list">'
+				. $li( 'PromptPay', 'scan the QR at checkout with any Thai banking app. Confirms in seconds.' )
+				. $li( 'Credit / debit card', 'Visa, Mastercard and JCB, processed by Opn Payments. We never see your card number.' )
+				. $li( 'Bank transfer', 'transfer to [Bank name] [XXX-X-XXXXX-X], then send us the slip from the confirmation page, the link in your order email, or My account. We check slips within the hour on working days, 9:00 to 18:00. Unpaid orders are cancelled after 24 hours.' )
+				. $li( 'Cash on delivery', 'Bangkok, Nonthaburi and Samut Prakan only. Please have the exact amount ready.' )
+				. '</ul><!-- /wp:list -->',
+			$h( 'preorders', 'Pre-orders and sold-out items' ),
+			$p( 'Items marked Pre-order ship on the date shown on the product. If your order also has items in stock, those leave first and the pre-order follows on its own.' ),
+			$p( 'Sold out? Leave your email on the product page and we send one message when it is back. We do not use that email for anything else.' ),
+			$h( 'returns', 'Not a hit with your pet?' ),
+			$p( 'Message us on LINE within 7 days with a photo of the pack and we will swap it for something else or refund it. Opened food cannot be resold, so we donate it to [shelter name]. Damaged or wrong items are replaced free, no questions.' ),
+			$h( 'orders', 'Orders and accounts' ),
+			$p( 'You can check out as a guest. An account lets you see past orders, order again in one tap and send a slip later.' ),
+			$p( 'Order status and slips are under <a href="/my-account/orders/">My account → Orders</a>' ),
+			$h( 'stockists', 'Buying in a shop instead' ),
+			$p( 'Prices in shops are set by the shop and may differ slightly from the website. For shop purchases, returns go through the shop.' ),
+			$p( '<a href="/stockists/">Find a stockist →</a>' ),
+			$h( 'pdpa', 'Your data (PDPA)' ),
+			$p( 'We keep your name, address and phone number to deliver your order and for the tax invoice. We only message you on LINE if you tick the box at checkout.' ),
+			$p( '<a href="/privacy-policy/">Read the full privacy notice →</a>' ),
 		)
 	);
+}
+
+/**
+ * The cart page's empty state: WooCommerce's default ("Your cart is currently empty!" plus a newest-products grid)
+ * swapped for the shop's own message and ways back in.
+ *
+ * @param int $cart_id Cart page ID.
+ */
+function yt_seed_empty_cart( $cart_id ) {
+	$post = get_post( $cart_id );
+	if ( ! $post || false === strpos( $post->post_content, 'wp:woocommerce/empty-cart-block' ) ) {
+		return;
+	}
+	$inner = '<!-- wp:woocommerce/empty-cart-block -->
+<div class="wp-block-woocommerce-empty-cart-block"><!-- wp:group {"className":"yt-empty is-style-card-flat","layout":{"type":"constrained"}} -->
+<div class="wp-block-group yt-empty is-style-card-flat"><!-- wp:heading {"textAlign":"center","level":2} --><h2 class="wp-block-heading has-text-align-center">Your cart is empty</h2><!-- /wp:heading -->
+
+<!-- wp:paragraph {"align":"center"} --><p class="has-text-align-center">Nothing in here yet. Pick a side, or start with a bundle.</p><!-- /wp:paragraph -->
+
+<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
+<div class="wp-block-buttons"><!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/product-category/dogs/">Shop dogs</a></div><!-- /wp:button -->
+
+<!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/product-category/cats/">Shop cats</a></div><!-- /wp:button -->
+
+<!-- wp:button {"className":"is-style-outline"} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="/product-category/bundles/">See the bundles</a></div><!-- /wp:button --></div>
+<!-- /wp:buttons --></div>
+<!-- /wp:group --></div>
+<!-- /wp:woocommerce/empty-cart-block -->';
+	$content = preg_replace( '#<!-- wp:woocommerce/empty-cart-block -->.*?<!-- /wp:woocommerce/empty-cart-block -->#s', $inner, $post->post_content, 1 );
+	if ( $content && $content !== $post->post_content ) {
+		wp_update_post( array( 'ID' => $cart_id, 'post_content' => $content ) );
+	}
 }
 
 /* ------------------------------------------------------------------------- translatepress */
@@ -701,4 +948,78 @@ function yt_seed_translatepress() {
 		}
 	}
 	return "translatepress: en_US at /, th at /th/; {$n} text strings in Thai via dictionary, gettext via languages/*.mo, {$m} language packs downloaded";
+}
+
+/* ------------------------------------------------------------------------- demo orders */
+
+/**
+ * Four demo orders, one per confirmation state, so Admin → Orders and the slip column have something to show.
+ * Guest orders with example.com addresses; customers' names are marked [demo]. No emails are sent while seeding.
+ *
+ * @return string
+ */
+function yt_seed_orders() {
+	$existing = wc_get_orders( array( 'limit' => 1, 'created_via' => 'yt-demo', 'return' => 'ids' ) );
+	if ( $existing ) {
+		return 'orders: already seeded';
+	}
+	add_filter( 'pre_wp_mail', '__return_false' );
+	$plan = array(
+		array( 'Nok', 'bacs', 'on-hold', array( 'YT-D-007' => 2, 'YT-D-001' => 1 ), null, '-3 hours' ),
+		array( 'Ploy', 'bacs', 'on-hold', array( 'YT-C-001' => 2, 'YT-C-006' => 1 ), 'slip', '-1 hours' ),
+		array( 'Beam', 'cod', 'processing', array( 'YT-D-012' => 1 ), null, '-1 days' ),
+		array( 'Mint', 'bacs', 'completed', array( 'YT-C-012' => 1, 'YT-C-002' => 1 ), 'slip-paid', '-4 days' ),
+	);
+	$titles = array( 'bacs' => 'Bank transfer (upload your slip)', 'cod' => 'Cash on delivery' );
+	$n      = 0;
+	$urls   = array();
+	foreach ( $plan as $p ) {
+		list( $name, $method, $status, $items, $slip, $when ) = $p;
+		$order = wc_create_order( array( 'status' => 'pending', 'customer_id' => 0, 'created_via' => 'yt-demo' ) );
+		foreach ( $items as $sku => $qty ) {
+			$product = wc_get_product( wc_get_product_id_by_sku( $sku ) );
+			if ( $product && $product->is_type( 'variable' ) ) {
+				$children = $product->get_children();
+				$product  = wc_get_product( $children[0] ?? 0 );
+			}
+			if ( $product ) {
+				$order->add_product( $product, $qty );
+			}
+		}
+		$address = array(
+			'first_name' => $name,
+			'last_name'  => '[demo]',
+			'address_1'  => '[House number, street]',
+			'address_2'  => 'Khlong Toei Nuea',
+			'city'       => 'Watthana',
+			'state'      => 'TH-10',
+			'postcode'   => '10110',
+			'country'    => 'TH',
+		);
+		$order->set_address( $address + array( 'email' => strtolower( $name ) . '@example.com', 'phone' => '[08X-XXX-XXXX]' ), 'billing' );
+		$order->set_address( $address, 'shipping' );
+		$ship = new WC_Order_Item_Shipping();
+		$ship->set_method_title( 'Courier delivery' );
+		$ship->set_method_id( 'flat_rate' );
+		$ship->set_total( 50 );
+		$order->add_item( $ship );
+		$order->set_payment_method( $method );
+		$order->set_payment_method_title( $titles[ $method ] );
+		$order->calculate_totals( false );
+		$order->set_date_created( strtotime( $when ) );
+		$order->update_meta_data( '_yt_demo_order', 1 );
+		$order->save();
+		$order->update_status( 'on-hold' === $status || 'completed' === $status ? 'on-hold' : $status, 'Demo order.' );
+		if ( $slip && function_exists( 'yt_slip_upload_attach' ) ) {
+			yt_slip_upload_attach( $order, __DIR__ . '/img/sample-slip.png' );
+		}
+		if ( 'completed' === $status ) {
+			$order->payment_complete();
+			$order->update_status( 'completed', 'Demo order: shipped.' );
+		}
+		$urls[] = $name . ' ' . $order->get_checkout_order_received_url();
+		++$n;
+	}
+	remove_filter( 'pre_wp_mail', '__return_false' );
+	return "orders: {$n} demo orders\n  " . implode( "\n  ", $urls );
 }

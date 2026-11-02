@@ -1,0 +1,195 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yummy Treats! WordPress overrides\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: tools/make-mo.py\n"
+
+msgid "%s day"
+msgid_plural "%s days"
+msgstr[0] "%s วัน"
+
+msgid "%s hour"
+msgid_plural "%s hours"
+msgstr[0] "%s ชั่วโมง"
+
+msgid "%s min"
+msgid_plural "%s mins"
+msgstr[0] "%s นาที"
+
+msgid "%s second"
+msgid_plural "%s seconds"
+msgstr[0] "%s วินาที"
+
+msgid "%s week"
+msgid_plural "%s weeks"
+msgstr[0] "%s สัปดาห์"
+
+msgid "April"
+msgstr "เมษายน"
+
+msgctxt "April abbreviation"
+msgid "Apr"
+msgstr "เม.ย."
+
+msgid "August"
+msgstr "สิงหาคม"
+
+msgctxt "August abbreviation"
+msgid "Aug"
+msgstr "ส.ค."
+
+msgid "Close"
+msgstr "ปิด"
+
+msgid "Close menu"
+msgstr "ปิดเมนู"
+
+msgid "December"
+msgstr "ธันวาคม"
+
+msgctxt "December abbreviation"
+msgid "Dec"
+msgstr "ธ.ค."
+
+msgid "February"
+msgstr "กุมภาพันธ์"
+
+msgctxt "February abbreviation"
+msgid "Feb"
+msgstr "ก.พ."
+
+msgid "January"
+msgstr "มกราคม"
+
+msgctxt "January abbreviation"
+msgid "Jan"
+msgstr "ม.ค."
+
+msgid "July"
+msgstr "กรกฎาคม"
+
+msgctxt "July abbreviation"
+msgid "Jul"
+msgstr "ก.ค."
+
+msgid "June"
+msgstr "มิถุนายน"
+
+msgctxt "June abbreviation"
+msgid "Jun"
+msgstr "มิ.ย."
+
+msgid "March"
+msgstr "มีนาคม"
+
+msgctxt "March abbreviation"
+msgid "Mar"
+msgstr "มี.ค."
+
+msgid "May"
+msgstr "พฤษภาคม"
+
+msgctxt "May abbreviation"
+msgid "May"
+msgstr "พ.ค."
+
+msgid "Next Page"
+msgstr "หน้าถัดไป"
+
+msgid "November"
+msgstr "พฤศจิกายน"
+
+msgctxt "November abbreviation"
+msgid "Nov"
+msgstr "พ.ย."
+
+msgid "October"
+msgstr "ตุลาคม"
+
+msgctxt "October abbreviation"
+msgid "Oct"
+msgstr "ต.ค."
+
+msgid "Open menu"
+msgstr "เปิดเมนู"
+
+msgid "Page %s"
+msgstr "หน้า %s"
+
+msgid "Pagination"
+msgstr "การแบ่งหน้า"
+
+msgid "Previous Page"
+msgstr "หน้าก่อนหน้า"
+
+msgid "Search"
+msgstr "ค้นหา"
+
+msgid "Search results"
+msgstr "ผลการค้นหา"
+
+msgid "Search results for: &#8220;%s&#8221;"
+msgstr "ผลการค้นหา: &#8220;%s&#8221;"
+
+msgid "September"
+msgstr "กันยายน"
+
+msgctxt "September abbreviation"
+msgid "Sep"
+msgstr "ก.ย."
+
+msgid "Skip to content"
+msgstr "ข้ามไปยังเนื้อหา"
+
+msgctxt "genitive"
+msgid "April"
+msgstr "เมษายน"
+
+msgctxt "genitive"
+msgid "August"
+msgstr "สิงหาคม"
+
+msgctxt "genitive"
+msgid "December"
+msgstr "ธันวาคม"
+
+msgctxt "genitive"
+msgid "February"
+msgstr "กุมภาพันธ์"
+
+msgctxt "genitive"
+msgid "January"
+msgstr "มกราคม"
+
+msgctxt "genitive"
+msgid "July"
+msgstr "กรกฎาคม"
+
+msgctxt "genitive"
+msgid "June"
+msgstr "มิถุนายน"
+
+msgctxt "genitive"
+msgid "March"
+msgstr "มีนาคม"
+
+msgctxt "genitive"
+msgid "May"
+msgstr "พฤษภาคม"
+
+msgctxt "genitive"
+msgid "November"
+msgstr "พฤศจิกายน"
+
+msgctxt "genitive"
+msgid "October"
+msgstr "ตุลาคม"
+
+msgctxt "genitive"
+msgid "September"
+msgstr "กันยายน"
+
