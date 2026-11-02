@@ -17,6 +17,7 @@ require YT_DIR . '/inc/setup.php';
 require YT_DIR . '/inc/assets.php';
 require YT_DIR . '/inc/patterns.php';
 require YT_DIR . '/inc/stockists.php';
+require YT_DIR . '/inc/debug.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require YT_DIR . '/inc/woocommerce.php';
