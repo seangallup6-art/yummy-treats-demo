@@ -22,7 +22,7 @@ add_filter(
 		header( 'Content-Type: text/plain; charset=utf-8' );
 		echo "REDIRECT INTERCEPTED\nto: {$location}\nstatus: {$status}\n\n";
 		echo yt_debug_facts();
-		echo "\nbacktrace:\n" . wp_debug_backtrace_summary( null, 0, false ); // phpcs:ignore
+		echo "\nbacktrace:\n" . implode( "\n", (array) wp_debug_backtrace_summary( null, 0, false ) ); // phpcs:ignore
 		exit;
 	},
 	0,

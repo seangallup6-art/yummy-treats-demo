@@ -32,7 +32,11 @@ function yt_seed_all() {
 	$log[] = yt_seed_stockists();
 	$log[] = yt_seed_pages();
 	$log[] = yt_seed_translatepress();
-	flush_rewrite_rules();
+	global $wp_rewrite;
+	$wp_rewrite->init();
+	flush_rewrite_rules( false );
+	$rules = get_option( 'rewrite_rules' );
+	$log[] = 'rewrite rules: ' . ( is_array( $rules ) ? count( $rules ) : 0 ) . ( is_array( $rules ) && isset( $rules['([^/]+)(?:/([0-9]+))?/?$'] ) ? ' incl. post rule' : ' WITHOUT post rule' );
 	return $log;
 }
 
@@ -85,6 +89,12 @@ function yt_seed_settings() {
 	foreach ( $options as $k => $v ) {
 		update_option( $k, $v );
 	}
+	// Tell the live rewrite object about the new permalink structure *now*. Without this, the flush at the end of the
+	// seed runs with the structure WordPress loaded at the start of the request ("plain") and writes rules without the
+	// post pattern — single posts then fall through to the front page. Only bites when the seed runs once (hosted boot).
+	global $wp_rewrite;
+	$wp_rewrite->set_permalink_structure( '/%postname%/' );
+	$wp_rewrite->init();
 	// Default product attribute "Size" so variations share one taxonomy across products.
 	if ( ! taxonomy_exists( 'pa_size' ) && function_exists( 'wc_create_attribute' ) ) {
 		wc_create_attribute(
