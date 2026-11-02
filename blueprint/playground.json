@@ -1,20 +1,80 @@
 {
   "$schema": "https://playground.wordpress.net/blueprint-schema.json",
   "landingPage": "/",
-  "preferredVersions": { "php": "8.3", "wp": "latest" },
-  "features": { "networking": true },
+  "preferredVersions": {
+    "php": "8.3",
+    "wp": "latest"
+  },
+  "features": {
+    "networking": true
+  },
   "login": true,
   "siteOptions": {
     "blogname": "Yummy Treats!",
     "blogdescription": "Good food for Bangkok's dogs and cats"
   },
   "steps": [
-    { "step": "defineWpConfigConsts", "consts": { "WP_DEBUG": false } },
-    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" }, "options": { "activate": true } },
-    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "translatepress-multilingual" }, "options": { "activate": true } },
-    { "step": "installPlugin", "pluginData": { "resource": "git:directory", "url": "https://github.com/omise/omise-woocommerce", "ref": "HEAD", "path": "" }, "options": { "activate": true } },
-    { "step": "installTheme", "themeData": { "resource": "git:directory", "url": "https://github.com/seangallup6-art/yummy-treats-demo", "ref": "HEAD", "path": "theme/yummy-treats" }, "options": { "activate": true } },
-    { "step": "setSiteOptions", "options": { "timezone_string": "Asia/Bangkok", "woocommerce_coming_soon": "no" } },
-    { "step": "runPHP", "code": "<?php require '/wordpress/wp-load.php'; delete_transient('_wc_activation_redirect'); require WP_CONTENT_DIR . '/themes/yummy-treats/seed/seed.php'; echo implode(\"\\n\", yt_seed_all());" }
+    {
+      "step": "defineWpConfigConsts",
+      "consts": {
+        "WP_DEBUG": false
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "woocommerce"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "wordpress.org/plugins",
+        "slug": "translatepress-multilingual"
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installPlugin",
+      "pluginData": {
+        "resource": "git:directory",
+        "url": "https://github.com/omise/omise-woocommerce",
+        "ref": "HEAD",
+        "path": ""
+      },
+      "options": {
+        "activate": true
+      }
+    },
+    {
+      "step": "installTheme",
+      "themeData": {
+        "resource": "git:directory",
+        "url": "https://github.com/seangallup6-art/yummy-treats-demo",
+        "ref": "HEAD",
+        "path": "theme/yummy-treats"
+      },
+      "options": {
+        "activate": true,
+        "targetFolderName": "yummy-treats"
+      }
+    },
+    {
+      "step": "setSiteOptions",
+      "options": {
+        "timezone_string": "Asia/Bangkok",
+        "woocommerce_coming_soon": "no"
+      }
+    },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; delete_transient('_wc_activation_redirect'); $seed = get_template_directory() . '/seed/seed.php'; if ( ! file_exists( $seed ) ) { echo 'Seed not found at ' . $seed . ' (active theme: ' . get_template() . ')'; exit; } require $seed; echo implode(\"\\n\", yt_seed_all());"
+    }
   ]
 }

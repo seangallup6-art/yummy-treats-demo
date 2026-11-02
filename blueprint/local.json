@@ -53,7 +53,7 @@
     },
     {
       "step": "runPHP",
-      "code": "<?php require '/wordpress/wp-load.php'; require WP_CONTENT_DIR . '/themes/yummy-treats/seed/seed.php'; echo implode(\"\\n\", yt_seed_all());"
+      "code": "<?php require '/wordpress/wp-load.php'; delete_transient('_wc_activation_redirect'); $seed = get_template_directory() . '/seed/seed.php'; if ( ! file_exists( $seed ) ) { echo 'Seed not found at ' . $seed . ' (active theme: ' . get_template() . ')'; exit; } require $seed; echo implode(\"\\n\", yt_seed_all());"
     }
   ]
 }
