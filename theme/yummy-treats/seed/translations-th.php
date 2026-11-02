@@ -141,5 +141,11 @@ return array(
 		array( 'woocommerce', 'Free delivery', 'ส่งฟรี' ),
 		array( 'woocommerce', 'Quantity', 'จำนวน' ),
 		array( 'woocommerce', 'Search', 'ค้นหา' ),
+		array( 'woocommerce', 'In stock', 'มีสินค้า' ),
+		array( 'woocommerce', 'Out of stock', 'สินค้าหมด' ),
+		array( 'woocommerce', 'On backorder', 'สั่งจองล่วงหน้า' ),
+		array( 'woocommerce', 'Sold out', 'หมด' ),
+		array( 'woocommerce', 'Showing all %d results', 'แสดงทั้งหมด %d รายการ' ),
+		array( 'woocommerce', 'Showing %1$d–%2$d of %3$d results', 'แสดง %1$d–%2$d จาก %3$d รายการ' ),
 	),
 );

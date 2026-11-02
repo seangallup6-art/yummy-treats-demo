@@ -1,0 +1,115 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yummy Treats! WooCommerce overrides\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: tools/make-mo.py\n"
+
+msgid "Add coupons"
+msgstr "ใส่คูปอง"
+
+msgid "Add to cart"
+msgstr "หยิบใส่ตะกร้า"
+
+msgid "Billing address"
+msgstr "ที่อยู่ออกใบเสร็จ"
+
+msgid "Cart"
+msgstr "ตะกร้า"
+
+msgid "Checkout"
+msgstr "ชำระเงิน"
+
+msgid "Contact information"
+msgstr "ข้อมูลติดต่อ"
+
+msgid "Courier delivery"
+msgstr "จัดส่งโดยขนส่ง"
+
+msgid "Default sorting"
+msgstr "เรียงตามค่าเริ่มต้น"
+
+msgid "Email address"
+msgstr "อีเมล"
+
+msgid "Estimated total"
+msgstr "ยอดรวมโดยประมาณ"
+
+msgid "First name"
+msgstr "ชื่อ"
+
+msgid "Free delivery"
+msgstr "ส่งฟรี"
+
+msgid "In stock"
+msgstr "มีสินค้า"
+
+msgid "Last name"
+msgstr "นามสกุล"
+
+msgid "On backorder"
+msgstr "สั่งจองล่วงหน้า"
+
+msgid "Order summary"
+msgstr "สรุปคำสั่งซื้อ"
+
+msgid "Out of stock"
+msgstr "สินค้าหมด"
+
+msgid "Payment options"
+msgstr "วิธีชำระเงิน"
+
+msgid "Phone (optional)"
+msgstr "โทรศัพท์ (ไม่บังคับ)"
+
+msgid "Place Order"
+msgstr "ยืนยันคำสั่งซื้อ"
+
+msgid "Proceed to Checkout"
+msgstr "ไปชำระเงิน"
+
+msgid "Quantity"
+msgstr "จำนวน"
+
+msgid "Remove item"
+msgstr "ลบสินค้า"
+
+msgid "Search"
+msgstr "ค้นหา"
+
+msgid "Shipping address"
+msgstr "ที่อยู่จัดส่ง"
+
+msgid "Shipping options"
+msgstr "วิธีจัดส่ง"
+
+msgid "Showing %1$d–%2$d of %3$d results"
+msgstr "แสดง %1$d–%2$d จาก %3$d รายการ"
+
+msgid "Showing all %d results"
+msgstr "แสดงทั้งหมด %d รายการ"
+
+msgid "Sold out"
+msgstr "หมด"
+
+msgid "Sort by latest"
+msgstr "เรียงตามล่าสุด"
+
+msgid "Sort by popularity"
+msgstr "เรียงตามความนิยม"
+
+msgid "Sort by price: high to low"
+msgstr "ราคา: สูงไปต่ำ"
+
+msgid "Sort by price: low to high"
+msgstr "ราคา: ต่ำไปสูง"
+
+msgid "Subtotal"
+msgstr "ยอดรวมสินค้า"
+
+msgid "Total"
+msgstr "ยอดรวม"
+

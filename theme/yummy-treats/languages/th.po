@@ -1,0 +1,274 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Yummy Treats! theme\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: th\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: tools/make-mo.py\n"
+
+msgid "Add %s more for free Bangkok delivery"
+msgstr "สั่งเพิ่มอีก %s เพื่อส่งฟรีในกรุงเทพฯ"
+
+msgid "Add [@yummytreats] on LINE"
+msgstr "แอด [@yummytreats] ทาง LINE"
+
+msgid "Add to cart"
+msgstr "หยิบใส่ตะกร้า"
+
+msgid "Added!"
+msgstr "หยิบแล้ว!"
+
+msgid "All guides →"
+msgstr "คู่มือทั้งหมด →"
+
+msgid "Also on the shelf at pet shops and vet clinics:"
+msgstr "มีขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์ด้วย:"
+
+msgid "Also stocked at pet shops and vet clinics near you"
+msgstr "มีขายที่ร้านสัตว์เลี้ยงและคลินิกสัตวแพทย์ใกล้คุณ"
+
+msgid "Availability"
+msgstr "สถานะสินค้า"
+
+msgid "Bangkok favourites"
+msgstr "ขายดีในกรุงเทพฯ"
+
+msgid "Bundles"
+msgstr "เซ็ตสุดคุ้ม"
+
+msgid "Cart"
+msgstr "ตะกร้า"
+
+msgid "Category"
+msgstr "หมวดหมู่"
+
+msgid "Cats"
+msgstr "แมว"
+
+msgid "Choose a size"
+msgstr "เลือกขนาด"
+
+msgid "City-sized bags"
+msgstr "ถุงขนาดพอดีคนเมือง"
+
+msgid "Delivery and returns"
+msgstr "การจัดส่งและการคืนสินค้า"
+
+msgid "Demo shop built for a portfolio. No real orders are taken."
+msgstr "ร้านตัวอย่างสำหรับพอร์ตโฟลิโอ ไม่รับออเดอร์จริง"
+
+msgid "District (เขต/อำเภอ)"
+msgstr "เขต/อำเภอ"
+
+msgid "Dogs"
+msgstr "สุนัข"
+
+msgid "Feeding guides"
+msgstr "คู่มือการให้อาหาร"
+
+msgid "Find a stockist"
+msgstr "หาร้านตัวแทน"
+
+msgid "Find a stockist near you"
+msgstr "หาร้านใกล้คุณ"
+
+msgid "Find us in a shop"
+msgstr "หาเราในร้านค้า"
+
+msgid "For cats"
+msgstr "สำหรับน้องแมว"
+
+msgid "For dogs"
+msgstr "สำหรับน้องหมา"
+
+msgid "Free Bangkok delivery on orders over ฿1,000, otherwise ฿50. Elsewhere in Thailand ฿80, free over ฿1,500."
+msgstr "ส่งฟรีในกรุงเทพฯ เมื่อสั่งครบ ฿1,000 (ต่ำกว่านั้น ฿50) ต่างจังหวัด ฿80 ส่งฟรีเมื่อครบ ฿1,500"
+
+msgid "Free Bangkok delivery over ฿1,000"
+msgstr "ส่งฟรีในกรุงเทพฯ เมื่อสั่งครบ ฿1,000"
+
+msgid "Free delivery over ฿1,000"
+msgstr "ส่งฟรีเมื่อครบ ฿1,000"
+
+msgid "Freeze-dried bites, lickable treats and wet food for picky eaters."
+msgstr "ขนมฟรีซดราย ขนมเลีย และอาหารเปียกสำหรับแมวช่างเลือก"
+
+msgid "Goes well with"
+msgstr "เข้ากันได้ดีกับ"
+
+msgid "Good food for Bangkok dogs and cats."
+msgstr "อาหารดีๆ สำหรับน้องหมาน้องแมวชาวกรุงเทพฯ"
+
+msgid "Guides"
+msgstr "คู่มือ"
+
+msgid "Help"
+msgstr "ช่วยเหลือ"
+
+msgid "House number, building, street"
+msgstr "บ้านเลขที่ อาคาร ถนน"
+
+msgid "How to pay"
+msgstr "วิธีชำระเงิน"
+
+msgid "In stock"
+msgstr "มีสินค้า"
+
+msgid "Made in Thailand"
+msgstr "ผลิตในประเทศไทย"
+
+msgid "Meals"
+msgstr "อาหาร"
+
+msgid "My account"
+msgstr "บัญชีของฉัน"
+
+msgid "New"
+msgstr "ใหม่"
+
+msgid "No treats match those filters."
+msgstr "ไม่มีขนมที่ตรงกับตัวกรองนี้"
+
+msgid "Not a hit with your pet? Message us on LINE within 7 days and we will sort it out."
+msgstr "น้องไม่ถูกใจ? ทัก LINE ภายใน 7 วัน เราจัดการให้"
+
+msgid "Notify me"
+msgstr "แจ้งเตือนเมื่อมีของ"
+
+msgid "On backorder"
+msgstr "สั่งจองล่วงหน้า"
+
+msgid "Order before 14:00 and we hand it to the courier the same day (Mon–Sat)."
+msgstr "สั่งก่อน 14:00 น. ส่งให้ขนส่งวันเดียวกัน (จันทร์–เสาร์)"
+
+msgid "Order help, feeding questions, or just a photo of your dog. Weekdays 9–18."
+msgstr "ถามเรื่องออเดอร์ การให้อาหาร หรือส่งรูปน้องหมามาอวดก็ได้ จันทร์–ศุกร์ 9–18 น."
+
+msgid "Out of stock"
+msgstr "สินค้าหมด"
+
+msgid "Pause"
+msgstr "หยุด"
+
+msgid "Pay by PromptPay, card, bank transfer or cash on delivery"
+msgstr "จ่ายได้ทั้งพร้อมเพย์ บัตร โอนธนาคาร หรือเก็บเงินปลายทาง"
+
+msgid "Pay how you like"
+msgstr "จ่ายแบบที่คุณสะดวก"
+
+msgid "Play"
+msgstr "เล่น"
+
+msgid "Postcode"
+msgstr "รหัสไปรษณีย์"
+
+msgid "Pre-order"
+msgstr "สั่งจองล่วงหน้า"
+
+msgid "Prefer to pick it up?"
+msgstr "อยากรับเองที่ร้าน?"
+
+msgid "Price"
+msgstr "ราคา"
+
+msgid "PromptPay, card, bank transfer or cash on delivery."
+msgstr "พร้อมเพย์ บัตร โอนธนาคาร หรือเก็บเงินปลายทาง"
+
+msgid "Province"
+msgstr "จังหวัด"
+
+msgid "Questions? We answer on LINE."
+msgstr "มีคำถาม? ทักเราทาง LINE ได้เลย"
+
+msgid "Read the bag. We did."
+msgstr "อ่านฉลากกันเถอะ เราอ่านแล้ว"
+
+msgid "Real meat first"
+msgstr "เนื้อแท้มาก่อน"
+
+msgid "Real meat, no fillers, and sizes that make sense for a city apartment. Delivered across Bangkok, or pick it up at a pet shop near you."
+msgstr "เนื้อแท้ ไม่มีสารเติมเต็ม ขนาดพอดีสำหรับคอนโดในเมือง ส่งทั่วกรุงเทพฯ หรือรับเองที่ร้านสัตว์เลี้ยงใกล้บ้าน"
+
+msgid "Sale"
+msgstr "ลดราคา"
+
+msgid "See all 24 products →"
+msgstr "ดูสินค้าทั้งหมด 24 รายการ →"
+
+msgid "Shop"
+msgstr "ร้านค้า"
+
+msgid "Shop all treats"
+msgstr "ดูขนมทั้งหมด"
+
+msgid "Shop cats →"
+msgstr "ช้อปของน้องแมว →"
+
+msgid "Shop dogs →"
+msgstr "ช้อปของน้องหมา →"
+
+msgid "Size"
+msgstr "ขนาด"
+
+msgid "Small-batch treats and meals · Made in Thailand"
+msgstr "ขนมและอาหารทำทีละน้อย · ผลิตในประเทศไทย"
+
+msgid "Small-batch treats, made in Thailand"
+msgstr "ขนมทำทีละน้อย ผลิตในประเทศไทย"
+
+msgid "Sold out"
+msgstr "หมด"
+
+msgid "Stockists"
+msgstr "ร้านตัวแทน"
+
+msgid "Subdistrict (แขวง/ตำบล)"
+msgstr "แขวง/ตำบล"
+
+msgid "Talk to a human"
+msgstr "คุยกับคนจริงๆ"
+
+msgid "Tell me about new treats on LINE"
+msgstr "แจ้งขนมใหม่ทาง LINE"
+
+msgid "Training treats, chews and meal toppers, from toy breeds to big softies."
+msgstr "ขนมฝึก ขนมเคี้ยว และท็อปปิ้ง ตั้งแต่พันธุ์เล็กจนถึงตัวใหญ่ใจดี"
+
+msgid "Treats"
+msgstr "ขนม"
+
+msgid "Vet-friendly"
+msgstr "สัตวแพทย์แนะนำได้"
+
+msgid "What happens next"
+msgstr "ขั้นตอนต่อไป"
+
+msgid "What's in the bag"
+msgstr "ในถุงมีอะไรบ้าง"
+
+msgid "You have free Bangkok delivery!"
+msgstr "คุณได้ส่งฟรีในกรุงเทพฯ แล้ว!"
+
+msgid "a little cheaper than buying the parts, and the quickest way to find a favourite"
+msgstr "ถูกกว่าซื้อแยก และเป็นวิธีที่เร็วที่สุดในการหาตัวโปรด"
+
+msgid "city-sized bags"
+msgstr "ถุงขนาดพอดีคนเมือง"
+
+msgid "made in Thailand"
+msgstr "ผลิตในประเทศไทย"
+
+msgid "no fillers, ever"
+msgstr "ไม่มีสารเติมเต็ม"
+
+msgid "real meat first"
+msgstr "เนื้อแท้มาก่อน"
+
+msgid "start with a bundle"
+msgstr "เริ่มด้วยเซ็ตสุดคุ้ม"
+
+msgid "stocked by vets"
+msgstr "มีขายที่คลินิกสัตวแพทย์"
+

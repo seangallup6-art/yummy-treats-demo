@@ -12,6 +12,7 @@ defined( 'ABSPATH' ) || exit;
  */
 function yt_setup() {
 	load_theme_textdomain( 'yummy-treats', YT_DIR . '/languages' );
+	add_action( 'init', 'yt_load_woocommerce_overrides', 20 );
 
 	add_theme_support( 'editor-styles' );
 	add_editor_style( 'assets/css/theme.css' );
@@ -111,3 +112,14 @@ function yt_site_title_bang( $content ) {
 	return preg_replace( '/!(<\/a>)/', '<span class="yt-bang">!</span>$1', $content, 1 );
 }
 add_filter( 'render_block_core/site-title', 'yt_site_title_bang' );
+
+/**
+ * A few WooCommerce strings in Thai (buttons, checkout headings) shipped with the theme as a small .mo.
+ * Merges on top of whatever language pack is installed; built by tools/make-mo.py from seed/translations-th.php.
+ */
+function yt_load_woocommerce_overrides() {
+	$file = YT_DIR . '/languages/woocommerce-' . determine_locale() . '.mo';
+	if ( file_exists( $file ) ) {
+		load_textdomain( 'woocommerce', $file );
+	}
+}

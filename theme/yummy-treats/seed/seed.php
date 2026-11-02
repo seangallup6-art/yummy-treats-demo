@@ -663,35 +663,32 @@ function yt_seed_translatepress() {
 		}
 	}
 
-	// Gettext strings (__() in the theme and WooCommerce). Pattern copy goes through esc_html_e(), so TranslatePress
-	// files it under gettext too; every "regular" line is therefore mirrored into the yummy-treats domain.
-	// Rows are written with $wpdb->insert() because TranslatePress's own bulk insert uses
-	// ON DUPLICATE KEY UPDATE ... LAST_INSERT_ID(), which the SQLite driver used by Playground does not support.
-	$gi     = $query->get_query_component( 'gettext_insert_update' );
-	$gtable = $query->get_gettext_table_name( 'th' );
-	$rows   = array();
-	foreach ( $dict['regular'] as $original => $thai ) {
-		$rows[] = array( 'original' => $original, 'translated' => $thai, 'domain' => 'yummy-treats', 'plural_form' => 0, 'original_plural' => '' );
-	}
-	foreach ( $dict['gettext'] as $g ) {
-		$rows[] = array( 'original' => $g[1], 'translated' => $g[2], 'domain' => $g[0], 'plural_form' => 0, 'original_plural' => '' );
-	}
-	$original_ids = $gi->gettext_original_strings_sync( $rows );
-	$have         = $wpdb->get_results( "SELECT id, original, domain FROM `{$gtable}`", ARRAY_A ); // phpcs:ignore WordPress.DB
-	$seen         = array();
-	foreach ( (array) $have as $h ) {
-		$seen[ $h['domain'] . "\0" . $h['original'] ] = (int) $h['id'];
-	}
+	// Gettext strings are NOT routed through TranslatePress: on Playground's SQLite its string store cannot write
+	// (ON DUPLICATE KEY UPDATE … LAST_INSERT_ID()), so every request re-queried thousands of pending strings (~7 s a page).
+	// The theme ships languages/th.mo and languages/woocommerce-th.mo instead (tools/make-mo.py), which WordPress
+	// loads natively when TranslatePress switches the locale to th on /th/ pages.
+	$adv = get_option( 'trp_advanced_settings', array() );
+	$adv = is_array( $adv ) ? $adv : array();
+	$adv['disable_translation_for_gettext_strings'] = 'yes';
+	$adv['disable_dynamic_translation']             = 'no';
+	update_option( 'trp_advanced_settings', $adv );
 	$m = 0;
-	foreach ( $rows as $key => $r ) {
-		$k    = $r['domain'] . "\0" . $r['original'];
-		$data = array( 'translated' => $r['translated'], 'status' => $query->get_constant_human_reviewed() );
-		if ( isset( $seen[ $k ] ) ) {
-			$wpdb->update( $gtable, $data, array( 'id' => $seen[ $k ] ) );
-		} else {
-			$wpdb->insert( $gtable, $data + array( 'original' => $r['original'], 'domain' => $r['domain'], 'plural_form' => 0, 'original_id' => isset( $original_ids[ $key ] ) ? (int) $original_ids[ $key ] : 0 ) );
-		}
-		++$m;
+
+	// Full Thai language packs for core and WooCommerce, when the network allows (hosted Playground does; local dev does not).
+	if ( function_exists( 'wp_can_install_language_pack' ) === false ) {
+		require_once ABSPATH . 'wp-admin/includes/translation-install.php';
 	}
-	return "translatepress: en_US at /, th at /th/; {$n} text strings + {$m} gettext strings in Thai";
+	require_once ABSPATH . 'wp-admin/includes/class-wp-upgrader.php';
+	if ( wp_can_install_language_pack() ) {
+		wp_download_language_pack( 'th' );
+		wp_clean_update_cache();
+		wp_update_plugins();
+		$updates = wp_get_translation_updates();
+		if ( $updates ) {
+			$upgrader = new Language_Pack_Upgrader( new Automatic_Upgrader_Skin() );
+			$upgrader->bulk_upgrade( $updates );
+			$m = count( $updates );
+		}
+	}
+	return "translatepress: en_US at /, th at /th/; {$n} text strings in Thai via dictionary, gettext via languages/*.mo, {$m} language packs downloaded";
 }
