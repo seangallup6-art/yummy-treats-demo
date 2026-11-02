@@ -7,5 +7,5 @@ vendor/*.zip
 
 # Local-only
 yummy-treats-demo.zip
-/yummy-treats-demo/
 .gitignore.github-template
+/design-canvas/png images/*
