@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 720" width="800" height="720" role="img" aria-label="[Hero photo placeholder]">
   <rect width="800" height="720" fill="#FBDDF1"/>
-  <circle cx="560" cy="260" r="170" fill="#E8D24A"/>
-  <path d="M120 520c0-120 90-200 210-200s210 80 210 200v80H120z" fill="#5EC1EC"/>
+  <circle cx="560" cy="260" r="170" fill="#FDFF00"/>
+  <path d="M120 520c0-120 90-200 210-200s210 80 210 200v80H120z" fill="#45C8FF"/>
   <path d="M330 320c-40-60-20-140 60-140s100 80 60 140" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round"/>
   <ellipse cx="300" cy="420" rx="22" ry="30" fill="#000000"/>
   <ellipse cx="360" cy="420" rx="22" ry="30" fill="#000000"/>

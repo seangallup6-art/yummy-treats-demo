@@ -101,6 +101,9 @@ msgstr "โอนผ่านธนาคาร"
 msgid "Bank transfer (upload your slip)"
 msgstr "โอนผ่านธนาคาร (แนบสลิป)"
 
+msgid "Bank transfer (upload your slip)"
+msgstr "โอนผ่านธนาคาร (แนบสลิป)"
+
 msgid "Beef"
 msgstr "เนื้อวัว"
 
@@ -575,6 +578,9 @@ msgstr "ได้รับคำสั่งซื้อแล้ว"
 msgid "Order status and slips are under"
 msgstr "ดูสถานะคำสั่งซื้อและส่งสลิปได้ที่"
 
+msgid "Orders"
+msgstr "คำสั่งซื้อ"
+
 msgid "Orders and accounts"
 msgstr "คำสั่งซื้อและบัญชี"
 
@@ -656,6 +662,9 @@ msgstr "สั่งจองล่วงหน้า"
 msgid "Pre-order, ships %s"
 msgstr "สั่งจองล่วงหน้า ส่ง %s"
 
+msgid "Pre-orders"
+msgstr "สินค้าสั่งจอง"
+
 msgid "Pre-orders and sold-out items"
 msgstr "สินค้าสั่งจองและสินค้าหมด"
 
@@ -730,6 +739,9 @@ msgstr "ปิดซองให้สนิทหลังเปิด เก�
 
 msgid "Rest of Thailand:"
 msgstr "ต่างจังหวัด:"
+
+msgid "Returns"
+msgstr "การคืนสินค้า"
 
 msgid "Ridged sweet-potato sticks that scrub while they chew. Grain-free and gentle."
 msgstr "แท่งมันหวานมีร่อง ช่วยขัดฟันขณะเคี้ยว ไม่มีธัญพืช อ่อนโยน"
@@ -1069,6 +1081,9 @@ msgstr "ตะกร้าของคุณยังว่างอยู่"
 
 msgid "Your cat is as keen at mealtimes as before."
 msgstr "น้องยังกระตือรือร้นตอนถึงเวลาอาหารเหมือนเดิม"
+
+msgid "Your data"
+msgstr "ข้อมูลของคุณ"
 
 msgid "Your data (PDPA)"
 msgstr "ข้อมูลของคุณ (PDPA)"

@@ -131,6 +131,7 @@ function yt_stockists_shortcode() {
 		<?php endforeach; ?>
 	</div>
 	<?php
-	return ob_get_clean();
+	// No whitespace between tags: WordPress's wpautop would otherwise wrap stray <p> tags around it and break the card grid.
+	return preg_replace( '/>\s+</', '><', ob_get_clean() );
 }
 add_shortcode( 'yt_stockists', 'yt_stockists_shortcode' );

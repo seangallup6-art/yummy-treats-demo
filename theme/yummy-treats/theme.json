@@ -17,7 +17,7 @@
 				{
 					"slug": "base",
 					"name": "Yellow (ground)",
-					"color": "#E8D24A"
+					"color": "#FDFF00"
 				},
 				{
 					"slug": "contrast",
@@ -27,12 +27,12 @@
 				{
 					"slug": "accent",
 					"name": "Pink (sale, dogs, LINE)",
-					"color": "#F26BC6"
+					"color": "#FF5CC8"
 				},
 				{
 					"slug": "accent-2",
 					"name": "Blue (new, cats)",
-					"color": "#5EC1EC"
+					"color": "#45C8FF"
 				},
 				{
 					"slug": "surface",
@@ -52,47 +52,47 @@
 				{
 					"slug": "tint-mustard",
 					"name": "Tint yellow",
-					"color": "#FBF3C4"
+					"color": "#FEFFB3"
 				},
 				{
 					"slug": "tint-raspberry",
 					"name": "Tint pink",
-					"color": "#FBDDF1"
+					"color": "#FFD3F1"
 				},
 				{
 					"slug": "tint-blue",
 					"name": "Tint blue",
-					"color": "#DDF1FA"
+					"color": "#CDEFFF"
 				},
 				{
 					"slug": "tint-green",
 					"name": "Tint green",
-					"color": "#DFF2DE"
+					"color": "#D4FBD0"
 				},
 				{
 					"slug": "tint-teal",
 					"name": "Tint aqua",
-					"color": "#DDF4F0"
+					"color": "#CCF7F3"
 				},
 				{
 					"slug": "tint-violet",
 					"name": "Tint purple",
-					"color": "#ECE4FB"
+					"color": "#E8DBFF"
 				},
 				{
 					"slug": "green",
 					"name": "Green",
-					"color": "#6DC46B"
+					"color": "#3FE26A"
 				},
 				{
 					"slug": "purple",
 					"name": "Purple",
-					"color": "#B394F2"
+					"color": "#B07DFF"
 				},
 				{
 					"slug": "red",
 					"name": "Red (low stock)",
-					"color": "#F2766B"
+					"color": "#FF6A5E"
 				}
 			]
 		},

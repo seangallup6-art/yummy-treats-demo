@@ -33,7 +33,7 @@ def bag(p, back=False):
     # label
     d.rounded_rectangle((300, 300, 700, 700), radius=36, fill=(255, 255, 255), outline=INK, width=8)
     if not back:
-        d.text((330, 330), 'YUMMY', font=SMALL, fill=hexrgb('#F26BC6'))
+        d.text((330, 330), 'YUMMY', font=SMALL, fill=hexrgb('#FF5CC8'))
         d.text((330, 372), 'TREATS!', font=SMALL, fill=INK)
         font, lh = BOLD, 70
         lines = wrap(d, p['name'], font, 340)
@@ -51,7 +51,7 @@ def bag(p, back=False):
             d.text((330, y), line, font=TINY, fill=(61, 61, 61)); y += 36
         d.text((330, 600), '[Back of bag]', font=SMALL, fill=INK)
     # sticker
-    d.ellipse((640, 740, 790, 890), fill=hexrgb('#E8D24A'), outline=INK, width=8)
+    d.ellipse((640, 740, 790, 890), fill=hexrgb('#FDFF00'), outline=INK, width=8)
     st = ImageFont.truetype('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf', 22)
     d.text((715, 800), 'MADE IN', font=st, fill=INK, anchor='mm')
     d.text((715, 830), 'THAILAND', font=st, fill=INK, anchor='mm')

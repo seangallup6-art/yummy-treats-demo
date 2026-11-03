@@ -49,6 +49,11 @@ function yt_body_classes( $classes ) {
 	$lang      = function_exists( 'trp_get_current_language' ) ? trp_get_current_language() : get_locale();
 	$classes[] = 'yt-lang-' . sanitize_html_class( substr( (string) $lang, 0, 2 ) );
 	$classes[] = 'yt-shapes-' . sanitize_html_class( get_theme_mod( 'yt_backdrop_shapes', 'off' ) );
+	if ( is_singular( 'post' ) ) {
+		foreach ( (array) get_the_category() as $yt_cat ) {
+			$classes[] = 'yt-cat-' . sanitize_html_class( $yt_cat->slug );
+		}
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'yt_body_classes' );

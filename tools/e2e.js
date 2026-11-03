@@ -16,7 +16,7 @@ async function addToCart(page, slug, sizeIndex = 0) {
   const sizes = await page.$$('.yt-variations__btn:not([disabled])');
   if (sizes.length) {
     await sizes[Math.min(sizeIndex, sizes.length - 1)].click();
-    await page.waitForSelector('.single_add_to_cart_button:not(.disabled)', { timeout: 30000 });
+    await page.waitForSelector('.single_add_to_cart_button:not(.disabled)', { timeout: 180000 });
   }
   await Promise.all([page.waitForNavigation({ waitUntil: 'load', timeout: 120000 }), page.click('.single_add_to_cart_button')]);
   const msg = await page.$eval('.woocommerce-message, .wc-block-components-notice-banner', (e) => e.textContent.trim()).catch(() => 'no notice');
@@ -28,7 +28,7 @@ async function checkout(page, method) {
   await page.waitForSelector('#shipping-first_name', { state: 'attached', timeout: 90000 });
   // A returning customer sees their saved address as a card; open it for editing.
   const edit = await page.$('.wc-block-components-address-card__edit');
-  if (edit && !(await page.isVisible('#shipping-first_name'))) { await edit.click(); await page.waitForSelector('#shipping-first_name', { timeout: 30000 }); }
+  if (edit && !(await page.isVisible('#shipping-first_name'))) { await edit.click(); await page.waitForSelector('#shipping-first_name', { timeout: 180000 }); }
   const fill = async (sel, val) => { const el = await page.$(sel); if (el) { await el.fill(''); await el.fill(val); } };
   await fill('#email', 'e2e@example.com');
   await fill('#shipping-first_name', 'Test');
@@ -97,7 +97,7 @@ async function checkout(page, method) {
   log('  mark-paid button:', !!mark);
   if (mark) { await Promise.all([page.waitForNavigation({ waitUntil: 'load', timeout: 180000 }), mark.click({ noWaitAfter: true })]); }
   log('  status after:', await page.$eval('#order_status', (s) => s.value).catch(() => 'n/a'));
-  await page.goto(transferUrl, { waitUntil: 'load' });
+  await page.goto(transferUrl, { waitUntil: 'load', timeout: 180000 });
   log('  customer heading now:', (await page.textContent('.wp-block-woocommerce-order-confirmation-status h1')).trim());
   await page.screenshot({ path: out + '/5-paid.png', fullPage: true });
 

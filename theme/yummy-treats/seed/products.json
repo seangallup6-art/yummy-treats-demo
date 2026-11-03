@@ -1,26 +1,619 @@
 [
- {"sku":"YT-D-001","name":"Chicken Jerky Strips","pet":"Dogs","type":"Treats","tint":"#FBF3C4","fill":"#F2B84A","short":"Single-ingredient chicken breast, slow-dried into chewy strips. The treat every dog in the office asks for by name.","sizes":[["100 g",0.1,120],["250 g",0.25,260],["500 g",0.5,480]],"sales":320,"attrs":{"Protein":"Chicken","Texture":"Chewy","Age":"All ages"}},
- {"sku":"YT-D-002","name":"Duck & Sweet Potato Bites","pet":"Dogs","type":"Treats","tint":"#FBDDF1","fill":"#F26BC6","short":"Soft duck bites wrapped around sweet potato. Gentle on sensitive stomachs, big on smell.","sizes":[["100 g",0.1,140],["250 g",0.25,310]],"sales":80,"new":true,"attrs":{"Protein":"Duck","Texture":"Soft","Age":"All ages"}},
- {"sku":"YT-D-003","name":"Salmon Skin Crisps","pet":"Dogs","type":"Treats","tint":"#DDF4F0","fill":"#5EC1EC","short":"Crunchy baked salmon skin. Naturally rich in omega-3 for coats that shine in Bangkok humidity.","sizes":[["80 g",0.08,150],["200 g",0.2,340]],"sales":140,"low":true,"attrs":{"Protein":"Salmon","Texture":"Crunchy","Age":"Adult"}},
- {"sku":"YT-D-004","name":"Pork Ear Chews","pet":"Dogs","type":"Treats","tint":"#FBF3C4","fill":"#F2A33A","short":"Whole dried pork ears for long, happy chewing sessions. Supervise, as with any chew.","sizes":[["150 g (3 ears)",0.15,160],["300 g (6 ears)",0.3,290]],"sales":110,"sale":0.8,"attrs":{"Protein":"Pork","Texture":"Chew","Age":"Adult"}},
- {"sku":"YT-D-005","name":"Peanut Butter Training Bites","pet":"Dogs","type":"Treats","tint":"#DFF2DE","fill":"#6DC46B","short":"Pea-sized, low-calorie bites for training sessions. Unsalted peanut butter, no xylitol, ever.","sizes":[["100 g",0.1,110],["300 g",0.3,280]],"sales":200,"attrs":{"Protein":"Chicken","Texture":"Soft","Age":"Puppy and adult"}},
- {"sku":"YT-D-006","name":"Beef Liver Crunch","pet":"Dogs","type":"Treats","tint":"#ECE4FB","fill":"#B394F2","short":"Freeze-dried beef liver, broken into crunchy pieces. The high-value reward for recall training.","sizes":[["100 g",0.1,170],["250 g",0.25,380]],"sales":90,"soldout":true,"attrs":{"Protein":"Beef","Texture":"Crunchy","Age":"All ages"}},
- {"sku":"YT-D-007","name":"Chicken & Rice Fresh Meal","pet":"Dogs","type":"Meals","tint":"#FBF3C4","fill":"#F2B84A","short":"Gently cooked chicken, jasmine rice, carrot and pumpkin. Frozen in portions, thaw and serve.","sizes":[["300 g",0.3,95],["1.5 kg",1.5,420]],"sales":260,"attrs":{"Protein":"Chicken","Texture":"Fresh (frozen)","Age":"Adult"}},
- {"sku":"YT-D-008","name":"Lamb & Pumpkin Fresh Meal","pet":"Dogs","type":"Meals","tint":"#FBDDF1","fill":"#F2766B","short":"Lamb, pumpkin and spinach for dogs that are bored of chicken. Our next batch is cooking now.","sizes":[["300 g",0.3,120],["1.5 kg",1.5,540]],"sales":40,"preorder":"[date]","attrs":{"Protein":"Lamb","Texture":"Fresh (frozen)","Age":"Adult"}},
- {"sku":"YT-D-009","name":"Bone Broth Topper","pet":"Dogs","type":"Meals","tint":"#DDF4F0","fill":"#8ED3E6","short":"Slow-simmered chicken bone broth to pour over kibble. Gets picky eaters to finish the bowl.","sizes":[["250 ml",0.25,90],["1 L",1.0,300]],"sales":150,"attrs":{"Protein":"Chicken","Texture":"Liquid","Age":"All ages"}},
- {"sku":"YT-D-010","name":"Dental Chew Sticks","pet":"Dogs","type":"Treats","tint":"#DFF2DE","fill":"#6DC46B","short":"Ridged sweet-potato sticks that scrub while they chew. Grain-free and gentle.","sizes":[["120 g",0.12,130],["360 g",0.36,330]],"sales":120,"attrs":{"Protein":"None (sweet potato)","Texture":"Chew","Age":"Adult"}},
- {"sku":"YT-D-011","name":"Puppy Starter Bundle","pet":"Dogs","type":"Bundles","tint":"#DDF1FA","fill":"#7FA7F0","short":"Training bites, soft duck bites and a small chicken jerky. Everything a new puppy needs for week one.","simple":[0.45,420],"sales":70,"sale":0.85,"attrs":{"Protein":"Chicken, duck","Texture":"Mixed","Age":"Puppy"}},
- {"sku":"YT-D-012","name":"Big Dog Chew Box","pet":"Dogs","type":"Bundles","tint":"#FBF3C4","fill":"#F2A33A","short":"Pork ears, dental sticks and a 500 g chicken jerky. For the large and the relentless.","simple":[1.0,780],"sales":50,"attrs":{"Protein":"Chicken, pork","Texture":"Chew","Age":"Adult"}},
- {"sku":"YT-C-001","name":"Freeze-Dried Chicken Bites","pet":"Cats","type":"Treats","tint":"#DDF1FA","fill":"#7FA7F0","short":"Pure chicken breast, freeze-dried so it crumbles over food or works as a treat. Our best-selling cat treat.","sizes":[["40 g",0.04,120],["100 g",0.1,260]],"sales":340,"attrs":{"Protein":"Chicken","Texture":"Crunchy","Age":"All ages"}},
- {"sku":"YT-C-002","name":"Tuna Flakes","pet":"Cats","type":"Treats","tint":"#DDF4F0","fill":"#5EC1EC","short":"Dried skipjack tuna flakes, the Thai cat classic. Sprinkle a pinch, watch the drama stop.","sizes":[["50 g",0.05,110],["150 g",0.15,280]],"sales":210,"attrs":{"Protein":"Tuna","Texture":"Flaky","Age":"All ages"}},
- {"sku":"YT-C-003","name":"Lickable Chicken Purée","pet":"Cats","type":"Treats","tint":"#FBDDF1","fill":"#F26BC6","short":"Smooth chicken purée in squeeze sachets. Hand-feed it or use it to hide a pill.","sizes":[["4 × 14 g",0.056,95],["12 × 14 g",0.168,250]],"sales":60,"new":true,"attrs":{"Protein":"Chicken","Texture":"Purée","Age":"All ages"}},
- {"sku":"YT-C-004","name":"Salmon Crunchies","pet":"Cats","type":"Treats","tint":"#FBF3C4","fill":"#F2766B","short":"Baked salmon crunchies the size of a fingernail. Good for scatter-feeding on a rainy afternoon.","sizes":[["60 g",0.06,130],["150 g",0.15,290]],"sales":130,"low":true,"attrs":{"Protein":"Salmon","Texture":"Crunchy","Age":"Adult"}},
- {"sku":"YT-C-005","name":"Shrimp Bites","pet":"Cats","type":"Treats","tint":"#FBDDF1","fill":"#F2766B","short":"Whole freeze-dried shrimp. Sells out every time we make it.","simple":[0.04,160],"sales":100,"soldout":true,"attrs":{"Protein":"Shrimp","Texture":"Crunchy","Age":"Adult"}},
- {"sku":"YT-C-006","name":"Chicken & Pumpkin Wet Food","pet":"Cats","type":"Meals","tint":"#DFF2DE","fill":"#6DC46B","short":"Shredded chicken in a pumpkin broth. High moisture for cats that do not drink enough.","sizes":[["85 g",0.085,45],["6 × 85 g",0.51,250]],"sales":180,"attrs":{"Protein":"Chicken","Texture":"Wet","Age":"Adult"}},
- {"sku":"YT-C-007","name":"Tuna & Mackerel Wet Food","pet":"Cats","type":"Meals","tint":"#DDF1FA","fill":"#8ED3E6","short":"Two fish, no gravy thickeners. The one for cats who only eat fish.","sizes":[["85 g",0.085,45],["6 × 85 g",0.51,250]],"sales":150,"sale":0.8,"attrs":{"Protein":"Tuna, mackerel","Texture":"Wet","Age":"Adult"}},
- {"sku":"YT-C-008","name":"Kitten Mousse","pet":"Cats","type":"Meals","tint":"#ECE4FB","fill":"#B394F2","short":"Extra-smooth chicken mousse for kittens from eight weeks. Next batch ships soon.","sizes":[["70 g",0.07,50],["6 × 70 g",0.42,270]],"sales":30,"preorder":"[date]","attrs":{"Protein":"Chicken","Texture":"Mousse","Age":"Kitten"}},
- {"sku":"YT-C-009","name":"Catnip Crunch","pet":"Cats","type":"Treats","tint":"#DFF2DE","fill":"#5EC1EC","short":"Chicken crunchies baked with Thai-grown catnip. For the evening zoomies.","simple":[0.05,120],"sales":90,"attrs":{"Protein":"Chicken","Texture":"Crunchy","Age":"Adult"}},
- {"sku":"YT-C-010","name":"Hairball Helper Treats","pet":"Cats","type":"Treats","tint":"#FBF3C4","fill":"#F2B84A","short":"Chicken treats with psyllium and pumpkin to keep hairballs moving the right way.","sizes":[["60 g",0.06,130],["150 g",0.15,290]],"sales":80,"attrs":{"Protein":"Chicken","Texture":"Soft","Age":"Adult"}},
- {"sku":"YT-C-011","name":"Picky Eater Sampler","pet":"Cats","type":"Bundles","tint":"#FBDDF1","fill":"#F26BC6","short":"Six small packs across our cat range, so you find the one they actually like before buying big.","simple":[0.3,390],"sales":60,"new":true,"attrs":{"Protein":"Mixed","Texture":"Mixed","Age":"Adult"}},
- {"sku":"YT-C-012","name":"Cat Café Box","pet":"Cats","type":"Bundles","tint":"#DDF1FA","fill":"#7FA7F0","short":"Freeze-dried chicken, tuna flakes, a purée pack and catnip crunch. The gift box for a cat person.","simple":[0.35,620],"sales":45,"attrs":{"Protein":"Chicken, tuna","Texture":"Mixed","Age":"Adult"}}
+ {
+  "sku": "YT-D-001",
+  "name": "Chicken Jerky Strips",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#FEFFB3",
+  "fill": "#FFC43D",
+  "short": "Single-ingredient chicken breast, slow-dried into chewy strips. The treat every dog in the office asks for by name.",
+  "sizes": [
+   [
+    "100 g",
+    0.1,
+    120
+   ],
+   [
+    "250 g",
+    0.25,
+    260
+   ],
+   [
+    "500 g",
+    0.5,
+    480
+   ]
+  ],
+  "sales": 320,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Chewy",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-D-002",
+  "name": "Duck & Sweet Potato Bites",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#FFD3F1",
+  "fill": "#FF5CC8",
+  "short": "Soft duck bites wrapped around sweet potato. Gentle on sensitive stomachs, big on smell.",
+  "sizes": [
+   [
+    "100 g",
+    0.1,
+    140
+   ],
+   [
+    "250 g",
+    0.25,
+    310
+   ]
+  ],
+  "sales": 80,
+  "new": true,
+  "attrs": {
+   "Protein": "Duck",
+   "Texture": "Soft",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-D-003",
+  "name": "Salmon Skin Crisps",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#CCF7F3",
+  "fill": "#45C8FF",
+  "short": "Crunchy baked salmon skin. Naturally rich in omega-3 for coats that shine in Bangkok humidity.",
+  "sizes": [
+   [
+    "80 g",
+    0.08,
+    150
+   ],
+   [
+    "200 g",
+    0.2,
+    340
+   ]
+  ],
+  "sales": 140,
+  "low": true,
+  "attrs": {
+   "Protein": "Salmon",
+   "Texture": "Crunchy",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-D-004",
+  "name": "Pork Ear Chews",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#FEFFB3",
+  "fill": "#FFA726",
+  "short": "Whole dried pork ears for long, happy chewing sessions. Supervise, as with any chew.",
+  "sizes": [
+   [
+    "150 g (3 ears)",
+    0.15,
+    160
+   ],
+   [
+    "300 g (6 ears)",
+    0.3,
+    290
+   ]
+  ],
+  "sales": 110,
+  "sale": 0.8,
+  "attrs": {
+   "Protein": "Pork",
+   "Texture": "Chew",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-D-005",
+  "name": "Peanut Butter Training Bites",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#D4FBD0",
+  "fill": "#3FE26A",
+  "short": "Pea-sized, low-calorie bites for training sessions. Unsalted peanut butter, no xylitol, ever.",
+  "sizes": [
+   [
+    "100 g",
+    0.1,
+    110
+   ],
+   [
+    "300 g",
+    0.3,
+    280
+   ]
+  ],
+  "sales": 200,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Soft",
+   "Age": "Puppy and adult"
+  }
+ },
+ {
+  "sku": "YT-D-006",
+  "name": "Beef Liver Crunch",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#E8DBFF",
+  "fill": "#B07DFF",
+  "short": "Freeze-dried beef liver, broken into crunchy pieces. The high-value reward for recall training.",
+  "sizes": [
+   [
+    "100 g",
+    0.1,
+    170
+   ],
+   [
+    "250 g",
+    0.25,
+    380
+   ]
+  ],
+  "sales": 90,
+  "soldout": true,
+  "attrs": {
+   "Protein": "Beef",
+   "Texture": "Crunchy",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-D-007",
+  "name": "Chicken & Rice Fresh Meal",
+  "pet": "Dogs",
+  "type": "Meals",
+  "tint": "#FEFFB3",
+  "fill": "#FFC43D",
+  "short": "Gently cooked chicken, jasmine rice, carrot and pumpkin. Frozen in portions, thaw and serve.",
+  "sizes": [
+   [
+    "300 g",
+    0.3,
+    95
+   ],
+   [
+    "1.5 kg",
+    1.5,
+    420
+   ]
+  ],
+  "sales": 260,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Fresh (frozen)",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-D-008",
+  "name": "Lamb & Pumpkin Fresh Meal",
+  "pet": "Dogs",
+  "type": "Meals",
+  "tint": "#FFD3F1",
+  "fill": "#FF6A5E",
+  "short": "Lamb, pumpkin and spinach for dogs that are bored of chicken. Our next batch is cooking now.",
+  "sizes": [
+   [
+    "300 g",
+    0.3,
+    120
+   ],
+   [
+    "1.5 kg",
+    1.5,
+    540
+   ]
+  ],
+  "sales": 40,
+  "preorder": "[date]",
+  "attrs": {
+   "Protein": "Lamb",
+   "Texture": "Fresh (frozen)",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-D-009",
+  "name": "Bone Broth Topper",
+  "pet": "Dogs",
+  "type": "Meals",
+  "tint": "#CCF7F3",
+  "fill": "#67DDFF",
+  "short": "Slow-simmered chicken bone broth to pour over kibble. Gets picky eaters to finish the bowl.",
+  "sizes": [
+   [
+    "250 ml",
+    0.25,
+    90
+   ],
+   [
+    "1 L",
+    1.0,
+    300
+   ]
+  ],
+  "sales": 150,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Liquid",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-D-010",
+  "name": "Dental Chew Sticks",
+  "pet": "Dogs",
+  "type": "Treats",
+  "tint": "#D4FBD0",
+  "fill": "#3FE26A",
+  "short": "Ridged sweet-potato sticks that scrub while they chew. Grain-free and gentle.",
+  "sizes": [
+   [
+    "120 g",
+    0.12,
+    130
+   ],
+   [
+    "360 g",
+    0.36,
+    330
+   ]
+  ],
+  "sales": 120,
+  "attrs": {
+   "Protein": "None (sweet potato)",
+   "Texture": "Chew",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-D-011",
+  "name": "Puppy Starter Bundle",
+  "pet": "Dogs",
+  "type": "Bundles",
+  "tint": "#CDEFFF",
+  "fill": "#6D9BFF",
+  "short": "Training bites, soft duck bites and a small chicken jerky. Everything a new puppy needs for week one.",
+  "simple": [
+   0.45,
+   420
+  ],
+  "sales": 70,
+  "sale": 0.85,
+  "attrs": {
+   "Protein": "Chicken, duck",
+   "Texture": "Mixed",
+   "Age": "Puppy"
+  }
+ },
+ {
+  "sku": "YT-D-012",
+  "name": "Big Dog Chew Box",
+  "pet": "Dogs",
+  "type": "Bundles",
+  "tint": "#FEFFB3",
+  "fill": "#FFA726",
+  "short": "Pork ears, dental sticks and a 500 g chicken jerky. For the large and the relentless.",
+  "simple": [
+   1.0,
+   780
+  ],
+  "sales": 50,
+  "attrs": {
+   "Protein": "Chicken, pork",
+   "Texture": "Chew",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-001",
+  "name": "Freeze-Dried Chicken Bites",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#CDEFFF",
+  "fill": "#6D9BFF",
+  "short": "Pure chicken breast, freeze-dried so it crumbles over food or works as a treat. Our best-selling cat treat.",
+  "sizes": [
+   [
+    "40 g",
+    0.04,
+    120
+   ],
+   [
+    "100 g",
+    0.1,
+    260
+   ]
+  ],
+  "sales": 340,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Crunchy",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-C-002",
+  "name": "Tuna Flakes",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#CCF7F3",
+  "fill": "#45C8FF",
+  "short": "Dried skipjack tuna flakes, the Thai cat classic. Sprinkle a pinch, watch the drama stop.",
+  "sizes": [
+   [
+    "50 g",
+    0.05,
+    110
+   ],
+   [
+    "150 g",
+    0.15,
+    280
+   ]
+  ],
+  "sales": 210,
+  "attrs": {
+   "Protein": "Tuna",
+   "Texture": "Flaky",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-C-003",
+  "name": "Lickable Chicken Purée",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#FFD3F1",
+  "fill": "#FF5CC8",
+  "short": "Smooth chicken purée in squeeze sachets. Hand-feed it or use it to hide a pill.",
+  "sizes": [
+   [
+    "4 × 14 g",
+    0.056,
+    95
+   ],
+   [
+    "12 × 14 g",
+    0.168,
+    250
+   ]
+  ],
+  "sales": 60,
+  "new": true,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Purée",
+   "Age": "All ages"
+  }
+ },
+ {
+  "sku": "YT-C-004",
+  "name": "Salmon Crunchies",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#FEFFB3",
+  "fill": "#FF6A5E",
+  "short": "Baked salmon crunchies the size of a fingernail. Good for scatter-feeding on a rainy afternoon.",
+  "sizes": [
+   [
+    "60 g",
+    0.06,
+    130
+   ],
+   [
+    "150 g",
+    0.15,
+    290
+   ]
+  ],
+  "sales": 130,
+  "low": true,
+  "attrs": {
+   "Protein": "Salmon",
+   "Texture": "Crunchy",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-005",
+  "name": "Shrimp Bites",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#FFD3F1",
+  "fill": "#FF6A5E",
+  "short": "Whole freeze-dried shrimp. Sells out every time we make it.",
+  "simple": [
+   0.04,
+   160
+  ],
+  "sales": 100,
+  "soldout": true,
+  "attrs": {
+   "Protein": "Shrimp",
+   "Texture": "Crunchy",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-006",
+  "name": "Chicken & Pumpkin Wet Food",
+  "pet": "Cats",
+  "type": "Meals",
+  "tint": "#D4FBD0",
+  "fill": "#3FE26A",
+  "short": "Shredded chicken in a pumpkin broth. High moisture for cats that do not drink enough.",
+  "sizes": [
+   [
+    "85 g",
+    0.085,
+    45
+   ],
+   [
+    "6 × 85 g",
+    0.51,
+    250
+   ]
+  ],
+  "sales": 180,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Wet",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-007",
+  "name": "Tuna & Mackerel Wet Food",
+  "pet": "Cats",
+  "type": "Meals",
+  "tint": "#CDEFFF",
+  "fill": "#67DDFF",
+  "short": "Two fish, no gravy thickeners. The one for cats who only eat fish.",
+  "sizes": [
+   [
+    "85 g",
+    0.085,
+    45
+   ],
+   [
+    "6 × 85 g",
+    0.51,
+    250
+   ]
+  ],
+  "sales": 150,
+  "sale": 0.8,
+  "attrs": {
+   "Protein": "Tuna, mackerel",
+   "Texture": "Wet",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-008",
+  "name": "Kitten Mousse",
+  "pet": "Cats",
+  "type": "Meals",
+  "tint": "#E8DBFF",
+  "fill": "#B07DFF",
+  "short": "Extra-smooth chicken mousse for kittens from eight weeks. Next batch ships soon.",
+  "sizes": [
+   [
+    "70 g",
+    0.07,
+    50
+   ],
+   [
+    "6 × 70 g",
+    0.42,
+    270
+   ]
+  ],
+  "sales": 30,
+  "preorder": "[date]",
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Mousse",
+   "Age": "Kitten"
+  }
+ },
+ {
+  "sku": "YT-C-009",
+  "name": "Catnip Crunch",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#D4FBD0",
+  "fill": "#45C8FF",
+  "short": "Chicken crunchies baked with Thai-grown catnip. For the evening zoomies.",
+  "simple": [
+   0.05,
+   120
+  ],
+  "sales": 90,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Crunchy",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-010",
+  "name": "Hairball Helper Treats",
+  "pet": "Cats",
+  "type": "Treats",
+  "tint": "#FEFFB3",
+  "fill": "#FFC43D",
+  "short": "Chicken treats with psyllium and pumpkin to keep hairballs moving the right way.",
+  "sizes": [
+   [
+    "60 g",
+    0.06,
+    130
+   ],
+   [
+    "150 g",
+    0.15,
+    290
+   ]
+  ],
+  "sales": 80,
+  "attrs": {
+   "Protein": "Chicken",
+   "Texture": "Soft",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-011",
+  "name": "Picky Eater Sampler",
+  "pet": "Cats",
+  "type": "Bundles",
+  "tint": "#FFD3F1",
+  "fill": "#FF5CC8",
+  "short": "Six small packs across our cat range, so you find the one they actually like before buying big.",
+  "simple": [
+   0.3,
+   390
+  ],
+  "sales": 60,
+  "new": true,
+  "attrs": {
+   "Protein": "Mixed",
+   "Texture": "Mixed",
+   "Age": "Adult"
+  }
+ },
+ {
+  "sku": "YT-C-012",
+  "name": "Cat Café Box",
+  "pet": "Cats",
+  "type": "Bundles",
+  "tint": "#CDEFFF",
+  "fill": "#6D9BFF",
+  "short": "Freeze-dried chicken, tuna flakes, a purée pack and catnip crunch. The gift box for a cat person.",
+  "simple": [
+   0.35,
+   620
+  ],
+  "sales": 45,
+  "attrs": {
+   "Protein": "Chicken, tuna",
+   "Texture": "Mixed",
+   "Age": "Adult"
+  }
+ }
 ]

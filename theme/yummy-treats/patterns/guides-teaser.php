@@ -24,7 +24,7 @@
 	<!-- wp:query {"queryId":2,"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","author":"","search":"","exclude":[],"sticky":"","inherit":false},"align":"wide","className":"yt-guides","layout":{"type":"default"}} -->
 	<div class="wp-block-query alignwide yt-guides">
 		<!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->
-			<!-- wp:post-terms {"term":"category","className":"yt-eyebrow"} /-->
+			<!-- wp:post-terms {"term":"category","className":"yt-eyebrow yt-eyebrow--pill"} /-->
 			<!-- wp:post-title {"level":3,"isLink":true} /-->
 			<!-- wp:post-excerpt {"excerptLength":40,"moreText":"Read →","style":{"typography":{"fontSize":"15px"}}} /-->
 		<!-- /wp:post-template -->

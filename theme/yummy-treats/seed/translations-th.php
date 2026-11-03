@@ -176,6 +176,10 @@ return array(
 		// Help page. Source copy: seed.php yt_seed_page_help() and templates/page-help.html.
 		'Delivery, payment, returns and contact' => 'การจัดส่ง การชำระเงิน การคืนสินค้า และการติดต่อ',
 		'Delivery' => 'การจัดส่ง',
+		'Pre-orders' => 'สินค้าสั่งจอง',
+		'Returns' => 'การคืนสินค้า',
+		'Orders' => 'คำสั่งซื้อ',
+		'Your data' => 'ข้อมูลของคุณ',
 		'Bangkok, Nonthaburi and Samut Prakan:' => 'กรุงเทพฯ นนทบุรี และสมุทรปราการ:',
 		'฿50, free on orders over ฿1,000. Usually next day. Order before 14:00 Mon–Sat for same-day dispatch.' => '฿50 ส่งฟรีเมื่อสั่งครบ ฿1,000 ปกติได้รับวันถัดไป สั่งก่อน 14:00 น. วันจันทร์–เสาร์ ส่งออกภายในวันเดียวกัน',
 		'Rest of Thailand:' => 'ต่างจังหวัด:',

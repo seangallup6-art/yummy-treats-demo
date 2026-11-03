@@ -790,34 +790,24 @@ function yt_seed_page_help() {
 	$h  = fn( $anchor, $text ) => '<!-- wp:heading {"anchor":"' . $anchor . '"} --><h2 class="wp-block-heading" id="' . $anchor . '">' . $text . '</h2><!-- /wp:heading -->';
 	$p  = fn( $html ) => '<!-- wp:paragraph --><p>' . $html . '</p><!-- /wp:paragraph -->';
 	$li = fn( $label, $text ) => '<!-- wp:list-item --><li><strong>' . $label . '</strong> — ' . $text . '</li><!-- /wp:list-item -->';
+	// Each section is a tinted card (templates/page-help.html + theme.css "yt-help-card"); the tint rotates.
+	$tints = array( 'blue', 'raspberry', 'green', 'violet', 'teal', 'mustard', 'blue' );
+	$n     = 0;
+	$card  = function ( ...$blocks ) use ( $tints, &$n ) {
+		$tint = $tints[ $n % count( $tints ) ];
+		++$n;
+		return '<!-- wp:group {"className":"yt-help-card is-style-card-flat","backgroundColor":"tint-' . $tint . '","layout":{"type":"constrained"}} --><div class="wp-block-group yt-help-card is-style-card-flat has-tint-' . $tint . '-background-color has-background" data-n="' . $n . '">' . implode( "\n\n", $blocks ) . '</div><!-- /wp:group -->';
+	};
 	return implode(
 		"\n\n",
 		array(
-			$h( 'delivery', 'Delivery' ),
-			$p( '<strong>Bangkok, Nonthaburi and Samut Prakan:</strong> ฿50, free on orders over ฿1,000. Usually next day. Order before 14:00 Mon–Sat for same-day dispatch.' ),
-			$p( '<strong>Rest of Thailand:</strong> ฿80, free over ฿1,500. Two to three days with [courier name].' ),
-			$p( 'Fresh frozen meals ship in an insulated box with ice packs, to the Bangkok area only.' ),
-			$h( 'payment', 'How to pay' ),
-			'<!-- wp:list --><ul class="wp-block-list">'
-				. $li( 'PromptPay', 'scan the QR at checkout with any Thai banking app. Confirms in seconds.' )
-				. $li( 'Credit / debit card', 'Visa, Mastercard and JCB, processed by Opn Payments. We never see your card number.' )
-				. $li( 'Bank transfer', 'transfer to [Bank name] [XXX-X-XXXXX-X], then send us the slip from the confirmation page, the link in your order email, or My account. We check slips within the hour on working days, 9:00 to 18:00. Unpaid orders are cancelled after 24 hours.' )
-				. $li( 'Cash on delivery', 'Bangkok, Nonthaburi and Samut Prakan only. Please have the exact amount ready.' )
-				. '</ul><!-- /wp:list -->',
-			$h( 'preorders', 'Pre-orders and sold-out items' ),
-			$p( 'Items marked Pre-order ship on the date shown on the product. If your order also has items in stock, those leave first and the pre-order follows on its own.' ),
-			$p( 'Sold out? Leave your email on the product page and we send one message when it is back. We do not use that email for anything else.' ),
-			$h( 'returns', 'Not a hit with your pet?' ),
-			$p( 'Message us on LINE within 7 days with a photo of the pack and we will swap it for something else or refund it. Opened food cannot be resold, so we donate it to [shelter name]. Damaged or wrong items are replaced free, no questions.' ),
-			$h( 'orders', 'Orders and accounts' ),
-			$p( 'You can check out as a guest. An account lets you see past orders, order again in one tap and send a slip later.' ),
-			$p( 'Order status and slips are under <a href="/my-account/orders/">My account → Orders</a>' ),
-			$h( 'stockists', 'Buying in a shop instead' ),
-			$p( 'Prices in shops are set by the shop and may differ slightly from the website. For shop purchases, returns go through the shop.' ),
-			$p( '<a href="/stockists/">Find a stockist →</a>' ),
-			$h( 'pdpa', 'Your data (PDPA)' ),
-			$p( 'We keep your name, address and phone number to deliver your order and for the tax invoice. We only message you on LINE if you tick the box at checkout.' ),
-			$p( '<a href="/privacy-policy/">Read the full privacy notice →</a>' ),
+			$card( $h( 'delivery', 'Delivery' ), $p( '<strong>Bangkok, Nonthaburi and Samut Prakan:</strong> ฿50, free on orders over ฿1,000. Usually next day. Order before 14:00 Mon–Sat for same-day dispatch.' ), $p( '<strong>Rest of Thailand:</strong> ฿80, free over ฿1,500. Two to three days with [courier name].' ), $p( 'Fresh frozen meals ship in an insulated box with ice packs, to the Bangkok area only.' ) ),
+			$card( $h( 'payment', 'How to pay' ), '<!-- wp:list --><ul class="wp-block-list">' . $li( 'PromptPay', 'scan the QR at checkout with any Thai banking app. Confirms in seconds.' ) . $li( 'Credit / debit card', 'Visa, Mastercard and JCB, processed by Opn Payments. We never see your card number.' ) . $li( 'Bank transfer', 'transfer to [Bank name] [XXX-X-XXXXX-X], then send us the slip from the confirmation page, the link in your order email, or My account. We check slips within the hour on working days, 9:00 to 18:00. Unpaid orders are cancelled after 24 hours.' ) . $li( 'Cash on delivery', 'Bangkok, Nonthaburi and Samut Prakan only. Please have the exact amount ready.' ) . '</ul><!-- /wp:list -->' ),
+			$card( $h( 'preorders', 'Pre-orders and sold-out items' ), $p( 'Items marked Pre-order ship on the date shown on the product. If your order also has items in stock, those leave first and the pre-order follows on its own.' ), $p( 'Sold out? Leave your email on the product page and we send one message when it is back. We do not use that email for anything else.' ) ),
+			$card( $h( 'returns', 'Not a hit with your pet?' ), $p( 'Message us on LINE within 7 days with a photo of the pack and we will swap it for something else or refund it. Opened food cannot be resold, so we donate it to [shelter name]. Damaged or wrong items are replaced free, no questions.' ) ),
+			$card( $h( 'orders', 'Orders and accounts' ), $p( 'You can check out as a guest. An account lets you see past orders, order again in one tap and send a slip later.' ), $p( 'Order status and slips are under <a href="/my-account/orders/">My account → Orders</a>' ) ),
+			$card( $h( 'stockists', 'Buying in a shop instead' ), $p( 'Prices in shops are set by the shop and may differ slightly from the website. For shop purchases, returns go through the shop.' ), $p( '<a href="/stockists/">Find a stockist →</a>' ) ),
+			$card( $h( 'pdpa', 'Your data (PDPA)' ), $p( 'We keep your name, address and phone number to deliver your order and for the tax invoice. We only message you on LINE if you tick the box at checkout.' ), $p( '<a href="/privacy-policy/">Read the full privacy notice →</a>' ) ),
 		)
 	);
 }
