@@ -15,8 +15,15 @@
 	--yt-ease: var(--wp--custom--motion--ease);
 	--yt-fast: var(--wp--custom--motion--fast);
 	--yt-base: var(--wp--custom--motion--base);
+	/* Gap between a sticky element and the top of the window. Sticky rules add WordPress's admin-bar offset to it
+	   (0 for visitors), so logged-in views keep the same gap below the admin bar. The help page's contact card sets
+	   the same 32px in its template (block setting), where WordPress adds the offset itself. */
+	--yt-sticky-gap: 32px;
 }
 html { -webkit-text-size-adjust: 100%; }
+/* WordPress defines its admin-bar offset only on its own sticky blocks; the theme's sticky pieces get it the same way (none on phones, where the admin bar scrolls away). */
+.yt-shop__side, .yt-map, .wc-block-cart__sidebar { --wp-admin--admin-bar--position-offset: var(--wp-admin--admin-bar--height, 0px); }
+@media screen and (max-width: 600px) { .yt-shop__side, .yt-map, .wc-block-cart__sidebar { --wp-admin--admin-bar--position-offset: 0px; } }
 body { overflow-x: clip; }
 img, svg { max-width: 100%; height: auto; }
 :focus-visible { outline: 3px solid var(--yt-ink); outline-offset: 3px; box-shadow: 0 0 0 3px var(--wp--preset--color--surface); border-radius: 4px; }
@@ -131,7 +138,7 @@ html:not(.js) .yt-marquee__track { animation: none; }
 }
 /* Sticky only where the whole column fits on screen, so the last tile is never out of reach. */
 @media (min-width: 783px) and (min-height: 900px) {
-	.yt-shop__side { position: sticky; top: 24px; }
+	.yt-shop__side { position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); }
 }
 
 /* The column: title, the filters in use, then one tile per filter. */
@@ -262,7 +269,7 @@ html:not(.js) .yt-marquee__track { animation: none; }
 
 /* 7. Cart, checkout, account ---------------------------------------------------- */
 .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__main, .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__sidebar, .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); padding: 24px 28px; box-sizing: border-box; }
-.wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__sidebar { position: sticky; top: 20px; }
+.wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__sidebar { position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); }
 .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { padding: 20px 24px; }
 .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__main { margin-right: 0; }
 .wc-block-cart-items__header { border-bottom: var(--yt-bw) solid var(--yt-ink); }
@@ -406,6 +413,9 @@ textarea, .wc-block-components-textarea textarea { height: auto; min-height: 120
 ::placeholder { color: var(--wp--preset--color--muted); opacity: 1; }
 
 /* 9. Bands and misc ----------------------------------------------------------- */
+/* Hero picture: rounded to the inside of the card's border, so its square corners never show past the black outline. */
+.yt-hero .yt-card .yt-hero__img { margin: 0; overflow: hidden; border-radius: calc(var(--wp--custom--radius--block) - var(--yt-bw)); }
+.yt-hero .yt-card .yt-hero__img img { display: block; width: 100%; height: auto; }
 .yt-hero h1 { font-size: var(--wp--preset--font-size--display); line-height: 0.92; letter-spacing: -0.045em; max-width: 12ch; }
 .yt-petsplit a { text-decoration: none; }
 .yt-petsplit .wp-block-group { transition: transform var(--yt-base) ease, box-shadow var(--yt-base) ease; }
@@ -475,7 +485,7 @@ html.js .yt-reveal-stagger.is-in > :nth-child(n+5) { transition-delay: 240ms; }
 .yt-stockists__group { display: grid; gap: 10px; margin-bottom: 28px; }
 .yt-stockists__group h2 { font-size: 22px; margin: 0 0 4px; }
 .yt-stockists__meta { margin: 2px 0 0; font-size: 13px; font-weight: 500; color: var(--wp--preset--color--muted); }
-.yt-map { background: var(--wp--preset--color--tint-blue); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); overflow: hidden; position: sticky; top: 20px; }
+.yt-map { background: var(--wp--preset--color--tint-blue); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); overflow: hidden; position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); }
 .yt-map img { display: block; width: 100%; }
 
 /* 13. Starface-inspired additions: claim row, bundle promos ------------------------- */
