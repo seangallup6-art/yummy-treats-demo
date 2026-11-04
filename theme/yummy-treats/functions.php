@@ -22,6 +22,9 @@ require YT_DIR . '/inc/playground.php';
 
 if ( class_exists( 'WooCommerce' ) ) {
 	require YT_DIR . '/inc/woocommerce.php';
+	require YT_DIR . '/inc/product-page.php';
+	require YT_DIR . '/inc/cart-feedback.php';
+	require YT_DIR . '/inc/checkout.php';
 	require YT_DIR . '/inc/orders.php';
 	require YT_DIR . '/inc/back-in-stock.php';
 }

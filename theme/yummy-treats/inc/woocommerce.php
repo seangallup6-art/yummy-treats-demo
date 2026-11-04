@@ -433,9 +433,10 @@ add_action( 'woocommerce_init', 'yt_register_pdpa_field' );
  *
  * @param string     $text    Button text.
  * @param WC_Product $product Product.
+ * @param string     $where   'card' (shop grid) or 'single' (product page).
  * @return string
  */
-function yt_add_to_cart_text( $text, $product ) {
+function yt_add_to_cart_text( $text, $product, $where = 'card' ) {
 	if ( ! $product instanceof WC_Product ) {
 		return $text;
 	}
@@ -445,13 +446,17 @@ function yt_add_to_cart_text( $text, $product ) {
 	if ( yt_preorder_ships( $product ) ) {
 		return __( 'Pre-order', 'yummy-treats' );
 	}
-	if ( $product->is_type( 'variable' ) ) {
+	if ( $product->is_type( 'variable' ) && 'card' === $where ) {
 		return __( 'Choose a size', 'yummy-treats' );
 	}
 	return __( 'Add to cart', 'yummy-treats' );
 }
 add_filter( 'woocommerce_product_add_to_cart_text', 'yt_add_to_cart_text', 10, 2 );
-add_filter( 'woocommerce_product_single_add_to_cart_text', 'yt_add_to_cart_text', 10, 2 );
+/**
+ * On the product page the size buttons sit right above the button, so it always says "Add to cart" (it is dashed and
+ * disabled until a size is picked). Before, it kept saying "Choose a size" after the size was chosen.
+ */
+add_filter( 'woocommerce_product_single_add_to_cart_text', static fn( $text, $product ) => yt_add_to_cart_text( $text, $product, 'single' ), 10, 2 );
 
 /**
  * Low-stock threshold used by the "Only N left" badge, if the shop has not set one.

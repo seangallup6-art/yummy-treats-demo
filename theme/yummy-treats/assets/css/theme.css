@@ -224,24 +224,103 @@ html:not(.js) .yt-marquee__track { animation: none; }
 .yt-empty { text-align: center; padding: 48px; }
 
 /* 6. Product page ------------------------------------------------------------ */
-.yt-pdp .wp-block-woocommerce-product-image-gallery, .yt-pdp .wc-block-product-gallery { background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); overflow: hidden; }
-.yt-pdp .wc-block-product-gallery-large-image img { aspect-ratio: 1 / 1; object-fit: contain; padding: 6%; }
-.yt-pdp .wc-block-product-gallery-thumbnails__thumbnail, .yt-pdp .wc-block-product-gallery-thumbnails img { border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; }
-.yt-pdp .wc-block-product-gallery-thumbnails__thumbnail--is-active, .yt-pdp .wc-block-product-gallery-thumbnails__thumbnail[aria-current="true"] { box-shadow: 4px 4px 0 var(--yt-ink); }
+/* Gallery (board P1-B): the picture is the card; arrows, count and picture name in a strip under it; the
+   thumbnails are small tilted stickers beside it and the chosen one straightens up. WooCommerce's next/previous
+   block stays where it is in the markup (inside the large picture) and is moved into the strip here. */
+.yt-pdp .wc-block-product-gallery { --yt-strip: 70px; gap: 18px; align-items: flex-start; }
+.yt-pdp .wc-block-product-gallery-large-image { position: relative; overflow: visible; padding-bottom: var(--yt-strip); }
+.yt-pdp .wc-block-product-gallery-large-image:has(.wc-block-next-previous-buttons[hidden]) { padding-bottom: 0; }
+.yt-pdp .wc-block-product-gallery-large-image__container { border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); background: var(--wp--preset--color--tint-mustard); }
+.yt-pdp .wc-block-product-gallery-large-image img { aspect-ratio: 1 / 1; object-fit: cover; padding: 0; }
+.yt-pdp .wc-block-product-gallery-large-image__inner-blocks { top: 0; left: 0; width: 100%; height: 100%; }
+.yt-pdp .wc-block-product-gallery .wc-block-next-previous-buttons { display: flex; margin-top: auto; width: auto; height: 48px; gap: 10px; justify-content: flex-start; }
+.yt-pdp .wc-block-next-previous-buttons .wc-block-next-previous-buttons__button { width: 48px; height: 48px; margin: 0; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); box-shadow: var(--yt-sh-sm); transition: transform var(--yt-fast) var(--yt-ease); }
+.yt-pdp .wc-block-next-previous-buttons__button:hover { transform: translate(-2px, -2px); }
+.yt-pdp .wc-block-next-previous-buttons__button[aria-disabled="true"] { box-shadow: none; transform: none; }
+.yt-pdp .wc-block-next-previous-buttons__icon { width: 14px; height: 14px; padding: 0; }
+.yt-gal__meta { position: absolute; left: 116px; right: 0; bottom: 0; height: 48px; margin: 0; display: flex; align-items: center; gap: 12px; font-size: 15px; font-weight: 700; }
+.yt-gal__name { margin-left: auto; font-size: 13px; color: var(--wp--preset--color--muted); }
+.yt-gal__sticker { position: absolute; z-index: 3; top: 14px; left: 14px; padding: 5px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--yt-ink); color: var(--wp--preset--color--base); font-family: var(--wp--preset--font-family--display); font-size: 14px; font-weight: 800; text-transform: lowercase; transform: rotate(-4deg); pointer-events: none; }
+.yt-gal__zoom { position: absolute; z-index: 3; right: 14px; bottom: calc(var(--yt-strip) + 14px); width: 44px; height: 44px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: var(--yt-bw) solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); color: var(--yt-ink); cursor: zoom-in; transition: transform var(--yt-fast) var(--yt-ease); }
+.yt-gal__zoom:hover { transform: scale(1.08); }
+.yt-pdp .wc-block-product-gallery-large-image:has(.wc-block-next-previous-buttons[hidden]) .yt-gal__zoom { bottom: 14px; }
+.yt-pdp .wc-block-product-gallery.wc-block-product-gallery .wc-block-product-gallery-thumbnails.wc-block-product-gallery-thumbnails { flex: 0 0 86px; aspect-ratio: auto; }
+.yt-pdp .wc-block-product-gallery-thumbnails__scrollable { gap: 14px; padding: 6px 10px 10px 6px; }
+.yt-pdp .wc-block-product-gallery-thumbnails__thumbnail { flex: none; width: 64px; height: 64px; }
+.yt-pdp .wc-block-product-gallery-thumbnails .wc-block-product-gallery-thumbnails__thumbnail__image { width: 64px; height: 64px; max-width: none; box-sizing: border-box; border: var(--yt-bw) solid var(--yt-ink); border-radius: 14px; filter: none; transform: rotate(-4deg); transition: transform var(--yt-fast) var(--yt-ease), box-shadow var(--yt-fast) var(--yt-ease); }
+.yt-pdp .wc-block-product-gallery-thumbnails__thumbnail:nth-child(even) .wc-block-product-gallery-thumbnails__thumbnail__image { transform: rotate(4deg); }
+.yt-pdp .wc-block-product-gallery-thumbnails .wc-block-product-gallery-thumbnails__thumbnail .wc-block-product-gallery-thumbnails__thumbnail__image--is-active { transform: none; box-shadow: var(--yt-sh-sm); }
+/* Phones: WooCommerce stacks the thumbnails under the picture and hides the arrows; keep the strip, and lay the
+   stickers out in a row. */
+@media (max-width: 600px) {
+	.yt-pdp .wc-block-product-gallery.wc-block-product-gallery .wc-block-product-gallery-thumbnails.wc-block-product-gallery-thumbnails { aspect-ratio: auto !important; height: auto; flex: none; }
+	.yt-pdp .wc-block-product-gallery .wc-block-product-gallery-thumbnails__scrollable { flex-direction: row; overflow: visible; }
+	.yt-pdp .wc-block-product-gallery .wc-block-product-gallery-thumbnails__thumbnail { height: 64px; width: 64px; }
+	.yt-pdp .wc-block-product-gallery .wc-block-product-gallery-thumbnails .wc-block-product-gallery-thumbnails__thumbnail__image { height: 64px; width: 64px; }
+}
+
+/* Zoom view (board P3-B, "dark room"): one framed picture at a time on black, round arrows, a pill per picture. */
+.yt-pdp .wc-block-product-gallery-dialog { box-sizing: border-box; max-width: none; max-height: none; margin: 0; border: 0; padding: 28px 40px; background: var(--yt-ink); color: var(--wp--preset--color--surface); }
+.yt-pdp .wc-block-product-gallery-dialog[open] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; gap: 24px; }
+.yt-pdp .wc-block-product-gallery-dialog :focus-visible { outline: 3px solid var(--wp--preset--color--base); outline-offset: 3px; }
+.yt-pdp .wc-block-product-gallery-dialog__header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin: 0; padding: 0; }
+.yt-dlg__title { display: flex; align-items: center; gap: 14px; margin: 0; min-width: 0; }
+.yt-dlg__dot { flex: none; width: 14px; height: 14px; border-radius: 50%; background: var(--wp--preset--color--accent); }
+.yt-dlg__name { font-family: var(--wp--preset--font-family--display); font-size: clamp(22px, 3vw, 30px); font-weight: 800; letter-spacing: -0.03em; line-height: 1; text-transform: lowercase; color: var(--wp--preset--color--base); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.yt-dlg__count { flex: none; padding: 4px 12px; border: 2px solid var(--wp--preset--color--surface); border-radius: 999px; font-size: 13px; font-weight: 700; }
+.yt-pdp .wc-block-product-gallery-dialog__close-button { flex: none; display: inline-flex; align-items: center; gap: 10px; min-height: 52px; padding: 0 18px 0 22px; border: var(--yt-bw) solid var(--wp--preset--color--base); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); fill: var(--yt-ink); font: inherit; font-size: 15px; font-weight: 700; box-shadow: 4px 4px 0 var(--wp--preset--color--accent); cursor: pointer; }
+.yt-pdp .wc-block-product-gallery-dialog__close-button svg { width: 20px; height: 20px; }
+.yt-pdp .wc-block-product-gallery-dialog .wc-block-product-gallery-dialog__content { --frame: min(660px, calc(100vw - 260px), calc(100dvh - 240px)); height: auto; min-height: 0; overflow: visible; padding: 0; display: grid; grid-template-columns: var(--frame); grid-template-rows: var(--frame); place-content: center; gap: 0; }
+.yt-pdp .wc-block-product-gallery .wc-block-product-gallery-dialog .wc-block-product-gallery-dialog__content img { grid-area: 1 / 1; display: none; width: 100%; height: 100%; max-width: none; margin: 0; box-sizing: border-box; object-fit: cover; border: 4px solid var(--wp--preset--color--base); border-radius: 28px; box-shadow: 12px 12px 0 var(--wp--preset--color--accent); }
+.yt-pdp .wc-block-product-gallery .wc-block-product-gallery-dialog .wc-block-product-gallery-dialog__content img.yt-is-current { display: block; }
+.yt-dlg__sticker { grid-area: 1 / 1; align-self: start; justify-self: start; z-index: 1; margin: 18px; padding: 6px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); font-family: var(--wp--preset--font-family--display); font-size: 15px; font-weight: 800; text-transform: lowercase; transform: rotate(-4deg); }
+.yt-dlg__arrow { position: absolute; top: 50%; width: 64px; height: 64px; padding: 0; display: inline-flex; align-items: center; justify-content: center; border: var(--yt-bw) solid var(--wp--preset--color--base); border-radius: 50%; background: var(--yt-ink); color: var(--wp--preset--color--base); cursor: pointer; transform: translateY(-50%); transition: transform var(--yt-fast) var(--yt-ease); }
+.yt-dlg__arrow.is-prev { left: 40px; }
+.yt-dlg__arrow.is-next { right: 40px; }
+.yt-dlg__arrow:hover { transform: translate(-2px, calc(-50% - 2px)); }
+.yt-dlg__arrow[aria-disabled="true"] { opacity: 0.35; cursor: default; transform: translateY(-50%); }
+.yt-dlg__pills { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.yt-dlg__pill { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; padding: 0 16px 0 8px; border: var(--yt-bw) solid var(--wp--preset--color--surface); border-radius: 999px; background: var(--yt-ink); color: var(--wp--preset--color--surface); font: inherit; font-size: 14px; font-weight: 700; text-transform: lowercase; cursor: pointer; }
+.yt-dlg__pill[aria-pressed="true"] { background: var(--wp--preset--color--base); border-color: var(--wp--preset--color--base); color: var(--yt-ink); }
+.yt-dlg__swatch { width: 28px; height: 28px; box-sizing: border-box; border: 2px solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); }
+.yt-dlg__pill:not([aria-pressed="true"]) .yt-dlg__swatch { border-color: var(--wp--preset--color--surface); }
+.yt-dlg__swatch.has-tint-mustard { background: var(--wp--preset--color--tint-mustard); }
+.yt-dlg__swatch.has-tint-blue { background: var(--wp--preset--color--tint-blue); }
+.yt-dlg__swatch.has-tint-raspberry { background: var(--wp--preset--color--tint-raspberry); }
+.yt-dlg__swatch.has-tint-green { background: var(--wp--preset--color--tint-green); }
+@media (max-width: 600px) {
+	.yt-pdp .wc-block-product-gallery-dialog { padding: 16px; }
+	.yt-pdp .wc-block-product-gallery-dialog .wc-block-product-gallery-dialog__content { --frame: min(calc(100vw - 40px), calc(100dvh - 220px)); }
+	.yt-dlg__arrow { display: none; }
+	.yt-dlg__close-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+	.yt-pdp .wc-block-product-gallery-dialog__close-button { padding: 0 14px; }
+}
 .yt-buybox { background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); padding: 32px; }
 .yt-buybox .wp-block-post-title { font-size: var(--wp--preset--font-size--xx-large); letter-spacing: -0.04em; line-height: 0.98; margin: 4px 0 0; }
 .yt-buybox .wp-block-woocommerce-product-price, .yt-buybox .wc-block-components-product-price { font-family: var(--wp--preset--font-family--display); font-size: 40px; font-weight: 800; letter-spacing: -0.03em; display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
 .yt-buybox .wc-block-components-product-price .yt-perkg { font-family: var(--wp--preset--font-family--body); font-size: 14px; letter-spacing: 0; margin-left: 0; }
 .yt-buybox .wc-block-components-product-price del { font-size: 20px; color: var(--wp--preset--color--muted); }
 .yt-buybox .wc-block-components-product-price ins { text-decoration: none; }
-/* Variation UI: the attribute <select> is replaced by a button row in shop.js (R4). */
-.yt-variations { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 0; }
-.yt-variations__btn { display: inline-flex; flex-direction: column; align-items: flex-start; justify-content: center; min-height: 48px; padding: 6px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); font: inherit; font-size: 14px; font-weight: 700; line-height: 1.1; cursor: pointer; }
-.yt-variations__btn[aria-pressed="true"] { background: var(--yt-ink); color: var(--wp--preset--color--surface); }
+/* Buy box (board P4-A, "tidy rows"): one price line that follows the size, the size buttons with the price per
+   kg under each, a stock pill, then quantity and a full-width Add to cart in one row. No Clear link: tapping the
+   chosen size again unpicks it (shop.js). */
+.yt-buybox .yt-eyebrow--pill { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
+.yt-buybox .yt-eyebrow--pill .wp-block-post-terms__separator { display: none; }
+.yt-buybox .yt-eyebrow--pill a + a { margin-left: 0; }
+.yt-buybox table.variations, .yt-buybox table.variations tbody, .yt-buybox table.variations tr, .yt-buybox table.variations th, .yt-buybox table.variations td { display: block; width: 100%; padding: 0; border: 0; background: none; }
+.yt-buybox table.variations { margin: 0 0 18px; }
+.yt-buybox table.variations th { margin: 0 0 10px; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; line-height: 1.2; }
+.yt-buybox table.variations th label { margin: 0; font: inherit; letter-spacing: inherit; }
+.yt-buybox table.variations td.value { display: flex; flex-direction: column; }
+.yt-buybox table.variations :is(th, td) { padding: 0 !important; }
+.yt-variations { display: flex; flex-wrap: wrap; gap: 10px; margin: 0; }
+.yt-variations__btn { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; min-width: 96px; min-height: 60px; padding: 6px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); color: var(--yt-ink); box-shadow: 3px 3px 0 var(--yt-ink); font: inherit; text-align: center; line-height: 1; cursor: pointer; transition: transform var(--yt-fast) var(--yt-ease); }
+.yt-variations__btn span { font-size: 17px; font-weight: 700; line-height: 1; }
+.yt-variations__btn small { font-size: 12px; font-weight: 500; line-height: 1.1; color: var(--wp--preset--color--muted); }
+.yt-variations__btn:hover { transform: translate(-1px, -1px); background: var(--wp--preset--color--tint-mustard); }
+.yt-variations__btn[aria-pressed="true"] { background: var(--yt-ink); color: var(--wp--preset--color--surface); box-shadow: none; transform: none; }
 .yt-variations__btn[aria-pressed="true"] small { color: var(--wp--preset--color--base); }
-.yt-variations__btn:hover { background: var(--wp--preset--color--tint-raspberry); }
-.yt-variations__btn small { font-size: 11px; font-weight: 700; color: var(--wp--preset--color--muted); }
-.yt-variations__btn.is-unavailable { border-style: dashed; color: var(--wp--preset--color--muted); text-decoration: line-through; }
+.yt-variations__btn.is-unavailable { border-style: dashed; box-shadow: none; color: var(--wp--preset--color--muted); text-decoration: line-through; }
 .yt-variations__label { font-size: 14px; font-weight: 700; margin-top: 22px; }
 .yt-variations__label span { color: var(--wp--preset--color--muted); }
 .yt-buybox .variations select { height: 48px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 12px; padding: 0 14px; font: inherit; font-weight: 700; }
@@ -249,7 +328,7 @@ html:not(.js) .yt-marquee__track { animation: none; }
 .yt-buybox form.cart { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; margin-top: 22px; }
 .yt-buybox form.cart .single_add_to_cart_button { flex: 1; min-height: 56px; font-size: 16px; background: var(--wp--preset--color--base); color: var(--yt-ink); }
 .yt-buybox form.cart .single_add_to_cart_button:hover { background: var(--yt-ink); color: var(--wp--preset--color--base); }
-.yt-buybox .reset_variations { font-size: 13px; }
+.yt-buybox .reset_variations, .yt-buybox .woocommerce-variation-price { display: none !important; }
 .yt-reassure { list-style: none; margin: 22px 0 0; padding: 18px 0 0; border-top: var(--yt-bw) solid var(--yt-ink); display: grid; gap: 10px; font-size: 14px; font-weight: 500; }
 .yt-reassure li { display: flex; gap: 12px; align-items: flex-start; }
 .yt-reassure svg { flex: none; width: 20px; height: 20px; margin-top: 2px; }
@@ -268,6 +347,7 @@ html:not(.js) .yt-marquee__track { animation: none; }
 .woocommerce-product-rating .star-rating { color: var(--yt-ink); }
 
 /* 7. Cart, checkout, account ---------------------------------------------------- */
+.woocommerce-cart main > .wp-block-post-title.alignwide, .woocommerce-checkout main > .wp-block-post-title.alignwide { max-width: var(--wp--style--global--wide-size); }
 .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__main, .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__sidebar, .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); box-shadow: var(--yt-sh-lg); padding: 24px 28px; box-sizing: border-box; }
 .wc-block-components-sidebar-layout.wc-block-cart .wc-block-cart__sidebar { position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); }
 .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { padding: 20px 24px; }
@@ -437,7 +517,6 @@ textarea, .wc-block-components-textarea textarea { height: auto; min-height: 120
 .yt-stockists .yt-num { width: 44px; height: 44px; border-radius: 50%; border: var(--yt-bw) solid var(--yt-ink); background: var(--wp--preset--color--accent); color: var(--yt-ink); display: inline-flex; align-items: center; justify-content: center; font-family: var(--wp--preset--font-family--display); font-size: 18px; font-weight: 800; }
 .yt-stockists .taxonomy-yt_stockist_type { font-size: 12px; font-weight: 700; padding: 5px 10px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; }
 .yt-stockists .taxonomy-yt_stockist_type a { text-decoration: none; }
-.yt-toast { position: fixed; left: 50%; bottom: 40px; z-index: 900; transform: translateX(-50%) rotate(-2deg); background: var(--wp--preset--color--accent); color: var(--yt-ink); border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; padding: 14px 24px; font-family: var(--wp--preset--font-family--display); font-size: 20px; font-weight: 800; box-shadow: var(--yt-sh-md); }
 .yt-placeholder { display: flex; align-items: center; justify-content: center; text-align: center; padding: 20px; color: var(--wp--preset--color--muted); font-size: 13px; font-weight: 700; background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); }
 
 /* 10. Motion -------------------------------------------------------------------- */
@@ -509,7 +588,6 @@ html.js .yt-reveal-stagger.is-in > :nth-child(n+5) { transition-delay: 240ms; }
 .yt-cards .taxonomy-product_cat a, .wp-block-woocommerce-breadcrumbs a, .yt-stockists__meta a, .yt-buybox .taxonomy-product_cat a, .wp-block-post-terms a { display: inline-block; padding-block: 4px; min-width: 24px; }
 .wp-block-query-pagination a, .wp-block-query-pagination .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; border-radius: 999px; font-weight: 700; }
 .wp-block-query-pagination .page-numbers.current { background: var(--yt-ink); color: var(--wp--preset--color--base); }
-.yt-buybox .reset_variations { display: inline-block; padding: 6px 4px; }
 .yt-cards .wp-block-post-title a, .yt-cards .wc-block-components-product-title a { display: block; padding-block: 4px; }
 main p > a:only-child, .wp-block-post-excerpt__more-link, .wp-block-post-navigation-link a { display: inline-block; padding-block: 2px; }
 
@@ -555,7 +633,6 @@ main p > a:only-child, .wp-block-post-excerpt__more-link, .wp-block-post-navigat
 	.yt-buybox table.variations, .yt-buybox table.variations tbody, .yt-buybox table.variations tr, .yt-buybox table.variations th, .yt-buybox table.variations td { display: block; width: 100%; padding: 0; }
 	.yt-buybox table.variations th { margin-bottom: 8px; }
 	.yt-buybox form.cart:not(.variations_form) { flex-wrap: nowrap; }
-	.yt-buybox form.variations_form { display: block; }
 	.yt-buybox form.cart .single_add_to_cart_button { flex: 1 1 auto; min-width: 0; white-space: nowrap; padding: 0 16px; }
 	.yt-buybox .woocommerce-variation-add-to-cart { display: flex; gap: 10px; align-items: center; width: 100%; }
 	.yt-buybox .wp-block-post-title { font-size: 40px; }
@@ -654,4 +731,228 @@ main > .yt-eyebrow:not(.yt-eyebrow--pill)::before { content: "✦"; color: var(-
 	.yt-help-card { padding: 72px 20px 22px; }
 	.yt-help-card::before { left: 20px; top: 18px; }
 	.yt-article__head { padding: 20px; }
+}
+
+/* 19. Product page, cart feedback (4 Nov: boards P4-A, P5-B, P6-C) ------------------------------------------------ */
+/* Buy box rows: stock pill, then quantity + Add to cart side by side. */
+.yt-buybox .stock { display: inline-flex; align-items: center; gap: 8px; min-height: 30px; margin: 0 0 18px; padding: 0 12px; border-radius: 999px; background: var(--wp--preset--color--tint-green); color: var(--yt-ink); font-size: 13px; font-weight: 700; }
+.yt-buybox .stock::before { content: ""; flex: none; width: 10px; height: 10px; border-radius: 50%; background: var(--yt-ink); }
+.yt-buybox .stock.out-of-stock { background: var(--wp--preset--color--tint-raspberry); color: var(--yt-ink); }
+.yt-buybox .stock.available-on-backorder { background: var(--wp--preset--color--tint-blue); }
+.yt-buybox .woocommerce-variation-availability p { margin: 0 0 18px; }
+.yt-buybox .single_variation_wrap .woocommerce-variation { margin: 0; }
+.yt-buybox form.cart { margin-top: 0; }
+.yt-buybox form.cart.variations_form { display: block; }
+.yt-buybox .woocommerce-variation-add-to-cart, .yt-buybox form.cart:not(.variations_form) { display: flex; flex-wrap: nowrap; gap: 12px; align-items: center; width: 100%; }
+.yt-buybox .wc-block-components-quantity-selector { flex: none; width: auto !important; height: 56px !important; margin: 0; background: var(--wp--preset--color--surface); }
+.yt-buybox div.wc-block-add-to-cart-form .wc-block-components-quantity-selector input[type=number].input-text.qty.text { width: 40px; height: 100%; padding: 0; border: 0; border-radius: 0; font-size: 17px; }
+.yt-buybox form.cart .single_add_to_cart_button { flex: 1 1 auto; min-width: 0; min-height: 56px; margin: 0; font-size: 17px; box-shadow: var(--yt-sh-sm); }
+.yt-buybox form.cart .single_add_to_cart_button.is-busy { cursor: progress; opacity: 0.7; box-shadow: none; transform: none; }
+
+/* What's in the bag (board P5-B): the lead as a black callout, then each part in a tinted card with a sticker
+   heading (ingredients and storage side by side, feeding guide full width with its table), then the facts as
+   pills. The parts are plain groups with classes, written by seed/seed.php. */
+.yt-bag { box-shadow: var(--yt-sh-lg); }
+.yt-bag > .wp-block-heading { font-size: clamp(28px, 3vw, 36px); margin-bottom: 14px; }
+.yt-bag .wp-block-post-content > * { max-width: none; }
+.yt-bag__lead { position: relative; margin: 0 0 22px; padding: 18px 22px 18px 52px; border-radius: 16px; background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-bag__lead::before { content: "✦"; position: absolute; left: 20px; top: 14px; color: var(--wp--preset--color--accent); font-size: 22px; line-height: 1.2; }
+.yt-bag__lead p { margin: 0; font-size: 17px; font-weight: 700; line-height: 1.4; }
+.yt-bag__lead p + p { margin-top: 6px; color: var(--wp--preset--color--surface); font-size: 14px; font-weight: 500; }
+.yt-bag__cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 34px 16px; margin: 34px 0 0; }
+.yt-bag__card { --yt-card-tint: var(--wp--preset--color--tint-mustard); --yt-card-sticker: var(--wp--preset--color--base); --yt-card-tilt: -3deg; position: relative; margin: 0; padding: 30px 20px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 18px; background: var(--yt-card-tint); }
+.yt-bag__card.is-ingredients { --yt-card-tint: var(--wp--preset--color--tint-raspberry); --yt-card-sticker: var(--wp--preset--color--accent); }
+.yt-bag__card.is-storage { --yt-card-tint: var(--wp--preset--color--tint-blue); --yt-card-sticker: var(--wp--preset--color--accent-2); --yt-card-tilt: 2deg; }
+.yt-bag__card.is-feeding { --yt-card-tint: var(--wp--preset--color--tint-green); --yt-card-sticker: var(--wp--preset--color--green); --yt-card-tilt: -2deg; grid-column: 1 / -1; }
+.yt-bag__card > .wp-block-heading { position: absolute; top: -18px; left: 14px; margin: 0; padding: 4px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--yt-card-sticker); font-size: 18px; line-height: 1; transform: rotate(var(--yt-card-tilt)); }
+.yt-bag__card p { margin: 0; }
+.yt-bag__card p + p, .yt-bag__card p + figure, .yt-bag__card figure + p { margin-top: 10px; }
+.yt-bag__rule { font-weight: 700; }
+.yt-bag__note { font-size: 14px; }
+.yt-bag__table { margin: 12px 0 0; }
+.yt-bag__table table { width: 100%; border-collapse: separate; border-spacing: 0; border: var(--yt-bw) solid var(--yt-ink); border-radius: 14px; overflow: hidden; background: var(--wp--preset--color--surface); font-size: 15px; }
+.yt-bag .yt-bag__table table :is(th, td) { padding: 10px 14px; border: 0; text-align: left; }
+.yt-bag__table thead { border: 0; }
+.yt-bag__table thead th { background: var(--yt-ink); color: var(--wp--preset--color--base); font-size: 13px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.yt-bag__table tbody tr + tr td { border-top: 2px solid var(--wp--preset--color--line); }
+.yt-bag__table tbody td:first-child { font-weight: 700; }
+.yt-bag .wp-block-woocommerce-product-specifications { margin: 22px 0 0; }
+.yt-bag .wp-block-woocommerce-product-specifications table { border: 0; border-radius: 0; background: none; }
+.yt-bag .wp-block-woocommerce-product-specifications tbody { display: flex; flex-wrap: wrap; gap: 10px; }
+.yt-bag .wp-block-woocommerce-product-specifications tbody tr { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px; border: 2px solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); font-size: 14px; }
+.yt-bag .wp-block-woocommerce-product-specifications tbody :is(th, td) { width: auto; padding: 0; border: 0; }
+@media (max-width: 781px) {
+	.yt-bag__cards { grid-template-columns: minmax(0, 1fr); }
+	.yt-variations__btn { flex: 1 1 0; min-width: 0; padding: 6px 8px; }
+}
+
+/* After Add to cart (board P6-C): a small black toast bottom left (what was added, Checkout) and a pink cart pill
+   bottom right that opens the cart drawer. On phones the toast sits above the pill; both move up when the
+   product page's sticky buy bar is showing. */
+.yt-toast { position: fixed; z-index: 900; left: 24px; bottom: 24px; width: 270px; box-sizing: border-box; padding: 12px 14px 14px; border-radius: 18px; background: var(--yt-ink); color: var(--wp--preset--color--surface); box-shadow: 5px 5px 0 var(--wp--preset--color--accent); }
+.yt-toast p { margin: 0; }
+.yt-toast__title { color: var(--wp--preset--color--base); font-weight: 700; }
+.yt-toast__item { margin-bottom: 10px; font-size: 13px; }
+.yt-toast__item:empty { display: none; }
+.yt-toast__go { display: inline-flex; align-items: center; justify-content: center; min-height: 40px; margin-top: 10px; padding: 0 16px; border: var(--yt-bw) solid var(--wp--preset--color--base); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); font-size: 13px; font-weight: 700; text-decoration: none; }
+.yt-toast__go:hover { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-toast :focus-visible { outline: 3px solid var(--wp--preset--color--base); outline-offset: 3px; }
+.yt-cartpill__btn { position: fixed; z-index: 850; right: 24px; bottom: 24px; display: inline-flex; align-items: center; gap: 12px; height: 64px; padding: 0 22px 0 12px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent); color: var(--yt-ink); box-shadow: var(--yt-sh-md); font: inherit; font-size: 16px; font-weight: 700; cursor: pointer; transition: transform var(--yt-fast) var(--yt-ease), bottom var(--yt-base) var(--yt-ease); }
+.yt-cartpill__btn:hover { transform: translate(-2px, -2px); }
+.yt-cartpill__count { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; height: 40px; padding: 0 6px; box-sizing: border-box; border-radius: 999px; background: var(--yt-ink); color: var(--wp--preset--color--base); font-family: var(--wp--preset--font-family--display); font-size: 18px; font-weight: 800; }
+.yt-cartpill__text { display: grid; text-align: left; line-height: 1.1; }
+.yt-cartpill__open { font-size: 12px; font-weight: 500; }
+@media (max-width: 781px) {
+	.yt-cartpill__btn { right: 16px; bottom: 16px; height: 56px; padding-right: 18px; }
+	.yt-toast { left: 16px; right: 16px; width: auto; bottom: 86px; }
+	body.yt-stickybar-on .yt-cartpill__btn { bottom: 88px; }
+	body.yt-stickybar-on .yt-toast { bottom: 158px; }
+}
+@media (prefers-reduced-motion: reduce) { .yt-cartpill__btn { transition: none; } }
+@media print { .yt-cartpill, .yt-toast { display: none !important; } }
+
+/* 20. Checkout and order confirmation (4 Nov: boards P7-A, P9-A) ------------------------------------------------- */
+/* Pill links back: "Back to cart" (checkout), "Continue shopping" (cart, order confirmation). */
+.yt-backlink { display: inline-flex; align-items: center; gap: 8px; min-height: 40px; padding: 0 16px 0 12px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); font-size: 14px; font-weight: 700; text-decoration: none; }
+.yt-backlink:hover, .yt-backlink:focus-visible { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-backlink-row { margin: 0 0 14px; }
+main > .yt-backlink-row { max-width: var(--wp--style--global--wide-size); }
+
+/* Checkout top: back link and big title on the left, the three steps on the right. */
+.yt-co-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px; margin-bottom: 40px; }
+.yt-co-top__lead .yt-backlink { margin-bottom: 14px; }
+.yt-co-top__title { margin: 0; font-size: clamp(56px, 8vw, 96px); line-height: 0.85; letter-spacing: -0.05em; }
+.yt-co-steps { list-style: none; margin: 0 0 8px; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; font-size: 14px; font-weight: 700; }
+.yt-co-steps li { display: inline-flex; align-items: center; gap: 8px; min-height: 36px; padding: 0 14px 0 6px; border: var(--yt-bw) dashed var(--yt-ink); border-radius: 999px; }
+.yt-co-steps__n { display: inline-flex; align-items: center; justify-content: center; width: 24px; height: 24px; box-sizing: border-box; border: 2px solid var(--yt-ink); border-radius: 50%; font-size: 12px; }
+.yt-co-steps .is-done { border-style: solid; background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-co-steps .is-done .yt-co-steps__n { border-color: var(--wp--preset--color--base); background: var(--wp--preset--color--base); color: var(--yt-ink); }
+.yt-co-steps .is-current { border-style: solid; background: var(--wp--preset--color--accent); }
+.yt-co-steps .is-current .yt-co-steps__n { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+
+/* Each step a tinted card with a sticker heading on its top edge: 1 who's ordering (pink), 2 where it goes (blue,
+   with delivery and billing as blue cards too), 3 how you pay (green). */
+.yt-checkout .wc-block-checkout .wc-block-components-checkout-step { --yt-step-tint: var(--wp--preset--color--surface); --yt-step-sticker: var(--wp--preset--color--base); position: relative; margin: 0 0 46px; padding: 40px 28px 28px !important; background: var(--yt-step-tint); box-shadow: var(--yt-sh-lg); }
+.yt-checkout .wc-block-checkout .wc-block-checkout__contact-fields { --yt-step-tint: var(--wp--preset--color--tint-raspberry); --yt-step-sticker: var(--wp--preset--color--accent); }
+.yt-checkout .wc-block-checkout :is(.wc-block-checkout__shipping-fields, .wc-block-checkout__billing-fields, .wc-block-checkout__shipping-option) { --yt-step-tint: var(--wp--preset--color--tint-blue); --yt-step-sticker: var(--wp--preset--color--accent-2); }
+.yt-checkout .wc-block-checkout .wc-block-checkout__payment-method { --yt-step-tint: var(--wp--preset--color--tint-green); --yt-step-sticker: var(--wp--preset--color--green); }
+.yt-checkout .wc-block-checkout .wc-block-checkout__order-notes { padding: 20px 28px !important; box-shadow: none; }
+.yt-checkout .wc-block-components-checkout-step__heading-container, .yt-checkout .wc-block-components-checkout-step__heading { position: static; margin: 0; }
+.yt-checkout .wc-block-components-checkout-step .wc-block-components-checkout-step__title { position: absolute; top: -22px; left: 20px; display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 5px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--yt-step-sticker); font-size: 22px; line-height: 1; text-transform: lowercase; }
+.yt-checkout :is(.wc-block-checkout__contact-fields, .wc-block-checkout__shipping-fields, .wc-block-checkout__payment-method) .wc-block-components-checkout-step__title { padding-left: 6px; }
+.yt-checkout :is(.wc-block-checkout__contact-fields, .wc-block-checkout__shipping-fields, .wc-block-checkout__payment-method) .wc-block-components-checkout-step__title::before { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; box-sizing: border-box; border: var(--yt-bw) solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); font-size: 15px; }
+.yt-checkout .wc-block-checkout__contact-fields .wc-block-components-checkout-step__title::before { content: "1"; }
+.yt-checkout .wc-block-checkout__shipping-fields .wc-block-components-checkout-step__title::before { content: "2"; }
+.yt-checkout .wc-block-checkout__payment-method .wc-block-components-checkout-step__title::before { content: "3"; }
+.yt-checkout .wc-block-components-checkout-step__heading-content { font-size: 14px; }
+.yt-checkout .wc-block-components-checkout-step__description { margin: 0 0 12px; }
+.yt-checkout .wc-block-components-address-card, .yt-checkout .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-radio-control-accordion-option { background: var(--wp--preset--color--surface); }
+.yt-checkout .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-address-card { border-color: var(--yt-ink); }
+.yt-checkout .wc-block-components-radio-control-accordion-option--checked-option-highlighted .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-radio-control__option--checked-option-highlighted { background: var(--wp--preset--color--base); }
+
+/* Place order: the big yellow button with the total ("Place order · ฿790", WooCommerce's with-price style). */
+.yt-checkout .wc-block-components-button.wc-block-components-checkout-place-order-button { min-height: 64px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); box-shadow: var(--yt-sh-md); font-family: var(--wp--preset--font-family--display); font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-transform: lowercase; }
+.yt-checkout .wc-block-components-button.wc-block-components-checkout-place-order-button:hover { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-checkout .wc-block-checkout__actions_row { display: block; }
+
+/* Order summary: a black card that stays in view. */
+.yt-checkout .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); padding: 26px 26px 24px; border-color: var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--yt-ink); color: var(--wp--preset--color--surface); box-shadow: none; }
+.yt-checkout .wc-block-checkout__sidebar :is(.wp-block-woocommerce-checkout-order-summary-block, .wc-block-components-checkout-order-summary__content, .wc-block-components-panel, .wc-block-components-totals-wrapper) { border-color: #4D4D4D; background: transparent; }
+.yt-checkout .wc-block-checkout__sidebar .wp-block-woocommerce-checkout-order-summary-block { border: 0; }
+.yt-checkout .wc-block-checkout__sidebar :is(.wc-block-components-checkout-order-summary__title, .wc-block-components-checkout-order-summary__title-text) { color: var(--wp--preset--color--base); }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-checkout-order-summary__title-text { font-family: var(--wp--preset--font-family--display); font-size: 30px; font-weight: 800; letter-spacing: -0.03em; text-transform: lowercase; }
+.yt-checkout .wc-block-checkout__sidebar :is(.wc-block-components-product-name, .wc-block-components-product-metadata, .wc-block-components-product-details, .wc-block-components-product-details__value, .wc-block-components-totals-item, .wc-block-formatted-money-amount, .wc-block-components-panel__button, .wc-block-components-order-summary-item__total-price, .wc-block-components-product-price) { color: var(--wp--preset--color--surface); }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-product-metadata { color: #BDBDBD; }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-panel__button { color: var(--wp--preset--color--base); font-weight: 700; }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-panel__button svg { fill: currentColor; }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-totals-footer-item :is(.wc-block-components-totals-item__label, .wc-block-components-totals-item__value, .wc-block-formatted-money-amount) { color: var(--wp--preset--color--base); }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-order-summary-item__quantity { border: 2px solid var(--yt-ink); background: var(--wp--preset--color--accent); color: var(--yt-ink); }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-order-summary-item__image img { border-color: var(--wp--preset--color--surface); }
+.yt-checkout .wc-block-checkout__sidebar a { color: var(--wp--preset--color--base); }
+.yt-checkout .wc-block-checkout__sidebar :is(input[type="text"], .wc-block-components-text-input input) { border-color: var(--wp--preset--color--surface); background: var(--yt-ink); color: var(--wp--preset--color--surface); }
+.yt-checkout .wc-block-checkout__sidebar .wc-block-components-text-input label { color: #BDBDBD; }
+@media (max-width: 781px) {
+	.yt-co-top { margin-bottom: 30px; }
+	.yt-checkout .wc-block-checkout .wc-block-components-checkout-step { padding: 36px 18px 20px !important; }
+	.yt-checkout .wc-block-components-checkout-step .wc-block-components-checkout-step__title { font-size: 19px; }
+	.yt-checkout .wc-block-checkout__sidebar .wc-block-components-checkout-order-summary__title-text { font-size: 24px; }
+	.yt-checkout .wc-block-components-sidebar-layout.wc-block-checkout .wc-block-checkout__sidebar { position: static; }
+}
+
+/* Order confirmation: headline with an order sticker beside a black facts card, the four steps, then the payment
+   card and "what you ordered" on the left, the guide, save-details and Continue shopping on the right. */
+.yt-confirmation .yt-conf-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 44px; align-items: end; }
+.yt-confirmation .yt-conf-top > * { margin: 0; }
+.yt-confirmation .wp-block-woocommerce-order-confirmation-status { padding: 0; border: 0; background: none; box-shadow: none; }
+.yt-confirmation .wp-block-woocommerce-order-confirmation-status h1 { font-size: clamp(48px, 6.5vw, 84px); line-height: 0.88; letter-spacing: -0.05em; text-transform: lowercase; }
+.yt-confirmation .wp-block-woocommerce-order-confirmation-status p:not(.yt-conf-chip) { margin-top: 18px; font-size: 20px; max-width: 640px; }
+.yt-conf-chip { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px !important; padding: 6px 16px 6px 8px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); font-size: 14px !important; font-weight: 700 !important; }
+.yt-conf-chip__tick { display: inline-flex; width: 24px; height: 24px; box-sizing: border-box; border: 2px solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--green); }
+.yt-conf-chip__tick::after { content: "✓"; margin: auto; font-size: 13px; line-height: 1; }
+.yt-confirmation .wp-block-woocommerce-order-confirmation-summary { padding: 22px 26px; border-radius: var(--wp--custom--radius--block); background: var(--yt-ink); color: var(--wp--preset--color--surface); }
+.yt-confirmation .wc-block-order-confirmation-summary-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 20px; font-size: 14px; }
+.yt-confirmation .wc-block-order-confirmation-summary-list-item { display: grid; gap: 2px; min-width: 0; overflow-wrap: anywhere; }
+.yt-confirmation .wc-block-order-confirmation-summary-list-item__key { margin: 0; color: var(--wp--preset--color--base); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.yt-confirmation .wc-block-order-confirmation-summary-list-item__value { font-weight: 700; }
+.yt-confirmation .wc-block-order-confirmation-summary-list-item:nth-child(3) .wc-block-order-confirmation-summary-list-item__value { font-family: var(--wp--preset--font-family--display); font-size: 28px; font-weight: 800; line-height: 1.1; }
+
+/* The steps: number circles and a tag in the corner. */
+.yt-confirmation .yt-next { margin-top: 40px; }
+.yt-confirmation .yt-next > h2 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+.yt-confirmation .yt-steps li { position: relative; padding: 22px 20px 20px; border-radius: 20px; gap: 6px; }
+.yt-confirmation .yt-steps li.is-current { background: var(--wp--preset--color--tint-raspberry); box-shadow: var(--yt-sh-md); }
+.yt-confirmation .yt-steps li.is-todo { background: var(--wp--preset--color--surface); }
+.yt-confirmation .yt-steps strong { display: inline-flex; align-items: center; justify-content: center; width: 38px; height: 38px; margin-bottom: 6px; box-sizing: border-box; border: var(--yt-bw) solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); font-size: 18px; }
+.yt-confirmation .yt-steps li.is-done strong { background: var(--yt-ink); color: var(--wp--preset--color--base); font-size: 0; }
+.yt-confirmation .yt-steps li.is-done strong::after { content: "✓"; font-size: 18px; }
+.yt-confirmation .yt-steps li.is-current strong { background: var(--wp--preset--color--accent); }
+.yt-confirmation .yt-steps__state { position: absolute; top: 14px; right: 14px; padding: 3px 10px; border: 2px solid var(--yt-ink); border-radius: 999px; font-size: 11px; }
+.yt-confirmation .yt-steps li.is-done .yt-steps__state { background: var(--wp--preset--color--green); }
+.yt-confirmation .yt-steps li.is-current .yt-steps__state { background: var(--wp--preset--color--accent); }
+.yt-confirmation .yt-steps__title { font-family: var(--wp--preset--font-family--display); font-size: 20px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; text-transform: lowercase; }
+
+/* Two columns. */
+.yt-confirmation .yt-conf-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 44px; align-items: start; margin-top: 56px; }
+.yt-confirmation .yt-conf-grid > * { margin: 0; }
+.yt-confirmation .yt-conf-main { display: flex; flex-direction: column; gap: 46px; }
+.yt-confirmation .yt-conf-main > * { margin: 0; }
+.yt-confirmation .yt-conf-side { display: flex; flex-direction: column; gap: 20px; position: sticky; top: calc(var(--yt-sticky-gap) + var(--wp-admin--admin-bar--position-offset, 0px)); }
+.yt-confirmation .yt-conf-side > * { margin: 0; }
+
+/* Payment card: green, with a "฿ pay" sticker; bank details as white tiles with a Copy button on the account. */
+.yt-confirmation .yt-paybox:not(:empty) { position: relative; padding: 40px 28px 28px; background: var(--wp--preset--color--tint-green); box-shadow: var(--yt-sh-lg); }
+.yt-confirmation .yt-paybox .wc-bacs-bank-details-heading { position: absolute; top: -22px; left: 20px; display: inline-flex; align-items: center; gap: 10px; margin: 0; padding: 5px 16px 5px 6px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--green); font-size: 22px; line-height: 1; }
+.yt-confirmation .yt-paybox .wc-bacs-bank-details-heading::before { content: "฿"; display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; box-sizing: border-box; border: var(--yt-bw) solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); font-size: 15px; }
+.yt-confirmation .yt-paybox .wc-bacs-bank-details li { position: relative; padding: 14px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); text-transform: uppercase; letter-spacing: 0.06em; }
+.yt-confirmation .yt-paybox .wc-bacs-bank-details li strong { font-size: 18px; font-weight: 700; text-transform: none; letter-spacing: 0; }
+.yt-copy { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); min-height: 36px; padding: 0 12px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); font: inherit; font-size: 13px; font-weight: 700; letter-spacing: 0; text-transform: none; cursor: pointer; }
+.yt-copy:hover { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-confirmation .yt-paybox .account_number { padding-right: 96px; }
+.yt-confirmation .yt-slip { border-top-color: var(--yt-ink); }
+.yt-confirmation .yt-slip__file { background: var(--wp--preset--color--surface); max-width: none; }
+.yt-confirmation .yt-slip__submit { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+
+/* What you ordered: one blue card with a sticker heading; the blocks' own headings become small labels. */
+.yt-confirmation .yt-ticket { position: relative; padding: 40px 28px 28px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--tint-blue); box-shadow: var(--yt-sh-lg); }
+.yt-confirmation .yt-ticket > * + * { margin-top: 20px; }
+.yt-confirmation .yt-ticket__title { position: absolute; top: -22px; left: 20px; margin: 0; padding: 5px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent-2); font-size: 22px; line-height: 1; }
+.yt-confirmation .yt-ticket :is(.wp-block-woocommerce-order-confirmation-totals-wrapper, .wp-block-woocommerce-order-confirmation-billing-wrapper, .wp-block-woocommerce-order-confirmation-shipping-wrapper, .wp-block-woocommerce-order-confirmation-additional-fields-wrapper) { margin: 0; padding: 16px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); box-shadow: none; }
+.yt-confirmation .yt-ticket :is(.wp-block-woocommerce-order-confirmation-billing-wrapper, .wp-block-woocommerce-order-confirmation-shipping-wrapper, .wp-block-woocommerce-order-confirmation-additional-fields-wrapper) .wp-block-heading { margin: 0 0 6px; font-family: var(--wp--preset--font-family--body); font-size: 13px !important; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.yt-confirmation .yt-ticket :is(.wc-block-order-confirmation-totals__table, .wp-block-woocommerce-order-confirmation-shipping-address, .wp-block-woocommerce-order-confirmation-billing-address, .wp-block-woocommerce-order-confirmation-additional-fields, .wc-block-order-confirmation-additional-fields-list) { margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
+.yt-confirmation .yt-ticket .wc-block-order-confirmation-address-wrapper { gap: 16px; margin-top: 16px; }
+.yt-confirmation .yt-ticket address { border: 0; padding: 0; font-style: normal; }
+
+/* Right column: guide card, save-details card, Continue shopping. */
+.yt-confirmation .yt-conf-side .yt-guide-card { display: grid; gap: 14px; padding: 22px 24px !important; background: var(--wp--preset--color--tint-mustard); box-shadow: var(--yt-sh-md); }
+.yt-confirmation .yt-conf-side .yt-guide-card .wp-block-button__link { justify-self: start; }
+.yt-confirmation .yt-conf-side .yt-save-details { padding: 22px 24px; }
+.yt-confirmation .yt-conf-side .yt-backlink-row { margin: 0; }
+@media (max-width: 960px) {
+	.yt-confirmation .yt-conf-top, .yt-confirmation .yt-conf-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+	.yt-confirmation .yt-conf-side { position: static; }
+	.yt-confirmation .yt-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 600px) {
+	.yt-confirmation .yt-steps { grid-template-columns: minmax(0, 1fr); }
+	.yt-confirmation .yt-paybox:not(:empty), .yt-confirmation .yt-ticket { padding: 36px 18px 20px; }
 }

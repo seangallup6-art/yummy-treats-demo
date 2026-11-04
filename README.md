@@ -81,20 +81,32 @@ the Thai version.
   font families (self-hosted from Fontsource, OFL), fluid type scale, hard-shadow presets, button/heading/link
   defaults, block styles (`card`, `card-flat`, `band-ink`, button colours).
 - `assets/css/theme.css` — components, in numbered sections: marquee, nav pills, cart button, product cards +
-  badges, shop filter column (tinted tiles on desktop, a bottom sheet on phones), product page buy box, cart/checkout, order confirmation, forms, stockists, claim row
-  and bundle promos, phone pass, accessibility fixes, guide and product-detail tables.
-- `assets/js/` — `marquee.js` (pause control), `motion.js` (scroll reveals), `shop.js` (variation buttons,
-  added-to-cart toast, free-delivery bar read from WooCommerce's cart store, stockist chips, sticky add-to-cart
-  bar on phones, numeric postcode keyboard, cart drawer focus). Vanilla, deferred.
+  badges, shop filter column (tinted tiles on desktop, a bottom sheet on phones), product page (gallery, zoom view,
+  buy box, "what's in the bag" cards), cart/checkout (tinted step cards, black order summary), order confirmation,
+  the added-to-cart toast and floating cart pill, forms, stockists, claim row and bundle promos, phone pass,
+  accessibility fixes, guide and product-detail tables.
+- `assets/js/` — `marquee.js` (pause control), `motion.js` (scroll reveals), `shop.js` (size buttons, one price
+  line that follows the size, Add to cart without a page load, one added-to-cart toast that counts repeat adds,
+  free-delivery bar read from WooCommerce's cart store, stockist chips, sticky add-to-cart bar on phones, numeric
+  postcode keyboard, cart drawer focus, Copy on the bank account). Vanilla, deferred. `gallery.js` is a small
+  Interactivity API store for the product gallery's "1 / 2" count and current-picture marks (a script module,
+  product pages only).
 - `inc/setup.php` — theme supports, block styles, and loading the Thai overrides (`.mo` for WooCommerce and
   WordPress, JSON for WooCommerce's JavaScript).
 - `inc/woocommerce.php` — badge rules (sold out › pre-order › sale % › only N left › new), price per kg,
   pre-order dates in cart and order, Thai address order, PDPA + LINE checkout fields, button wording,
   free-delivery helper, the shared product-card grid (`yt_product_cards()`), translated payment and delivery
   names, Thai labels for the shop filters (WooCommerce keeps those in JSON, out of TranslatePress's reach).
+- `inc/product-page.php` — the product gallery's extras (picture names from image captions, zoom button, count
+  strip) and the "dark room" zoom view (title, Close, arrows, picture pills), added to WooCommerce's Product
+  Gallery block output and driven by its own actions.
+- `inc/cart-feedback.php` — the floating cart pill: a second view of WooCommerce's mini-cart state that opens
+  the same drawer (the drawer no longer opens by itself after an add).
+- `inc/checkout.php` — checkout step headings (who's ordering, where it goes, delivery, how you pay) and the
+  total on the Place order button.
 - `inc/orders.php` — the order-confirmation page per payment method (transfer waiting / slip checking /
-  PromptPay / cash on delivery / paid / shipped / failed), the four steps, pre-order note, a guide matched to
-  what was bought.
+  PromptPay / cash on delivery / paid / shipped / failed), the order sticker, the four steps, pre-order note, a
+  guide matched to what was bought.
 - `inc/back-in-stock.php` — "Get one email when it is back" on sold-out products, with PDPA consent; the list is
   emailed once on restock and then deleted.
 - `inc/stockists.php` — `yt_stockist` post type + province/district/type taxonomies + `[yt_stockists]`.
@@ -105,7 +117,11 @@ the Thai version.
   guides index/single, stockists, help, generic page, 404.
 - `patterns/` — shop grid (filter column + products, shared by the shop, category and search templates), hero, claim row, dogs/cats split, featured products, bundle promos, "read the bag", guides
   teaser, stockists teaser, LINE band, marquee, language switch, product reassurance, cart free bar,
-  confirmation steps, guide for what was bought, products under a guide.
+  checkout top (back link, title, steps), continue-shopping link, confirmation steps, guide for what was
+  bought, products under a guide.
+
+Product descriptions are written by the seed as plain groups (`yt-bag__lead`, `yt-bag__card is-ingredients`,
+`is-storage`, `is-feeding` with a table), so the client edits text in the editor and the layout stays.
 
 Guides pick their product cards from the custom field `yt_guide_products` (comma-separated SKUs).
 

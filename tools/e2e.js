@@ -18,8 +18,8 @@ async function addToCart(page, slug, sizeIndex = 0) {
     await sizes[Math.min(sizeIndex, sizes.length - 1)].click();
     await page.waitForSelector('.single_add_to_cart_button:not(.disabled)', { timeout: 180000 });
   }
-  await Promise.all([page.waitForNavigation({ waitUntil: 'load', timeout: 120000 }), page.click('.single_add_to_cart_button')]);
-  const msg = await page.$eval('.woocommerce-message, .wc-block-components-notice-banner', (e) => e.textContent.trim()).catch(() => 'no notice');
+  await Promise.all([page.waitForSelector('.yt-toast:not([hidden])', { timeout: 120000 }), page.click('.single_add_to_cart_button')]); // added without a page load (board P6-C): wait for the toast
+  const msg = await page.$eval('.yt-toast', (e) => e.textContent.trim()).catch(() => 'no toast');
   log('  added', slug, '→', msg.slice(0, 60));
 }
 

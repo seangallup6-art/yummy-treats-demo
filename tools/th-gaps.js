@@ -52,7 +52,7 @@ const collect = () => {
       await page.goto(base + '/th/product/chicken-jerky-strips/', { waitUntil: 'load', timeout: 180000 });
       await page.click('.yt-variations__btn');
       await page.waitForSelector('.single_add_to_cart_button:not(.disabled)');
-      await Promise.all([page.waitForNavigation({ waitUntil: 'load', timeout: 120000 }), page.click('.single_add_to_cart_button')]);
+      await Promise.all([page.waitForSelector('.yt-toast:not([hidden])', { timeout: 120000 }), page.click('.single_add_to_cart_button')]); // added without a page load (board P6-C): wait for the toast
       continue;
     }
     await page.goto(base + p, { waitUntil: 'load', timeout: 180000 });

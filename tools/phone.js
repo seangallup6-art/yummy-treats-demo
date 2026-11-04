@@ -49,7 +49,7 @@ fs.mkdirSync(out, { recursive: true });
   await go('/product/chicken-jerky-strips/');
   await page.click('.yt-variations__btn');
   await page.waitForSelector('.single_add_to_cart_button:not(.disabled)');
-  await Promise.all([page.waitForNavigation({ waitUntil: 'load', timeout: 120000 }), page.click('.single_add_to_cart_button')]);
+  await Promise.all([page.waitForSelector('.yt-toast:not([hidden])', { timeout: 120000 }), page.click('.single_add_to_cart_button')]); // added without a page load (board P6-C): wait for the toast
   await go('/cart/');
   await page.waitForSelector('.wc-block-cart-items__row', { timeout: 60000 }).catch(() => {});
   await page.waitForTimeout(1500);

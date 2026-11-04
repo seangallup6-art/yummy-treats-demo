@@ -269,3 +269,27 @@ function yt_hide_bank_details_after_slip( $order_id ) {
 	}
 }
 add_action( 'woocommerce_thankyou_bacs', 'yt_hide_bank_details_after_slip', 1 );
+
+/**
+ * Order confirmation (board P9, style A): a small "Order #147 · 4 Nov 2026" sticker above the headline.
+ *
+ * @param string $html Rendered Order Confirmation Status block.
+ * @return string
+ */
+function yt_order_status_chip( $html ) {
+	$order = yt_received_order();
+	if ( ! $order || false === strpos( $html, '<h1' ) ) {
+		return $html;
+	}
+	$date = $order->get_date_created();
+	$chip = '<p class="yt-conf-chip"><span class="yt-conf-chip__tick" aria-hidden="true"></span>' . esc_html(
+		sprintf(
+			/* translators: 1: order number, 2: order date */
+			__( 'Order #%1$s · %2$s', 'yummy-treats' ),
+			$order->get_order_number(),
+			$date ? wc_format_datetime( $date ) : ''
+		)
+	) . '</p>';
+	return preg_replace( '#<h1#', $chip . '<h1', $html, 1 );
+}
+add_filter( 'render_block_woocommerce/order-confirmation-status', 'yt_order_status_chip' );

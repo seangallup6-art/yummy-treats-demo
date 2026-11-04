@@ -2,7 +2,9 @@
  * Shop behaviours.
  * 1. Variation buttons (R4): the classic variable-product <select> stays in the DOM (WooCommerce's own
  *    variation script keeps driving price/stock from it); we draw a row of buttons and proxy clicks to it.
- * 2. Added-to-cart toast for the Product Collection "Add to cart" buttons.
+ * 2. Buy box (board P4-A): one price line that follows the size, a stock pill, "Pick a size first" until a size
+ *    is chosen, and Add to cart without leaving the page.
+ * 2b. After Add to cart (board P6-C): one toast, bottom left, that counts repeated adds instead of stacking.
  * 3. Free-shipping progress bar on the cart page (reads the cart via the Store API).
  */
 (function () {
@@ -44,8 +46,9 @@
 			b.dataset.value = opt.value;
 			var sub = perKgLabel(select, opt.value);
 			b.innerHTML = '<span>' + opt.text + '</span>' + (sub ? '<small>' + sub + '</small>' : '');
+			// Tapping the chosen size again unpicks it (there is no separate Clear link).
 			b.addEventListener('click', function () {
-				select.value = opt.value;
+				select.value = select.value === opt.value ? '' : opt.value;
 				select.dispatchEvent(new Event('change', { bubbles: true }));
 			});
 			wrap.appendChild(b);
@@ -68,30 +71,159 @@
 		sync();
 	});
 
-	/* 2. Toast ----------------------------------------------------------------- */
-	var toastTimer;
-	function toast(text) {
-		var t = document.querySelector('.yt-toast');
-		if (!t) {
-			t = document.createElement('div');
-			t.className = 'yt-toast';
-			t.setAttribute('data-no-dynamic-translation', ''); // text arrives already translated (ytShop)
-			t.setAttribute('role', 'status');
-			document.body.appendChild(t);
-		}
-		t.textContent = text;
-		t.hidden = false;
-		clearTimeout(toastTimer);
-		toastTimer = setTimeout(function () { t.hidden = true; }, 2400);
+	/* 2. Buy box --------------------------------------------------------------- */
+	var form = document.querySelector('.yt-buybox form.cart');
+	var buyBtn = form && form.querySelector('.single_add_to_cart_button');
+	var $ = window.jQuery;
+
+	// The button says what to do: "Pick a size first" until a size is chosen (WooCommerce marks that with a
+	// .disabled class), then "Add to cart".
+	if (buyBtn && form.classList.contains('variations_form')) {
+		var label = function () {
+			var text = buyBtn.classList.contains('disabled') ? i18n.pickSize : i18n.addToCart;
+			if (text && buyBtn.textContent !== text) { buyBtn.textContent = text; }
+		};
+		new MutationObserver(label).observe(buyBtn, { attributes: true, attributeFilter: ['class'] });
+		label();
 	}
+
+	// One price line: the price block under the title shows the chosen size's price, and goes back to the
+	// range when the size is unpicked. WooCommerce's own variation price under the sizes is hidden (CSS).
+	var priceBox = document.querySelector('.yt-buybox .wp-block-woocommerce-product-price .wc-block-components-product-price');
+	if (form && priceBox && $ && form.classList.contains('variations_form')) {
+		var range = priceBox.innerHTML;
+		$(form).on('found_variation', function (e, variation) {
+			if (!variation || !variation.price_html) { return; }
+			var tmp = document.createElement('div');
+			tmp.innerHTML = variation.price_html;
+			var inner = tmp.querySelector('.price');
+			priceBox.innerHTML = (inner || tmp).innerHTML;
+		}).on('reset_data hide_variation', function () {
+			if (priceBox.innerHTML !== range) { priceBox.innerHTML = range; }
+		});
+	}
+
+	// Stock pill before a size is chosen: "Every size in stock" when that is true. After a choice WooCommerce
+	// prints the size's own stock line, styled as the same pill.
+	if (form && form.classList.contains('variations_form')) {
+		var variations;
+		try { variations = JSON.parse(form.getAttribute('data-product_variations') || 'null'); } catch (e) { variations = null; }
+		var wrapEl = form.querySelector('.single_variation_wrap');
+		if (variations && variations.length && wrapEl && i18n.allInStock && variations.every(function (v) { return v.is_in_stock; })) {
+			var pill = document.createElement('p');
+			pill.className = 'stock in-stock yt-stockall';
+			pill.textContent = i18n.allInStock;
+			wrapEl.insertBefore(pill, wrapEl.firstChild);
+			var syncPill = function () { pill.hidden = !!(form.querySelector('input.variation_id') || {}).value; };
+			if ($) { $(form).on('found_variation reset_data hide_variation show_variation', function () { setTimeout(syncPill, 0); }); }
+			syncPill();
+		}
+	}
+
+	// Add to cart without a page load: WooCommerce's own AJAX endpoint (the one its shop buttons use), then the
+	// same "added_to_cart" event, which the mini-cart turns into a refresh. If anything goes wrong, the form is
+	// sent the normal way so WooCommerce can show its message.
+	if (form && buyBtn && i18n.addUrl && window.fetch && !form.classList.contains('grouped_form')) {
+		var sendNormally = false;
+		form.addEventListener('submit', function (e) {
+			if (sendNormally) { return; }
+			var idField = form.querySelector('input.variation_id');
+			var id = idField ? idField.value : (buyBtn.value || (form.querySelector('[name="add-to-cart"]') || {}).value);
+			if (!id || id === '0' || buyBtn.classList.contains('disabled')) { return; }
+			e.preventDefault();
+			if (buyBtn.classList.contains('is-busy')) { return; }
+			// Name the item now: the shopper may pick another size before the answer comes back.
+			var title = document.querySelector('.yt-buybox .wp-block-post-title');
+			var size = form.querySelector('.yt-variations__btn[aria-pressed="true"] span');
+			var item = (title ? title.textContent.trim() : '') + (size ? ', ' + size.textContent.trim() : '');
+			holdToast();
+			var qtyEl = form.querySelector('input.qty');
+			var data = new FormData();
+			data.append('product_id', id);
+			data.append('quantity', qtyEl ? qtyEl.value : '1');
+			buyBtn.classList.add('is-busy');
+			buyBtn.setAttribute('aria-disabled', 'true');
+			var done = function () { buyBtn.classList.remove('is-busy'); buyBtn.removeAttribute('aria-disabled'); };
+			fetch(i18n.addUrl, { method: 'POST', body: data, credentials: 'same-origin' })
+				.then(function (r) { return r.json(); })
+				.then(function (res) {
+					done();
+					if (!res || res.error) { throw new Error('add failed'); }
+					if ($) {
+						$(document.body).trigger('added_to_cart', [res.fragments, res.cart_hash, $(buyBtn)]);
+					} else {
+						document.body.dispatchEvent(new CustomEvent('wc-blocks_added_to_cart', { bubbles: true }));
+					}
+					addedToast(item);
+				})
+				.catch(function () {
+					done();
+					armToast();
+					sendNormally = true;
+					if (form.requestSubmit) { form.requestSubmit(buyBtn); } else { buyBtn.click(); }
+				});
+		});
+	}
+
+	/* 2b. Toast ----------------------------------------------------------------- */
+	// One toast at a time. Each add while it is up bumps the count ("Added 3 items · ฿740"), names the latest
+	// item and restarts the timer; it stays while the pointer or focus is on it.
+	var toastEl, toastTimer, toastCount = 0;
+	function cartTotal() {
+		var t = document.querySelector('.yt-cartpill__total');
+		return t ? t.textContent.trim() : '';
+	}
+	function toastTitle() {
+		if (!toastEl) { return; }
+		var head = toastCount > 1 ? (i18n.addedMany || 'Added %d items').replace('%d', toastCount) : (i18n.added || 'Added to cart');
+		var total = toastCount > 1 ? cartTotal() : '';
+		toastEl.querySelector('.yt-toast__title').textContent = head + (total ? ' · ' + total : '');
+	}
+	function hideToast() {
+		if (toastEl && !toastEl.matches(':hover, :focus-within')) { toastEl.hidden = true; toastCount = 0; } else { armToast(); }
+	}
+	function armToast() { clearTimeout(toastTimer); if (toastEl && !toastEl.hidden) { toastTimer = setTimeout(hideToast, 5000); } }
+	// While another add is on its way, keep the toast up so the count carries on.
+	function holdToast() { clearTimeout(toastTimer); }
+	function addedToast(item) {
+		if (!toastEl) {
+			toastEl = document.createElement('div');
+			toastEl.className = 'yt-toast';
+			toastEl.hidden = true;
+			toastEl.setAttribute('data-no-dynamic-translation', ''); // text arrives already translated (ytShop)
+			toastEl.setAttribute('role', 'status');
+			toastEl.innerHTML = '<p class="yt-toast__title"></p><p class="yt-toast__item"></p>';
+			if (i18n.checkoutUrl) {
+				var go = document.createElement('a');
+				go.className = 'yt-toast__go';
+				go.href = i18n.checkoutUrl;
+				go.textContent = i18n.checkout || 'Checkout';
+				toastEl.appendChild(go);
+			}
+			document.body.appendChild(toastEl);
+			var totalEl = document.querySelector('.yt-cartpill__total');
+			if (totalEl) { new MutationObserver(toastTitle).observe(totalEl, { childList: true, characterData: true, subtree: true }); }
+		}
+		toastCount = toastEl.hidden ? 1 : toastCount + 1;
+		toastEl.querySelector('.yt-toast__item').textContent = item || '';
+		toastTitle();
+		toastEl.hidden = false;
+		armToast();
+	}
+
+	// Product cards (shop, home, "goes well with"): note which card was pressed, then show the toast when
+	// WooCommerce reports the add. Without a recent press the event is ignored (quantity changes in the drawer).
+	var pending = null;
 	document.addEventListener('click', function (e) {
-		var btn = e.target.closest('.wc-block-components-product-button .wp-block-button__link, .add_to_cart_button');
-		if (!btn || btn.getAttribute('aria-disabled') === 'true') { return; }
-		if (btn.classList.contains('product_type_variable') || btn.getAttribute('href') && !btn.hasAttribute('data-product_id') && !btn.closest('[data-wp-interactive]')) { return; }
-		var name = i18n.added || 'Added!';
-		setTimeout(function () { toast(name); }, 350);
+		var btn = e.target.closest('.wc-block-components-product-button .wp-block-button__link, .wc-block-components-product-button__button, .add_to_cart_button');
+		if (!btn || btn.getAttribute('aria-disabled') === 'true' || btn.tagName === 'A' && !btn.classList.contains('ajax_add_to_cart')) { return; }
+		var card = btn.closest('.wc-block-product, li.product, .wp-block-post');
+		var title = card && card.querySelector('.wp-block-post-title, .wc-block-components-product-name, h2, h3');
+		pending = { name: title ? title.textContent.trim() : '', at: Date.now() };
 	});
-	document.body.addEventListener('added_to_cart', function () { toast(i18n.added || 'Added!'); });
+	document.body.addEventListener('wc-blocks_added_to_cart', function () {
+		if (pending && Date.now() - pending.at < 10000) { addedToast(pending.name); pending = null; }
+	});
 
 	/* 3. Free shipping bar ------------------------------------------------------ */
 	// Reads WooCommerce's own cart store (wc/store/cart), which the cart block keeps current, so the bar follows
@@ -198,7 +330,9 @@
 	var ticking = false;
 	function check() {
 		ticking = false;
-		bar.classList.toggle('is-shown', buy.getBoundingClientRect().bottom < 0);
+		var shown = buy.getBoundingClientRect().bottom < 0;
+		bar.classList.toggle('is-shown', shown);
+		document.body.classList.toggle('yt-stickybar-on', shown && window.innerWidth < 782);
 	}
 	window.addEventListener('scroll', function () {
 		if (!ticking) { ticking = true; window.requestAnimationFrame(check); }
@@ -228,4 +362,31 @@
 	}
 	sync();
 	new MutationObserver(sync).observe(drawer, { attributes: true, attributeFilter: ['aria-hidden'] });
+})();
+
+/* 8. Order confirmation (board P9-A): a Copy button on the bank account number. */
+(function () {
+	var i18n = window.ytShop || {};
+	var number = document.querySelector('.yt-paybox .account_number strong');
+	if (!number || !navigator.clipboard) { return; }
+	var btn = document.createElement('button');
+	btn.type = 'button';
+	btn.className = 'yt-copy';
+	btn.setAttribute('data-no-dynamic-translation', '');
+	btn.innerHTML = '<span class="yt-copy__text"></span><span class="screen-reader-text"></span>';
+	var text = btn.querySelector('.yt-copy__text');
+	text.textContent = i18n.copy || 'Copy';
+	btn.querySelector('.screen-reader-text').textContent = ' ' + (i18n.copyWhat || 'account number');
+	var live = document.createElement('span');
+	live.className = 'screen-reader-text';
+	live.setAttribute('role', 'status');
+	btn.addEventListener('click', function () {
+		navigator.clipboard.writeText(number.textContent.trim()).then(function () {
+			text.textContent = i18n.copied || 'Copied';
+			live.textContent = i18n.copied || 'Copied';
+			setTimeout(function () { text.textContent = i18n.copy || 'Copy'; live.textContent = ''; }, 2000);
+		});
+	});
+	number.parentNode.appendChild(btn);
+	number.parentNode.appendChild(live);
 })();

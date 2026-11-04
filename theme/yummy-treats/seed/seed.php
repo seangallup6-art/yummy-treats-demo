@@ -348,7 +348,8 @@ function yt_seed_products() {
 			if ( file_exists( $file ) ) {
 				$tmp = wp_tempnam( basename( $file ) );
 				copy( $file, $tmp );
-				$att = media_handle_sideload( array( 'name' => $p['sku'] . '-' . $n . '.png', 'tmp_name' => $tmp ), $id, $p['name'] . ( 2 === $n ? ' (back of bag)' : '' ) );
+				// The caption is the picture's short name on the product page (sticker and zoom view).
+				$att = media_handle_sideload( array( 'name' => $p['sku'] . '-' . $n . '.png', 'tmp_name' => $tmp ), $id, $p['name'] . ( 2 === $n ? ' (back of bag)' : '' ), array( 'post_excerpt' => 2 === $n ? 'Back of the bag' : 'Front' ) );
 				if ( ! is_wp_error( $att ) ) {
 					update_post_meta( $att, '_wp_attachment_image_alt', 2 === $n ? '[Back of bag: ingredients panel for ' . $p['name'] . ']' : '[Pack shot: ' . $p['name'] . ']' );
 					$ids[] = $att;
@@ -406,9 +407,12 @@ function yt_seed_term_ids( $names, $tax ) {
 }
 
 /**
- * Long description for a product. The feeding and storage notes follow the product: meals count against the daily
- * food, treats stay a small extra; frozen and wet food get fridge and freezer advice. The short description is its
- * own paragraph so the card and the product page share one translation.
+ * Long description for a product, laid out for the "What's in the bag" card (board P5, option B): the short
+ * description as a black callout, then ingredients and storage as tinted cards side by side, then the feeding
+ * guide with a table to fill in. Each part is a plain group with a class, so the client edits text, not layout.
+ * The feeding and storage notes follow the product: meals count against the daily food, treats stay a small
+ * extra; frozen and wet food get fridge and freezer advice. The short description is its own paragraph so the
+ * card and the product page share one translation.
  *
  * @param array $p Product from products.json.
  * @return string
@@ -416,11 +420,10 @@ function yt_seed_term_ids( $names, $tax ) {
 function yt_seed_product_body( $p ) {
 	$pet     = 'Dogs' === $p['pet'] ? 'dog' : 'cat';
 	$texture = $p['attrs']['Texture'] ?? '';
-	$table   = '[Feeding table by body weight — supplied by the client or their vet.]';
 	if ( 'Meals' === $p['type'] ) {
-		$feeding = "Count it as part of your {$pet}’s daily food, not on top of it, and reduce their usual food to match. {$table} Always keep fresh water nearby.";
+		$feeding = "Count it as part of your {$pet}’s daily food, not on top of it, and reduce their usual food to match.";
 	} else {
-		$feeding = "Treats should stay a small part of your {$pet}’s day; the rest comes from their main food. {$table} Always keep fresh water nearby.";
+		$feeding = "Treats should stay a small part of your {$pet}’s day; the rest comes from their main food.";
 	}
 	if ( 'Fresh (frozen)' === $texture ) {
 		$storage = 'Keep frozen. Thaw a portion in the fridge overnight and use it within [N] days of thawing. Do not refreeze.';
@@ -429,17 +432,29 @@ function yt_seed_product_body( $p ) {
 	} else {
 		$storage = 'Reseal after opening and keep cool and dry. In Bangkok humidity, the fridge is your friend. Use within [N] weeks of opening.';
 	}
+	$para  = static fn( $text, $class = '' ) => $class
+		? '<!-- wp:paragraph {"className":"' . $class . '"} --><p class="' . $class . '">' . esc_html( $text ) . '</p><!-- /wp:paragraph -->'
+		: '<!-- wp:paragraph --><p>' . esc_html( $text ) . '</p><!-- /wp:paragraph -->';
+	$h3    = static fn( $text ) => '<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">' . esc_html( $text ) . '</h3><!-- /wp:heading -->';
+	$group = static fn( $class, $inner ) => '<!-- wp:group {"className":"' . $class . '","layout":{"type":"default"}} --><div class="wp-block-group ' . $class . '">' . implode( '', $inner ) . '</div><!-- /wp:group -->';
+	$rows  = '';
+	foreach ( array( '[Up to N kg]', '[N to N kg]', '[Over N kg]' ) as $band ) {
+		$rows .= '<tr><td>' . esc_html( $band ) . '</td><td>[N] g</td></tr>';
+	}
+	$table = '<!-- wp:table {"className":"yt-bag__table"} --><figure class="wp-block-table yt-bag__table"><table><thead><tr><th>Body weight</th><th>Per day</th></tr></thead><tbody>' . $rows . '</tbody></table></figure><!-- /wp:table -->';
+
 	return implode(
 		"\n\n",
 		array(
-			'<!-- wp:paragraph --><p>' . esc_html( $p['short'] ) . '</p><!-- /wp:paragraph -->',
-			'<!-- wp:paragraph --><p>Made in small batches in [province] and packed within days of cooking.</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Ingredients</h3><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>[Ingredient list, in descending order by weight — supplied by the client.]</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Feeding guide</h3><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>' . esc_html( $feeding ) . '</p><!-- /wp:paragraph -->',
-			'<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Storage</h3><!-- /wp:heading -->',
-			'<!-- wp:paragraph --><p>' . esc_html( $storage ) . '</p><!-- /wp:paragraph -->',
+			$group( 'yt-bag__lead', array( $para( $p['short'] ), $para( 'Made in small batches in [province] and packed within days of cooking.' ) ) ),
+			$group(
+				'yt-bag__cards',
+				array(
+					$group( 'yt-bag__card is-ingredients', array( $h3( 'Ingredients' ), $para( '[Ingredient list, in descending order by weight — supplied by the client.]' ) ) ),
+					$group( 'yt-bag__card is-storage', array( $h3( 'Storage' ), $para( $storage ) ) ),
+					$group( 'yt-bag__card is-feeding', array( $h3( 'Feeding guide' ), $para( $feeding, 'yt-bag__rule' ), $table, $para( '[Amounts by body weight, supplied by the client or their vet.] Always keep fresh water nearby.', 'yt-bag__note' ) ) ),
+				)
+			),
 		)
 	);
 }
