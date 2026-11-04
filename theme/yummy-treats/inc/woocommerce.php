@@ -610,3 +610,72 @@ function yt_translate_gateway_settings( $settings ) {
 foreach ( array( 'bacs', 'cod', 'omise', 'omise_promptpay' ) as $yt_gateway ) {
 	add_filter( "option_woocommerce_{$yt_gateway}_settings", 'yt_translate_gateway_settings' );
 }
+
+/* -------------------------------------------------------------------------
+ * Shop filter labels in Thai (4 Nov). WooCommerce keeps its filter labels in JSON (the data-wp-context attribute its
+ * scripts read), which TranslatePress never sees, so on /th/ the chips of the filters in use read "Category: Dogs".
+ * Both places below go through yt_translate_stored_label(), the same dictionary as the rest of the shop.
+ * ---------------------------------------------------------------------- */
+
+/**
+ * Translate a filter label one side of the colon at a time: "Category: Dogs" becomes "หมวดหมู่: สุนัข".
+ * WooCommerce's chip template ("Category: {{label}}") keeps its placeholder.
+ *
+ * @param string $label Label as WooCommerce built it.
+ * @return string
+ */
+function yt_translate_filter_label( $label ) {
+	if ( ! is_string( $label ) || false === strpos( $label, ': ' ) ) {
+		return yt_translate_stored_label( $label );
+	}
+	list( $group, $value ) = explode( ': ', $label, 2 );
+	return yt_translate_stored_label( $group ) . ': ' . ( '{{label}}' === $value ? $value : yt_translate_stored_label( $value ) );
+}
+
+/**
+ * Category chips of the filters in use, as WooCommerce sends them with the page. Price and availability chips come
+ * from WooCommerce's own gettext strings, which seed/translations-th.php already covers.
+ *
+ * @param array $items Selected filter items.
+ * @return array
+ */
+function yt_translate_selected_filter_items( $items ) {
+	foreach ( (array) $items as $i => $item ) {
+		if ( isset( $item['activeLabel'] ) && 0 === strpos( (string) ( $item['type'] ?? '' ), 'taxonomy/' ) ) {
+			$items[ $i ]['activeLabel'] = yt_translate_filter_label( $item['activeLabel'] );
+		}
+	}
+	return $items;
+}
+add_filter( 'woocommerce_blocks_product_filters_selected_items', 'yt_translate_selected_filter_items', 20 );
+
+/**
+ * The category filter's own list (labels, screen-reader labels, chip template), which WooCommerce's script reads the
+ * moment a box is ticked, before the page catches up.
+ *
+ * @param string $html Rendered block.
+ * @return string
+ */
+function yt_translate_taxonomy_filter_context( $html ) {
+	$tags = new WP_HTML_Tag_Processor( $html );
+	if ( ! $tags->next_tag( array( 'class_name' => 'wp-block-woocommerce-product-filter-taxonomy' ) ) ) {
+		return $html;
+	}
+	$context = json_decode( (string) $tags->get_attribute( 'data-wp-context' ), true );
+	if ( ! is_array( $context ) ) {
+		return $html;
+	}
+	if ( isset( $context['activeLabelTemplate'] ) ) {
+		$context['activeLabelTemplate'] = yt_translate_filter_label( $context['activeLabelTemplate'] );
+	}
+	foreach ( (array) ( $context['items'] ?? array() ) as $i => $item ) {
+		foreach ( array( 'label', 'ariaLabel' ) as $key ) {
+			if ( isset( $item[ $key ] ) ) {
+				$context['items'][ $i ][ $key ] = yt_translate_stored_label( $item[ $key ] );
+			}
+		}
+	}
+	$tags->set_attribute( 'data-wp-context', wp_json_encode( $context, JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP ) );
+	return $tags->get_updated_html();
+}
+add_filter( 'render_block_woocommerce/product-filter-taxonomy', 'yt_translate_taxonomy_filter_context' );

@@ -8,78 +8,7 @@
 	<!-- wp:woocommerce/store-notices /-->
 	<!-- wp:pattern {"slug":"yummy-treats/bundle-promos"} /-->
 
-	<!-- wp:woocommerce/product-filters {"overlayMode":"mobile","className":"yt-filterbar"} -->
-	<div class="wp-block-woocommerce-product-filters yt-filterbar">
-		<!-- wp:woocommerce/product-filter-taxonomy {"taxonomy":"product_cat","displayStyle":"woocommerce/product-filter-chips","showCounts":true,"sortOrder":"name-asc"} -->
-		<div class="wp-block-woocommerce-product-filter-taxonomy">
-			<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Category</h3><!-- /wp:heading -->
-			<!-- wp:woocommerce/product-filter-chips /-->
-		</div>
-		<!-- /wp:woocommerce/product-filter-taxonomy -->
-		<!-- wp:woocommerce/product-filter-price -->
-		<div class="wp-block-woocommerce-product-filter-price">
-			<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Price</h3><!-- /wp:heading -->
-			<!-- wp:woocommerce/product-filter-price-slider {"inlineInput":true} /-->
-		</div>
-		<!-- /wp:woocommerce/product-filter-price -->
-		<!-- wp:woocommerce/product-filter-status {"displayStyle":"woocommerce/product-filter-chips"} -->
-		<div class="wp-block-woocommerce-product-filter-status">
-			<!-- wp:heading {"level":3} --><h3 class="wp-block-heading">Availability</h3><!-- /wp:heading -->
-			<!-- wp:woocommerce/product-filter-chips /-->
-		</div>
-		<!-- /wp:woocommerce/product-filter-status -->
-		<!-- wp:woocommerce/product-filter-active -->
-		<div class="wp-block-woocommerce-product-filter-active">
-			<!-- wp:woocommerce/product-filter-removable-chips -->
-			<div class="wp-block-woocommerce-product-filter-removable-chips wc-block-product-filter-removable-chips"></div>
-			<!-- /wp:woocommerce/product-filter-removable-chips -->
-			<!-- wp:woocommerce/product-filter-clear-button /-->
-		</div>
-		<!-- /wp:woocommerce/product-filter-active -->
-	</div>
-	<!-- /wp:woocommerce/product-filters -->
-
-	<!-- wp:group {"align":"wide","style":{"spacing":{"margin":{"top":"var:preset|spacing|40","bottom":"var:preset|spacing|30"}}},"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"space-between"}} -->
-	<div class="wp-block-group alignwide" style="margin-top:var(--wp--preset--spacing--40);margin-bottom:var(--wp--preset--spacing--30)">
-		<!-- wp:woocommerce/product-results-count /-->
-		<!-- wp:woocommerce/catalog-sorting /-->
-	</div>
-	<!-- /wp:group -->
-
-	<!-- wp:woocommerce/product-collection {"queryId":0,"query":{"woocommerceAttributes":[],"woocommerceStockStatus":["instock","outofstock","onbackorder"],"taxQuery":{},"isProductCollectionBlock":true,"perPage":12,"pages":0,"offset":0,"postType":"product","order":"asc","orderBy":"title","author":"","search":"","exclude":[],"sticky":"","inherit":true},"tagName":"div","dimensions":{"widthType":"fill","fixedWidth":""},"displayLayout":{"type":"flex","columns":4,"shrinkColumns":true},"convertedFromProducts":false,"queryContextIncludes":["collection"],"align":"wide","className":"yt-cards"} -->
-	<div class="wp-block-woocommerce-product-collection alignwide yt-cards">
-		<!-- wp:woocommerce/product-template -->
-		<!-- wp:woocommerce/product-image {"showSaleBadge":false,"imageSizing":"thumbnail","isDescendentOfQueryLoop":true} -->
-			<!-- wp:woocommerce/product-sale-badge {"isDescendentOfQueryLoop":true,"align":"left"} /-->
-		<!-- /wp:woocommerce/product-image -->
-		<!-- wp:post-terms {"term":"product_cat"} /-->
-		<!-- wp:post-title {"level":2,"isLink":true,"__woocommerceNamespace":"woocommerce/product-collection/product-title"} /-->
-		<!-- wp:woocommerce/product-price {"isDescendentOfQueryLoop":true} /-->
-		<!-- wp:woocommerce/product-button {"isDescendentOfQueryLoop":true} /-->
-		<!-- /wp:woocommerce/product-template -->
-
-		<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"},"style":{"spacing":{"margin":{"top":"var:preset|spacing|50"}}}} -->
-		<!-- wp:query-pagination-previous /-->
-		<!-- wp:query-pagination-numbers /-->
-		<!-- wp:query-pagination-next /-->
-		<!-- /wp:query-pagination -->
-
-		<!-- wp:woocommerce/product-collection-no-results -->
-		<!-- wp:group {"className":"yt-empty is-style-card-flat","layout":{"type":"constrained"}} -->
-		<div class="wp-block-group yt-empty is-style-card-flat">
-			<!-- wp:heading {"level":2} --><h2 class="wp-block-heading">No treats match that.</h2><!-- /wp:heading -->
-			<!-- wp:paragraph --><p>Try another word or fewer filters, or browse everything we make.</p><!-- /wp:paragraph -->
-			<!-- wp:buttons {"layout":{"type":"flex","justifyContent":"center"}} -->
-			<div class="wp-block-buttons">
-				<!-- wp:button --><div class="wp-block-button"><a class="wp-block-button__link wp-element-button" href="/shop/">See all 24 products</a></div><!-- /wp:button -->
-				<!-- wp:button {"className":"is-style-outline"} --><div class="wp-block-button is-style-outline"><a class="wp-block-button__link wp-element-button" href="https://line.me/R/ti/p/[@yummytreats]" rel="noopener">Ask us on LINE</a></div><!-- /wp:button -->
-			</div>
-			<!-- /wp:buttons -->
-		</div>
-		<!-- /wp:group -->
-		<!-- /wp:woocommerce/product-collection-no-results -->
-	</div>
-	<!-- /wp:woocommerce/product-collection -->
+	<!-- wp:pattern {"slug":"yummy-treats/shop-grid"} /-->
 </main>
 <!-- /wp:group -->
 

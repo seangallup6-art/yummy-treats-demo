@@ -182,6 +182,9 @@ msgstr "เลือกขนาด"
 msgid "City-sized bags"
 msgstr "ถุงขนาดพอดีคนเมือง"
 
+msgid "Clear all"
+msgstr "ล้างทั้งหมด"
+
 msgid "Cooked in small batches in [province] and sold fresh, not shipped halfway around the world."
 msgstr "ปรุงทีละน้อยที่[จังหวัด] และขายแบบสดใหม่ ไม่ได้ขนส่งข้ามครึ่งโลกมา"
 
@@ -277,6 +280,9 @@ msgstr "อาหาร ขนม และการดูแล"
 
 msgid "Filter by type"
 msgstr "กรองตามประเภท"
+
+msgid "Filters"
+msgstr "ตัวกรอง"
 
 msgid "Find a stockist"
 msgstr "หาร้านตัวแทน"

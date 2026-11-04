@@ -35,11 +35,20 @@ msgstr "ใส่คูปอง"
 msgid "Add to cart"
 msgstr "หยิบใส่ตะกร้า"
 
+msgid "Apply"
+msgstr "ใช้"
+
 msgid "Attributes"
 msgstr "คุณสมบัติ"
 
 msgid "Availability"
 msgstr "สถานะสินค้า"
+
+msgid "Availability: %s"
+msgstr "สถานะสินค้า: %s"
+
+msgid "Availability: {{label}}"
+msgstr "สถานะสินค้า: {{label}}"
 
 msgid "Bank"
 msgstr "ธนาคาร"
@@ -56,11 +65,17 @@ msgstr "ตะกร้า"
 msgid "Cart totals"
 msgstr "ยอดรวมในตะกร้า"
 
+msgid "Category"
+msgstr "หมวดหมู่"
+
 msgid "Checkout"
 msgstr "ชำระเงิน"
 
 msgid "Clear options"
 msgstr "ล้างตัวเลือก"
+
+msgid "Close"
+msgstr "ปิด"
 
 msgid "Close dialog"
 msgstr "ปิดหน้าต่าง"
@@ -100,6 +115,9 @@ msgstr "อีเมล:"
 
 msgid "Estimated total"
 msgstr "ยอดรวมโดยประมาณ"
+
+msgid "Filter products"
+msgstr "กรองสินค้า"
 
 msgid "Filter products by maximum price"
 msgstr "กรองตามราคาสูงสุด"
@@ -173,6 +191,24 @@ msgstr "ยืนยันคำสั่งซื้อ"
 msgid "Previous image"
 msgstr "ภาพก่อนหน้า"
 
+msgid "Price: %1$s - %2$s"
+msgstr "ราคา: %1$s - %2$s"
+
+msgid "Price: From %s"
+msgstr "ราคา: ตั้งแต่ %s"
+
+msgid "Price: From {{min}}"
+msgstr "ราคา: ตั้งแต่ {{min}}"
+
+msgid "Price: Up to %s"
+msgstr "ราคา: ไม่เกิน %s"
+
+msgid "Price: Up to {{max}}"
+msgstr "ราคา: ไม่เกิน {{max}}"
+
+msgid "Price: {{min}} - {{max}}"
+msgstr "ราคา: {{min}} - {{max}}"
+
 msgid "Privacy Policy"
 msgstr "นโยบายความเป็นส่วนตัว"
 
@@ -208,6 +244,12 @@ msgstr "ลดจำนวน %s"
 
 msgid "Remove %s from cart"
 msgstr "นำ %s ออกจากตะกร้า"
+
+msgid "Remove filter: %s"
+msgstr "ลบตัวกรอง: %s"
+
+msgid "Remove filter: {{label}}"
+msgstr "ลบตัวกรอง: {{label}}"
 
 msgid "Remove item"
 msgstr "ลบสินค้า"
