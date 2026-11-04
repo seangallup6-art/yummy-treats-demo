@@ -77,11 +77,14 @@
 	var $ = window.jQuery;
 
 	// The button says what to do: "Pick a size first" until a size is chosen (WooCommerce marks that with a
-	// .disabled class), then "Add to cart".
+	// .disabled class), then "Add to cart". It is also truly disabled until then, so a press does nothing instead
+	// of WooCommerce's "Please select some product options" browser alert.
 	if (buyBtn && form.classList.contains('variations_form')) {
 		var label = function () {
-			var text = buyBtn.classList.contains('disabled') ? i18n.pickSize : i18n.addToCart;
+			var waiting = buyBtn.classList.contains('disabled');
+			var text = waiting ? i18n.pickSize : i18n.addToCart;
 			if (text && buyBtn.textContent !== text) { buyBtn.textContent = text; }
+			if (buyBtn.disabled !== waiting) { buyBtn.disabled = waiting; }
 		};
 		new MutationObserver(label).observe(buyBtn, { attributes: true, attributeFilter: ['class'] });
 		label();

@@ -104,8 +104,11 @@ msgstr "รายละเอียด"
 msgid "Edit"
 msgstr "แก้ไข"
 
+msgid "Edit billing address"
+msgstr "แก้ไข ที่อยู่ใบเสร็จ"
+
 msgid "Edit shipping address"
-msgstr "แก้ไขที่อยู่จัดส่ง"
+msgstr "แก้ไข ที่อยู่จัดส่ง"
 
 msgid "Email address"
 msgstr "อีเมล"

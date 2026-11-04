@@ -585,11 +585,12 @@ html.js .yt-reveal-stagger.is-in > :nth-child(n+5) { transition-delay: 240ms; }
 /* 14. Phone pass (boards B30–B33) ------------------------------------------------------- */
 /* Targets of at least 24 px (WCAG 2.2, 2.5.8) for links that stand alone. */
 .yt-lang-switch a { display: inline-flex; align-items: center; min-height: 32px; min-width: 32px; justify-content: center; }
-.yt-cards .taxonomy-product_cat a, .wp-block-woocommerce-breadcrumbs a, .yt-stockists__meta a, .yt-buybox .taxonomy-product_cat a, .wp-block-post-terms a { display: inline-block; padding-block: 4px; min-width: 24px; }
+/* (Pill links, .yt-eyebrow--pill and .yt-backlink, are tall enough already and centre their own text.) */
+.yt-cards .taxonomy-product_cat a, .wp-block-woocommerce-breadcrumbs a, .yt-stockists__meta a, .yt-buybox .taxonomy-product_cat:not(.yt-eyebrow--pill) a, .wp-block-post-terms:not(.yt-eyebrow--pill) a { display: inline-block; padding-block: 4px; min-width: 24px; }
 .wp-block-query-pagination a, .wp-block-query-pagination .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; border-radius: 999px; font-weight: 700; }
 .wp-block-query-pagination .page-numbers.current { background: var(--yt-ink); color: var(--wp--preset--color--base); }
 .yt-cards .wp-block-post-title a, .yt-cards .wc-block-components-product-title a { display: block; padding-block: 4px; }
-main p > a:only-child, .wp-block-post-excerpt__more-link, .wp-block-post-navigation-link a { display: inline-block; padding-block: 2px; }
+main p > a:only-child:not(.yt-backlink), .wp-block-post-excerpt__more-link, .wp-block-post-navigation-link a { display: inline-block; padding-block: 2px; }
 
 /* Sold out: the email form replaces the (disabled) add-to-cart controls, so there is one clear action. */
 .wp-block-add-to-cart-form:has(+ .yt-notify) { display: none; }
@@ -643,7 +644,7 @@ main p > a:only-child, .wp-block-post-excerpt__more-link, .wp-block-post-navigat
 
 /* 15. Accessibility sweep fixes ---------------------------------------------------------------- */
 /* WooCommerce marks "pick a size first" with a .disabled class (not the attribute): keep it readable, it says what to do. */
-.yt-buybox .single_add_to_cart_button.disabled, .yt-buybox .single_add_to_cart_button.disabled:hover { opacity: 1 !important; background: var(--wp--preset--color--surface) !important; color: var(--yt-ink) !important; border-style: dashed; box-shadow: none; transform: none; cursor: help; }
+.yt-buybox .single_add_to_cart_button.disabled, .yt-buybox .single_add_to_cart_button.disabled:hover { opacity: 1 !important; background: var(--wp--preset--color--surface) !important; color: var(--yt-ink) !important; border-style: dashed; box-shadow: none; transform: none; cursor: not-allowed; }
 .wc-block-components-checkbox .wc-block-components-checkbox__mark { width: 24px; height: 24px; margin-left: 0; }
 .yt-header .wp-block-navigation__responsive-container-close { display: inline-flex; }
 @media (max-width: 599px) { .yt-header .wp-block-navigation__responsive-container-open:not(.always-shown) { display: inline-flex; } }
@@ -849,6 +850,14 @@ main > .yt-backlink-row { max-width: var(--wp--style--global--wide-size); }
 .yt-checkout .wc-block-components-address-card, .yt-checkout .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-radio-control-accordion-option { background: var(--wp--preset--color--surface); }
 .yt-checkout .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-address-card { border-color: var(--yt-ink); }
 .yt-checkout .wc-block-components-radio-control-accordion-option--checked-option-highlighted .wc-block-components-radio-control__option, .yt-checkout .wc-block-components-radio-control__option--checked-option-highlighted { background: var(--wp--preset--color--base); }
+/* Payment methods are WooCommerce "accordion" options: each one becomes a single card (black outline, rounded),
+   the chosen one with a yellow header row and its description underneath. WooCommerce's own thin outline and
+   square corners for the group are switched off here, so the two outlines no longer show at once. */
+.yt-checkout .wc-block-components-radio-control-accordion-option { margin: 0 0 10px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; overflow: hidden; background: var(--wp--preset--color--surface); box-shadow: none !important; }
+.yt-checkout .wc-block-components-radio-control-accordion-option::after, .yt-checkout .wc-block-checkout__payment-method .wc-block-components-radio-control::after { display: none; }
+.yt-checkout .wc-block-components-radio-control-accordion-option .wc-block-components-radio-control__option { margin: 0; border: 0 !important; border-radius: 0; box-shadow: none; background: transparent; }
+.yt-checkout .wc-block-components-radio-control-accordion-option--checked-option-highlighted .wc-block-components-radio-control__option { background: var(--wp--preset--color--base); }
+.yt-checkout .wc-block-components-radio-control-accordion-content { margin: 0; padding: 14px 18px; border: 0; border-top: var(--yt-bw) solid var(--yt-ink); border-radius: 0; background: var(--wp--preset--color--surface); }
 
 /* Place order: the big yellow button with the total ("Place order · ฿790", WooCommerce's with-price style). */
 .yt-checkout .wc-block-components-button.wc-block-components-checkout-place-order-button { min-height: 64px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); box-shadow: var(--yt-sh-md); font-family: var(--wp--preset--font-family--display); font-size: 24px; font-weight: 800; letter-spacing: -0.02em; text-transform: lowercase; }
@@ -884,7 +893,7 @@ main > .yt-backlink-row { max-width: var(--wp--style--global--wide-size); }
 .yt-confirmation .yt-conf-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 44px; align-items: end; }
 .yt-confirmation .yt-conf-top > * { margin: 0; }
 .yt-confirmation .wp-block-woocommerce-order-confirmation-status { padding: 0; border: 0; background: none; box-shadow: none; }
-.yt-confirmation .wp-block-woocommerce-order-confirmation-status h1 { font-size: clamp(48px, 6.5vw, 84px); line-height: 0.88; letter-spacing: -0.05em; text-transform: lowercase; }
+.yt-confirmation .wp-block-woocommerce-order-confirmation-status h1 { font-size: clamp(48px, 6.5vw, 84px); line-height: 0.88; letter-spacing: -0.05em; text-transform: lowercase; text-wrap: balance; }
 .yt-confirmation .wp-block-woocommerce-order-confirmation-status p:not(.yt-conf-chip) { margin-top: 18px; font-size: 20px; max-width: 640px; }
 .yt-conf-chip { display: inline-flex; align-items: center; gap: 10px; margin: 0 0 14px !important; padding: 6px 16px 6px 8px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); font-size: 14px !important; font-weight: 700 !important; }
 .yt-conf-chip__tick { display: inline-flex; width: 24px; height: 24px; box-sizing: border-box; border: 2px solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--green); }
