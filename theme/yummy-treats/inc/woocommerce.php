@@ -579,6 +579,7 @@ function yt_translate_stored_label( $text ) {
 }
 add_filter( 'woocommerce_shipping_rate_label', 'yt_translate_stored_label' );
 add_filter( 'woocommerce_attribute_label', 'yt_translate_stored_label' );
+add_filter( 'woocommerce_order_shipping_method', 'yt_translate_stored_label' ); // "via Courier delivery" on view order.
 
 /**
  * WooCommerce writes aria-label="Breadcrumb" as fixed English; make it translatable.

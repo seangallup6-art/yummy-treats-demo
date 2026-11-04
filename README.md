@@ -107,6 +107,9 @@ the Thai version.
 - `inc/orders.php` — the order-confirmation page per payment method (transfer waiting / slip checking /
   PromptPay / cash on delivery / paid / shipped / failed), the order sticker, the four steps, pre-order note, a
   guide matched to what was bought.
+- `inc/account.php` — My account: "signed in as" card, menu without Downloads, a dashboard that leads with the
+  latest order (then address, details and order again), plain-words order states as pills, and a "no account
+  needed" card beside the login form.
 - `inc/back-in-stock.php` — "Get one email when it is back" on sold-out products, with PDPA consent; the list is
   emailed once on restock and then deleted.
 - `inc/stockists.php` — `yt_stockist` post type + province/district/type taxonomies + `[yt_stockists]`.
@@ -119,6 +122,8 @@ the Thai version.
   teaser, stockists teaser, LINE band, marquee, language switch, product reassurance, cart free bar,
   checkout top (back link, title, steps), continue-shopping link, confirmation steps, guide for what was
   bought, products under a guide.
+- `assets/img/doodles/` — small original line drawings: one per menu item (they peek over the button on hover)
+  and one per guide topic (drawn on the guide notes).
 
 Product descriptions are written by the seed as plain groups (`yt-bag__lead`, `yt-bag__card is-ingredients`,
 `is-storage`, `is-feeding` with a table), so the client edits text in the editor and the layout stays.

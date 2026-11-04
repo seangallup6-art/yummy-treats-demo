@@ -11,6 +11,10 @@ msgstr ""
 msgid "%1$s is a pre-order and travels separately (ships %2$s), at no extra delivery cost. We message you when it leaves."
 msgstr "%1$s เป็นสินค้าสั่งจองและจะส่งแยก (ส่ง %2$s) โดยไม่มีค่าส่งเพิ่ม เราจะแจ้งเมื่อสินค้าออกจากร้าน"
 
+msgid "%d item"
+msgid_plural "%d items"
+msgstr[0] "%d ชิ้น"
+
 msgid "%s / kg"
 msgstr "%s / กก."
 
@@ -52,6 +56,9 @@ msgstr "หยิบแล้ว %d ชิ้น"
 
 msgid "Added to cart"
 msgstr "หยิบใส่ตะกร้าแล้ว"
+
+msgid "Address"
+msgstr "ที่อยู่"
 
 msgid "Adult"
 msgstr "โตเต็มวัย"
@@ -137,6 +144,9 @@ msgstr "เซ็ตสุดคุ้ม"
 msgid "Buying in a shop instead"
 msgstr "ซื้อที่ร้านแทน"
 
+msgid "Cancelled"
+msgstr "ยกเลิกแล้ว"
+
 msgid "Card and PromptPay payments are handled by Opn Payments (test mode on this demo)."
 msgstr "การชำระด้วยบัตรและพร้อมเพย์ดำเนินการโดย Opn Payments (เดโมนี้ใช้โหมดทดสอบ)"
 
@@ -163,6 +173,15 @@ msgstr "แมวเป็นสัตว์ติดนิสัย ถ้า�
 
 msgid "Cats hate surprises. A 7 to 10 day plan for mixing old and new, and what to do if they will not eat it."
 msgstr "แมวไม่ชอบเซอร์ไพรส์ แผน 7 ถึง 10 วันสำหรับผสมอาหารเก่ากับใหม่ และควรทำอย่างไรถ้าน้องไม่ยอมกิน"
+
+msgid "Change"
+msgstr "เปลี่ยน"
+
+msgid "Change it any time."
+msgstr "เปลี่ยนได้ทุกเมื่อ"
+
+msgid "Check out as a guest. After your first order, one password on the confirmation page turns it into an account: order status, slips and your address in one place."
+msgstr "สั่งซื้อแบบไม่ต้องสมัครได้เลย หลังสั่งซื้อครั้งแรก ตั้งรหัสผ่านในหน้ายืนยันคำสั่งซื้อก็ได้บัญชีทันที ดูสถานะคำสั่งซื้อ สลิป และที่อยู่ได้ในที่เดียว"
 
 msgid "Check the kcal per piece on the pack and count out the day’s treats in the morning."
 msgstr "ดูค่า kcal ต่อชิ้นบนซอง แล้วนับขนมของทั้งวันไว้ตั้งแต่เช้า"
@@ -254,6 +273,9 @@ msgstr "วันที่"
 msgid "Delivered"
 msgstr "ได้รับของแล้ว"
 
+msgid "Delivers to"
+msgstr "จัดส่งที่"
+
 msgid "Delivery"
 msgstr "การจัดส่ง"
 
@@ -292,6 +314,9 @@ msgstr "ปลาโอแห้งแบบแผ่น ของโปรด�
 
 msgid "Duck"
 msgstr "เป็ด"
+
+msgid "Edit"
+msgstr "แก้ไข"
 
 msgid "Edit stockist"
 msgstr "แก้ไขร้านตัวแทน"
@@ -409,6 +434,9 @@ msgstr "ขอเป้าหมายแคลอรีต่อวันจา
 
 msgid "Go back to the last mix they ate happily and stay there longer."
 msgstr "กลับไปใช้สัดส่วนล่าสุดที่น้องกินได้ดี แล้วอยู่ที่ขั้นนั้นให้นานขึ้น"
+
+msgid "Go shopping"
+msgstr "ไปช้อปเลย"
 
 msgid "Go to the shop"
 msgstr "ไปที่ร้านค้า"
@@ -548,6 +576,9 @@ msgstr "ใหม่"
 msgid "New food"
 msgstr "อาหารใหม่"
 
+msgid "New here?"
+msgstr "มาครั้งแรก?"
+
 msgid "Next"
 msgstr "ถัดไป"
 
@@ -557,8 +588,17 @@ msgstr "คู่มือถัดไป →"
 msgid "Next picture"
 msgstr "รูปถัดไป"
 
+msgid "No account needed to order"
+msgstr "สั่งซื้อได้โดยไม่ต้องมีบัญชี"
+
+msgid "No address saved yet."
+msgstr "ยังไม่ได้บันทึกที่อยู่"
+
 msgid "No guides yet."
 msgstr "ยังไม่มีคู่มือ"
+
+msgid "No orders yet. When you order while signed in, it shows up here with its slip and delivery status."
+msgstr "ยังไม่มีคำสั่งซื้อ เมื่อสั่งซื้อขณะเข้าสู่ระบบ คำสั่งซื้อจะแสดงที่นี่ พร้อมสลิปและสถานะการจัดส่ง"
 
 msgid "No treats match that."
 msgstr "ไม่พบขนมที่ตรงกัน"
@@ -626,6 +666,9 @@ msgstr "หรือส่งทาง LINE %1$s พร้อมเลขคำ�
 msgid "Order #%1$s · %2$s"
 msgstr "คำสั่งซื้อ #%1$s · %2$s"
 
+msgid "Order again"
+msgstr "สั่งอีกครั้ง"
+
 msgid "Order before 14:00 and we hand it to the courier the same day (Mon–Sat)."
 msgstr "สั่งก่อน 14:00 น. ส่งให้ขนส่งวันเดียวกัน (จันทร์–เสาร์)"
 
@@ -656,11 +699,20 @@ msgstr "สินค้าหมด"
 msgid "Packed and handed to the courier"
 msgstr "แพ็กและส่งให้ขนส่งแล้ว"
 
+msgid "Packing, pay on delivery"
+msgstr "กำลังแพ็ก ชำระเงินปลายทาง"
+
+msgid "Paid, packing"
+msgstr "ชำระแล้ว กำลังแพ็ก"
+
 msgid "Paid, we are packing"
 msgstr "ชำระแล้ว กำลังแพ็กของ"
 
 msgid "Pak Kret"
 msgstr "ปากเกร็ด"
+
+msgid "Password"
+msgstr "รหัสผ่าน"
 
 msgid "Pause"
 msgstr "หยุด"
@@ -685,6 +737,9 @@ msgstr "ชำระเงินกับพนักงานส่ง"
 
 msgid "Pay the courier in cash when your order arrives. Bangkok, Nonthaburi and Samut Prakan only."
 msgstr "ชำระเงินสดกับพนักงานส่งเมื่อได้รับสินค้า เฉพาะกรุงเทพฯ นนทบุรี และสมุทรปราการ"
+
+msgid "Payment failed"
+msgstr "ชำระเงินไม่สำเร็จ"
 
 msgid "Payment of %s received. Tracking comes by email once the courier scans your box."
 msgstr "ได้รับเงิน %s แล้ว เลขติดตามพัสดุจะส่งทางอีเมลเมื่อขนส่งสแกนกล่องของคุณ"
@@ -794,6 +849,12 @@ msgstr "อกไก่ล้วนฟรีซดราย บี้โรย�
 msgid "Purée"
 msgstr "บดละเอียด"
 
+msgid "Put these in the cart"
+msgstr "ใส่รายการนี้ลงตะกร้า"
+
+msgid "Questions? LINE %s"
+msgstr "มีคำถาม? LINE %s"
+
 msgid "Questions? We answer on LINE."
 msgstr "มีคำถาม? ทักเราทาง LINE ได้เลย"
 
@@ -878,6 +939,12 @@ msgstr "ดูสินค้าทั้งหมด 24 รายการ →"
 msgid "See the bundles"
 msgstr "ดูเซ็ตสุดคุ้ม"
 
+msgid "See the shop"
+msgstr "ดูร้านค้า"
+
+msgid "Send the slip"
+msgstr "ส่งสลิป"
+
 msgid "Ships %s"
 msgstr "ส่ง %s"
 
@@ -911,6 +978,9 @@ msgstr "ไก่ฉีกในน้ำซุปฟักทอง ควา�
 msgid "Shrimp"
 msgstr "กุ้ง"
 
+msgid "Signed in as"
+msgstr "เข้าสู่ระบบในชื่อ"
+
 msgid "Signs it is working"
 msgstr "สัญญาณว่าได้ผล"
 
@@ -925,6 +995,9 @@ msgstr "หกซองเล็กจากขนมแมวของเรา
 
 msgid "Size"
 msgstr "ขนาด"
+
+msgid "Slip received, checking"
+msgstr "ได้รับสลิปแล้ว กำลังตรวจสอบ"
 
 msgid "Slip received, we are checking it"
 msgstr "ได้รับสลิปแล้ว กำลังตรวจสอบ"
@@ -1106,8 +1179,17 @@ msgstr "กลุ่มผู้เชี่ยวชาญด้านโภช
 msgid "Vets judge this with a body condition score, by looking and feeling rather than by weight alone. A rough version at home:"
 msgstr "สัตวแพทย์ประเมินด้วยคะแนนรูปร่าง (body condition score) โดยการดูและคลำ ไม่ได้ดูแค่น้ำหนัก ลองแบบคร่าวๆ ที่บ้าน:"
 
+msgid "View order"
+msgstr "ดูคำสั่งซื้อ"
+
 msgid "Visa, Mastercard and JCB. Processed securely by Opn Payments."
 msgstr "Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments"
+
+msgid "Waiting for payment"
+msgstr "รอการชำระเงิน"
+
+msgid "Waiting for your slip"
+msgstr "รอสลิปของคุณ"
 
 msgid "Warm wet food for a few seconds so it smells stronger. Stir it and check it is not hot."
 msgstr "อุ่นอาหารเปียกสักไม่กี่วินาทีให้กลิ่นหอมขึ้น คนให้ทั่วและเช็กว่าไม่ร้อนเกินไป"
@@ -1180,6 +1262,15 @@ msgstr "ข้อมูลของคุณ"
 
 msgid "Your data (PDPA)"
 msgstr "ข้อมูลของคุณ (PDPA)"
+
+msgid "Your details"
+msgstr "ข้อมูลของคุณ"
+
+msgid "Your last order will be here, ready to repeat in one tap."
+msgstr "คำสั่งซื้อล่าสุดจะอยู่ตรงนี้ กดครั้งเดียวก็สั่งซ้ำได้"
+
+msgid "Your latest order"
+msgstr "คำสั่งซื้อล่าสุด"
 
 msgid "Your order has left us. Bangkok deliveries usually arrive the next day."
 msgstr "คำสั่งซื้อออกจากร้านแล้ว ในกรุงเทพฯ มักได้รับวันถัดไป"

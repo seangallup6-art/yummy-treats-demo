@@ -1,9 +1,10 @@
 // Accessibility check with axe-core (WCAG 2.2 A/AA rules) on the main pages, desktop and phone, English and Thai.
-// Usage: node tools/a11y.js [baseUrl]   (needs: npm i --no-save axe-core)
+// Usage: node tools/a11y.js [baseUrl] [paths…]   (needs: npm i --no-save axe-core). Paths, when given, replace the default list.
 const { chromium, devices } = require('playwright');
 const axeSource = require('fs').readFileSync(require.resolve('axe-core/axe.min.js'), 'utf8');
 const base = process.argv[2] || 'http://127.0.0.1:9400';
-const pages = ['/', '/shop/', '/product/chicken-jerky-strips/', '/product/beef-liver-crunch/', '/cart/', '/checkout/', '/how-much-should-a-condo-dog-eat/', '/guides/', '/stockists/', '/help/', '/th/', '/th/shop/', '/nothing-here/'];
+const given = process.argv.slice(3);
+const pages = given.length ? given : ['/', '/shop/', '/product/chicken-jerky-strips/', '/product/beef-liver-crunch/', '/cart/', '/checkout/', '/how-much-should-a-condo-dog-eat/', '/guides/', '/stockists/', '/help/', '/my-account/', '/my-account/orders/', '/th/', '/th/shop/', '/th/my-account/', '/nothing-here/'];
 
 (async () => {
   const browser = await chromium.launch();

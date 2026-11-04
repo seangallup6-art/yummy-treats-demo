@@ -22,8 +22,8 @@
 }
 html { -webkit-text-size-adjust: 100%; }
 /* WordPress defines its admin-bar offset only on its own sticky blocks; the theme's sticky pieces get it the same way (none on phones, where the admin bar scrolls away). */
-.yt-shop__side, .yt-map, .wc-block-cart__sidebar { --wp-admin--admin-bar--position-offset: var(--wp-admin--admin-bar--height, 0px); }
-@media screen and (max-width: 600px) { .yt-shop__side, .yt-map, .wc-block-cart__sidebar { --wp-admin--admin-bar--position-offset: 0px; } }
+.yt-shop__side, .yt-map, .wc-block-cart__sidebar, .wc-block-checkout__sidebar, .yt-conf-side { --wp-admin--admin-bar--position-offset: var(--wp-admin--admin-bar--height, 0px); }
+@media screen and (max-width: 600px) { .yt-shop__side, .yt-map, .wc-block-cart__sidebar, .wc-block-checkout__sidebar, .yt-conf-side { --wp-admin--admin-bar--position-offset: 0px; } }
 body { overflow-x: clip; }
 img, svg { max-width: 100%; height: auto; }
 :focus-visible { outline: 3px solid var(--yt-ink); outline-offset: 3px; box-shadow: 0 0 0 3px var(--wp--preset--color--surface); border-radius: 4px; }
@@ -56,8 +56,12 @@ html:not(.js) .yt-marquee__track { animation: none; }
 .yt-cart-button { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent); color: var(--yt-ink); font-weight: 700; box-shadow: var(--yt-sh-sm); text-decoration: none; }
 .yt-cart-button .wc-block-mini-cart__button { background: transparent; color: inherit; padding: 0; min-height: 0; }
 .yt-cart-button .wc-block-mini-cart__badge, .yt-cart-button .wc-block-mini-cart__quantity-badge { background: var(--yt-ink); color: var(--wp--preset--color--base); border: 0; border-radius: 999px; min-width: 24px; height: 24px; font-size: 13px; font-weight: 700; display: inline-flex; align-items: center; justify-content: center; position: static; margin-left: 4px; }
-.yt-lang-switch a { font-weight: 700; text-decoration: none; }
-.yt-lang-switch .is-current { color: var(--wp--preset--color--muted); }
+/* Language switch: a two-part pill, the language in use filled black (the other one is the link to press). */
+.yt-lang-switch p { display: inline-flex; align-items: center; gap: 2px; margin: 0; padding: 3px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); }
+.yt-lang-switch a { font-weight: 700; text-decoration: none; padding: 0 12px; border-radius: 999px; color: var(--yt-ink); }
+.yt-lang-switch a:not(.is-current):hover { background: var(--wp--preset--color--tint-raspberry); }
+.yt-lang-switch .is-current { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-lang-switch__sep { display: none; }
 
 /* 3. Buttons ---------------------------------------------------------------- */
 .wp-block-button__link, .wc-block-components-button, .wc-block-components-button:not(.is-link), .wp-element-button, button.wc-block-components-button, .wc-block-mini-cart__footer-actions .wc-block-components-button,
@@ -473,10 +477,6 @@ html:not(.js) .yt-marquee__track { animation: none; }
 .yt-notify__alt { margin: 0; font-size: 13px; font-weight: 500; color: var(--wp--preset--color--muted); }
 .yt-buybox .stock.out-of-stock { font-weight: 700; color: var(--wp--preset--color--muted); }
 
-.woocommerce-MyAccount-navigation ul { list-style: none; margin: 0; padding: 20px; display: grid; gap: 6px; background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); }
-.woocommerce-MyAccount-navigation a { display: block; padding: 12px 14px; border-radius: 999px; font-weight: 700; text-decoration: none; }
-.woocommerce-MyAccount-navigation .is-active a { background: var(--yt-ink); color: var(--wp--preset--color--base); }
-.woocommerce-MyAccount-content { background: var(--wp--preset--color--surface); border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); padding: 28px; }
 .woocommerce-orders-table .woocommerce-orders-table__cell-order-status { font-weight: 700; }
 
 /* 8. Forms -------------------------------------------------------------------- */
@@ -590,7 +590,7 @@ html.js .yt-reveal-stagger.is-in > :nth-child(n+5) { transition-delay: 240ms; }
 .wp-block-query-pagination a, .wp-block-query-pagination .page-numbers { display: inline-flex; align-items: center; justify-content: center; min-width: 40px; min-height: 40px; border-radius: 999px; font-weight: 700; }
 .wp-block-query-pagination .page-numbers.current { background: var(--yt-ink); color: var(--wp--preset--color--base); }
 .yt-cards .wp-block-post-title a, .yt-cards .wc-block-components-product-title a { display: block; padding-block: 4px; }
-main p > a:only-child:not(.yt-backlink), .wp-block-post-excerpt__more-link, .wp-block-post-navigation-link a { display: inline-block; padding-block: 2px; }
+main p > a:only-child:not(.yt-backlink, .yt-btn), .wp-block-post-excerpt__more-link, .wp-block-post-navigation-link a { display: inline-block; padding-block: 2px; }
 
 /* Sold out: the email form replaces the (disabled) add-to-cart controls, so there is one clear action. */
 .wp-block-add-to-cart-form:has(+ .yt-notify) { display: none; }
@@ -628,8 +628,10 @@ main p > a:only-child:not(.yt-backlink), .wp-block-post-excerpt__more-link, .wp-
 	.yt-header .wp-block-group:has(> .yt-lang-switch) { gap: 6px; flex: none; }
 	.yt-cart-button { height: 40px; padding: 0 12px; }
 	.yt-lang-switch p { font-size: 13px; }
-	/* Phone: show only the other language. */
+	/* Phone: no room for both, so only the other language shows, as an outlined pill button. */
 	.yt-lang-switch .is-current, .yt-lang-switch__sep { display: none !important; }
+	.yt-lang-switch p { padding: 0; }
+	.yt-lang-switch a { min-width: 0; min-height: 34px; padding: 0 10px; }
 	/* Product page: size buttons on their own rows, buy button takes the rest of the line. */
 	.yt-buybox table.variations, .yt-buybox table.variations tbody, .yt-buybox table.variations tr, .yt-buybox table.variations th, .yt-buybox table.variations td { display: block; width: 100%; padding: 0; }
 	.yt-buybox table.variations th { margin-bottom: 8px; }
@@ -681,13 +683,12 @@ main > .yt-eyebrow:not(.yt-eyebrow--pill)::before { content: "✦"; color: var(-
 
 /* Guide cards: colour by category, a big star in the corner, reading cue. */
 .yt-guides .wp-block-post { position: relative; overflow: hidden; display: flex; flex-direction: column; gap: 10px; min-height: 260px; padding: 24px 24px 26px; }
-.yt-guides .wp-block-post::after { content: "✦"; position: absolute; right: -14px; bottom: -34px; font-size: 150px; line-height: 1; color: var(--yt-ink); opacity: 0.08; pointer-events: none; }
 .yt-guides .wp-block-post.category-dogs { background: var(--wp--preset--color--tint-raspberry); }
 .yt-guides .wp-block-post.category-cats { background: var(--wp--preset--color--tint-blue); }
 .yt-guides .wp-block-post.category-training { background: var(--wp--preset--color--tint-green); }
 .yt-guides .wp-block-post .wp-block-post-excerpt { margin-top: auto; }
 .yt-guides .wp-block-post .wp-block-post-excerpt__more-link { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; margin-top: 10px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--yt-ink); color: var(--wp--preset--color--base); font-weight: 700; text-decoration: none; box-shadow: var(--yt-sh-sm); }
-.yt-guides .wp-block-post:hover { transform: translate(-2px, -2px); box-shadow: var(--yt-sh-lg); transition: transform var(--yt-base) ease, box-shadow var(--yt-base) ease; }
+
 
 /* Single guide: tinted header band in the category colour, callout lead, highlighter headings, star bullets. */
 .yt-article__head { padding: 28px 32px 24px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--surface); box-shadow: var(--yt-sh-md); }
@@ -944,8 +945,10 @@ main > .yt-backlink-row { max-width: var(--wp--style--global--wide-size); }
 /* What you ordered: one blue card with a sticker heading; the blocks' own headings become small labels. */
 .yt-confirmation .yt-ticket { position: relative; padding: 40px 28px 28px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--tint-blue); box-shadow: var(--yt-sh-lg); }
 .yt-confirmation .yt-ticket > * + * { margin-top: 20px; }
+.yt-confirmation .yt-ticket > .yt-ticket__title + * { margin-top: 0; }
+.yt-confirmation .yt-ticket .wc-block-order-confirmation-address-wrapper .wp-block-column > * { margin-top: 0; }
 .yt-confirmation .yt-ticket__title { position: absolute; top: -22px; left: 20px; margin: 0; padding: 5px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent-2); font-size: 22px; line-height: 1; }
-.yt-confirmation .yt-ticket :is(.wp-block-woocommerce-order-confirmation-totals-wrapper, .wp-block-woocommerce-order-confirmation-billing-wrapper, .wp-block-woocommerce-order-confirmation-shipping-wrapper, .wp-block-woocommerce-order-confirmation-additional-fields-wrapper) { margin: 0; padding: 16px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); box-shadow: none; }
+.yt-confirmation .yt-ticket :is(.wp-block-woocommerce-order-confirmation-totals-wrapper, .wp-block-woocommerce-order-confirmation-billing-wrapper, .wp-block-woocommerce-order-confirmation-shipping-wrapper, .wp-block-woocommerce-order-confirmation-additional-fields-wrapper) { margin-inline: 0; margin-bottom: 0; padding: 16px 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); box-shadow: none; }
 .yt-confirmation .yt-ticket :is(.wp-block-woocommerce-order-confirmation-billing-wrapper, .wp-block-woocommerce-order-confirmation-shipping-wrapper, .wp-block-woocommerce-order-confirmation-additional-fields-wrapper) .wp-block-heading { margin: 0 0 6px; font-family: var(--wp--preset--font-family--body); font-size: 13px !important; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
 .yt-confirmation .yt-ticket :is(.wc-block-order-confirmation-totals__table, .wp-block-woocommerce-order-confirmation-shipping-address, .wp-block-woocommerce-order-confirmation-billing-address, .wp-block-woocommerce-order-confirmation-additional-fields, .wc-block-order-confirmation-additional-fields-list) { margin: 0; padding: 0; border: 0; background: none; box-shadow: none; }
 .yt-confirmation .yt-ticket .wc-block-order-confirmation-address-wrapper { gap: 16px; margin-top: 16px; }
@@ -964,4 +967,191 @@ main > .yt-backlink-row { max-width: var(--wp--style--global--wide-size); }
 @media (max-width: 600px) {
 	.yt-confirmation .yt-steps { grid-template-columns: minmax(0, 1fr); }
 	.yt-confirmation .yt-paybox:not(:empty), .yt-confirmation .yt-ticket { padding: 36px 18px 20px; }
+}
+
+/* 21. Second look, evening of 4 Nov ------------------------------------------------------------------------------ */
+/* Cart drawer: each item its own white card, so lines are easy to tell apart. */
+.wc-block-mini-cart__drawer .wc-block-mini-cart-items tbody { display: flex; flex-direction: column; gap: 12px; }
+.wc-block-mini-cart__drawer table.wc-block-mini-cart-items tr.wc-block-cart-items__row { box-sizing: border-box; width: 100%; grid-template-columns: 72px minmax(0, 1fr) auto; column-gap: 14px; padding: 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); }
+/* Narrow phones (under 381 px): a slightly smaller name keeps the language pill, cart and menu on screen. */
+@media (max-width: 380px) {
+	.yt-header .wp-block-site-title { font-size: 20px !important; }
+	.yt-lang-switch a { padding: 0 8px; }
+}
+
+/* 22. Menu doodles (4 Nov, board M1 option A) ------------------------------------------------------------------ */
+/* Each menu button has a small drawing (assets/img/doodles) waiting just inside its top edge; on hover or keyboard
+   focus it pops up over the edge, tilted left or right in turn. The header gets a little more room above the
+   buttons for it. In the phone menu the drawing sits beside the word instead. With "reduce motion" on, it appears
+   without moving. */
+@media (min-width: 600px) { .yt-header.wp-block-group { padding-top: 26px !important; } }
+.yt-header .yt-nav--pills .wp-block-navigation-item__content { position: relative; }
+.yt-header .yt-nav--pills .wp-block-navigation-item__content::before { content: ""; position: absolute; left: 50%; top: -26px; width: 30px; height: 30px; background: var(--yt-doodle, none) center / contain no-repeat; opacity: 0; transform: translate(-50%, 16px) scale(0.5); transform-origin: 50% 100%; transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.15s ease; pointer-events: none; }
+.yt-header .yt-nav--pills .wp-block-navigation-item__content:is(:hover, :focus-visible)::before { opacity: 1; transform: translate(-50%, 0) rotate(-8deg); }
+.yt-header .yt-nav--pills .wp-block-navigation-item:nth-child(even) > .wp-block-navigation-item__content:is(:hover, :focus-visible)::before { transform: translate(-50%, 0) rotate(8deg); }
+.yt-nav--pills .wp-block-navigation-item__content[href$="/shop/"] { --yt-doodle: url(../img/doodles/shop.svg); }
+.yt-nav--pills .wp-block-navigation-item__content[href*="/dogs/"] { --yt-doodle: url(../img/doodles/dog.svg); }
+.yt-nav--pills .wp-block-navigation-item__content[href*="/cats/"] { --yt-doodle: url(../img/doodles/cat.svg); }
+.yt-nav--pills .wp-block-navigation-item__content[href$="/guides/"] { --yt-doodle: url(../img/doodles/book.svg); }
+.yt-nav--pills .wp-block-navigation-item__content[href$="/stockists/"] { --yt-doodle: url(../img/doodles/pin.svg); }
+.yt-nav--pills .wp-block-navigation-item__content[href$="/help/"] { --yt-doodle: url(../img/doodles/help.svg); }
+.yt-header .yt-nav--pills .is-menu-open .wp-block-navigation-item__content::before { position: static; flex: none; width: 34px; height: 34px; margin-right: 12px; opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) { .yt-header .yt-nav--pills .wp-block-navigation-item__content::before { transition: none; } }
+
+/* 23. Guides page as notes on a board (4 Nov, board M2 option B) ------------------------------------------------ */
+/* Each guide is a tinted note, taped to the page and tilted a little, with a drawing for its subject in the corner
+   (dog, cat, treat jar; a book for any other subject). Hover straightens and lifts the note and turns the drawing.
+   On arrival the notes land one after another. The whole note is the link. */
+.yt-guides .wp-block-post-template { gap: 40px 30px; padding-top: 18px; }
+.yt-guides .wp-block-post { --yt-tilt: -2deg; --yt-guide-pic: url(../img/doodles/book.svg); overflow: visible; min-height: 280px; padding: 34px 24px 24px; border-radius: 6px 6px 20px 20px; box-shadow: var(--yt-sh-md); transform: rotate(var(--yt-tilt)); transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease; animation: yt-note-land 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) backwards; }
+.yt-guides .wp-block-post:nth-child(3n+2) { --yt-tilt: 1.5deg; animation-delay: 0.14s; }
+.yt-guides .wp-block-post:nth-child(3n) { --yt-tilt: -1deg; animation-delay: 0.28s; }
+.yt-guides .wp-block-post.category-dogs { --yt-guide-pic: url(../img/doodles/guide-dog.svg); }
+.yt-guides .wp-block-post.category-cats { --yt-guide-pic: url(../img/doodles/guide-cat.svg); }
+.yt-guides .wp-block-post.category-training { --yt-guide-pic: url(../img/doodles/guide-treats.svg); }
+.yt-guides .wp-block-post::before { content: ""; position: absolute; left: 50%; top: -16px; width: 96px; height: 28px; box-sizing: border-box; border: 2px solid var(--yt-ink); border-radius: 4px; background: rgba(255, 255, 255, 0.75); transform: translateX(-50%) rotate(-3deg); transition: width 0.3s ease; pointer-events: none; }
+.yt-guides .wp-block-post::after { content: ""; position: absolute; right: 14px; top: 18px; width: 84px; height: 84px; background: var(--yt-guide-pic) center / contain no-repeat; transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); pointer-events: none; }
+.yt-guides .wp-block-post .wp-block-post-title { max-width: calc(100% - 84px); }
+.yt-guides .wp-block-post .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.yt-guides .wp-block-post :is(.yt-eyebrow--pill a, .wp-block-post-excerpt__more-link) { position: relative; z-index: 1; }
+.yt-guides .wp-block-post .wp-block-post-excerpt__more-link { transition: transform 0.25s ease; }
+.yt-guides .wp-block-post:is(:hover, :focus-within) { transform: rotate(0) translateY(-6px); box-shadow: var(--yt-sh-lg); }
+.yt-guides .wp-block-post:is(:hover, :focus-within)::before { width: 120px; }
+.yt-guides .wp-block-post:is(:hover, :focus-within)::after { transform: rotate(12deg) scale(1.1); }
+.yt-guides .wp-block-post:is(:hover, :focus-within) .wp-block-post-excerpt__more-link { transform: translateX(4px); }
+@keyframes yt-note-land { from { opacity: 0; transform: scale(1.2) rotate(calc(var(--yt-tilt) * -3)); } to { opacity: 1; transform: rotate(var(--yt-tilt)); } }
+@media (max-width: 781px) { .yt-guides .wp-block-post-template { gap: 34px; } }
+@media (prefers-reduced-motion: reduce) { .yt-guides .wp-block-post, .yt-guides .wp-block-post::before, .yt-guides .wp-block-post::after, .yt-guides .wp-block-post .wp-block-post-excerpt__more-link { animation: none; transition: none; } }
+
+/* 24. My account (4 Nov, board M3 option A) ------------------------------------------------------------------- */
+/* Small shared pieces: pill buttons and the order-state pill. */
+.yt-btn, .woocommerce-account .woocommerce-MyAccount-content .woocommerce-button, .woocommerce-account .woocommerce-Address .edit { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); font: inherit; font-size: 14px; font-weight: 700; line-height: 1.1; text-decoration: none; transition: transform var(--yt-fast) var(--yt-ease); }
+.yt-btn:hover, .woocommerce-account .woocommerce-MyAccount-content .woocommerce-button:hover, .woocommerce-account .woocommerce-Address .edit:hover { transform: translate(-2px, -2px); }
+.yt-btn.is-yellow, .woocommerce-account .woocommerce-MyAccount-content .woocommerce-button.yt-slip, .woocommerce-account .order-again .button { background: var(--wp--preset--color--base); box-shadow: var(--yt-sh-sm); }
+.woocommerce-account .order-again .button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 20px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; color: var(--yt-ink); font-weight: 700; }
+.yt-btn.is-dark { background: var(--yt-ink); color: var(--wp--preset--color--base); }
+.yt-state { display: inline-flex; align-items: center; min-height: 30px; padding: 0 12px; border: 2px solid var(--yt-ink); border-radius: 999px; color: var(--yt-ink); font-size: 13px; font-weight: 700; line-height: 1.1; white-space: nowrap; }
+
+/* Layout: the black "signed in as" card and the pill menu on the left, the page on the right; as wide as the shop. */
+.woocommerce-account main > .wp-block-post-title, .woocommerce-account .wp-block-post-content > .woocommerce { max-width: var(--wp--style--global--wide-size); }
+.woocommerce-account .wc-block-components-notice-banner.is-info, .woocommerce-account .woocommerce-info { border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--tint-blue); color: var(--yt-ink); }
+.woocommerce-account .wc-block-components-notice-banner__content { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; }
+.woocommerce-account .wc-block-components-notice-banner__content .button { order: 2; float: none; display: inline-flex; align-items: center; width: auto; min-height: 40px; margin: 0 0 0 auto; padding: 0 16px !important; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface) !important; color: var(--yt-ink); opacity: 1; font-size: 14px; font-weight: 700; text-decoration: none; white-space: nowrap; box-shadow: none; }
+.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation) { display: grid; grid-template-columns: 280px minmax(0, 1fr); grid-template-areas: "hi content" "nav content"; grid-template-rows: auto 1fr; gap: 12px 40px; align-items: start; }
+.woocommerce-account .woocommerce > .yt-acct-hi { grid-area: hi; }
+.woocommerce-account .woocommerce > .woocommerce-MyAccount-navigation { grid-area: nav; float: none; width: auto; margin: 0; }
+.woocommerce-account .woocommerce > .woocommerce-MyAccount-content { grid-area: content; float: none; width: auto; margin: 0; padding: 0; border: 0; background: none; }
+.yt-acct-hi { padding: 18px 20px 16px; border-radius: 20px; background: var(--yt-ink); color: var(--wp--preset--color--surface); }
+.yt-acct-hi p { margin: 0; }
+.yt-acct-hi__label { color: #BDBDBD; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.yt-acct-hi__name { color: var(--wp--preset--color--base); font-family: var(--wp--preset--font-family--display); font-size: 26px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.1; overflow-wrap: anywhere; }
+.yt-acct-hi__help { margin-top: 8px !important; font-size: 13px; }
+.yt-acct-hi a { color: var(--wp--preset--color--base); }
+.woocommerce-MyAccount-navigation ul { display: flex; flex-direction: column; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.woocommerce-MyAccount-navigation a { display: flex; align-items: center; justify-content: space-between; gap: 10px; min-height: 50px; padding: 0 18px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--surface); color: var(--yt-ink); font-weight: 700; text-decoration: none; transition: transform var(--yt-fast) var(--yt-ease); }
+.woocommerce-MyAccount-navigation a::after { content: "→"; }
+.woocommerce-MyAccount-navigation a:hover { transform: translate(-2px, -2px); }
+.woocommerce-MyAccount-navigation .is-active a { background: var(--wp--preset--color--accent); color: var(--yt-ink); box-shadow: var(--yt-sh-sm); }
+.woocommerce-MyAccount-navigation-link--customer-logout a { border-style: dashed; background: transparent; }
+.woocommerce-MyAccount-navigation-link--customer-logout a::after { content: none; }
+
+/* Dashboard: WooCommerce's two lines of greeting give way to the cards (name in the black card, Log out in the menu). */
+.woocommerce-MyAccount-content:has(.yt-acct-dash) > p { display: none; }
+.yt-acct-dash { display: flex; flex-direction: column; gap: 40px; margin-top: 20px; }
+.yt-acct-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 40px 22px; }
+.yt-acct-card { --yt-card-tint: var(--wp--preset--color--surface); --yt-card-sticker: var(--wp--preset--color--base); position: relative; padding: 34px 22px 22px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 20px; background: var(--yt-card-tint); box-shadow: var(--yt-sh-md); }
+.yt-acct-card.is-order { --yt-card-tint: var(--wp--preset--color--tint-raspberry); --yt-card-sticker: var(--wp--preset--color--accent); }
+.yt-acct-card.is-address { --yt-card-tint: var(--wp--preset--color--tint-blue); --yt-card-sticker: var(--wp--preset--color--accent-2); }
+.yt-acct-card.is-details { --yt-card-tint: var(--wp--preset--color--tint-green); --yt-card-sticker: var(--wp--preset--color--green); }
+.yt-acct-card.is-again { --yt-card-tint: var(--wp--preset--color--tint-mustard); --yt-card-sticker: var(--wp--preset--color--base); }
+.yt-acct-card p { margin: 0 0 12px; }
+.yt-acct-card__title { position: absolute; top: -20px; left: 16px; display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 4px 14px 4px 5px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--yt-card-sticker); font-size: 19px; line-height: 1; text-transform: lowercase; }
+.yt-acct-card__title span { display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; box-sizing: border-box; border: var(--yt-bw) solid var(--yt-ink); border-radius: 50%; background: var(--wp--preset--color--surface); font-size: 13px; }
+.yt-acct-label { margin: 0 0 2px !important; color: var(--wp--preset--color--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.yt-acct-email { overflow-wrap: anywhere; }
+.yt-acct-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 16px 0 0 !important; }
+.yt-acct-order { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; }
+.yt-acct-order p { margin: 0; }
+.yt-acct-order__head { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.yt-acct-order__no { font-family: var(--wp--preset--font-family--display); font-size: 30px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.yt-acct-order__meta { margin-top: 8px !important; }
+.yt-acct-order .yt-acct-actions { margin: 0 !important; }
+.yt-acct-items { margin: 0; padding: 0; list-style: none; }
+.yt-acct-items li { padding: 6px 0; border-bottom: 2px solid color-mix(in srgb, var(--yt-ink) 15%, transparent); font-weight: 700; }
+.yt-acct-items li span { color: var(--wp--preset--color--muted); font-weight: 500; }
+
+/* Orders: each order a white card in a list, the state as a pill; Send slip is yellow. */
+.woocommerce-account table.shop_table.woocommerce-orders-table { width: 100%; margin: 0 0 24px; border: 0; border-radius: 0; border-collapse: separate; border-spacing: 0 12px; }
+.woocommerce-account table.shop_table.woocommerce-orders-table thead th { padding: 0 18px; border: 0; background: none; color: var(--wp--preset--color--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-align: left; text-transform: uppercase; }
+.woocommerce-account table.shop_table.woocommerce-orders-table tbody :is(th, td) { padding: 16px 18px; border: 0; border-top: var(--yt-bw) solid var(--yt-ink); border-bottom: var(--yt-bw) solid var(--yt-ink); background: var(--wp--preset--color--surface); vertical-align: middle; text-align: left; }
+.woocommerce-account table.shop_table.woocommerce-orders-table tbody tr > :first-child { border-left: var(--yt-bw) solid var(--yt-ink); border-radius: 18px 0 0 18px; }
+.woocommerce-account table.shop_table.woocommerce-orders-table tbody tr > :last-child { border-right: var(--yt-bw) solid var(--yt-ink); border-radius: 0 18px 18px 0; text-align: right; }
+.woocommerce-account .woocommerce-orders-table__cell-order-number a { font-family: var(--wp--preset--font-family--display); font-size: 22px; font-weight: 800; text-decoration: none; }
+.woocommerce-account .woocommerce-orders-table__cell-order-actions .woocommerce-button { display: inline-flex !important; min-height: 40px; margin: 4px 0 4px 6px; }
+.woocommerce-account .woocommerce-pagination { display: flex; gap: 10px; margin-top: 16px; }
+@media (max-width: 768px) {
+	.woocommerce-account table.shop_table.woocommerce-orders-table tbody tr { display: block; margin: 0 0 14px; padding: 14px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 18px; background: var(--wp--preset--color--surface); }
+	.woocommerce-account table.shop_table.woocommerce-orders-table tbody :is(th, td), .woocommerce-account table.shop_table.woocommerce-orders-table tbody tr > :is(:first-child, :last-child) { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 6px 0; border: 0; border-radius: 0; background: none !important; text-align: right; }
+	.woocommerce-account table.shop_table.woocommerce-orders-table tbody :is(th, td)::before { color: var(--wp--preset--color--muted); font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+	.woocommerce-account .woocommerce-orders-table__cell-order-actions { flex-wrap: wrap; justify-content: flex-end !important; }
+	.woocommerce-account table.shop_table.woocommerce-orders-table tbody td.woocommerce-orders-table__cell-order-total { display: block; line-height: 26px; }
+	.woocommerce-account table.shop_table.woocommerce-orders-table tbody td.woocommerce-orders-table__cell-order-total::before { float: left; margin-right: 12px; line-height: 26px; }
+}
+
+/* One order: the status line as pills, the slip box green, the order and addresses as cards. */
+.woocommerce-account .woocommerce-MyAccount-content > p:has(> mark) { margin: 20px 0 30px; font-size: 18px; }
+.woocommerce-account .woocommerce-MyAccount-content mark { display: inline-block; padding: 0 10px; border: 2px solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--base); color: var(--yt-ink); font-weight: 700; }
+.woocommerce-account .woocommerce-MyAccount-content .yt-slip { margin: 0 0 40px; padding: 28px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--tint-green); box-shadow: var(--yt-sh-lg); }
+.woocommerce-account .woocommerce-MyAccount-content .yt-slip__file { background: var(--wp--preset--color--surface); }
+.woocommerce-account :is(.woocommerce-order-details, .woocommerce-customer-details) { position: relative; margin: 0 0 40px; padding: 38px 24px 24px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--tint-blue); box-shadow: var(--yt-sh-lg); }
+.woocommerce-account .woocommerce-customer-details { background: var(--wp--preset--color--tint-mustard); }
+.woocommerce-account :is(.woocommerce-order-details__title, .woocommerce-customer-details .woocommerce-column__title) { margin: 0 0 8px; font-size: 22px; }
+.woocommerce-account .woocommerce-order-details__title { position: absolute; top: -22px; left: 20px; padding: 5px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent-2); line-height: 1; }
+.woocommerce-account .woocommerce-order-details .woocommerce-table { width: 100%; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; border-collapse: separate; border-spacing: 0; overflow: hidden; background: var(--wp--preset--color--surface); }
+.woocommerce-account .woocommerce-order-details .woocommerce-table :is(th, td) { padding: 12px 16px; border: 0; border-bottom: 2px solid var(--wp--preset--color--line); text-align: left; }
+.woocommerce-account .woocommerce-order-details .woocommerce-table tfoot tr:last-child :is(th, td) { border-bottom: 0; font-family: var(--wp--preset--font-family--display); font-size: 20px; }
+.woocommerce-account .woocommerce-order-details .order-again { margin: 18px 0 0; }
+.woocommerce-account .woocommerce-customer-details address { padding: 14px 16px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 16px; background: var(--wp--preset--color--surface); font-style: normal; }
+.woocommerce-account .woocommerce-customer-details .woocommerce-columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.woocommerce-account .woocommerce-customer-details .woocommerce-columns::before, .woocommerce-account .woocommerce-customer-details .woocommerce-columns::after { display: none; }
+.woocommerce-account .woocommerce-customer-details .woocommerce-column { float: none; width: auto; margin: 0; padding: 0; }
+
+/* Addresses: two tinted cards with sticker titles; forms (address, account details, lost password) in a white card. */
+.woocommerce-account .woocommerce-Addresses { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 40px 22px; margin-top: 30px; }
+.woocommerce-account .woocommerce-Addresses::before, .woocommerce-account .woocommerce-Addresses::after { content: none; }
+.woocommerce-account .woocommerce .woocommerce-Addresses .woocommerce-Address { position: relative; float: none; width: auto; max-width: none; margin: 0; padding: 38px 22px 22px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 20px; background: var(--wp--preset--color--tint-blue); box-shadow: var(--yt-sh-md); }
+.woocommerce-account .woocommerce .woocommerce-Addresses .woocommerce-Address:first-child { background: var(--wp--preset--color--tint-raspberry); }
+.woocommerce-account .woocommerce .woocommerce-Addresses .woocommerce-Address { display: flex; flex-direction: column; }
+.woocommerce-account .woocommerce-Address-title { order: 2; display: block; margin: 14px 0 0; }
+.woocommerce-account .woocommerce-Address-title h2 { position: absolute; top: -20px; left: 16px; margin: 0; padding: 4px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--base); font-size: 19px; line-height: 1; }
+.woocommerce-account .woocommerce-Address address { font-style: normal; }
+.woocommerce-account .woocommerce .woocommerce-Address .edit { display: inline-flex !important; float: none; min-height: 40px; }
+.woocommerce-MyAccount-navigation a[aria-current] { text-decoration: none; }
+.woocommerce-account .woocommerce-Address address { margin: 0; }
+.woocommerce-account .woocommerce-MyAccount-content > :is(form, .woocommerce-EditAccountForm), .woocommerce-account .woocommerce > .woocommerce-ResetPassword { padding: 28px; border: var(--yt-bw) solid var(--yt-ink); border-radius: var(--wp--custom--radius--block); background: var(--wp--preset--color--surface); box-shadow: var(--yt-sh-lg); }
+.woocommerce-account .woocommerce-EditAccountForm fieldset { margin: 24px 0; padding: 18px 20px; border: var(--yt-bw) dashed var(--yt-ink); border-radius: 16px; }
+.woocommerce-account .woocommerce-EditAccountForm legend { padding: 0 8px; font-weight: 700; }
+/* WooCommerce's show-password eye is 22px; give it a 32px tap area (WCAG 2.5.8) on the login and account forms. */
+.woocommerce form .password-input .show-password-input { display: inline-flex; align-items: center; justify-content: center; min-width: 32px; min-height: 32px; right: 0.4em; }
+
+/* Logged out: log in on the left (white card, blue sticker), "no account needed" on the right (pink). */
+.woocommerce-account .woocommerce:has(> .woocommerce-form-login) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); grid-template-areas: "notices notices" "title new" "form new"; gap: 0 32px; align-items: start; margin-top: 20px; }
+.woocommerce-account .woocommerce:has(> .woocommerce-form-login) > .woocommerce-notices-wrapper { grid-area: notices; }
+.woocommerce-account .woocommerce:has(> .woocommerce-form-login) > h2 { grid-area: title; justify-self: start; position: relative; z-index: 1; margin: 0 0 -20px 16px; padding: 4px 14px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 999px; background: var(--wp--preset--color--accent-2); font-size: 19px; line-height: 1; }
+.woocommerce-account form.woocommerce-form-login.login { grid-area: form; margin: 0; padding: 38px 24px 24px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 20px; background: var(--wp--preset--color--surface); box-shadow: var(--yt-sh-md); }
+.yt-acct-new { grid-area: new; position: relative; padding: 38px 24px 24px; border: var(--yt-bw) solid var(--yt-ink); border-radius: 20px; background: var(--wp--preset--color--tint-raspberry); box-shadow: var(--yt-sh-md); }
+.yt-acct-new .yt-acct-card__title { padding-left: 14px; background: var(--wp--preset--color--accent); }
+.yt-acct-new p { margin: 0 0 12px; }
+.yt-acct-new__big { font-family: var(--wp--preset--font-family--display); font-size: 28px; font-weight: 800; letter-spacing: -0.03em; line-height: 1.05; text-transform: lowercase; }
+
+@media (max-width: 781px) {
+	.woocommerce-account .woocommerce:has(> .woocommerce-MyAccount-navigation) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "hi" "nav" "content"; gap: 12px; }
+	.woocommerce-MyAccount-navigation ul { flex-direction: row; flex-wrap: wrap; gap: 8px; }
+	.woocommerce-MyAccount-navigation a { min-height: 44px; padding: 0 14px; }
+	.woocommerce-MyAccount-navigation a::after { content: none; }
+	.woocommerce-account .woocommerce-MyAccount-content { margin-top: 18px; }
+	.woocommerce-account .woocommerce:has(> .woocommerce-form-login) { grid-template-columns: minmax(0, 1fr); grid-template-areas: "notices" "title" "form" "new"; }
+	.yt-acct-new { margin-top: 40px; }
+	.woocommerce-account .woocommerce-customer-details .woocommerce-columns { grid-template-columns: minmax(0, 1fr); }
+	.woocommerce-account :is(.woocommerce-order-details, .woocommerce-customer-details), .yt-acct-card, .woocommerce-account .woocommerce-MyAccount-content > :is(form, .woocommerce-EditAccountForm) { padding-left: 16px; padding-right: 16px; }
 }

@@ -8,6 +8,10 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: tools/make-mo.py\n"
 
+msgid "%1$s for %2$s item"
+msgid_plural "%1$s for %2$s items"
+msgstr[0] "%1$s สำหรับ %2$s ชิ้น"
+
 msgid "%d item"
 msgid_plural "%d items"
 msgstr[0] "%d ชิ้น"
@@ -23,8 +27,17 @@ msgid "(%d item)"
 msgid_plural "(%d items)"
 msgstr[0] "(%d ชิ้น)"
 
+msgid "Account details"
+msgstr "ข้อมูลบัญชี"
+
 msgid "Account number"
 msgstr "เลขที่บัญชี"
+
+msgid "Account pages"
+msgstr "หน้าบัญชี"
+
+msgid "Actions"
+msgstr "ดำเนินการ"
 
 msgid "Add a note to your order"
 msgstr "เพิ่มหมายเหตุถึงร้าน"
@@ -34,6 +47,19 @@ msgstr "ใส่คูปอง"
 
 msgid "Add to cart"
 msgstr "หยิบใส่ตะกร้า"
+
+msgid "Additional information"
+msgstr "ข้อมูลเพิ่มเติม"
+
+msgid "Address"
+msgid_plural "Addresses"
+msgstr[0] "ที่อยู่"
+
+msgid "Addresses"
+msgstr "ที่อยู่"
+
+msgid "Apartment, suite, unit, etc. (optional)"
+msgstr "อาคาร ห้อง ชั้น ฯลฯ (ไม่บังคับ)"
 
 msgid "Apply"
 msgstr "ใช้"
@@ -80,6 +106,15 @@ msgstr "ปิด"
 msgid "Close dialog"
 msgstr "ปิดหน้าต่าง"
 
+msgid "Confirm email address"
+msgstr "ยืนยันอีเมล"
+
+msgid "Confirm new password"
+msgstr "ยืนยันรหัสผ่านใหม่"
+
+msgid "Confirm your email address to check for past orders and link them to your account."
+msgstr "ยืนยันอีเมลเพื่อค้นหาคำสั่งซื้อเก่าและเชื่อมเข้ากับบัญชีของคุณ"
+
 msgid "Contact information"
 msgstr "ข้อมูลติดต่อ"
 
@@ -92,6 +127,15 @@ msgstr "ประเทศ/ภูมิภาค"
 msgid "Courier delivery"
 msgstr "จัดส่งโดยขนส่ง"
 
+msgid "Current password (leave blank to leave unchanged)"
+msgstr "รหัสผ่านปัจจุบัน (เว้นว่างไว้หากไม่เปลี่ยน)"
+
+msgid "Dashboard"
+msgstr "ภาพรวม"
+
+msgid "Date"
+msgstr "วันที่"
+
 msgid "Date:"
 msgstr "วันที่:"
 
@@ -100,6 +144,9 @@ msgstr "เรียงตามค่าเริ่มต้น"
 
 msgid "Details"
 msgstr "รายละเอียด"
+
+msgid "Display name"
+msgstr "ชื่อที่แสดง"
 
 msgid "Edit"
 msgstr "แก้ไข"
@@ -137,6 +184,12 @@ msgstr "ฟรี"
 msgid "Free delivery"
 msgstr "ส่งฟรี"
 
+msgid "Hide password"
+msgstr "ซ่อนรหัสผ่าน"
+
+msgid "House number and street name"
+msgstr "บ้านเลขที่และถนน"
+
 msgid "Image thumbnails"
 msgstr "ภาพย่อ"
 
@@ -149,8 +202,26 @@ msgstr "เพิ่มจำนวน %s"
 msgid "Last name"
 msgstr "นามสกุล"
 
+msgid "Log in"
+msgstr "เข้าสู่ระบบ"
+
+msgid "Log out"
+msgstr "ออกจากระบบ"
+
+msgid "Login"
+msgstr "เข้าสู่ระบบ"
+
+msgid "Lost your password?"
+msgstr "ลืมรหัสผ่าน?"
+
+msgid "New password (leave blank to leave unchanged)"
+msgstr "รหัสผ่านใหม่ (เว้นว่างไว้หากไม่เปลี่ยน)"
+
 msgid "Next image"
 msgstr "ภาพถัดไป"
+
+msgid "No"
+msgstr "ไม่"
 
 msgid "No results found"
 msgstr "ไม่พบผลลัพธ์"
@@ -161,20 +232,69 @@ msgstr "จำนวนสินค้าในตะกร้า: %d"
 msgid "On backorder"
 msgstr "สั่งจองล่วงหน้า"
 
+msgid "Order"
+msgstr "คำสั่งซื้อ"
+
+msgid "Order #%1$s was placed on %2$s and is currently %3$s."
+msgstr "คำสั่งซื้อ #%1$s สั่งเมื่อ %2$s สถานะตอนนี้คือ %3$s"
+
+msgid "Order #%s"
+msgstr "คำสั่งซื้อ #%s"
+
 msgid "Order #:"
 msgstr "หมายเลขคำสั่งซื้อ:"
+
+msgid "Order again"
+msgstr "สั่งอีกครั้ง"
 
 msgid "Order details"
 msgstr "รายละเอียดคำสั่งซื้อ"
 
+msgctxt "Order status"
+msgid "Cancelled"
+msgstr "ยกเลิกแล้ว"
+
+msgctxt "Order status"
+msgid "Completed"
+msgstr "เสร็จสมบูรณ์"
+
+msgctxt "Order status"
+msgid "Failed"
+msgstr "ไม่สำเร็จ"
+
+msgctxt "Order status"
+msgid "On hold"
+msgstr "พักไว้"
+
+msgctxt "Order status"
+msgid "Pending payment"
+msgstr "รอชำระเงิน"
+
+msgctxt "Order status"
+msgid "Processing"
+msgstr "กำลังดำเนินการ"
+
+msgctxt "Order status"
+msgid "Refunded"
+msgstr "คืนเงินแล้ว"
+
 msgid "Order summary"
 msgstr "สรุปคำสั่งซื้อ"
+
+msgid "Orders"
+msgstr "คำสั่งซื้อ"
 
 msgid "Our bank details"
 msgstr "บัญชีธนาคารของเรา"
 
 msgid "Out of stock"
 msgstr "สินค้าหมด"
+
+msgid "Password"
+msgstr "รหัสผ่าน"
+
+msgid "Password change"
+msgstr "เปลี่ยนรหัสผ่าน"
 
 msgid "Payment method:"
 msgstr "วิธีชำระเงิน:"
@@ -184,6 +304,9 @@ msgstr "วิธีชำระเงิน"
 
 msgid "Payment:"
 msgstr "การชำระเงิน:"
+
+msgid "Phone"
+msgstr "โทรศัพท์"
 
 msgid "Phone (optional)"
 msgstr "โทรศัพท์ (ไม่บังคับ)"
@@ -245,6 +368,9 @@ msgstr "จำนวน %s ในตะกร้า"
 msgid "Reduce quantity of %s"
 msgstr "ลดจำนวน %s"
 
+msgid "Remember me"
+msgstr "จดจำฉันไว้"
+
 msgid "Remove %s from cart"
 msgstr "นำ %s ออกจากตะกร้า"
 
@@ -260,6 +386,12 @@ msgstr "ลบสินค้า"
 msgid "Sale"
 msgstr "ลดราคา"
 
+msgid "Save address"
+msgstr "บันทึกที่อยู่"
+
+msgid "Save changes"
+msgstr "บันทึกการเปลี่ยนแปลง"
+
 msgid "Search"
 msgstr "ค้นหา"
 
@@ -274,6 +406,9 @@ msgstr "ค่าจัดส่ง:"
 
 msgid "Shop order"
 msgstr "เรียงสินค้า"
+
+msgid "Show password"
+msgstr "แสดงรหัสผ่าน"
 
 msgid "Showing all %1$d result"
 msgid_plural "Showing all %1$d results"
@@ -297,6 +432,9 @@ msgstr "ราคา: สูงไปต่ำ"
 msgid "Sort by price: low to high"
 msgstr "ราคา: ต่ำไปสูง"
 
+msgid "Status"
+msgstr "สถานะ"
+
 msgid "Subtotal"
 msgstr "ยอดรวมสินค้า"
 
@@ -305,6 +443,15 @@ msgstr "ยอดรวมสินค้า:"
 
 msgid "Terms and Conditions"
 msgstr "ข้อกำหนดและเงื่อนไข"
+
+msgid "The cart has been filled with the items from your previous order."
+msgstr "ใส่สินค้าจากคำสั่งซื้อก่อนหน้าลงตะกร้าแล้ว"
+
+msgid "The following addresses will be used on the checkout page by default."
+msgstr "ที่อยู่ด้านล่างจะใช้ในหน้าชำระเงินโดยอัตโนมัติ"
+
+msgid "This will be how your name will be displayed in the account section and in reviews"
+msgstr "ชื่อนี้จะแสดงในหน้าบัญชีและในรีวิว"
 
 msgid "Total"
 msgstr "ยอดรวม"
@@ -315,15 +462,36 @@ msgstr "ยอดรวม:"
 msgid "Use same address for billing"
 msgstr "ใช้ที่อยู่นี้ออกใบเสร็จด้วย"
 
+msgid "Username or email address"
+msgstr "ชื่อผู้ใช้หรืออีเมล"
+
 msgid "Value"
 msgstr "รายละเอียด"
+
+msgid "View"
+msgstr "ดู"
+
+msgid "View order %s"
+msgstr "ดูคำสั่งซื้อ %s"
+
+msgid "View order number %s"
+msgstr "ดูคำสั่งซื้อหมายเลข %s"
 
 msgid "Weight"
 msgstr "น้ำหนัก"
 
+msgid "Yes"
+msgstr "ใช่"
+
 msgctxt "breadcrumb"
 msgid "Home"
 msgstr "หน้าแรก"
+
+msgid "optional"
+msgstr "ไม่บังคับ"
+
+msgid "via %s"
+msgstr "ผ่าน %s"
 
 msgctxt "with first and last result"
 msgid "Showing %1$d&ndash;%2$d of %3$d result"
