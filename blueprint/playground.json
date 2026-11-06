@@ -17,7 +17,9 @@
     {
       "step": "defineWpConfigConsts",
       "consts": {
-        "WP_DEBUG": false
+        "WP_DEBUG": false,
+        "YT_OPN_TEST_PUBLIC_KEY": "pkey_test_69l7ujrdgwwl6jupfzj",
+        "YT_OPN_TEST_SECRET_KEY": "skey_test_69l7ujruyfrf7913s0t"
       }
     },
     {

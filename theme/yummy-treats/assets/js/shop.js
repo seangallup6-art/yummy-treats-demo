@@ -6,6 +6,7 @@
  *    is chosen, and Add to cart without leaving the page.
  * 2b. After Add to cart (board P6-C): one toast, bottom left, that counts repeated adds instead of stacking.
  * 3. Free-shipping progress bar on the cart page (reads the cart via the Store API).
+ * 4 to 9: stockist chips, phone sticky bar, checkout keypad, drawer inert, Copy button, product card button labels.
  */
 (function () {
 	var i18n = window.ytShop || {};
@@ -392,4 +393,41 @@
 	});
 	number.parentNode.appendChild(btn);
 	number.parentNode.appendChild(live);
+})();
+
+/* 9. Product card buttons: once an item is in the cart WooCommerce changes the button text to "1 in cart" but keeps
+ * aria-label="Add to cart: …", so the spoken name no longer starts with the words on screen (axe:
+ * label-content-name-mismatch, WCAG 2.5.3). Keep the label as "<words on the button>: <product name>". Grids can be
+ * redrawn by the shop filters, so this re-runs after DOM changes (batched to one pass per frame). */
+(function () {
+	function nameOf(btn) {
+		if (btn.dataset.ytName) { return btn.dataset.ytName; }
+		var card = btn.closest('.wc-block-product, li.product, .wp-block-post');
+		var title = card && card.querySelector('.wp-block-post-title, .woocommerce-loop-product__title');
+		var name = title ? title.textContent.replace(/\s+/g, ' ').trim() : '';
+		if (!name) {
+			var label = btn.getAttribute('aria-label') || '';
+			var at = label.indexOf(':');
+			name = at > -1 ? label.slice(at + 1).replace(/[“”"]/g, '').trim() : '';
+		}
+		btn.dataset.ytName = name;
+		return name;
+	}
+	function sync() {
+		document.querySelectorAll('.wc-block-components-product-button__button[aria-label]').forEach(function (btn) {
+			var text = btn.textContent.replace(/\s+/g, ' ').trim();
+			var name = nameOf(btn);
+			if (!text || !name) { return; }
+			var label = text + ': ' + name;
+			if (btn.getAttribute('aria-label') !== label) { btn.setAttribute('aria-label', label); }
+		});
+	}
+	var queued = false;
+	function queue() {
+		if (queued) { return; }
+		queued = true;
+		window.requestAnimationFrame(function () { queued = false; sync(); });
+	}
+	sync();
+	new MutationObserver(queue).observe(document.body, { childList: true, subtree: true, characterData: true });
 })();

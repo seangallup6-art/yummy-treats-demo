@@ -132,8 +132,16 @@ Guides pick their product cards from the custom field `yt_guide_products` (comma
 
 ## Not done on purpose
 
-- **Opn (cards, PromptPay)**: installed, switched off until test keys are entered in WooCommerce → Settings →
-  Payments on a running site. Keys never go into the repo: a test *secret* key in a public blueprint is
-  readable by anyone (see the handoff notes for the options).
+- **Opn (cards, PromptPay), test mode only.** The hosted blueprint has two empty constants,
+  `YT_OPN_TEST_PUBLIC_KEY` and `YT_OPN_TEST_SECRET_KEY`. With the TEST keys of a separate, throwaway Opn
+  account pasted in, the seed switches Card and PromptPay on for every visitor; left empty, both stay off.
+  The seed ignores anything that is not a test key (`pkey_test_…`, `skey_test_…`), so a live key can never
+  switch them on. Anything in the blueprint is public: anyone can read those test keys and run test
+  charges on that account, which moves no money; rotate them in the Opn dashboard if that becomes a
+  problem. In the browser, PHP's calls to Opn's API become `fetch()` requests and may go through
+  Playground's CORS proxy, which drops the key unless the request opts in; the Opn library has no hook for
+  that, so the seed adds one header to its HTTP executor at boot (`yt_seed_opn_playground_headers()`).
+  PromptPay orders stay at "Scan to pay" on Playground, because Opn's webhook cannot reach a site that runs
+  inside a browser tab.
 - Live courier tracking, subscriptions, reviews (shown empty until there are real ones), a map embed on the
   stockists page (static image instead).

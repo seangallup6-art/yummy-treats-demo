@@ -912,8 +912,8 @@ msgstr "เก็บขนมที่น้องชอบที่สุดไ
 msgid "Save your details for next time"
 msgstr "บันทึกข้อมูลไว้ใช้ครั้งหน้า"
 
-msgid "Scan the QR code with any Thai banking app. Confirms within seconds."
-msgstr "สแกนคิวอาร์โค้ดด้วยแอปธนาคารไทยใดก็ได้ ยืนยันภายในไม่กี่วินาที"
+msgid "Scan the QR code with any Thai banking app. Demo in test mode: the QR code is a test code that banking apps cannot pay, so no real money moves."
+msgstr "สแกนคิวอาร์โค้ดด้วยแอปธนาคารไทยใดก็ได้ ร้านตัวอย่างนี้อยู่ในโหมดทดสอบ: คิวอาร์โค้ดเป็นโค้ดทดสอบที่แอปธนาคารจ่ายไม่ได้ จึงไม่มีการตัดเงินจริง"
 
 msgid "Scan to pay"
 msgstr "สแกนเพื่อชำระ"
@@ -1182,8 +1182,8 @@ msgstr "สัตวแพทย์ประเมินด้วยคะแน
 msgid "View order"
 msgstr "ดูคำสั่งซื้อ"
 
-msgid "Visa, Mastercard and JCB. Processed securely by Opn Payments."
-msgstr "Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments"
+msgid "Visa, Mastercard and JCB. Processed securely by Opn Payments. Demo in test mode: pay with 4242 4242 4242 4242, any future date and any 3 digits. No real money moves."
+msgstr "Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments ร้านตัวอย่างนี้อยู่ในโหมดทดสอบ: ใช้บัตร 4242 4242 4242 4242 วันหมดอายุใดก็ได้ที่ยังไม่ถึง และเลข 3 หลักใดก็ได้ ไม่มีการตัดเงินจริง"
 
 msgid "Waiting for payment"
 msgstr "รอการชำระเงิน"

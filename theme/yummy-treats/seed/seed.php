@@ -191,28 +191,106 @@ function yt_seed_payments() {
 			'enable_for_virtual' => 'no',
 		)
 	);
-	// Opn (Omise) — keys are never typed by us. Sean enters test keys in WooCommerce → Settings → Payments → Opn.
-	$omise = get_option( 'omise', array() );
-	$omise = array_merge(
-		is_array( $omise ) ? $omise : array(),
-		array(
-			'sandbox'                  => 'yes',
-			'test_public_key'          => $omise['test_public_key'] ?? '',
-			'test_private_key'         => $omise['test_private_key'] ?? '',
-			'live_public_key'          => '',
-			'live_private_key'         => '',
+	// Opn (Omise), test mode only. Keys come from the blueprint: Sean pastes the two TEST keys of a throwaway Opn
+	// account into YT_OPN_TEST_PUBLIC_KEY / YT_OPN_TEST_SECRET_KEY in blueprint/playground.json (option B in the
+	// handoff doc). Anything that is not a test key (pkey_test_… / skey_test_…) is ignored, so a live key pasted by
+	// mistake never switches payments on. Keys entered by hand in WooCommerce → Settings → Payments → Opn still work.
+	// The Opn plugin keeps its account keys and the card method's settings in one option, woocommerce_omise_settings.
+	$card  = get_option( 'woocommerce_omise_settings', array() );
+	$card  = is_array( $card ) ? $card : array();
+	$pkey  = yt_seed_opn_test_key( 'YT_OPN_TEST_PUBLIC_KEY', 'pkey_test_' ) ?? ( $card['test_public_key'] ?? '' );
+	$skey  = yt_seed_opn_test_key( 'YT_OPN_TEST_SECRET_KEY', 'skey_test_' ) ?? ( $card['test_private_key'] ?? '' );
+	$opn_on = ( '' !== $pkey && '' !== $skey ) ? 'yes' : 'no'; // Card and PromptPay stay off without keys, so Opn's scripts never run keyless.
+	update_option(
+		'woocommerce_omise_settings',
+		array_merge(
+			$card,
+			array(
+				'sandbox'          => 'yes',
+				'test_public_key'  => $pkey,
+				'test_private_key' => $skey,
+				'live_public_key'  => '',
+				'live_private_key' => '',
+				'enabled'          => $opn_on,
+				'title'            => 'Credit / debit card',
+				'description'      => 'Visa, Mastercard and JCB. Processed securely by Opn Payments. Demo in test mode: pay with 4242 4242 4242 4242, any future date and any 3 digits. No real money moves.',
+				'payment_action'   => 'auto_capture',
+			)
 		)
 	);
-	update_option( 'omise', $omise );
-	// Card and PromptPay switch on once test keys exist; until then they stay off so Opn's scripts do not run without a key.
-	$opn_on = ( ! empty( $omise['test_public_key'] ) && ! empty( $omise['test_private_key'] ) ) ? 'yes' : 'no';
-	update_option( 'woocommerce_omise_settings', array( 'enabled' => $opn_on, 'title' => 'Credit / debit card', 'description' => 'Visa, Mastercard and JCB. Processed securely by Opn Payments.', 'payment_action' => 'auto_capture' ) );
-	update_option( 'woocommerce_omise_promptpay_settings', array( 'enabled' => $opn_on, 'title' => 'PromptPay', 'description' => 'Scan the QR code with any Thai banking app. Confirms within seconds.' ) );
+	delete_option( 'omise' ); // Written by earlier versions of this seed; the plugin never read it.
+	update_option(
+		'woocommerce_omise_promptpay_settings',
+		array(
+			'enabled'     => $opn_on,
+			'title'       => 'PromptPay',
+			'description' => 'Scan the QR code with any Thai banking app. Demo in test mode: the QR code is a test code that banking apps cannot pay, so no real money moves.',
+		)
+	);
 	update_option(
 		'woocommerce_gateway_order',
 		array( 'omise_promptpay' => 0, 'omise' => 1, 'bacs' => 2, 'cod' => 3 )
 	);
-	return 'payments: bank transfer + slip, COD' . ( 'yes' === $opn_on ? ', PromptPay and card (Opn test mode)' : '; Opn card/PromptPay off until test keys are entered' );
+	if ( 'yes' !== $opn_on ) {
+		return 'payments: bank transfer + slip, COD; Opn card/PromptPay off until test keys are entered';
+	}
+	return 'payments: bank transfer + slip, COD, PromptPay and card (Opn test mode); ' . yt_seed_opn_playground_headers();
+}
+
+/**
+ * Playground only: let Opn's API calls through Playground's CORS proxy.
+ *
+ * In the browser, PHP's outgoing requests become fetch() calls. When the target does not answer the browser's
+ * CORS check, Playground retries through its CORS proxy, and that proxy drops the Authorization header (which
+ * carries the Opn key) unless the request opts in with "X-Cors-Proxy-Allowed-Request-Headers: authorization".
+ * The Opn library has no hook for extra headers, so the seed adds that one header to its HTTP executor, once, at
+ * boot. Without it the checkout quietly hides Card and PromptPay: the plugin shows them only after it has read
+ * the account's capabilities from Opn's API. If Opn ever changes that file, nothing is patched and the log says so.
+ *
+ * @return string Log line.
+ */
+function yt_seed_opn_playground_headers() {
+	$files = glob( WP_PLUGIN_DIR . '/*/includes/libraries/omise-php/lib/omise/http/OmiseHttpExecutor.php' );
+	if ( ! $files ) {
+		return 'Opn network: library not found, not patched';
+	}
+	$file = $files[0];
+	$code = file_get_contents( $file ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
+	if ( false !== strpos( $code, 'X-Cors-Proxy-Allowed-Request-Headers' ) ) {
+		return 'Opn network: already patched';
+	}
+	$find = 'CURLOPT_USERPWD => $userpwd';
+	if ( 1 !== substr_count( $code, $find ) ) {
+		return 'Opn network: library changed, not patched';
+	}
+	$add = $find . ",\n"
+		. "            // Yummy Treats demo (added by the theme's seed.php): lets the key through Playground's CORS proxy.\n"
+		. "            CURLOPT_HTTPHEADER => array_merge(array('X-Cors-Proxy-Allowed-Request-Headers: authorization'), defined('OMISE_API_VERSION') ? array('Omise-Version: ' . OMISE_API_VERSION) : array())";
+	file_put_contents( $file, str_replace( $find, $add, $code ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
+	return 'Opn network: CORS proxy opt-in added';
+}
+
+/**
+ * An Opn test key from a wp-config constant (set by the blueprint), or null when the constant is missing or empty.
+ * Only test keys pass: a live key, or anything else, is ignored and logged so the demo never runs on live keys.
+ *
+ * @param string $constant Constant name.
+ * @param string $prefix   Required prefix, pkey_test_ or skey_test_.
+ * @return string|null
+ */
+function yt_seed_opn_test_key( $constant, $prefix ) {
+	if ( ! defined( $constant ) ) {
+		return null;
+	}
+	$key = trim( (string) constant( $constant ) );
+	if ( '' === $key ) {
+		return null;
+	}
+	if ( 0 !== strpos( $key, $prefix ) || ! preg_match( '/^[a-z0-9_]+$/i', $key ) ) {
+		error_log( "Yummy Treats seed: {$constant} is not an Opn test key ({$prefix}…), so it was ignored." );
+		return null;
+	}
+	return $key;
 }
 
 /* ------------------------------------------------------------------------- categories */

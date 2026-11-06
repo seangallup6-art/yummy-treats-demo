@@ -432,9 +432,9 @@ return array(
 		array( 'yummy-treats', 'Cash on delivery', 'เก็บเงินปลายทาง' ),
 		array( 'yummy-treats', 'Pay the courier in cash when your order arrives. Bangkok, Nonthaburi and Samut Prakan only.', 'ชำระเงินสดกับพนักงานส่งเมื่อได้รับสินค้า เฉพาะกรุงเทพฯ นนทบุรี และสมุทรปราการ' ),
 		array( 'yummy-treats', 'Credit / debit card', 'บัตรเครดิต/เดบิต' ),
-		array( 'yummy-treats', 'Visa, Mastercard and JCB. Processed securely by Opn Payments.', 'Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments' ),
+		array( 'yummy-treats', 'Visa, Mastercard and JCB. Processed securely by Opn Payments. Demo in test mode: pay with 4242 4242 4242 4242, any future date and any 3 digits. No real money moves.', 'Visa, Mastercard และ JCB ดำเนินการอย่างปลอดภัยโดย Opn Payments ร้านตัวอย่างนี้อยู่ในโหมดทดสอบ: ใช้บัตร 4242 4242 4242 4242 วันหมดอายุใดก็ได้ที่ยังไม่ถึง และเลข 3 หลักใดก็ได้ ไม่มีการตัดเงินจริง' ),
 		array( 'yummy-treats', 'PromptPay', 'พร้อมเพย์' ),
-		array( 'yummy-treats', 'Scan the QR code with any Thai banking app. Confirms within seconds.', 'สแกนคิวอาร์โค้ดด้วยแอปธนาคารไทยใดก็ได้ ยืนยันภายในไม่กี่วินาที' ),
+		array( 'yummy-treats', 'Scan the QR code with any Thai banking app. Demo in test mode: the QR code is a test code that banking apps cannot pay, so no real money moves.', 'สแกนคิวอาร์โค้ดด้วยแอปธนาคารไทยใดก็ได้ ร้านตัวอย่างนี้อยู่ในโหมดทดสอบ: คิวอาร์โค้ดเป็นโค้ดทดสอบที่แอปธนาคารจ่ายไม่ได้ จึงไม่มีการตัดเงินจริง' ),
 		array( 'yummy-treats', 'Courier delivery', 'จัดส่งโดยขนส่ง' ),
 		array( 'yummy-treats', 'Free delivery', 'ส่งฟรี' ),
 		// Theme: order confirmation (inc/orders.php, confirmation patterns).
