@@ -247,6 +247,12 @@ function yt_seed_payments() {
  * boot. Without it the checkout quietly hides Card and PromptPay: the plugin shows them only after it has read
  * the account's capabilities from Opn's API. If Opn ever changes that file, nothing is patched and the log says so.
  *
+ * The same line drops the library's Omise-Version header. The proxy's CORS check only allows a fixed list of
+ * request headers (Authorization yes, Omise-Version no), so with that header the browser refused every proxied
+ * call: payment methods still loaded (Opn's API answers GET /capability directly) but creating a charge
+ * (POST /charges, proxied) failed with a CORS error and the checkout spun forever (Sean's test, 6 Nov 2026).
+ * Without the header Opn uses the account's own API version; 2019-05-29 is the latest and the library's default.
+ *
  * @return string Log line.
  */
 function yt_seed_opn_playground_headers() {
@@ -265,7 +271,7 @@ function yt_seed_opn_playground_headers() {
 	}
 	$add = $find . ",\n"
 		. "            // Yummy Treats demo (added by the theme's seed.php): lets the key through Playground's CORS proxy.\n"
-		. "            CURLOPT_HTTPHEADER => array_merge(array('X-Cors-Proxy-Allowed-Request-Headers: authorization'), defined('OMISE_API_VERSION') ? array('Omise-Version: ' . OMISE_API_VERSION) : array())";
+		. "            CURLOPT_HTTPHEADER => array('X-Cors-Proxy-Allowed-Request-Headers: authorization')";
 	file_put_contents( $file, str_replace( $find, $add, $code ) ); // phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_file_put_contents
 	return 'Opn network: CORS proxy opt-in added';
 }
